@@ -188,29 +188,42 @@ resp.raise_for_status()
 
 | 항목 | 값 |
 |---|---|
-| 활성화 | repo Settings → Pages → Source: branch `master` (또는 `main`), folder `/docs` |
-| URL 패턴 | `https://{owner}.github.io/{repo}/digest/YYYY-MM-DD.html` |
+| 활성화 | repo Settings → Pages → Source: Deploy from branch · Branch: **`gh-pages`** · Folder: `/ (root)` (2026-05-19 결정 — master 의 회사 사내 문서 보호 boundary) |
+| URL 패턴 | `https://{owner}.github.io/{repo}/digest/YYYY-MM-DD.html` (gh-pages root 기준) |
 | 배포 지연 | push 후 1~2분 (GitHub Actions Pages workflow 또는 자동 배포) |
 | 인증 | public repo면 누구나 접근. private repo Pages는 GitHub Pro/Team 필요 |
 | 검색엔진 노출 회피 | HTML head `<meta name="robots" content="noindex,nofollow">` + `docs/digest/robots.txt`에 `User-agent: * / Disallow: /` |
 | 권한·인증 (workflow에서 git push) | `GITHUB_TOKEN` 기본 권한으로 같은 repo push 가능. 별도 PAT 불필요 |
 
-게시 흐름 (`dispatchers/pages_publish.py`):
+게시 흐름 (`dispatchers/pages_publish.py`, 2026-05-19 gh-pages branch 채택):
 
 ```python
 def publish(digest: Digest, date_kst: date) -> str:
-    """HTML을 docs/digest/YYYY-MM-DD.html로 commit·push. 게시된 URL 반환."""
-    target = Path("docs/digest") / f"{date_kst.isoformat()}.html"
-    target.write_text(digest.html, encoding="utf-8")
-    subprocess.run(["git", "add", str(target)], check=True)
-    subprocess.run(
-        ["git", "commit", "-m", f"digest: {date_kst.isoformat()}"],
-        check=True,
-        env={**os.environ, "GIT_AUTHOR_NAME": "f_trendnewsbot", ...},
-    )
-    subprocess.run(["git", "push", "origin", "HEAD:master"], check=True)
+    """HTML을 gh-pages branch의 digest/YYYY-MM-DD.html로 commit·push. 게시된 URL 반환.
+
+    master 의 회사 사내 문서를 Pages 에 노출시키지 않기 위해 별도 branch 운영.
+    `git worktree` 로 임시 디렉토리에 `gh-pages` checkout → 파일 작성 → commit → push.
+    """
+    with tempfile.TemporaryDirectory() as wt:
+        subprocess.run(["git", "worktree", "add", wt, "gh-pages"], check=True)
+        try:
+            target = Path(wt) / "digest" / f"{date_kst.isoformat()}.html"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(digest.html, encoding="utf-8")
+            (Path(wt) / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
+            subprocess.run(["git", "-C", wt, "add", "digest/", "robots.txt"], check=True)
+            subprocess.run(
+                ["git", "-C", wt, "commit", "-m", f"digest: {date_kst.isoformat()}"],
+                check=True,
+                env={**os.environ, "GIT_AUTHOR_NAME": "f_trendnewsbot", ...},
+            )
+            subprocess.run(["git", "-C", wt, "push", "origin", "gh-pages"], check=True)
+        finally:
+            subprocess.run(["git", "worktree", "remove", wt, "--force"], check=True)
     return f"https://{owner}.github.io/{repo}/digest/{date_kst.isoformat()}.html"
 ```
+
+**운영자 초기 셋업 (1회)** — `gh-pages` orphan branch 가 존재해야 dispatcher 가 push 가능. step7 secrets_setup.md 가이드 참조.
 
 **race condition**: 같은 repo에 다른 commit이 동시에 들어가면 push 실패 가능. 봇은 단독 운영이라 V1에서 충돌 가능성 낮음. retry 1회 (pull --rebase + push).
 
@@ -314,3 +327,4 @@ Stage 4 requirements 작성 시 다음 6개 시사점을 인용한다.
 - 2026-05-19: V1 발송 채널 변경 (ADR-003) — §3-3 Gmail SMTP 섹션을 텔레그램 Bot API + GitHub Pages 섹션으로 교체. §3-6 의존성에서 SMTP·email 제거 표기. §4 결론 #6 신규 추가.
 - 2026-05-19: UX 강화 — §3-2 토큰 추정 표 갱신 (회사 컨텍스트·company_impact·category_headlines 출력 추가, 월 ~$0.8). §4 결론 #7(prompt·schema 확장) + #8(애플 감성 디자인 동결) 신규 추가.
 - 2026-05-19: phase 01 step1 dry-run 중 Windows `zoneinfo` 가 IANA tzdata 부재로 실패 → `pyproject.toml` dependencies 에 `tzdata>=2024.2; sys_platform == 'win32'` 추가 (§3-6 코드 블록 동기화). 핫픽스 로그 `phases/_hotfix-log/2026-05-19-windows-tzdata.md`. Linux/macOS 환경은 영향 없음.
+- 2026-05-19: Pages 배포 boundary 변경 (ADR-003 §결정·§대안 F) — §3-3-b 의 활성화 row 와 게시 흐름 코드 블록을 `gh-pages` branch root 로 갱신. master 의 회사 사내 문서 보호.

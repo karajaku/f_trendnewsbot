@@ -21,16 +21,20 @@
 
 ### Pages publish
 
-- `src/dispatchers/pages_publish.py`
+- `src/dispatchers/pages_publish.py` (2026-05-19 gh-pages branch boundary 채택)
   - `publish(digest: Digest, date_kst: date) -> str`
-    - `docs/digest/YYYY-MM-DD.html` 작성 (`digest.html` 그대로 — HTML head에 `<meta name="robots" content="noindex,nofollow">` 포함, AC-2.8)
-    - `docs/digest/robots.txt` 가 없으면 같이 생성 (`User-agent: * / Disallow: /`)
-    - `git add docs/digest/YYYY-MM-DD.html docs/digest/robots.txt`
-    - `git commit -m "digest: YYYY-MM-DD"` (재실행 시 `(rerun)` suffix)
-    - `git push origin HEAD:{main_branch}` — `GITHUB_TOKEN` 으로 인증
+    - `git worktree add {tmp} gh-pages` 로 임시 디렉토리에 `gh-pages` branch checkout (master 영향 0)
+    - `{tmp}/digest/YYYY-MM-DD.html` 작성 (`digest.html` 그대로 — HTML head에 `<meta name="robots" content="noindex,nofollow">` 포함, AC-2.8)
+    - `{tmp}/robots.txt` 가 없으면 같이 생성 (`User-agent: * / Disallow: /`)
+    - `git -C {tmp} add digest/YYYY-MM-DD.html robots.txt`
+    - `git -C {tmp} commit -m "digest: YYYY-MM-DD"` (재실행 시 `(rerun)` suffix)
+    - `git -C {tmp} push origin gh-pages` — `GITHUB_TOKEN` 으로 인증
+    - `git worktree remove {tmp} --force` 로 임시 디렉토리 정리 (finally 블록)
     - push 후 `{PAGES_BASE_URL}/digest/YYYY-MM-DD.html`을 30~60초 polling (HEAD 200 응답) — AC-5.6
-    - 게시 확인 시 URL 반환, 실패 시 `PagesPublishError`
+    - 게시 확인 시 URL 반환, 실패 시 `PagesPublishError(stage=...)`
+  - 테스트 hook: `git_runner` (subprocess.run 호환), `http_checker` (requests.head 호환), `tmp_factory` (tempfile.mkdtemp 호환 — worktree 디렉토리 격리용). 모두 키워드 전용 인자.
   - `git` author/committer는 `f_trendnewsbot` 봇 이름·이메일 (commit 출처 명확)
+  - **운영자 초기 셋업 1회 (step7 secrets_setup.md)**: 빈 orphan `gh-pages` branch push (`git checkout --orphan gh-pages → git rm -rf . → echo "# Digest archive" > README.md → git add README.md → git commit -m "Initialize gh-pages" → git push origin gh-pages → git checkout master`) + Settings → Pages 에서 Source: `gh-pages` branch root.
 
 ### Telegram send
 
