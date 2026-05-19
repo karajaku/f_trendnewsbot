@@ -478,6 +478,13 @@ class TestTelegramSend:
         # 2026-05-19 회귀 방지: render 가 base_url 라인을 박지 않으므로 `전체 본문` 풋터는
         # dispatcher 한 곳에서만 단일 책임 추가 → 본문 전체에 정확히 1번만 등장.
         assert payload["text"].count("전체 본문:") == 1
+        # 2026-05-20 회귀 방지: Telegram Desktop 의 plain URL auto-linkify 누락 케이스 차단 —
+        # URL 은 명시적 `<a href="...">` 앵커로 감싸 모든 클라이언트에서 클릭 가능 보장.
+        assert (
+            '전체 본문: <a href="https://example.com/d.html">'
+            'https://example.com/d.html</a>'
+            in payload["text"]
+        )
 
 
 # ===========================================================================
