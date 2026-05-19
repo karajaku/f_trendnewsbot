@@ -16,7 +16,7 @@
   "manual_qa_required": true,
   "archive_target": true,
   "created_at": "2026-05-19",
-  "active_step": 4,
+  "active_step": 5,
   "pending_manual_qa_scenarios": [
     "step3: 실제 12~18개 소스 RSS feed 1회 fetch에서 published 시각이 모두 tz-aware KST로 변환되는지 step8 dry-run에서 시각 확인",
     "step4: step7 workflow 통합 후 첫 실행(artifact 없음)이 fresh-start로 부팅되고 두 번째 실행이 dedup 적용되는지 사용자 phase 끝 dry-run에서 확인",
@@ -54,11 +54,13 @@
     {
       "step": 4,
       "file": "step4.md",
-      "status": "implemented_pending_manual_qa",
+      "status": "completed",
       "summary": "filters + history backend — timewindow/keyword/category/dedup + artifact 연동",
       "qa_blocking": true,
       "maps_to_ac": ["AC-2.2", "AC-4.1", "AC-4.2", "AC-4.3", "AC-4.4", "§6-4"],
-      "implemented_at": "2026-05-19"
+      "implemented_at": "2026-05-19",
+      "completed_at": "2026-05-19",
+      "manual_qa_note": "사용자 검토 통과 — sent.jsonl 스키마 OK, fresh-start 동작 OK, fuzzy 0.85 유지 + 1주 dry-run 후 조정 정책 확정 (AC-4.3 본래 계획과 일치)"
     },
     {
       "step": 5,
