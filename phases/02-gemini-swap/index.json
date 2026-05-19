@@ -1,6 +1,7 @@
 {
   "phase": "02-gemini-swap",
-  "status": "in_progress",
+  "status": "completed",
+  "completed_at": "2026-05-19",
   "feature_group": "daily_digest",
   "description": "V1 LLM provider 영구 무료화 — Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash",
   "related_docs": [
@@ -13,9 +14,9 @@
   "archive_target": true,
   "created_at": "2026-05-19",
   "active_step": 4,
-  "pending_manual_qa_scenarios": [
-    "step4: 사용자가 https://aistudio.google.com/app/apikey 에서 GEMINI_API_KEY 발급 → GitHub Secrets 등록 (ANTHROPIC_API_KEY 삭제 + GEMINI_API_KEY 추가) → Actions Run workflow dry_run=true → 운영자 단톡방 정상 다이제스트 도착 + Pages URL 표시 + 직원 단톡방 미발송 확인",
-    "step4 (ADR-005 후 재실행): GitHub Variables 의 GEMINI_MODEL_ID 값을 'gemini-2.5-flash' 로 갱신 또는 삭제 (코드 default 로 fallback) → Actions Run workflow dry_run=true → 7개 AC 재검증"
+  "pending_manual_qa_scenarios": [],
+  "completed_manual_qa_scenarios": [
+    "step4: GEMINI_API_KEY 발급 + Secrets 등록 + Actions dry-run 5회차 (#26099906586, 22:22 KST 2026-05-19) → 운영자 단톡방 정상 다이제스트 27건 + Pages URL + Apple v3 디자인 + 직원 단톡방 미발송 + sent.jsonl artifact 업로드 + 텔레그램 풋터 '전체 본문:' 1줄 등장 — 모두 사용자 시각 확인 통과 (2026-05-19)"
   ],
   "creation_note": "phase 01 step7 dry-run에서 Anthropic 크레딧 부족 발견 → 사용자가 무료 tier 영구화 우선 결정 (2026-05-19). phase 01 step7은 implemented_pending_manual_qa 유지하되 phase 01 status는 paused. phase 02 종료 후 phase 01 step7 dry-run 재개.",
   "steps": [
@@ -51,7 +52,8 @@
     {
       "step": 4,
       "file": "step4.md",
-      "status": "implemented_pending_manual_qa",
+      "status": "completed",
+      "completed_at": "2026-05-19",
       "summary": "tests/summarizer 회귀 + dry-run 검증 (qa_blocking: 사용자가 Gemini API key 발급 후 Actions 실행)",
       "qa_blocking": true,
       "maps_to_ac": ["AC-1.3", "Phase DoD 전체"],
