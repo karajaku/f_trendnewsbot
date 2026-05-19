@@ -366,7 +366,7 @@ JSON 출력 강제 + 후처리(`summarizer/render.py`)에서 schema validation. 
 | `TELEGRAM_CHAT_ID` | GitHub Actions Variable 또는 Secret | 직원 다이제스트 단톡방 ID (음수 정수, 예: `-1001234567890`) |
 | `OPS_ALERT_CHAT_ID` | GitHub Actions Variable 또는 Secret | 운영자 alert 전용 chat ID |
 | `PAGES_BASE_URL` | GitHub Actions Variable | Pages base URL 표기 (예: `https://owner.github.io/f_trendnewsbot`). 텔레그램 메시지·로깅에서 사용 |
-| `GEMINI_MODEL_ID` | GitHub Actions Variable | 사용 모델 ID. 기본값 `gemini-2.0-flash`. deprecated 시 코드 변경 없이 교체. |
+| `GEMINI_MODEL_ID` | GitHub Actions Variable | 사용 모델 ID. 기본값 `gemini-2.5-flash` (ADR-005, 2026-05-19 추가). deprecated 시 코드 변경 없이 교체. |
 | `GITHUB_TOKEN` | GitHub Actions 자동 주입 | Pages publish 시 git push 권한. 별도 등록 불필요. |
 
 V1에서 제거된 환경변수 (ADR-003): `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `GMAIL_FROM`, `RECIPIENTS_YML_BASE64`, `OPS_REPLY_TO`.
@@ -425,3 +425,4 @@ V1에서 제거된 환경변수 (ADR-003): `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `
 - 2026-05-19: 표면 B Pages HTML 디자인을 **애플 사이트 감성 미니멀**로 확정 — AC-2.7 보강 (SF Pro / Noto Sans KR 폰트 스택, 56px hero·hero 그라데이션 강조, 카드 제거·1px 보더, TL;DR `#f5f5f7` background·`border-radius: 18px`, 우선순위 점 indicator `••●`, 링크 Apple Blue `#06c` + arrow, 카테고리별 미세한 eyebrow 색). 샘플 레퍼런스 `samples/2026-05-19-digest-preview-v3.html`로 동결.
 - 2026-05-19: Pages 배포 boundary 변경 (ADR-003 §결정·§대안 F 갱신) — master `/docs` root 채택 시 회사 사내 문서(`docs/canonical/`·`docs/features/`·`docs/_extracted/`) 가 외부 공개되는 위험 발견. **`gh-pages` 전용 branch root** 로 변경. AC-2.8·6.6 본문 갱신. step6 dispatcher 의 `pages_publish.py` 핫픽스 + step7 secrets_setup.md 에 운영자 초기 셋업 1회 가이드 추가 필요.
 - 2026-05-19: ADR-004 반영 — V1 LLM provider Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash swap (영구 무료 tier). 영향 범위: §1 의존 시스템 표 (Anthropic Claude API → Google Gemini API, anthropic 패키지 → google-genai), §3 결론 #2 부연, AC-5.3 본문 (QuotaExceededError 매핑), §5 Resource flow Digest body 행 (JSON mode + response_schema 명시), §6-4 sent.jsonl 예시 (claude_tokens_in/out → tokens_in/out, pages_url 메타 추가), §8 환경변수 표 (ANTHROPIC_API_KEY → GEMINI_API_KEY, CLAUDE_MODEL_ID → GEMINI_MODEL_ID, 기본 모델 ID `gemini-2.0-flash`). phase 02-gemini-swap 4 step 작업으로 적용.
+- 2026-05-19: ADR-005 반영 — phase 02 step4 dry-run 에서 `gemini-2.0-flash` 가 신규 사용자에게 deprecated (`404 NOT_FOUND — no longer available to new users`) 확인. **모델 ID 만 `gemini-2.5-flash` 로 swap** (provider/SDK/JSON mode 동일, ADR-004 의 provider 결정은 유효). 영향 범위: §8 환경변수 표 `GEMINI_MODEL_ID` 기본값 표기 `gemini-2.0-flash` → `gemini-2.5-flash` (ADR-005 출처 표기 추가). caller·prompt·SDK 인터페이스 무영향.

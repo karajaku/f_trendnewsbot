@@ -116,7 +116,7 @@ ADR-004 (2026-05-19) 에 따라 LLM provider 가 Anthropic Claude 에서 **Googl
 | `TELEGRAM_CHAT_ID` | ② 에서 추출한 음수 정수 (예: `-1001234567890`) |
 | `OPS_ALERT_CHAT_ID` | ③ 에서 추출한 chat ID |
 | `PAGES_BASE_URL` | `https://karajaku.github.io/f_trendnewsbot` (trailing slash 없음) |
-| `GEMINI_MODEL_ID` | `gemini-2.0-flash` |
+| `GEMINI_MODEL_ID` | `gemini-2.5-flash` (ADR-005, 2026-05-19 — `gemini-2.0-flash` 가 신규 사용자에게 deprecated 됨) |
 
 > ⚠ `TELEGRAM_CHAT_ID` 와 `OPS_ALERT_CHAT_ID` 는 **반드시 Variables 에 등록**. Secrets 에 넣으면 workflow 가 `int` 변환 단계에서 마스킹된 `***` 을 받아 실패한다.
 

@@ -140,7 +140,7 @@ def send(
         )
 
     url = _BOT_API_URL_TEMPLATE.format(token=bot_token)
-    payload = {
+    payload: dict[str, Any] = {
         "chat_id": chat_id_int,
         "text": text,
         "parse_mode": "HTML",

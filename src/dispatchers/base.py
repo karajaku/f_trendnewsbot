@@ -13,14 +13,12 @@ CRITICAL #4 (외부 소스 장애 격리) · #5 (시크릿 평문 노출 금지)
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Optional, Protocol
+from typing import TYPE_CHECKING, Any, Optional, Protocol
 
 # `RenderedDigest` 는 type-only import — 순환 import 방지.
 # 실행 시점에는 본 base.py 가 summarizer 를 끌어오지 않는다.
-try:  # pragma: no cover — type-checking only
+if TYPE_CHECKING:
     from src.summarizer.render import RenderedDigest  # noqa: F401
-except Exception:  # pragma: no cover
-    RenderedDigest = Any  # type: ignore[assignment]
 
 
 @dataclass(frozen=True)

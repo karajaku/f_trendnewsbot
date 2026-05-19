@@ -39,7 +39,9 @@ from .quota import QuotaExceededError, QuotaTracker
 logger = logging.getLogger(__name__)
 
 # requirements §8 — env var 미지정 시 default.
-DEFAULT_MODEL: str = "gemini-2.0-flash"
+# ADR-005 (2026-05-19): gemini-2.0-flash 가 신규 사용자에게 deprecated 됨에 따라
+# gemini-2.5-flash 로 swap. provider/SDK/JSON mode 동일.
+DEFAULT_MODEL: str = "gemini-2.5-flash"
 
 # Gemini max_output_tokens — output cap 20k 이내 (AC-5.5).
 DEFAULT_MAX_OUTPUT_TOKENS: int = 4096

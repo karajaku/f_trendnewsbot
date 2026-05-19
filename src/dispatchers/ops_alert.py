@@ -152,7 +152,7 @@ def send_ops_alert(
         return
 
     url = _BOT_API_URL_TEMPLATE.format(token=bot_token)
-    payload = {
+    payload: dict[str, Any] = {
         "chat_id": chat_id_int,
         "text": body,
         "disable_web_page_preview": True,
