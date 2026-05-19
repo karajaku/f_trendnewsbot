@@ -32,6 +32,7 @@ frozen_by: "phases/01-mvp-daily-digest/"
 | 외부 뉴스 소스 (RSS·HTML) | 외부 의존 | fetchers가 호출. 소스 단위 격리. 12~18개 소스. |
 | Python 3.12 표준 라이브러리 (zoneinfo, subprocess, logging) | 내부 의존 | KST 변환·git commit·로깅. SMTP/email 의존성은 V1에서 제거 (ADR-003). |
 | 외부 패키지 (anthropic, feedparser, requests, beautifulsoup4, pyyaml, python-dateutil) | 내부 의존 | pyproject.toml 동결 버전. `requests`가 텔레그램 API 호출 겸용. |
+| tzdata (Windows 한정, `sys_platform == 'win32'`) | 내부 의존 | Python `zoneinfo` 가 IANA tzdata 를 요구하나 Windows 는 시스템 db 없음 — PyPI 패키지로 보충. (step1 검증 중 발견, `phases/_hotfix-log/2026-05-19-windows-tzdata.md`) |
 
 ## 2. 범위 외 (명시적)
 

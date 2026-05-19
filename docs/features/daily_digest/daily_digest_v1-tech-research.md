@@ -263,7 +263,7 @@ def publish(digest: Digest, date_kst: date) -> str:
 ### 3-6. 의존성 패키지 목록 (V1)
 
 ```toml
-# pyproject.toml — V1 초기 (Stage 4에서 동결)
+# pyproject.toml — V1 초기 (Stage 4에서 동결, step1 검증 후 tzdata 추가)
 [project]
 name = "f_trendnewsbot"
 version = "0.1.0"
@@ -275,6 +275,7 @@ dependencies = [
     "beautifulsoup4>=4.12.3",# HTML
     "pyyaml>=6.0.2",         # config/*.yml
     "python-dateutil>=2.9.0",# 시간대·KST 변환
+    "tzdata>=2024.2; sys_platform == 'win32'",  # Windows zoneinfo IANA db 보충 (step1 핫픽스)
 ]
 [project.optional-dependencies]
 dev = ["pytest>=8.0.0", "pytest-cov", "ruff", "mypy"]
@@ -312,3 +313,4 @@ Stage 4 requirements 작성 시 다음 6개 시사점을 인용한다.
 - 2026-05-19: 초안 작성. 외부 URL은 LLM 일반 지식 기반 (사용자 외부 조사 허가 시 retrieved 날짜 보강). 저장 매체 후보 A 권장, Claude API 단일 호출 권장.
 - 2026-05-19: V1 발송 채널 변경 (ADR-003) — §3-3 Gmail SMTP 섹션을 텔레그램 Bot API + GitHub Pages 섹션으로 교체. §3-6 의존성에서 SMTP·email 제거 표기. §4 결론 #6 신규 추가.
 - 2026-05-19: UX 강화 — §3-2 토큰 추정 표 갱신 (회사 컨텍스트·company_impact·category_headlines 출력 추가, 월 ~$0.8). §4 결론 #7(prompt·schema 확장) + #8(애플 감성 디자인 동결) 신규 추가.
+- 2026-05-19: phase 01 step1 dry-run 중 Windows `zoneinfo` 가 IANA tzdata 부재로 실패 → `pyproject.toml` dependencies 에 `tzdata>=2024.2; sys_platform == 'win32'` 추가 (§3-6 코드 블록 동기화). 핫픽스 로그 `phases/_hotfix-log/2026-05-19-windows-tzdata.md`. Linux/macOS 환경은 영향 없음.
