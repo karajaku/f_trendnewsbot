@@ -1,8 +1,9 @@
 {
   "phase": "01-mvp-daily-digest",
-  "status": "in_progress",
+  "status": "completed",
+  "completed_at": "2026-05-19",
   "resumed_at": "2026-05-19",
-  "resume_note": "phase 02-gemini-swap 종료 후 재개 (2026-05-19). step7 dry-run 은 phase 02 step4 의 dry-run 6회차 (run 26099906586) 와 동일한 코드 경로로 검증된 셈 → step7 → completed. step8 (verification-record + canonical sync) 진입.",
+  "resume_note": "phase 02-gemini-swap 종료 후 재개 (2026-05-19). step7 dry-run 은 phase 02 step4 의 dry-run 6회차 (run 26099906586) 와 동일한 코드 경로로 검증된 셈 → step7 → completed. step8 (verification-record + canonical sync) 진입 후 즉시 종료.",
   "previous_pause": {
     "paused_at": "2026-05-19",
     "paused_reason": "step7 dry-run에서 Anthropic 크레딧 부족 발견 → phase 02-gemini-swap 의존."
@@ -100,8 +101,10 @@
     {
       "step": 8,
       "file": "step8.md",
-      "status": "in_progress",
+      "status": "completed",
       "entered_at": "2026-05-19",
+      "completed_at": "2026-05-19",
+      "manual_qa_note": "verification-record 신규 작성 (docs/history/daily_digest/daily_digest_v1-manual-verification-record.md) + PRD/ARCHITECTURE/PHASE_MAP/implementation_status canonical sync 완료. 4주 모니터링 항목 5건은 record §5 에 기록 — phase 종료 후 누적 갱신.",
       "summary": "dry-run + verification-record + canonical sync(PRD 정시성 갱신, ARCHITECTURE 모듈 ownership 실측 반영, implementation_status 등록)",
       "qa_blocking": true,
       "maps_to_ac": ["AC-1.3", "Phase DoD 전체"]

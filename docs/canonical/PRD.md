@@ -32,7 +32,7 @@
   1. **AI 트렌드**: Anthropic/OpenAI/Google DeepMind 공식 블로그, TLDR AI, Hacker News(주요), 한국 IT 매체 AI 섹션.
   2. **농산물 유통·산지**: 농민신문, 한국농어민신문, 식품음료신문, aT 유통정보, GS리테일/이마트/쿠팡 보도자료.
   3. **팜보스 관심 키워드**: 복숭아·감·딸기 시세, 청도·경산·밀양 산지 동향, 닥터상달/과일 프랜차이즈 동향.
-- **카테고리당 5~10건 큐레이션**: Gemini API (2.0 Flash, ADR-004) 로 중요도 점수화 + 한 줄 요약(2~3 문장).
+- **카테고리당 5~10건 큐레이션**: Gemini API (2.5 Flash, ADR-005) 로 중요도 점수화 + 한 줄 요약(2~3 문장).
 - **원문 링크 필수 동봉**: 각 항목마다 원문 URL·출처·발행 시각(KST) 표기.
 - **메신저 + 정적 사이트 발송 (ADR-003)**: 텔레그램 단톡방에 짧은 인덱스 알림 + GitHub Pages에 매일 1페이지씩 HTML 본문 게시. 직원이 단톡방 push 알림 → Pages URL 클릭 → 브라우저 본문 흐름. (V1에서 이메일 발송은 제외)
 - **dedup**: 최근 7일 발송 이력 저장, URL 정규화 + 제목 fuzzy match로 재발송 차단.
@@ -56,7 +56,7 @@
 - **dedup 정확도**: 직원이 같은 기사를 2회 받는 사례가 월 0회. 발송 후 자가 점검 로그에서 dedup miss 0건.
 - **실패 격리**: 한 소스가 장애여도 다른 소스 발송은 정상. 다이제스트 본문에 실패 소스 노출.
 - **요약 신뢰도**: hallucination(원문에 없는 사실)이 직원 보고로 월 1건 이하. 모든 항목이 원문 링크 보유.
-- **운영 비용**: 월 LLM API 비용 $0 (ADR-004 — Gemini 2.0 Flash 무료 tier 영구). Gemini 무료 한도 (15 RPM / 1500 RPD) 의 1% 미만 사용 예상. 무료 정책 변경 시 ADR-005 재검토.
+- **운영 비용**: 월 LLM API 비용 $0 (ADR-005 — Gemini 2.5 Flash 무료 tier 영구; ADR-004 의 2.0-flash 가 2026-05-19 신규 사용자 deprecated 되어 2.5-flash 로 swap). Gemini 무료 한도 (15 RPM / 1500 RPD) 의 1% 미만 사용 예상. 무료 정책 변경·thinking-mode 정책 변경 시 ADR-006 재검토.
 
 ## 비-목표
 
@@ -67,7 +67,7 @@
 
 ## 의존·제약
 
-- **외부 API**: Google Gemini API (요약·중요도 점수, ADR-004). 일일 호출·토큰 hard cap 필수 (Gemini 무료 tier 보호선).
+- **외부 API**: Google Gemini API (요약·중요도 점수, ADR-004 + ADR-005 후속 모델 swap). 일일 호출·토큰 hard cap 필수 (Gemini 무료 tier 보호선).
 - **메신저 API**: 텔레그램 Bot API (`api.telegram.org`). BotFather에서 토큰 발급. 단톡방 멤버십으로 수신자 관리.
 - **정적 호스팅**: GitHub Pages (public repo, noindex meta + robots.txt로 검색엔진 차단).
 - **외부 소스**: RSS·공개 보도자료 페이지. 사이트 구조 변경에 의해 fetcher가 깨질 수 있음 — 소스별 격리 + 실패 메트릭으로 조기 감지.
@@ -85,3 +85,4 @@
 - 2026-05-19: 사용자 일괄 검토 결정 반영 — 정시성 기준 "± 5분 95%" → "± 15분 95% (4주 모니터링 후 재조정 가능)", 발송 빈도 "평일만" → "매일 발송(토·일·공휴일 포함)".
 - 2026-05-19: V1 발송 채널 변경 (ADR-003) — Gmail SMTP 이메일 발송 폐기, 텔레그램 Bot API + GitHub Pages 조합으로 전환. MVP §발송 방식·§제외·§의존 모두 갱신.
 - 2026-05-19: UX 강화 + 애플 감성 디자인 — 각 항목에 `💡 회사 영향:` LLM 분석 한 줄 도입 (사업 영역 외면 빈 문자열 강제), 우선순위 ⭐/점 indicator, TL;DR 박스, 카테고리 핵심 한 줄, 안전 경고 풋터. 표면 B Pages HTML은 애플 사이트 미니멀 톤(SF Pro·56px hero·그라데이션·1px 보더·#f5f5f7 TL;DR·Apple Blue 링크)으로 동결. requirements AC-2.5 폐기·AC-2.7 보강·AC-2.9~2.12 신규.
+- 2026-05-19: phase 02 종료 반영 — LLM provider 가 Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash (ADR-004, phase 02 step1~3) → Google Gemini 2.5 Flash (ADR-005, phase 02 step4 도중 deprecation 대응) 로 두 단계 swap 완료. §MVP 포함, §성공 기준, §의존 모두 갱신. 운영 비용 $0 유지.
