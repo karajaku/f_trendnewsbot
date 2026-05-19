@@ -1,5 +1,5 @@
 ---
-status: applied
+status: frozen
 review_count: 0
 created_at: "2026-05-19"
 last_reviewed_at: null
@@ -8,6 +8,8 @@ research_mode: discovery
 feature: daily_digest_v1
 applied_at: "2026-05-19"
 applied_by: "docs/features/daily_digest/daily_digest_v1-brief.md"
+frozen_at: "2026-05-19"
+frozen_by: "phases/01-mvp-daily-digest/ (step1~7 완료, step8 진입)"
 ---
 
 # daily_digest V1 — Stage 0 Discovery Research

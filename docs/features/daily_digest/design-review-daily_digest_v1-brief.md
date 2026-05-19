@@ -1,5 +1,5 @@
 ---
-status: applied
+status: frozen
 review_count: 2
 created_at: "2026-05-19"
 last_reviewed_at: "2026-05-19"
@@ -8,6 +8,8 @@ feature: daily_digest_v1
 reviewed_doc: "docs/features/daily_digest/daily_digest_v1-brief.md"
 applied_at: "2026-05-19"
 applied_by: "docs/features/daily_digest/daily_digest_v1-brief.md (Changelog 2026-05-19 사용자 결정 반영)"
+frozen_at: "2026-05-19"
+frozen_by: "phases/01-mvp-daily-digest/ (step1~7 완료, step8 진입)"
 ---
 
 # daily_digest V1 — Brief Design Review

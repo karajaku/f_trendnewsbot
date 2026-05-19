@@ -1,5 +1,5 @@
 ---
-status: applied
+status: frozen
 review_count: 0
 created_at: "2026-05-19"
 last_reviewed_at: null
@@ -9,6 +9,8 @@ feature: daily_digest_v1
 based_on_brief: "docs/features/daily_digest/daily_digest_v1-brief.md"
 applied_at: "2026-05-19"
 applied_by: "docs/features/daily_digest/daily_digest_v1-requirements.md"
+frozen_at: "2026-05-19"
+frozen_by: "phases/01-mvp-daily-digest/ (step1~7 완료, step8 진입)"
 ---
 
 # daily_digest V1 — Stage 3 Tech Research

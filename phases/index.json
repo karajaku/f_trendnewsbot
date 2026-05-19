@@ -2,7 +2,7 @@
   "phases": [
     {
       "dir": "01-mvp-daily-digest",
-      "status": "paused",
+      "status": "in_progress",
       "feature_group": "daily_digest",
       "description": "V1 매일 다이제스트 봇 — 그린필드에서 GitHub Actions cron 발송 가능 상태까지",
       "related_docs": [
@@ -18,26 +18,27 @@
       "manual_qa_required": true,
       "archive_target": true,
       "created_at": "2026-05-19",
-      "paused_at": "2026-05-19",
-      "paused_reason": "step7 dry-run에서 Anthropic 크레딧 부족 발견 → phase 02-gemini-swap 의존. phase 02 종료 후 step7 dry-run 재개 → completed → step8 진입.",
-      "active_step": 7,
+      "resumed_at": "2026-05-19",
+      "resume_note": "phase 02-gemini-swap 종료 후 재개. step7 (workflow + secrets) 은 phase 02 step4 dry-run 6회차로 동일 검증 → completed. active_step 7 → 8.",
+      "active_step": 8,
       "pending_manual_qa_scenarios": []
     },
     {
       "dir": "02-gemini-swap",
-      "status": "in_progress",
+      "status": "completed",
       "feature_group": "daily_digest",
-      "description": "V1 LLM provider 영구 무료화 — Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash",
+      "description": "V1 LLM provider 영구 무료화 — Anthropic Claude Haiku 4.5 → Google Gemini 2.5 Flash (ADR-005 후속 swap)",
       "related_docs": [
         "docs/canonical/ADR.md",
         "docs/features/daily_digest/daily_digest_v1-requirements.md"
       ],
       "depends_on": [],
-      "blocks": ["01-mvp-daily-digest"],
+      "blocks": [],
       "manual_qa_required": true,
       "archive_target": true,
       "created_at": "2026-05-19",
-      "active_step": 1,
+      "completed_at": "2026-05-19",
+      "active_step": 4,
       "pending_manual_qa_scenarios": []
     }
   ]
