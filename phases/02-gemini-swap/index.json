@@ -14,7 +14,8 @@
   "created_at": "2026-05-19",
   "active_step": 4,
   "pending_manual_qa_scenarios": [
-    "step4: 사용자가 https://aistudio.google.com/app/apikey 에서 GEMINI_API_KEY 발급 → GitHub Secrets 등록 (ANTHROPIC_API_KEY 삭제 + GEMINI_API_KEY 추가) → Actions Run workflow dry_run=true → 운영자 단톡방 정상 다이제스트 도착 + Pages URL 표시 + 직원 단톡방 미발송 확인"
+    "step4: 사용자가 https://aistudio.google.com/app/apikey 에서 GEMINI_API_KEY 발급 → GitHub Secrets 등록 (ANTHROPIC_API_KEY 삭제 + GEMINI_API_KEY 추가) → Actions Run workflow dry_run=true → 운영자 단톡방 정상 다이제스트 도착 + Pages URL 표시 + 직원 단톡방 미발송 확인",
+    "step4 (ADR-005 후 재실행): GitHub Variables 의 GEMINI_MODEL_ID 값을 'gemini-2.5-flash' 로 갱신 또는 삭제 (코드 default 로 fallback) → Actions Run workflow dry_run=true → 7개 AC 재검증"
   ],
   "creation_note": "phase 01 step7 dry-run에서 Anthropic 크레딧 부족 발견 → 사용자가 무료 tier 영구화 우선 결정 (2026-05-19). phase 01 step7은 implemented_pending_manual_qa 유지하되 phase 01 status는 paused. phase 02 종료 후 phase 01 step7 dry-run 재개.",
   "steps": [
@@ -61,7 +62,8 @@
         "workflow_yml": "yaml.safe_load OK, GEMINI_API_KEY/GEMINI_MODEL_ID 등장 확인 (2026-05-19)"
       },
       "hotfixes_during_step": [
-        "phases/_hotfix-log/2026-05-19-dispatcher-mypy-typing.md — dispatcher 3건 mypy 회귀 (base.py type-only import + payload dict[str, Any] 명시). phase 02 swap 무관, phase 01 step6 잔여 회귀."
+        "phases/_hotfix-log/2026-05-19-dispatcher-mypy-typing.md — dispatcher 3건 mypy 회귀 (base.py type-only import + payload dict[str, Any] 명시). phase 02 swap 무관, phase 01 step6 잔여 회귀.",
+        "phases/_hotfix-log/2026-05-19-gemini-2-0-flash-deprecated.md — gemini-2.0-flash 가 신규 사용자에게 deprecated (404 NOT_FOUND). ADR-005 신설 + DEFAULT_MODEL gemini-2.5-flash swap (5 활성 default + 1 사용자 가이드). dry-run 재실행 필요."
       ]
     }
   ]

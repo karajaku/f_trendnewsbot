@@ -333,7 +333,7 @@ def test_client_summarize_maps_rate_limit_to_quota_exceeded() -> None:
     arts = _make_articles_simple()
     err = genai_errors.ClientError(
         429,
-        {"error": {"message": "Quota exceeded for model gemini-2.0-flash",
+        {"error": {"message": "Quota exceeded for model gemini-2.5-flash",
                    "status": "RESOURCE_EXHAUSTED"}},
     )
 

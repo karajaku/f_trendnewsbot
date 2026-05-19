@@ -30,7 +30,7 @@
 1. https://aistudio.google.com/app/apikey 접속 → Google 계정 로그인 → "Create API key" → 발급 (무료, 즉시).
 2. GitHub repo → Settings → Secrets and variables → Actions:
    - Secrets: `ANTHROPIC_API_KEY` 삭제 + `GEMINI_API_KEY` 추가 (위에서 발급한 키)
-   - Variables: `CLAUDE_MODEL_ID` 삭제 (있으면) + `GEMINI_MODEL_ID` 추가 (선택, 기본 `gemini-2.0-flash`)
+   - Variables: `CLAUDE_MODEL_ID` 삭제 (있으면) + `GEMINI_MODEL_ID` 추가 (선택, 기본 `gemini-2.5-flash` — ADR-005 2026-05-19 swap)
 3. Actions 탭 → "daily" workflow → "Run workflow" → `dry_run: true` → Run.
 4. 1~3분 후 운영자 단톡방 + Pages 확인 (아래 체크리스트).
 
