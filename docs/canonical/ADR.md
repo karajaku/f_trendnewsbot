@@ -67,6 +67,7 @@
 - GitHub Actions cron은 정시 ±몇 분 지연이 정상(공식 SLA 아님). PRD의 "07:30 ± 5분, 95% 정시"는 4주 모니터링 후 미달 시 ADR-supersede.
 - Gmail SMTP는 일일 발송 한도(앱 비밀번호 기준 ~500통/일)가 있지만 사내 수신자 ≪ 100명이라 V1에서 문제 없음. 외부 공개로 확장 시 재검토.
 - 영속 저장소가 없어 발송 이력 저장은 별도 결정 필요 → ADR-002에서 다룸.
+- **V1 발송자 주소** (2026-05-19 사용자 결정): `GMAIL_FROM = nterrr@gmail.com` (운영자 본인 Gmail 계정)으로 V1 시작. Workspace 전용 봇 계정(예: `trendbot@farmboss.kr`) 신규 개설은 V1.5 이후로 보류. 사유: ① 신규 계정 생성·앱 비밀번호 발급 절차 단축, ② V1 수신자가 단계적 공개(운영자 → 3이사 → 전 직원, requirements AC-6.4)라 초기에는 사적 계정으로 충분, ③ Workspace 관리자 일정 의존 없이 즉시 시작 가능. 트레이드오프: 사적 계정으로 받는 메일은 공식감이 약하므로 전 직원 공개 단계 전까지 봇 계정 이관 검토 필요.
 
 ### 대안
 
@@ -82,25 +83,44 @@
 ## ADR-002: 발송 이력 저장 매체 (영속화)
 
 날짜: 2026-05-19
-상태: draft — V1 첫 phase 끝나기 전 결정
+상태: accepted
 
 ### 맥락
 
-dedup의 신뢰원은 "최근 N일 발송 이력". GitHub Actions는 stateless라 다음 실행 시 이전 발송 결과를 어디서 읽을지 결정해야 한다.
+dedup의 신뢰원은 "최근 N일 발송 이력". GitHub Actions는 stateless라 다음 실행 시 이전 발송 결과를 어디서 읽을지 결정해야 한다. Stage 3 Tech Research(`docs/features/daily_digest/daily_digest_v1-tech-research.md` §3-5)에서 후보 3종을 영속성·구현 복잡도·실패 모드·추적성 4축으로 비교했다.
 
 ### 결정
 
-(아직 결정 안 함 — 첫 phase에서 다음 세 옵션 중 하나로 확정)
+**A. GitHub Actions artifact + 매일 download/upload**를 V1에서 사용한다.
 
-후보:
-1. **GitHub Actions artifact + 매일 download/upload** — 90일 자동 보존, 인증 자동.
-2. **repo 내 `history/sent.jsonl`을 봇이 push** — git history로 추적 가능, 그러나 봇이 commit 푸시 권한 필요.
-3. **GitHub Issue 본문 누적** — 시각화 쉬움, 그러나 본문 크기 한도·동시성 관리 부담.
+- 워크플로 시작 시 `actions/download-artifact@v4`로 직전 `sent.jsonl` 다운로드.
+- 종료 직전 `actions/upload-artifact@v4`로 갱신본 업로드.
+- artifact 이름: `digest-history` (고정). 90일 자동 보존.
+
+스키마(`sent.jsonl`)는 requirements §6-4에 동결. 최상위 `version: 1` 필드로 향후 마이그레이션 대응.
 
 ### 결과
 
-(결정 후 기재)
+**얻는 것**
+- 구현 복잡도 최소(다운로드·업로드 2 step). 봇이 main에 push할 commit 권한 불필요.
+- 시크릿 관리 단순(`GITHUB_TOKEN` 기본 제공).
+- 인증·권한 실패 모드 단순.
+
+**감수하는 것**
+- 추적성이 약함: 운영자가 history를 보려면 Actions UI에서 artifact를 다운로드해야 함. 즉시 열람 어려움.
+- artifact 누락(스토리지 장애·90일 경과·실수 삭제) 시 dedup 미적용 → 전일 중복 발송 가능. 첫 실행 시 artifact 없으면 빈 history로 부팅.
+- 90일 후 자동 삭제: 7일 dedup 윈도우에는 영향 없으나 장기 운영 통계는 별도 저장 필요.
+
+**6개월 후 재검토 트리거**
+다음 중 하나 이상이면 후보 B(repo push) 또는 C(Issue 누적)로 migrate 결정:
+- 운영자가 디버깅 시 artifact 다운로드 부담 호소
+- artifact 누락 사고 발생
+- 6개월 누적 history를 분석·시각화하려는 요구
+
+migrate plan: `history/store.py`의 backend를 인터페이스(`HistoryBackend`)로 추상화하고 구현체만 교체. 스키마는 동일(`sent.jsonl` 한 줄 1 JSON) 유지.
 
 ### 대안
 
-(결정 후 기재)
+- **B. repo 내 `history/sent.jsonl` 자동 push** — 추적성 최고지만 봇이 main에 push하는 운영 부담(권한, conflict, force-push 위험). V1 단순성과 충돌. Reject (현재).
+- **C. GitHub Issue 본문 누적** — 시각화는 좋으나 본문 크기 한도(65KB)가 1년 운영 시 분할 부담. API 호출 횟수 증가. Reject (현재).
+- **D. 외부 KV store (Redis Cloud, Upstash 등)** — 추가 외부 의존성·계정·시크릿. V1 단순성과 충돌. Reject.

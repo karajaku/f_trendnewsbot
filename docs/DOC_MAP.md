@@ -28,6 +28,8 @@
 | `docs/DOC_GUIDE.md` | 문서 시스템 구조·계층·활용법 설명서 | 처음 합류 또는 문서 체계 파악 필요 시 |
 | `docs/AGENT_READ_ORDER.md` | 작업 유형별 최소 읽기 순서 | Claude prompt 구성 |
 | `phases/index.json` | phase 라우팅 source of truth | 이어받기/다음 단계 판단 |
+| `docs/PHASE_MAP.md` | 사람용 phase 라이프사이클 요약 | 진행 상황 점검·onboarding |
+| `docs/design_review_questions.md` | Stage 2 Concept 검토 결과 누적 | Stage 4 requirements 진입 직전 충돌 확인 |
 
 ## Canonical Contracts
 
@@ -44,7 +46,8 @@
 
 | Group id | 소유 범위 | 폴더 |
 | --- | --- | --- |
-| `fetchers` | 외부 소스(RSS·HTML·JSON API)에서 raw article 수집. 소스 단위 격리. | `docs/features/fetchers/` |
+| `daily_digest` | V1 매일 1회 다이제스트 전체 흐름(fetcher → filter → summarizer → dispatcher → history)을 묶는 우산 그룹. V1 brief·tech-research·requirements가 모두 이 그룹에 위치. | `docs/features/daily_digest/` |
+| `fetchers` | 외부 소스(RSS·HTML·JSON API)에서 raw article 수집. 소스 단위 격리. (V2 분리 시 사용) | `docs/features/fetchers/` |
 | `filters` | 시간 윈도우·키워드·dedup 필터. 발송 이력과 dedup 정확도 책임. | `docs/features/filters/` |
 | `summarizer` | Claude API 호출, 카테고리별 점수·요약, 다이제스트 본문 렌더. | `docs/features/summarizer/` |
 | `dispatchers` | 채널별 발송 (V1 Gmail SMTP, 향후 메신저). 수신자 관리. | `docs/features/dispatchers/` |
@@ -52,6 +55,17 @@
 | `ops` | GitHub Actions cron·시크릿·운영 비용·관측. | `docs/features/ops/` |
 
 각 그룹 폴더는 첫 phase가 해당 그룹을 건드릴 때 생성한다. 그룹 폴더가 생기면 아래에 해당 그룹의 문서 목록 표를 추가한다.
+
+### `daily_digest` 그룹 문서
+
+| 파일 | 역할 | 상태 |
+| --- | --- | --- |
+| `daily_digest_v1-discovery-research.md` | Stage 0 외부 레퍼런스·코드베이스 개괄 | draft → applied (brief 인용 후) |
+| `daily_digest_v1-brief.md` | Stage 1 V1 브리프 (배경·UX·핵심 규칙) | draft → applied (requirements 인용 후) → frozen (Stage 5) |
+| `daily_digest_v1-tech-research.md` | Stage 3 코드/외부 API 깊이 조사 | draft → applied (requirements 인용 후) |
+| `daily_digest_v1-requirements.md` | Stage 4 acceptance criteria · data contract | draft → reviewed → applied → frozen |
+| `design-review-daily_digest_v1-requirements.md` | Stage 4 자가 교차 검토 보고 (requirements sibling) | reviewed |
+| `design-review-daily_digest_v1-brief.md` | Stage 2 Concept 검토 sibling (brief 대응) | reviewed |
 
 ## 회사 도메인 문서
 

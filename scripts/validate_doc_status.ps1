@@ -92,8 +92,10 @@ foreach ($f in $featureFiles) {
     }
 
     # 1b. reviewed/applied/frozen requirements.md must have a sibling design-review-{basename}.md
+    #     Exclude design-review-*.md files themselves to avoid recursive sibling requirements.
     $name = $f.Name
-    if ($name -like '*-requirements.md' -or $name -like '*-rdd.md' -or $name -like '*-brief.md') {
+    if (($name -like '*-requirements.md' -or $name -like '*-rdd.md' -or $name -like '*-brief.md') -and
+        -not ($name -like 'design-review-*')) {
         if ($status -in @('reviewed', 'applied', 'frozen')) {
             $base = [System.IO.Path]::GetFileNameWithoutExtension($name)
             $reviewSibling = Join-Path $f.DirectoryName ("design-review-$base.md")
