@@ -44,7 +44,11 @@ logger = logging.getLogger(__name__)
 DEFAULT_MODEL: str = "gemini-2.5-flash"
 
 # Gemini max_output_tokens — output cap 20k 이내 (AC-5.5).
-DEFAULT_MAX_OUTPUT_TOKENS: int = 4096
+# 2026-05-19 핫픽스 (gemini-2.5-flash thinking-mode truncate 회귀):
+# 4096 → 8192. Gemini 2.5 라인은 thinking-mode 가 default 활성이며 thinking
+# 토큰이 max_output_tokens 의 일부를 차지해 실제 JSON 응답이 잘렸다. 본 default
+# 상향 + ThinkingConfig(thinking_budget=0) 비활성화 동시 적용.
+DEFAULT_MAX_OUTPUT_TOKENS: int = 8192
 
 # 카테고리 3종 — filters/pipeline.CATEGORIES 와 같은 단일 진실(렌더와 공유).
 CATEGORIES: tuple[str, ...] = ("ai_trend", "agri_distribution", "farmboss_keyword")
@@ -176,7 +180,8 @@ def _parse_response_json(raw_text: str) -> dict[str, Any]:
     """응답 텍스트를 JSON dict 로 파싱. fence strip 후 시도.
 
     Raises:
-        RuntimeError — 전체 응답 JSON 파싱 실패 (빈 응답 포함).
+        RuntimeError — 전체 응답 JSON 파싱 실패 (빈 응답 포함). 진단을 위해 응답
+            앞·뒤 snippet 과 raw_len 을 메시지에 포함 (2026-05-19 핫픽스).
     """
     if not raw_text or not raw_text.strip():
         raise RuntimeError("Gemini 응답이 비어있습니다.")
@@ -184,7 +189,12 @@ def _parse_response_json(raw_text: str) -> dict[str, Any]:
     try:
         parsed = json.loads(cleaned)
     except json.JSONDecodeError as e:
-        raise RuntimeError(f"Gemini 응답 JSON 파싱 실패: {e}") from e
+        snippet_head = cleaned[:200]
+        snippet_tail = cleaned[-200:] if len(cleaned) > 400 else ""
+        raise RuntimeError(
+            f"Gemini 응답 JSON 파싱 실패: {e} (raw_len={len(cleaned)}, "
+            f"head={snippet_head!r} tail={snippet_tail!r})"
+        ) from e
     if not isinstance(parsed, dict):
         raise RuntimeError(
             f"Gemini 응답 최상위가 object 가 아닙니다 (got {type(parsed).__name__})."
@@ -421,11 +431,16 @@ class SummarizerClient:
         )
 
         # Gemini JSON mode + system_instruction. ADR-004: prompt caching 없음.
+        # 2026-05-19 핫픽스: Gemini 2.5 라인의 thinking-mode 가 default 활성이라
+        # max_output_tokens 의 일부 (수천 토큰) 가 thinking 에 소진 → 실제 JSON
+        # 응답이 짧게 truncate 되는 회귀 발생. JSON 출력은 response_schema 가
+        # 형식을 강제하므로 thinking 효과가 작고, 비활성이 응답 토큰 보장 측면에서 안전.
         config = genai_types.GenerateContentConfig(
             system_instruction=system_prompt,
             response_mime_type="application/json",
             response_schema=_RESPONSE_SCHEMA,
             max_output_tokens=self.max_output_tokens,
+            thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
         )
 
         try:
@@ -462,6 +477,24 @@ class SummarizerClient:
                         raw_text += text
         if not raw_text.strip():
             raise RuntimeError("Gemini 응답 content 에 text 가 없습니다.")
+
+        # 2026-05-19 핫픽스: truncate 회귀 진단을 위해 finish_reason 확인.
+        # FinishReason.STOP 만 정상. MAX_TOKENS / SAFETY / RECITATION 등은 명시 raise.
+        finish_reason = None
+        resp_candidates = getattr(response, "candidates", None) or []
+        if resp_candidates:
+            finish_reason = getattr(resp_candidates[0], "finish_reason", None)
+        finish_str = getattr(finish_reason, "value", None) or (
+            str(finish_reason) if finish_reason is not None else ""
+        )
+        if finish_str and finish_str.upper() not in ("STOP",):
+            snippet_head = raw_text[:200]
+            snippet_tail = raw_text[-200:] if len(raw_text) > 400 else ""
+            raise RuntimeError(
+                f"Gemini 응답 종료 비정상 (finish_reason={finish_str}, "
+                f"tokens_out={tokens_out}, raw_len={len(raw_text)}). "
+                f"head={snippet_head!r} tail={snippet_tail!r}"
+            )
 
         parsed = _parse_response_json(raw_text)
 

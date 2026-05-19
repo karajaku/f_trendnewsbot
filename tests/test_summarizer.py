@@ -103,6 +103,10 @@ def _make_mock_gemini_response(
         prompt_token_count=prompt_tokens,
         candidates_token_count=output_tokens,
     )
+    # 2026-05-19 핫픽스: finish_reason 검사 (truncate 회귀 진단) — STOP 만 정상.
+    candidate = MagicMock()
+    candidate.finish_reason = MagicMock(value="STOP")
+    resp.candidates = [candidate]
     return resp
 
 

@@ -64,7 +64,8 @@
       "hotfixes_during_step": [
         "phases/_hotfix-log/2026-05-19-dispatcher-mypy-typing.md — dispatcher 3건 mypy 회귀 (base.py type-only import + payload dict[str, Any] 명시). phase 02 swap 무관, phase 01 step6 잔여 회귀.",
         "phases/_hotfix-log/2026-05-19-gemini-2-0-flash-deprecated.md — gemini-2.0-flash 가 신규 사용자에게 deprecated (404 NOT_FOUND). ADR-005 신설 + DEFAULT_MODEL gemini-2.5-flash swap (5 활성 default + 1 사용자 가이드). dry-run 재실행 필요.",
-        "phases/_hotfix-log/2026-05-19-gemini-model-id-empty-string-fallback.md — workflow vars 미정의 → env 빈 문자열 주입 → SummarizerClient ValueError. run_daily.py 의 model_id 추출에 truthy fallback 추가 (`or DEFAULT_MODEL`). ADR-005 무관 잠재 버그."
+        "phases/_hotfix-log/2026-05-19-gemini-model-id-empty-string-fallback.md — workflow vars 미정의 → env 빈 문자열 주입 → SummarizerClient ValueError. run_daily.py 의 model_id 추출에 truthy fallback 추가 (`or DEFAULT_MODEL`). ADR-005 무관 잠재 버그.",
+        "phases/_hotfix-log/2026-05-19-gemini-2-5-thinking-mode-truncate.md — gemini-2.5-flash 의 thinking-mode 가 default 활성이라 max_output_tokens 4096 의 일부가 thinking 에 소진 → JSON 응답 char 307 에서 truncate. ThinkingConfig(thinking_budget=0) 비활성 + DEFAULT_MAX_OUTPUT_TOKENS 8192 상향 + finish_reason 검사 + raw_text snippet 진단 로깅."
       ]
     }
   ]
