@@ -1,0 +1,59 @@
+# config/filters.yml — V1 카테고리·키워드 필터 (requirements §6-2 동결)
+#
+# 키워드 매칭은 case-insensitive substring (filters/keyword.py 에서 적용 — step4).
+# 영어 키워드는 한국어 본문에도 매칭 ("AI" 가 한국어 기사 본문에 포함될 때).
+# farmboss_keyword.must_match_any 12개 시드는 Stage 3 tech-research 결론 #5 로 동결.
+# dry-run 후 보강은 phase 외 운영.
+
+categories:
+  ai_trend:
+    label: "AI 트렌드"
+    must_match_any:
+      - "AI"
+      - "LLM"
+      - "Claude"
+      - "GPT"
+      - "Gemini"
+      - "Anthropic"
+      - "OpenAI"
+      - "Mistral"
+    exclude_any:
+      - "부동산"
+      - "암호화폐 가격"
+    order: 1
+  agri_distribution:
+    label: "농산물·유통"
+    must_match_any:
+      - "농산물"
+      - "유통"
+      - "마트"
+      - "GS리테일"
+      - "쿠팡"
+      - "이마트"
+      - "산지"
+      - "출하"
+      - "공급망"
+    exclude_any: []
+    order: 2
+  farmboss_keyword:
+    label: "팜보스 관심 키워드"
+    must_match_any:
+      - "정다운"
+      - "팜보스"
+      - "시경"
+      - "닥터상달"
+      - "GS리테일"
+      - "청도"
+      - "경산"
+      - "밀양"
+      - "복숭아"
+      - "감"
+      - "딸기"
+      - "안동농협공판장"
+    exclude_any: []
+    order: 3
+
+global:
+  time_window_hours: 36
+  fuzzy_title_threshold: 0.85
+  dedup_days: 7

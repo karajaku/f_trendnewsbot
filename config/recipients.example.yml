@@ -1,0 +1,21 @@
+# config/recipients.example.yml — V2 이메일 재도입 대비 형식 예시 (V1 미사용)
+#
+# ADR-003 — V1 발송은 텔레그램 단톡방 멤버십으로 관리한다. 본 파일은 V2 이메일
+# 재도입을 대비한 schema 예시이며 V1 로더(src/config/loader.py)는 이 파일을 읽지 않는다.
+# 실제 운영용 `config/recipients.yml` 은 `.gitignore` 로 차단되어 있다 — 절대 git 에 추가 금지.
+#
+# requirements §6-3 (ADR-003 갱신) 참조.
+
+recipients:
+  - name: "운영자"
+    email: "ops@example.com"
+    role: "운영자"
+    suppress: false
+  - name: "직원 A"
+    email: "employee_a@example.com"
+    role: "직원"
+    suppress: false
+  - name: "직원 B (휴가)"
+    email: "employee_b@example.com"
+    role: "직원"
+    suppress: true   # 일시 정지 예시

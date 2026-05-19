@@ -16,7 +16,7 @@
   "manual_qa_required": true,
   "archive_target": true,
   "created_at": "2026-05-19",
-  "active_step": 2,
+  "active_step": 3,
   "pending_manual_qa_scenarios": [],
   "creation_note": "후속 phase 분리 없음. 모든 V1 모듈을 본 phase에서 step1~step8로 통합 처리. step.md 본문은 표준 형식(읽을 파일·작업범위·AC·금지·수동테스트·QA owner·주 담당 에이전트) 모두 완비.",
   "steps": [
@@ -32,10 +32,11 @@
     {
       "step": 2,
       "file": "step2.md",
-      "status": "pending",
+      "status": "completed",
       "summary": "config 로딩 — sources.yml/filters.yml 스키마와 로더 (recipients.yml은 V1에서 폐기, ADR-003)",
       "qa_blocking": false,
-      "maps_to_ac": ["§6-1", "§6-2"]
+      "maps_to_ac": ["§6-1", "§6-2"],
+      "completed_at": "2026-05-19"
     },
     {
       "step": 3,
