@@ -47,6 +47,9 @@ history/sent.jsonl
 history/*.jsonl
 .cache/
 
+# ====== Claude Code 로컬 설정 (개인 PC 자동화) ======
+.claude/settings.local.json
+
 # ====== IDE / OS ======
 .vscode/
 .idea/

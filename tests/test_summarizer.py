@@ -487,7 +487,6 @@ def test_render_telegram_text_within_limit() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=8,
-        pages_url_template="https://example.github.io/digest/2026-05-19/",
     )
     assert len(digest.telegram_text.encode("utf-8")) <= 4096
 
