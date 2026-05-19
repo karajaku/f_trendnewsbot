@@ -179,12 +179,12 @@ digest.meta["failed_sources"] = failures   # 본문에 노출, 발송은 계속
 
 ```python
 # 금지
-ANTHROPIC_KEY = "sk-ant-..."                       # 코드에 평문
+GEMINI_KEY = "AIzaSy..."                           # 코드에 평문
 log.info(f"calling api with {credentials}")        # dict 통째로 로그
 
-# 권장
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]   # Secrets/env에서만
-log.info("calling api", extra={"key_prefix": ANTHROPIC_KEY[:6]})
+# 권장 (ADR-004 — LLM provider 는 Gemini, env var 이름은 GEMINI_API_KEY)
+GEMINI_KEY = os.environ["GEMINI_API_KEY"]          # Secrets/env에서만
+log.info("calling api", extra={"key_prefix": GEMINI_KEY[:6]})
 ```
 
 ### E. 요약만 보내고 원문 링크 누락

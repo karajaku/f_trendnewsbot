@@ -147,7 +147,8 @@ if ($null -ne $phaseIndex -and $phaseIndex.PSObject.Properties.Name -contains 'p
             $phaseStatus = $phase.status
             $docStatus = $fm['status']
 
-            if ($phaseStatus -in @('completed', 'in_progress', 'active', 'paused', 'implemented_pending_manual_qa')) {
+            # 'paused' phase 는 일시 정지 상태 — related_docs frozen 검증 면제 (재개 시 재검증).
+            if ($phaseStatus -in @('completed', 'in_progress', 'active', 'implemented_pending_manual_qa')) {
                 if ($docStatus -ne 'frozen') {
                     Add-Issue ("phase '{0}' (status={1}) expects related_doc status=frozen but {2} is status={3}" -f $phase.dir, $phaseStatus, $normalized, $docStatus)
                 }

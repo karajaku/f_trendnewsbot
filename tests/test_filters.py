@@ -20,7 +20,6 @@ from __future__ import annotations
 from datetime import datetime, timedelta
 from difflib import SequenceMatcher
 
-import pytest
 
 from src.config.loader import (
     CategoryFilter,

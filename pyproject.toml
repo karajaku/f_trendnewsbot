@@ -12,8 +12,9 @@ license = { text = "Proprietary" }
 authors = [{ name = "Farmboss Operations" }]
 
 # requirements.md §3-6 (의존 시스템 내부 의존 6종) 동결 — Python ≥ 3.12 + 외부 패키지 6개
+# LLM SDK: google-genai (ADR-004, 2026-05-19 — Anthropic Haiku → Gemini 2.0 Flash swap, 영구 무료 tier)
 dependencies = [
-    "anthropic>=0.40.0",
+    "google-genai>=0.3.0",
     "feedparser>=6.0.11",
     "requests>=2.32.0",
     "beautifulsoup4>=4.12.3",

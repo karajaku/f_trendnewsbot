@@ -1,0 +1,59 @@
+{
+  "phase": "02-gemini-swap",
+  "status": "in_progress",
+  "feature_group": "daily_digest",
+  "description": "V1 LLM provider 영구 무료화 — Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash",
+  "related_docs": [
+    "docs/canonical/ADR.md",
+    "docs/features/daily_digest/daily_digest_v1-requirements.md"
+  ],
+  "depends_on": [],
+  "blocks": ["01-mvp-daily-digest"],
+  "manual_qa_required": true,
+  "archive_target": true,
+  "created_at": "2026-05-19",
+  "active_step": 4,
+  "pending_manual_qa_scenarios": [
+    "step4: 사용자가 https://aistudio.google.com/app/apikey 에서 GEMINI_API_KEY 발급 → GitHub Secrets 등록 (ANTHROPIC_API_KEY 삭제 + GEMINI_API_KEY 추가) → Actions Run workflow dry_run=true → 운영자 단톡방 정상 다이제스트 도착 + Pages URL 표시 + 직원 단톡방 미발송 확인"
+  ],
+  "creation_note": "phase 01 step7 dry-run에서 Anthropic 크레딧 부족 발견 → 사용자가 무료 tier 영구화 우선 결정 (2026-05-19). phase 01 step7은 implemented_pending_manual_qa 유지하되 phase 01 status는 paused. phase 02 종료 후 phase 01 step7 dry-run 재개.",
+  "steps": [
+    {
+      "step": 1,
+      "file": "step1.md",
+      "status": "completed",
+      "summary": "ADR-004 신설 + pyproject.toml deps swap (anthropic 제거, google-genai 추가)",
+      "qa_blocking": false,
+      "maps_to_ac": ["AC-5.5"],
+      "completed_at": "2026-05-19"
+    },
+    {
+      "step": 2,
+      "file": "step2.md",
+      "status": "completed",
+      "summary": "src/summarizer/client.py 재작성 — google-genai SDK + JSON mode (response_schema) + ResourceExhausted → QuotaExceededError mapping + Anthropic prompt caching 제거",
+      "qa_blocking": false,
+      "maps_to_ac": ["AC-2.3", "AC-2.4", "AC-2.7", "AC-2.10", "AC-2.11", "AC-2.12", "AC-3.1", "AC-5.5"],
+      "completed_at": "2026-05-19",
+      "completion_note": "pytest 100 passed (phase 01 99 + rate limit → QuotaExceededError mapping 1 추가), ruff/mypy 통과. tests/test_summarizer.py mock 구조 동기."
+    },
+    {
+      "step": 3,
+      "file": "step3.md",
+      "status": "completed",
+      "summary": "env var rename ANTHROPIC_API_KEY → GEMINI_API_KEY (run_daily.py REQUIRED_ENV_VARS, .github/workflows/daily.yml, docs/ops/secrets_setup.md, PRD, requirements §8, ARCHITECTURE) + CLAUDE.md anti-pattern D 예시 갱신 + validate_doc_status.ps1 paused 면제 hotfix",
+      "qa_blocking": false,
+      "maps_to_ac": ["AC-7.1", "AC-7.2", "AC-7.3"],
+      "completed_at": "2026-05-19",
+      "completion_note": "ruff/pytest 100 passed, validate_doc_status.ps1 OK. GEMINI_API_KEY 가 src/run_daily·workflow·secrets_setup·PRD·ARCHITECTURE·requirements 6개 위치에 모두 등장. 잔여 ANTHROPIC_API_KEY 매칭은 ADR 본문·Changelog·phase ledger·시점 기록(design-review/tech-research)에만 — 모두 의도된 audit trail."
+    },
+    {
+      "step": 4,
+      "file": "step4.md",
+      "status": "pending",
+      "summary": "tests/summarizer 회귀 + dry-run 검증 (qa_blocking: 사용자가 Gemini API key 발급 후 Actions 실행)",
+      "qa_blocking": true,
+      "maps_to_ac": ["AC-1.3", "Phase DoD 전체"]
+    }
+  ]
+}

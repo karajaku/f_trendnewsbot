@@ -11,7 +11,7 @@ recipients.yml 은 ADR-003 에 따라 V1 에서 로드하지 않는다 — 직�
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal, get_args
 

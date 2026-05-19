@@ -18,11 +18,9 @@ mock 전략:
 
 from __future__ import annotations
 
-import io
 import subprocess
-import sys
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 from unittest.mock import MagicMock
@@ -35,7 +33,6 @@ from src.dispatchers import (
     TelegramSendError,
 )
 from src.dispatchers import pages_publish, telegram_send, ops_alert
-from src.dispatchers.telegram_send import ConfigError
 from src.lib.time_helper import KST
 
 

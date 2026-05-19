@@ -1,4 +1,8 @@
-"""Claude API 일일 quota hard cap — CRITICAL #9 + AC-5.5 단일 진실.
+"""LLM API 일일 quota hard cap — CRITICAL #9 + AC-5.5 단일 진실.
+
+ADR-004 (2026-05-19): Gemini 2.0 Flash 로 swap 후에도 hard cap 정책은 LLM provider 와
+무관하게 동일 (input/output token 누적 + 호출 횟수). Gemini 무료 tier (1500 RPD) 보다
+훨씬 보수적인 운영 cap.
 
 cron 1회 실행 단위 in-memory 누적이 V1 정책 (process 1회 = day 1회). cap 초과 시
 `QuotaExceededError` 즉시 raise — `run_daily.py` 가 catch 해 운영자 텔레그램 alert 발송
