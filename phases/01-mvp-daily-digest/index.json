@@ -16,7 +16,7 @@
   "manual_qa_required": true,
   "archive_target": true,
   "created_at": "2026-05-19",
-  "active_step": 6,
+  "active_step": 7,
   "pending_manual_qa_scenarios": [
     "step3: 실제 12~18개 소스 RSS feed 1회 fetch에서 published 시각이 모두 tz-aware KST로 변환되는지 step8 dry-run에서 시각 확인",
     "step4: step7 workflow 통합 후 첫 실행(artifact 없음)이 fresh-start로 부팅되고 두 번째 실행이 dedup 적용되는지 사용자 phase 끝 dry-run에서 확인",
@@ -74,10 +74,11 @@
     {
       "step": 6,
       "file": "step6.md",
-      "status": "pending",
+      "status": "completed",
       "summary": "dispatchers — Pages publish (commit·push·게시 확인) + 텔레그램 Bot API sendMessage + 운영자 alert chat (ADR-003)",
       "qa_blocking": false,
-      "maps_to_ac": ["AC-2.3-A", "AC-2.3-B", "AC-2.8", "AC-3.3", "AC-5.3", "AC-5.4", "AC-5.6", "AC-6.1", "AC-6.2", "AC-6.6", "§7"]
+      "maps_to_ac": ["AC-2.3-A", "AC-2.3-B", "AC-2.8", "AC-3.3", "AC-5.3", "AC-5.4", "AC-5.6", "AC-6.1", "AC-6.2", "AC-6.6", "§7"],
+      "completed_at": "2026-05-19"
     },
     {
       "step": 7,
