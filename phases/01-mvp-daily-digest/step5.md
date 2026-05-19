@@ -50,26 +50,39 @@
 ## 영향받는 데이터 정의 목록
 
 - `prompts/summarize.md` — 신규 (정적, git tracked, requirements §6-5 그대로)
+- `src/summarizer/templates/digest.html.j2` (또는 동등 Python f-string template) — 애플 감성 v3 HTML template, 인라인 스타일 동결. requirements AC-2.7 + 샘플 `samples/2026-05-19-digest-preview-v3.html` 기준
 - 신규 환경변수 의존: `ANTHROPIC_API_KEY` (시크릿), `CLAUDE_MODEL_ID` (variable)
 
 ## Acceptance Criteria
 
-- [ ] `client.summarize(category_id, articles) -> list[Summary]` 가 Prompt caching `system` 영역 사용 (tech §3-2)
-- [ ] JSON output schema 위반 항목은 폐기 + 메타에 `dropped_items` 카운트 누적
+- [ ] `client.summarize(by_category_articles) -> SummarizeResult` 가 Prompt caching `system` 영역 사용 (tech §3-2), 단일 호출에 `items[].score` + `items[].summary` + `items[].company_impact` + `category_headlines{}` 동시 출력 (AC-2.10·2.11·2.12, prompt §6-5)
+- [ ] system prompt에 회사 컨텍스트(3법인 사업·청도·경산·밀양 산지·금송·이븐 협력사) 포함 — 사용자가 변경 시 prompt 파일만 수정, 코드 무관
+- [ ] JSON output schema 위반 항목은 폐기 + 메타에 `dropped_items` 카운트 누적. `company_impact` 빈 문자열은 정상값 (폐기 사유 아님)
 - [ ] `quota.check_and_record(tokens_in, tokens_out)` 가 cap 초과 시 `QuotaExceededError` raise (AC-5.5)
 - [ ] hard cap: input 100k / output 20k / calls 30. 코드에 상수 + override env var 없음 (운영자 수동 조정만)
-- [ ] `render.build_digest`의 출력 `Digest.html` 에 모든 `Article.canonical_url` 포함 (단축 URL 0건, AC-2.3)
-- [ ] `Digest.text` 와 `Digest.html` 항목 수·순서·정보 1:1 일치
+- [ ] `render.build_digest`의 출력 `Digest.html` 에 모든 `Article.canonical_url` 포함 (단축 URL 0건, AC-2.3-B)
+- [ ] `Digest.html` 은 애플 감성 v3 template 사용 (AC-2.7): hero·TL;DR 박스·카테고리 헤더·항목 카드·풋터 6 컴포넌트, 외부 CSS·이미지 의존 0 (인라인 스타일만)
+- [ ] `Digest.telegram_text` 와 `Digest.html` 항목 수·순서·우선순위 점수 1:1 일치 (render 단일 데이터 구조에서 두 형식 생성, AC-2.3-A/B)
+- [ ] **TL;DR 자동 추출** (AC-2.11): `items[].score >= 8` (⭐⭐⭐) 항목을 최대 3건 자동 추출. 0건이면 "오늘은 산업 동향 위주" fallback
+- [ ] **우선순위 매핑** (AC-2.10): score 8~10 → `⭐⭐⭐` / `••●`, score 5~7 → `⭐⭐` / `••○`, score 1~4 → `⭐` / `•○○`. render에서 자동 변환
+- [ ] **카테고리 핵심** (AC-2.12): 각 카테고리 헤더 아래 `category_headlines[cat_id]` 출력. 빈 문자열이면 표시 안 함
+- [ ] **회사 영향 박스** (AC-2.5): 각 항목에 `💡 회사 영향: {company_impact}` 박스 (`#f5f5f7` background, 18px radius). 빈 문자열이면 `회사 직접 영향 없음` 라인으로 fallback 표시
+- [ ] HTML head에 `<meta name="robots" content="noindex,nofollow">` (AC-2.8)
+- [ ] HTML 풋터에 hallucination 경고 한 줄 (AC-2.9)
 - [ ] 카테고리 0건 시 본문에 "오늘 새 뉴스 없음" 1회 노출, 카테고리 자체는 표기 유지 (AC-2.1)
-- [ ] 실패 소스 있으면 헤더 "소스 N개 중 M개 정상 수집, X개 실패: {이름}" 한 줄 (AC-5.2)
-- [ ] 본문 어디에도 "why it matters", "당신에게 의미", "왜 중요한가" 류 라인 없음 (grep 통과, AC-2.5)
+- [ ] 실패 소스 있으면 hero 메타 + 텔레그램 헤더 한 줄에 "소스 N개 중 M개 정상 수집, X개 실패: {이름}" (AC-5.2)
+- [ ] 본문 어디에도 "why it matters", "당신에게 의미", "왜 중요한가" 류 광고형 코멘트 라인 없음 (grep 통과, prompt §6-5 금지)
 - [ ] 시각 표기 모두 `lib/time_helper.format_subject_date` 또는 `to_kst_string` 통과 (AC-7.4)
-- [ ] unit test 10건 이상: schema 위반 폐기 / quota cap / Prompt caching system 적용 / 카테고리 0건 / 실패 소스 노출 / HTML·text 정보 일치 / 영어 제목 번역 / URL 보존 / "why it matters" 차단 / 한국어 헤더 형식
+- [ ] unit test 15건 이상: schema 위반 폐기 / quota cap / Prompt caching system 적용 / 카테고리 0건 / 실패 소스 노출 / HTML·telegram 정보 일치 / 영어 제목 번역 / URL 보존 / 광고형 코멘트 차단 / 한국어 헤더 형식 / TL;DR 1~3건 추출 / TL;DR 0건 fallback / 우선순위 점수→indicator 매핑 / category_headlines 빈 문자열 처리 / company_impact 빈 문자열 fallback
 
 ## 금지사항
 
 - 점수·요약을 분리 호출 (V1은 단일 호출 — V2 검토, design-review R 별도 항목)
-- prompt에 "why it matters" 출력 유도 금지
+- prompt에 "why it matters"·"당신에게 의미"·"한 가지 더" 같은 광고형 코멘트 출력 유도 금지 (§6-5)
+- `company_impact` 자리에 회사 사업 영역 외 일반 시사점 작성 금지 — 빈 문자열로 통일 (AC-2.5 억지 추론 금지)
+- HTML template을 코드로 동적 조립 금지 — `digest.html.j2` (또는 동등) template 1개로 동결, 데이터만 주입
+- 디자인 톤 변경 금지 (AC-2.7 애플 감성 동결, 변경 시 brief·requirements 갱신 필수)
+- 외부 CSS·이미지·폰트 파일 의존 금지 — Pages가 정적이라 인라인 스타일 + 시스템 폰트만
 - `httpx` 직접 사용 금지 (Anthropic SDK가 알아서)
 - API 키 평문 로그 금지 — `mask_key` helper 통과 (AC-7.2)
 - dispatcher 모듈 생성 금지 (step6)
@@ -101,4 +114,7 @@
 ## pending_manual_qa_scenarios 누적
 
 - "실제 Anthropic API 호출 시 system prompt cache hit 비율 확인 (step8 dry-run에서 로그 검사, 70%+ 기대)"
-- "다이제스트 본문(HTML+text) 시각·문체·"why it matters" 부재를 사용자가 실제 메일에서 phase 끝 일괄 검토에서 시각 확인"
+- "다이제스트 본문(HTML+text) 시각·문체·광고형 코멘트(`why it matters` 등) 부재를 사용자가 실제 메일에서 phase 끝 일괄 검토에서 시각 확인"
+- "회사 영향 라인 hallucination 비율 — 첫 1주일 dry-run에서 실제 회사 영향과 비교, 잘못된 추론 비율 verification-record 기록 (4주 후 분리 호출 전환 판단 입력)"
+- "TL;DR 자동 추출 정확도 — `score >= 8` 항목이 실제 회사 직결 영향과 일치하는지 1주일 dry-run에서 운영자 검토"
+- "애플 감성 v3 디자인이 모바일(600px 이하)에서 깨지지 않는지 운영자가 단톡방 메시지 → Pages URL → 모바일 브라우저로 확인"

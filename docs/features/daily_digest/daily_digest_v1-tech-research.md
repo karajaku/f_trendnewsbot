@@ -127,18 +127,20 @@ system=[
 
 5분 cache TTL 안에서 카테고리 3개를 연속 호출하면 두 번째·세 번째 카테고리는 system 토큰 비용이 90% 할인.
 
-#### 일일 토큰 추정 (점수화·요약 분리 시 vs 단일 호출 시)
+#### 일일 토큰 추정 (점수화·요약·회사 영향 동시 출력 시 vs 분리 시)
 
-가정:
+가정 (2026-05-19 갱신 — UX 강화로 출력 항목 확장):
 - 카테고리당 raw 후보 30건(필터 통과 후 추림), 최종 5~10건.
-- 후보 1건당 제목+발췌 ~150 토큰, 요약 출력 1건당 ~100 토큰.
+- 후보 1건당 제목+발췌 ~150 토큰, 출력 1건당 ~150 토큰 (`summary` 100 + `company_impact` 30 + `score` 5 + JSON overhead).
+- 추가 system 토큰 ~500 (회사 컨텍스트: 3법인 사업·산지·협력사).
+- 카테고리 단위 출력: `category_headline` 3개 × ~30 = 90 토큰.
 
 | 패턴 | 입력 토큰/일 | 출력 토큰/일 | 단가(Haiku 4.5, 추정) | 일/월 비용 |
 |---|---|---|---|---|
-| **A. 단일 호출 (점수+요약 동시)** | 카테고리 3개 × (system 1500 + 후보 30건×150) = 18,000 → cache 적용 시 ~7,000 | 카테고리 3개 × 10건×100 = 3,000 | 입력 $1/1M·출력 $5/1M (Haiku 가정) | 일 ~$0.02 / 월 ~$0.5 |
-| **B. 분리 호출 (점수 → 상위 10건 → 요약)** | 점수 단계 18,000(cache 후 7,000) + 요약 단계 카테고리 3개 × 10건×200 = 6,000 (cache 적용 ~4,500) | 점수 100×3=300 + 요약 3,000 | 동일 | 일 ~$0.025 / 월 ~$0.6 |
+| **A. 단일 호출 (점수+요약+회사영향+카테고리 핵심 동시)** | system 2000(원래 1500+회사 컨텍스트 500) × 카테고리 3개 + 후보 30건×150 × 3 = 19,500 → cache 적용 시 ~8,000 | 항목 30건×150 + 카테고리 핵심 90 = 4,590 | 입력 $1/1M·출력 $5/1M | 일 ~$0.03 / 월 ~$0.8 |
+| **B. 분리 호출 (점수 → 상위 10건 → 요약+회사영향 → 카테고리 핵심)** | 점수 8,000 + 요약+회사영향 6,000 + 카테고리 핵심 500 (모두 cache 효과 반영) | 점수 300 + 요약+회사영향 30건×130 = 3,900 + 카테고리 핵심 90 | 동일 | 일 ~$0.035 / 월 ~$0.9 |
 
-**결론**: 두 패턴 모두 월 $20 hard cap의 3% 수준. **분리 호출이 quality에 유리하다면 V1부터 분리하는 것이 충분히 가능**(Discovery 결론 #3에 대한 기술적 해소). 다만 단일 호출이 코드·로깅·실패 격리 측면에서 단순하므로 **V1은 단일 호출 시작 + V2에서 quality 모니터링 후 분리 결정**으로 권장.
+**결론**: UX 강화 후에도 두 패턴 모두 월 $20 hard cap의 4~5% 수준. **분리 호출이 quality(특히 회사 영향 정확성)에 유리하다면 V1부터 분리 가능**. 다만 단일 호출이 코드·로깅·실패 격리 측면에서 단순. 권장: **V1 단일 호출 시작 + 4주 후 회사 영향 hallucination 비율 측정 → 분리 검토** (verification-record 추적 항목).
 
 #### Hard cap 메커니즘
 
@@ -292,6 +294,8 @@ Stage 4 requirements 작성 시 다음 6개 시사점을 인용한다.
 4. **`src/lib/url_helper.py` 와 `src/lib/time_helper.py`가 dedup·render·dispatcher·history의 공유 단일 진실**. 시그니처는 `url_helper.canonicalize(url) -> str` / `time_helper.to_kst_string(dt) -> str` / `time_helper.now_kst() -> datetime`. requirements §의존 시스템·data contract에서 그대로 인용. `(§2-1 anchor + CLAUDE.md anti-pattern A)`
 5. **`config/filters.yml`의 "팜보스 관심 키워드" 카테고리는 시드 12개 키워드로 동결** ([docs/팜보스_회사소개.md](../../팜보스_회사소개.md) 추출). dry-run 1주일 후 보강은 phase 외 운영 작업. `(§2-3 + Discovery 결론 #5)`
 6. **V1 발송 채널은 텔레그램 Bot API + GitHub Pages**, Gmail SMTP는 제거 (ADR-003 accepted, 2026-05-19). dispatcher는 ① Pages publish (`docs/digest/YYYY-MM-DD.html` commit·push, 1~2분 배포 대기) → ② 텔레그램 단톡방에 짧은 인덱스 + Pages URL 발송 순서. 운영자 alert은 별도 텔레그램 chat. 환경변수: `TELEGRAM_BOT_TOKEN`·`TELEGRAM_CHAT_ID`·`OPS_ALERT_CHAT_ID`. `(§3-3)`
+7. **요약 prompt와 출력 schema는 회사 영향 분석 + 우선순위 점수 + 카테고리 핵심 한 줄을 단일 호출로 동시 생성** (2026-05-19 UX 강화 결정). 출력 JSON에 `items[].score` (1~10, 회사 영향 기준) + `items[].summary` + `items[].company_impact` (사업 영역 외면 빈 문자열) + `category_headlines{ai_trend, agri_distribution, farmboss_keyword}`. system prompt에 3법인 사업 영역·산지·협력사 컨텍스트 포함. cap 영향 미미 (월 비용 추정 ~$0.8). `(§3-2)`
+8. **표면 B Pages HTML 디자인은 애플 사이트 감성 미니멀**로 동결. 폰트 스택 `-apple-system, SF Pro Display/Text, Noto Sans KR`, `letter-spacing: -0.022em`, 56px hero + 그라데이션 강조, 카드 제거 + 1px 보더 + 큰 여백, TL;DR `#f5f5f7` background + 18px radius, 우선순위 점 indicator `••●`, Apple Blue `#06c` 링크. render 모듈은 매일 동일 template 사용, 동적 부분은 데이터 주입만. `(샘플 동결: samples/2026-05-19-digest-preview-v3.html)`
 
 ---
 
@@ -307,3 +311,4 @@ Stage 4 requirements 작성 시 다음 6개 시사점을 인용한다.
 
 - 2026-05-19: 초안 작성. 외부 URL은 LLM 일반 지식 기반 (사용자 외부 조사 허가 시 retrieved 날짜 보강). 저장 매체 후보 A 권장, Claude API 단일 호출 권장.
 - 2026-05-19: V1 발송 채널 변경 (ADR-003) — §3-3 Gmail SMTP 섹션을 텔레그램 Bot API + GitHub Pages 섹션으로 교체. §3-6 의존성에서 SMTP·email 제거 표기. §4 결론 #6 신규 추가.
+- 2026-05-19: UX 강화 — §3-2 토큰 추정 표 갱신 (회사 컨텍스트·company_impact·category_headlines 출력 추가, 월 ~$0.8). §4 결론 #7(prompt·schema 확장) + #8(애플 감성 디자인 동결) 신규 추가.

@@ -105,3 +105,44 @@ requirements `frozen` 직후 사용자가 "직원이 메일을 잘 확인 안할
 - step8.md dry-run 시나리오·운영자 alert 시뮬레이션·Pages 검색엔진 점검 추가
 
 ---
+
+## daily_digest_v1 UX 강화 + 애플 감성 디자인 — 2026-05-19
+
+사용자가 mockup v1 확인 후 두 차례 톤 조정 요청.
+
+**1차 요청** (`조금더 사용자 친화적이고 UX가 좋고 읽는사람이 너무 해석할 필요 없이 내용을 분석해서 결과를 주면 좋을것같아`)
+
+기존 brief·requirements가 "why it matters" 코멘트를 V1에서 금지했지만, 직원이 직접 해석하는 부담을 줄이기 위해 LLM 분석 한 줄을 도입.
+
+| 변경 | 결정 |
+|---|---|
+| AC-2.5 "LLM 코멘트 금지" | **폐기** — `💡 회사 영향:` 한 줄 명시 허용. 단 사업 영역 외면 빈 문자열 강제 (억지 추론 금지) |
+| 우선순위 시각화 | `⭐⭐⭐ / ⭐⭐ / ⭐` 표시 (텔레그램) + 점 indicator `••● / ••○ / •○○` (HTML). 회사 영향 점수 기준 |
+| TL;DR 박스 | 상단에 ⭐⭐⭐ 자동 추출 최대 3건, 0건이면 "산업 동향 위주" fallback |
+| 카테고리 핵심 한 줄 | 각 카테고리 헤더 아래 LLM이 1줄로 |
+| 안전 경고 | HTML 풋터에 hallucination 주의 한 줄 |
+
+**2차 요청** (`디자인을 애플 사이트 감성으로 느낌있게 바꿔보자`)
+
+표면 B Pages HTML 디자인을 애플 사이트 미니멀 톤으로 동결.
+
+| 디자인 요소 | 결정 |
+|---|---|
+| 폰트 | `-apple-system, SF Pro Display/Text, Noto Sans KR`, `letter-spacing: -0.022em` |
+| Hero | 56px Bold + "뉴스 N건"만 `linear-gradient(135deg, #0a84ff, #5e5ce6)` 그라데이션 |
+| 레이아웃 | 카드 제거, 1px 보더 + 큰 여백 (section 80px gap) |
+| TL;DR | `#f5f5f7` background + `border-radius: 18px` + 40px padding |
+| 우선순위 | 점 indicator `••●` (애플 시스템 호환성 표시 패턴) |
+| 링크 | Apple Blue `#06c` + `원문 읽기 →` arrow |
+| 카테고리 색 | eyebrow만 미세하게 (AI `#0a84ff` / 농산물 `#30a46c` / 팜보스 `#d04545`) |
+| 반응형 | 600px 이하에서 자동 축소 |
+| 샘플 동결 | `samples/2026-05-19-digest-preview-v3.html` |
+
+영향 범위:
+- brief §2-2 mockup 표면 B 갱신, §3-3 항목 form에 회사 영향 + 우선순위 indicator 추가, §3-7 비-목표에 "광고형 코멘트 금지" 명시
+- requirements AC-2.5 폐기 + AC-2.7 보강 (애플 톤) + AC-2.9·2.10·2.11·2.12 신규 + §6-5 prompt 전면 갱신 (회사 컨텍스트·JSON schema 확장)
+- tech-research §3-2 토큰 추정 표 갱신 + §4 결론 #7·#8 신규
+- phase 01 step5.md AC 15건 이상 확장, 영향 데이터 정의에 HTML template 추가, 금지사항 5건 추가, pending_manual_qa 시나리오 4건 추가
+- 샘플 산출물: `samples/2026-05-19-digest-preview-{v1, v2, v3}.html` + `2026-05-19-telegram-message-{v1, v2}.txt`
+
+---

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 5월 19일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Sample banner */
+    .sample-banner { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+                     color: var(--tint-warm); padding: 10px 0; margin-bottom: 24px;
+                     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+                     text-align: center; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sample-banner">⚠️ Sample Preview v3 · Mock data · 형식 확인용</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="eyebrow">2026 · 5 · 19 화요일 · KST 07:30</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 8건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta">
+      <span>소스 12개 중 11개 정상</span>
+      <span class="dot">·</span>
+      <span>한국농어민신문 일시 장애</span>
+    </div>
+  </section>
+
+  <!-- TL;DR -->
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 2건</h2>
+
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">GS리테일, 산지 직배송 30%→40% 확대</div>
+      <div class="reason">정다운(j) 1차 밴드 납품 조건·일정 영향 가능. 장석중 이사 영업 미팅 점검.</div>
+    </div>
+
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">청도 복숭아 출하 5일 앞당겨질 전망</div>
+      <div class="reason">정다운 수매 일정·물량 조율 필요. 팜보스(f) 온라인 사전 예약 캠페인 일정도 영향.</div>
+    </div>
+
+    <div class="tldr-rest">그 외 6건은 산업 동향 — LLM 출시·시세·콜드체인 확장 등.</div>
+  </section>
+
+  <!-- Category 1 -->
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">오늘은 주요 LLM 3사 업데이트가 동시에 — Anthropic·OpenAI·Google.</p>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">Anthropic Blog · 06:12 KST</span>
+      </div>
+      <h3>Claude Opus 4.7, 1M 컨텍스트를 기본으로<span class="orig">Announcing Claude Opus 4.7</span></h3>
+      <div class="body">1백만 토큰 컨텍스트를 추가 비용 없이 기본 제공한다고 발표. 가격은 기존 Opus 4.6 대비 동일 유지하며 prompt caching 효율은 약 12% 개선.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 본 봇 운영 비용 감소 가능성. 4분기 모델 교체 검토 시 후보.</div>
+      <div class="link"><a href="https://www.anthropic.com/news/claude-opus-4-7">원문 읽기 →</a><span class="sep">·</span><span class="src">anthropic.com</span></div>
+    </article>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 5/18 23:40 KST</span>
+      </div>
+      <h3>OpenAI, GPT-5 mini 토큰 단가 30% 인하</h3>
+      <div class="body">GPT-5 mini의 입력·출력 토큰 단가를 30% 인하한다고 공지. 시행일은 5월 22일이며 기존 API 호출 패턴은 변경되지 않는다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음 (본 봇은 Claude 사용)</div>
+      <div class="link"><a href="https://openai.com/blog/gpt-5-mini-pricing">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google DeepMind · 02:55 KST</span>
+      </div>
+      <h3>Gemini 3 Pro 멀티모달 벤치마크 공개</h3>
+      <div class="body">Gemini 3 Pro가 MMMU 84.2점, MathVista 78.5점을 기록했다고 발표. 비교 기준 모델은 GPT-5o와 Claude Opus 4.6.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음 (산업 동향 참고)</div>
+      <div class="link"><a href="https://deepmind.google/gemini-3-pro-benchmark">원문 읽기 →</a><span class="sep">·</span><span class="src">deepmind.google</span></div>
+    </article>
+  </section>
+
+  <!-- Category 2 -->
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">GS리테일·쿠팡 두 곳이 산지·콜드체인을 확장. 정다운 납품·물류와 직간접 연결.</p>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">GS리테일 IR · 5/18 17:30 KST</span>
+      </div>
+      <h3>GS리테일, 1차 밴드 산지 직배송 30%→40%로 확대</h3>
+      <div class="body">봄철 신선식품 운영 정책 일부를 조정해 산지 직배송 비중을 30%에서 40%로 확대. 1차 밴드 파트너 납품 기준·일정도 1~2일 단축된다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운(j) GS 1차 밴드 파트너로서 납품 일정·계약 조건 재검토 가능성. 장석중 이사 영업 미팅 점검 필요.</div>
+      <div class="link"><a href="https://www.gsretail.com/news/2026-05-18-fresh-policy">원문 읽기 →</a><span class="sep">·</span><span class="src">gsretail.com</span></div>
+    </article>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">aT 유통정보 · 05:10 KST</span>
+      </div>
+      <h3>5월 셋째 주 시세 — 복숭아 +8.3%, 딸기 −6.1%</h3>
+      <div class="body">복숭아 도매 평균가 전주 대비 8.3% 상승, 딸기 6.1% 하락. 출하 지역별 편차 큰 한 주였으며 경북 산지 출하량은 평년 대비 12% 적었다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 청도·밀양 산지 수매가 협상에 직접 영향. 팜보스(f) 온라인 가격 책정 참고.</div>
+      <div class="link"><a href="https://www.kamis.or.kr/customer/price/weekly/202605-w3.html">원문 읽기 →</a><span class="sep">·</span><span class="src">kamis.or.kr</span></div>
+    </article>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">쿠팡 보도자료 · 5/18 19:20 KST</span>
+      </div>
+      <h3>쿠팡, 신선식품 콜드체인 자체 운영 5개 권역 추가</h3>
+      <div class="body">기존 7개 권역에 더해 충북·강원·전남 등 5개 권역에 콜드체인 자체 운영 거점을 추가. 신선식품 직매입 비중 확대 일환.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 쿠팡 직매입 확대 = 정다운 입점 채널 협상 카드 변화 가능성. 팜보스(f) 온라인 경쟁 채널 추적.</div>
+      <div class="link"><a href="https://news.coupang.com/2026/05/18/cold-chain-expansion">원문 읽기 →</a><span class="sep">·</span><span class="src">news.coupang.com</span></div>
+    </article>
+  </section>
+
+  <!-- Category 3 -->
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">청도·안동농협 직결 뉴스 2건. 둘 다 운영 일정에 영향.</p>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">농민신문 · 05:40 KST</span>
+      </div>
+      <h3>청도 복숭아, 출하 시기 평년 대비 5일 앞당겨질 전망</h3>
+      <div class="body">청도군 농업기술센터 발표 — 5월 일조량이 평년 대비 14% 많아 복숭아 개화·결실이 빨라졌다. 첫 출하는 6월 마지막 주로 예상된다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운(j) 청도 산지 수매 일정·물량 사전 조율 필요. 팜보스(f) 온라인 사전 예약·콘텐츠 캠페인 일정도 당겨야 함.</div>
+      <div class="link"><a href="https://www.nongmin.com/news/2026/05/19/cheongdo-peach">원문 읽기 →</a><span class="sep">·</span><span class="src">nongmin.com</span></div>
+    </article>
+
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">안동농협공판장 · 03:25 KST</span>
+      </div>
+      <h3>안동농협공판장, 중도매인 정산 주기 5→3영업일 시범 운영</h3>
+      <div class="body">안동농협공판장이 중도매인 정산 주기를 기존 5영업일에서 3영업일로 단축하는 시범을 5월 한 달간 운영한다. 전산 시스템 갱신 후 7월 본격 도입 검토.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경(s) 안동공판장 중도매 현금 흐름 개선. 7월 본격 도입 일정 추적.</div>
+      <div class="link"><a href="https://www.nonghyup.com/andong/news/2026-05">원문 읽기 →</a><span class="sep">·</span><span class="src">nonghyup.com</span></div>
+    </article>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">
+      "회사 영향"은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다.
+      원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -145,3 +145,4 @@ OS와 별개로, 팜보스 회사 자체 문서가 같은 저장소에 공존한
 
 - 2026-05-19: 초안 작성. V1 폴더 구조·모듈 ownership·데이터 흐름 정의. 발송 이력 저장 매체는 ADR-002에서 결정 예정.
 - 2026-05-19: V1 발송 채널 변경 (ADR-003 accepted) — §런타임 항목에 텔레그램 Bot API + GitHub Pages 명시. 폴더 구조·모듈 ownership·데이터 흐름의 dispatcher 부분은 phase 01 구현·step8 canonical sync에서 코드 기반으로 일괄 갱신.
+- 2026-05-19: UX 강화 — summarizer 모듈이 회사 컨텍스트 system prompt + 점수·요약·회사 영향·카테고리 핵심을 단일 호출로 출력하는 schema로 갱신 (requirements §6-5). render 모듈은 애플 감성 v3 HTML template 1종 동결 (디자인 자산 `src/summarizer/templates/digest.html.j2` 예정). 코드 기반 모듈 ownership 표 갱신은 phase 01 구현 후 step8에서.
