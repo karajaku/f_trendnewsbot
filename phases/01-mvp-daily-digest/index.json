@@ -16,7 +16,7 @@
   "manual_qa_required": true,
   "archive_target": true,
   "created_at": "2026-05-19",
-  "active_step": 5,
+  "active_step": 6,
   "pending_manual_qa_scenarios": [
     "step3: 실제 12~18개 소스 RSS feed 1회 fetch에서 published 시각이 모두 tz-aware KST로 변환되는지 step8 dry-run에서 시각 확인",
     "step4: step7 workflow 통합 후 첫 실행(artifact 없음)이 fresh-start로 부팅되고 두 번째 실행이 dedup 적용되는지 사용자 phase 끝 dry-run에서 확인",
@@ -65,10 +65,11 @@
     {
       "step": 5,
       "file": "step5.md",
-      "status": "pending",
+      "status": "completed",
       "summary": "summarizer — Anthropic SDK + Prompt caching + hard cap + render(HTML+text)",
       "qa_blocking": false,
-      "maps_to_ac": ["AC-2.3", "AC-2.4", "AC-2.5", "AC-3.1", "AC-3.2", "AC-5.3", "AC-5.5", "§6-5"]
+      "maps_to_ac": ["AC-2.3", "AC-2.4", "AC-2.5", "AC-2.7", "AC-2.8", "AC-2.9", "AC-2.10", "AC-2.11", "AC-2.12", "AC-3.1", "AC-3.2", "AC-5.3", "AC-5.5", "§6-5"],
+      "completed_at": "2026-05-19"
     },
     {
       "step": 6,

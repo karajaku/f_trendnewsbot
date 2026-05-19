@@ -1,0 +1,424 @@
+"""Anthropic Claude SDK wrapper — Prompt caching + 단일 호출(점수+요약+회사 영향+카테고리 핵심).
+
+CRITICAL #4 (시크릿 평문 노출 금지) · CRITICAL #9 (quota hard cap) 의 코드 측 방어선.
+
+설계:
+    - `prompts/summarize.md` 본문을 system message 로 + `cache_control: ephemeral` 적용
+      (tech-research §3-2). 회사 컨텍스트가 길어 caching 효율이 큼.
+    - user message 는 카테고리별 articles 를 JSON 으로 직렬화. canonical_url 을 `id` 로
+      전달 — 응답 `items[].id` 와 1:1 매칭.
+    - 응답은 단일 JSON object. markdown fence(```json ... ```) 감싸짐도 처리.
+    - schema 위반 항목은 폐기 + `dropped_items` 누적 — 전체 응답 폐기는 금지(부분 성공).
+    - 토큰 누적은 `QuotaTracker.check_and_record` 1회 호출 — cap 초과 시 raise.
+
+본 모듈은 dispatcher 로직(Pages publish · 텔레그램 send)을 호출하지 않는다 — step6.
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+from anthropic import Anthropic
+
+from src.fetchers.base import Article
+from src.lib.logging_setup import mask_key
+
+from .quota import QuotaTracker
+
+logger = logging.getLogger(__name__)
+
+# requirements §8 — env var 미지정 시 default.
+DEFAULT_MODEL: str = "claude-haiku-4-5-20251001"
+
+# Anthropic SDK max_tokens — output cap 20k 이내 (AC-5.5).
+DEFAULT_MAX_TOKENS: int = 4096
+
+# 카테고리 3종 — filters/pipeline.CATEGORIES 와 같은 단일 진실(렌더와 공유).
+CATEGORIES: tuple[str, ...] = ("ai_trend", "agri_distribution", "farmboss_keyword")
+
+# 응답이 markdown fence 로 감싸질 때 본문 추출.
+_FENCE_PATTERN = re.compile(
+    r"```(?:json)?\s*\n?(.*?)\n?```",
+    re.DOTALL | re.IGNORECASE,
+)
+
+
+@dataclass(frozen=True)
+class ItemAnalysis:
+    """LLM 이 반환한 기사 1건 분석 — `render.RenderedItem` 의 입력.
+
+    Attributes:
+        article_id: canonical_url (입력 Article 의 canonical_url 과 동일).
+        score: 1~10 (회사 직접 영향 기준, prompt §6-5).
+        summary: 한국어 2 문장 이내 요약.
+        company_impact: 사업 영역 외면 빈 문자열 — 정상값. 폐기 사유 아님 (AC-2.5).
+    """
+
+    article_id: str
+    score: int
+    summary: str
+    company_impact: str
+
+
+@dataclass(frozen=True)
+class SummarizeResult:
+    """`SummarizerClient.summarize` 의 반환 — render 입력.
+
+    Attributes:
+        items: ItemAnalysis 리스트 (입력 Article 일부 폐기 가능 — schema 위반 시).
+        category_headlines: 카테고리 3종 키 보장 (빈 문자열 허용).
+        dropped_items: schema 위반으로 폐기된 항목 수 (메타에 노출).
+        tokens_in: 누적된 입력 토큰 수.
+        tokens_out: 누적된 출력 토큰 수.
+    """
+
+    items: list[ItemAnalysis]
+    category_headlines: dict[str, str]
+    dropped_items: int
+    tokens_in: int
+    tokens_out: int
+
+
+def load_system_prompt(root: Path | None = None) -> str:
+    """`prompts/summarize.md` 본문을 system 영역용으로 읽어 반환.
+
+    Args:
+        root: 리포 루트. 미지정 시 본 모듈 경로로 추정.
+
+    Returns:
+        파일 본문 (UTF-8, 마지막 newline 보존).
+    """
+    base = root or Path(__file__).resolve().parent.parent.parent
+    path = base / "prompts" / "summarize.md"
+    return path.read_text(encoding="utf-8")
+
+
+def _strip_markdown_fence(text: str) -> str:
+    """모델 응답이 ```json ... ``` 로 감싸졌으면 안쪽만 추출. 없으면 원문 반환.
+
+    회귀 위험: tech-research §3-2 에 명시된 fence 감싸짐 (Haiku 가 가끔 발생).
+    """
+    if not isinstance(text, str):
+        return text  # type: ignore[return-value]
+    match = _FENCE_PATTERN.search(text)
+    if match:
+        return match.group(1).strip()
+    return text.strip()
+
+
+def _serialize_articles_for_user_message(
+    by_category: dict[str, list[Article]],
+) -> str:
+    """카테고리별 articles 를 LLM user 메시지용 JSON 으로 직렬화.
+
+    canonical_url 을 `id` 키로 전달 — 응답 `items[].id` 매칭의 단일 진실.
+    """
+    payload: dict[str, list[dict[str, str]]] = {}
+    for cat in CATEGORIES:
+        payload[cat] = []
+        for art in by_category.get(cat, []):
+            payload[cat].append(
+                {
+                    "id": art.canonical_url,
+                    "title": art.title,
+                    "source_name": art.source_name,
+                    "published_at_kst": art.published_at_kst.isoformat(),
+                    "snippet": art.snippet,
+                }
+            )
+    return json.dumps(payload, ensure_ascii=False, indent=2)
+
+
+def _parse_response_json(raw_text: str) -> dict[str, Any]:
+    """응답 텍스트를 JSON dict 로 파싱. fence strip 후 시도.
+
+    Raises:
+        RuntimeError — 전체 응답 JSON 파싱 실패 (빈 응답 포함).
+    """
+    if not raw_text or not raw_text.strip():
+        raise RuntimeError("Claude 응답이 비어있습니다.")
+    cleaned = _strip_markdown_fence(raw_text)
+    try:
+        parsed = json.loads(cleaned)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"Claude 응답 JSON 파싱 실패: {e}") from e
+    if not isinstance(parsed, dict):
+        raise RuntimeError(
+            f"Claude 응답 최상위가 object 가 아닙니다 (got {type(parsed).__name__})."
+        )
+    return parsed
+
+
+def _validate_and_filter_items(
+    raw_items: Any,
+    valid_ids: set[str],
+) -> tuple[list[ItemAnalysis], int]:
+    """raw `items[]` 를 schema 검증 — 위반 항목은 폐기 + dropped 카운트.
+
+    검증:
+        - dict 형태 + id/score/summary/company_impact 필드 존재.
+        - score 는 1~10 정수 (bool 제외).
+        - summary 는 비어있지 않은 문자열.
+        - company_impact 는 문자열 (빈 문자열 정상).
+        - id 가 valid_ids(canonical_url) 에 속해야 함.
+
+    Returns:
+        (valid_items, dropped_count).
+    """
+    validated: list[ItemAnalysis] = []
+    dropped = 0
+
+    if not isinstance(raw_items, list):
+        logger.warning(
+            "summarizer — items[] 가 list 가 아님 (got %s); 전체 폐기.",
+            type(raw_items).__name__,
+        )
+        return validated, dropped
+
+    seen_ids: set[str] = set()
+    for idx, raw in enumerate(raw_items):
+        if not isinstance(raw, dict):
+            logger.warning("summarizer — items[%d] 가 dict 가 아님; 폐기.", idx)
+            dropped += 1
+            continue
+
+        if not all(k in raw for k in ("id", "score", "summary", "company_impact")):
+            missing = [k for k in ("id", "score", "summary", "company_impact") if k not in raw]
+            logger.warning(
+                "summarizer — items[%d] 필수 필드 누락: %s; 폐기.",
+                idx, missing,
+            )
+            dropped += 1
+            continue
+
+        article_id = raw["id"]
+        score = raw["score"]
+        summary = raw["summary"]
+        company_impact = raw["company_impact"]
+
+        if not isinstance(article_id, str) or article_id not in valid_ids:
+            logger.warning(
+                "summarizer — items[%d].id=%r 가 입력 article id 와 매칭되지 않음; 폐기.",
+                idx, article_id,
+            )
+            dropped += 1
+            continue
+
+        if article_id in seen_ids:
+            logger.warning(
+                "summarizer — items[%d].id=%r 가 중복; 폐기.",
+                idx, article_id,
+            )
+            dropped += 1
+            continue
+
+        if not isinstance(score, int) or isinstance(score, bool):
+            logger.warning(
+                "summarizer — items[%d].score 가 int 가 아님 (got %r); 폐기.",
+                idx, score,
+            )
+            dropped += 1
+            continue
+        if not (1 <= score <= 10):
+            logger.warning(
+                "summarizer — items[%d].score=%d 범위 밖 (1~10); 폐기.",
+                idx, score,
+            )
+            dropped += 1
+            continue
+
+        if not isinstance(summary, str) or not summary.strip():
+            logger.warning(
+                "summarizer — items[%d].summary 가 비어있음; 폐기.",
+                idx,
+            )
+            dropped += 1
+            continue
+
+        if not isinstance(company_impact, str):
+            # 빈 문자열은 OK, None / 숫자 등은 폐기.
+            logger.warning(
+                "summarizer — items[%d].company_impact 가 문자열이 아님 (got %s); 폐기.",
+                idx, type(company_impact).__name__,
+            )
+            dropped += 1
+            continue
+
+        seen_ids.add(article_id)
+        validated.append(
+            ItemAnalysis(
+                article_id=article_id,
+                score=score,
+                summary=summary.strip(),
+                company_impact=company_impact.strip(),
+            )
+        )
+
+    return validated, dropped
+
+
+def _validate_category_headlines(raw_headlines: Any) -> dict[str, str]:
+    """raw `category_headlines` 를 3 카테고리 키 보장 형태로 정규화.
+
+    누락된 카테고리 키는 빈 문자열로 보충 — 렌더가 빈 문자열일 때 표시 생략(AC-2.12).
+    """
+    out: dict[str, str] = {c: "" for c in CATEGORIES}
+    if not isinstance(raw_headlines, dict):
+        if raw_headlines is not None:
+            logger.warning(
+                "summarizer — category_headlines 가 dict 가 아님 (got %s); 빈 문자열로 대체.",
+                type(raw_headlines).__name__,
+            )
+        return out
+    for cat in CATEGORIES:
+        v = raw_headlines.get(cat, "")
+        if isinstance(v, str):
+            out[cat] = v.strip()
+        else:
+            logger.warning(
+                "summarizer — category_headlines[%s] 가 문자열이 아님 (got %s); 빈 문자열 사용.",
+                cat, type(v).__name__,
+            )
+    return out
+
+
+class SummarizerClient:
+    """Anthropic Claude wrapper — 단일 호출에 점수·요약·회사 영향·카테고리 핵심 동시 출력.
+
+    Args:
+        api_key: Anthropic API key. mask_key 통해 prefix 만 로그.
+        model: Claude model ID. 기본 `DEFAULT_MODEL` (env `CLAUDE_MODEL_ID` 로 override 는
+            상위 호출자가 처리 — 본 클래스는 받은 값 사용).
+        quota: 일일 cap 추적. 미지정 시 새 인스턴스 생성 (테스트·dry-run 용도).
+        max_tokens: 응답 최대 토큰. 기본 4096.
+
+    Notes:
+        - system prompt 에 `cache_control: ephemeral` 적용 — 두 번째 호출부터 비용 절감.
+        - 본 클래스는 dispatcher 를 호출하지 않는다 (step6 dispatcher 가 별도 모듈).
+    """
+
+    def __init__(
+        self,
+        api_key: str,
+        model: str = DEFAULT_MODEL,
+        quota: QuotaTracker | None = None,
+        max_tokens: int = DEFAULT_MAX_TOKENS,
+    ) -> None:
+        if not isinstance(api_key, str) or not api_key.strip():
+            raise ValueError("api_key 는 비어있지 않은 문자열이어야 합니다.")
+        if not isinstance(model, str) or not model.strip():
+            raise ValueError("model 은 비어있지 않은 문자열이어야 합니다.")
+        if not isinstance(max_tokens, int) or max_tokens <= 0:
+            raise ValueError("max_tokens 는 양의 정수이어야 합니다.")
+
+        # 시크릿 평문 로그 금지 — prefix 만 노출 (AC-7.2).
+        logger.info(
+            "SummarizerClient init — model=%s key_prefix=%s",
+            model, mask_key(api_key),
+        )
+        self.client = Anthropic(api_key=api_key)
+        self.model = model
+        self.quota = quota if quota is not None else QuotaTracker()
+        self.max_tokens = max_tokens
+
+    def summarize(
+        self,
+        articles_by_category: dict[str, list[Article]],
+        system_prompt: str,
+    ) -> SummarizeResult:
+        """단일 호출에 점수·요약·회사 영향·카테고리 핵심 동시 출력.
+
+        Args:
+            articles_by_category: filters.pipeline.apply 결과. 카테고리 3종 키.
+            system_prompt: `prompts/summarize.md` 본문 (load_system_prompt 결과).
+
+        Returns:
+            SummarizeResult — items + category_headlines + dropped_items + 토큰 누적.
+
+        Raises:
+            QuotaExceededError: quota cap 초과.
+            RuntimeError: 응답 JSON 파싱 실패 또는 빈 응답.
+        """
+        if not isinstance(articles_by_category, dict):
+            raise ValueError("articles_by_category 는 dict 이어야 합니다.")
+        if not isinstance(system_prompt, str) or not system_prompt.strip():
+            raise ValueError("system_prompt 는 비어있지 않은 문자열이어야 합니다.")
+
+        # 입력 article id 집합 — 응답 검증의 단일 진실.
+        valid_ids: set[str] = set()
+        for cat in CATEGORIES:
+            for art in articles_by_category.get(cat, []):
+                valid_ids.add(art.canonical_url)
+
+        user_text = _serialize_articles_for_user_message(articles_by_category)
+
+        logger.info(
+            "Claude API call — model=%s items=%d categories=%d",
+            self.model, len(valid_ids), len(CATEGORIES),
+        )
+
+        # Prompt caching: system 영역을 list-of-blocks 형식으로 전달 + cache_control.
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=self.max_tokens,
+            system=[
+                {
+                    "type": "text",
+                    "text": system_prompt,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=[
+                {
+                    "role": "user",
+                    "content": user_text,
+                }
+            ],
+        )
+
+        # 토큰 사용량 추출 — Anthropic SDK 의 usage 객체.
+        usage = getattr(response, "usage", None)
+        tokens_in = int(getattr(usage, "input_tokens", 0) or 0)
+        tokens_out = int(getattr(usage, "output_tokens", 0) or 0)
+        # cache 관련 토큰도 input 누적에 포함 (운영자 가시성용).
+        cache_creation = int(getattr(usage, "cache_creation_input_tokens", 0) or 0)
+        cache_read = int(getattr(usage, "cache_read_input_tokens", 0) or 0)
+        total_input_for_cap = tokens_in + cache_creation + cache_read
+
+        # quota 체크 — cap 초과 시 raise (누적 미반영).
+        self.quota.check_and_record(total_input_for_cap, tokens_out)
+
+        # 응답 본문 추출 — content[0].text.
+        content = getattr(response, "content", None) or []
+        if not content:
+            raise RuntimeError("Claude 응답 content 가 비어있습니다.")
+        raw_text = ""
+        for block in content:
+            text = getattr(block, "text", None)
+            if isinstance(text, str):
+                raw_text += text
+        if not raw_text.strip():
+            raise RuntimeError("Claude 응답 content 에 text 가 없습니다.")
+
+        parsed = _parse_response_json(raw_text)
+
+        items, dropped = _validate_and_filter_items(parsed.get("items"), valid_ids)
+        category_headlines = _validate_category_headlines(parsed.get("category_headlines"))
+
+        logger.info(
+            "summarizer result — valid=%d dropped=%d tokens_in=%d tokens_out=%d cache_read=%d",
+            len(items), dropped, total_input_for_cap, tokens_out, cache_read,
+        )
+
+        return SummarizeResult(
+            items=items,
+            category_headlines=category_headlines,
+            dropped_items=dropped,
+            tokens_in=total_input_for_cap,
+            tokens_out=tokens_out,
+        )
