@@ -66,7 +66,8 @@ class ConfigError(RuntimeError):
 def secrets_check() -> dict[str, str]:
     """필수 환경변수 5개를 검증 후 dict 반환. 누락 시 ConfigError.
 
-    `GEMINI_MODEL_ID` 는 optional — `DEFAULT_MODEL` fallback 이 summarizer 측에 있다.
+    `GEMINI_MODEL_ID` 는 optional — main() 의 호출부에서 `... or DEFAULT_MODEL` truthy
+    fallback 적용 (GitHub Actions Variables 미정의 시 빈 문자열 주입 케이스 가드).
     """
     missing = [k for k in REQUIRED_ENV_VARS if not os.environ.get(k)]
     if missing:
@@ -148,9 +149,14 @@ def main(argv: list[str] | None = None) -> int:
             fetch_failures=fetch_failures,
         )
 
+        # GitHub Actions Variables 의 GEMINI_MODEL_ID 가 미정의면
+        # `${{ vars.GEMINI_MODEL_ID }}` 는 빈 문자열로 evaluate 되어 env 에 ""
+        # 가 주입된다. os.environ.get() 의 default 는 key 부재 시에만 적용되어
+        # 빈 문자열을 그대로 통과시키므로 truthy fallback 으로 가드. (ADR-005 후속)
+        model_id = os.environ.get("GEMINI_MODEL_ID") or DEFAULT_MODEL
         client = SummarizerClient(
             api_key=env["GEMINI_API_KEY"],
-            model=os.environ.get("GEMINI_MODEL_ID", DEFAULT_MODEL),
+            model=model_id,
         )
         system_prompt = (repo_root / "prompts" / "summarize.md").read_text(encoding="utf-8")
         summarize_result = client.summarize(by_category, system_prompt)
