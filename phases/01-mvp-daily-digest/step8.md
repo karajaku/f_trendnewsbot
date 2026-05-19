@@ -14,28 +14,37 @@
 
 ## 작업 범위
 
-### 1. Dry-run 1회 (운영자 환경)
+### 1. Dry-run 1회 (운영자 환경, ADR-003 갱신)
 
-- Actions tab → `daily.yml` → Run workflow → `dry_run=true` → 운영자 1명만 수신
+- Actions tab → `daily.yml` → Run workflow → `dry_run=true` → 운영자 단톡방만 수신
 - 발송 후 다음 확인:
+  - 운영자 단톡방에 짧은 인덱스 메시지 도착 (헤더 + 카테고리 헤드라인 3개 + Pages URL)
+  - Pages URL 클릭 → 브라우저에서 HTML 본문 정상 표시
+  - HTML head에 `<meta name="robots" content="noindex,nofollow">` 존재 (브라우저 view-source 확인)
+  - `docs/digest/robots.txt`가 `User-agent: * / Disallow: /` 인지 확인
   - 본문 시각 표기(`5월 19일 ... KST`) 일관성
   - 카테고리 3개 헤더·항목 5~10건
-  - 모든 항목에 원문 URL 노출
+  - Pages HTML 모든 항목에 원문 URL 노출 (텔레그램 메시지에는 Pages URL만)
   - "why it matters" 류 라인 부재
-  - 실패 소스 있으면 헤더 한 줄 노출
+  - 실패 소스 있으면 메시지·HTML 헤더 한 줄 노출
   - `history/sent.jsonl` artifact 업로드 성공
+  - git log에 `digest: YYYY-MM-DD` commit 1건
 
 ### 2. Verification record 작성
 
 - `docs/history/daily_digest/daily_digest_v1-manual-verification-record.md` 신규
-  - 실행 일시·환경·수신자(운영자 본인 `nterrr@gmail.com`)
+  - 실행 일시·환경·수신자(운영자 단톡방 멤버 = 운영자 본인)
   - AC-1 ~ AC-7 각각의 실측 결과 (✅/❌/N/A + 한 줄 코멘트)
   - `pending_manual_qa_scenarios` 누적분 일괄 결과
   - 발견된 회귀·핫픽스 (있으면 `phases/_hotfix-log/` 링크)
-  - 4주 모니터링 항목 명시 (cron 정시성 분포·fuzzy threshold 실측·메일 도착률)
-  - **수신자 단계적 공개 일정** (AC-6.4): Day 0 운영자 1명 → Day 7 3이사 합류 → Day 14 전 직원. 각 단계 진입일·이슈를 verification-record에 누적 기록.
-  - **운영자 alert 첫 시뮬레이션**: quota 초과·SMTP 장애를 강제 발생시켜 ops 별도 메일 1통만 가는지 확인 (AC-5.3·AC-5.4)
+  - 4주 모니터링 항목 명시 (cron 정시성 분포·Pages publish 평균 지연·fuzzy threshold 실측·텔레그램 메시지 도착률)
+  - **단톡방 단계적 멤버 초대 일정** (AC-6.4): Day 0 운영자 1명 → Day 7 3이사 합류 → Day 14 전 직원. 각 단계 초대일·이슈·이사진 피드백을 verification-record에 누적 기록.
+  - **운영자 alert 첫 시뮬레이션** (AC-5.3·AC-5.4·AC-5.6):
+    - quota 초과 강제 → 운영자 chat에 alert 1통, 직원 단톡방·Pages 미게시 확인
+    - Pages publish 실패 시뮬레이션 (`GITHUB_TOKEN` 일시 권한 박탈) → 운영자 chat에만 alert, 직원 단톡방 미게시
+    - 텔레그램 chat_id 무효 → 운영자 chat에 alert
   - **외부 뉴스레터 권고 안 함 정책 확인** (requirements §2): 본 V1이 외부 뉴스레터가 다루지 않는 회사 키워드 카테고리로 차별화되는지 1주차 수신자(운영자) 체감 메모
+  - **Pages 검색엔진 노출 점검**: dry-run 후 1주일 뒤 구글 `site:` 검색으로 다이제스트 페이지가 인덱싱되지 않는지 1회 확인 (AC-2.8)
 
 ### 3. Canonical Sync (Stage 9)
 

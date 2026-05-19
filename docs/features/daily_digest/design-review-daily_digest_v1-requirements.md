@@ -189,3 +189,4 @@ AC-4.3에 추가:
 
 - 2026-05-19: 초안 작성. 자가 교차 검토(관점 A~E) 완료. 수정 항목 3건 도출(공휴일·모델 ID·fuzzy threshold). 사용자 일괄 검토 시 추가 리뷰 받을 예정.
 - 2026-05-19: 사용자 일괄 검토 4라운드(13 질문) 완료. §5를 결과 표로 교체. 모든 항목 권장 또는 명시 답으로 해소. requirements·PRD·ADR·phase README/step7/step8에 일괄 반영. status `reviewed` → `applied` 전환.
+- 2026-05-19: V1 발송 채널 변경 (ADR-003 accepted) — Gmail SMTP·이메일 발송 폐기, 텔레그램 Bot API + GitHub Pages 조합. 본 design-review의 결론(관점 A·B·C·D·E)은 채널과 직접 관련된 항목(BCC·SMTP 일일 한도 등)을 제외하면 그대로 유효. 관련 위험 R-3(Gmail 일일 한도)는 채널 변경으로 자동 해소. 새 위험 R-6(Pages publish race condition)·R-7(텔레그램 chat_id 음수 정수 처리)은 step6·step7에 반영됨. [design_review_questions.md §채널 변경](../../design_review_questions.md) 참조.

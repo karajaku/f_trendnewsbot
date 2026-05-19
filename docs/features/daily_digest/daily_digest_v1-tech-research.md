@@ -144,32 +144,92 @@ system=[
 
 `summarizer/client.py`가 호출 직전 일일 누적 토큰·비용을 history(또는 별도 quota 파일)에서 읽어 초과 시 RuntimeError 발생. main()이 잡아서 운영자 alert 메일 발송 후 종료.
 
-### 3-3. Gmail SMTP
+### 3-3. 텔레그램 Bot API + GitHub Pages (V1 채널, ADR-003 채택)
+
+#### 3-3-a. 텔레그램 Bot API
 
 | 항목 | 값 |
 |---|---|
-| 서버 | smtp.gmail.com |
-| 포트 | 587 (STARTTLS) 또는 465 (SSL) |
-| 인증 | **Google Workspace 앱 비밀번호** (2FA 활성 계정만 생성 가능). API 키 아닌 16자리 앱 패스워드. |
-| 일일 발송 한도 | 외부 수신자 ~500통/일 (Workspace 기본). 사내 수신자 ≪ 50명이면 여유. |
-| 라이브러리 | Python 표준 `smtplib` + `email.message.EmailMessage` (외부 의존성 불필요) |
-| 시크릿 환경변수 | `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `GMAIL_FROM` (GitHub Actions Secrets) |
+| 엔드포인트 | `https://api.telegram.org/bot{TOKEN}/sendMessage` |
+| 인증 | `@BotFather` 봇 생성 시 발급되는 토큰 (`123456:ABC-DEF...`). 영구 유효. |
+| 메시지 길이 한도 | 4,096자/메시지 (UTF-8) |
+| 발송 빈도 한도 | 같은 chat에 초당 1건, 분당 20건 (V1 일 1회 발송에 영향 없음) |
+| 라이브러리 | Python 표준 `requests` 로 충분 (`python-telegram-bot` 같은 SDK 불필요) |
+| 시크릿 환경변수 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `OPS_ALERT_CHAT_ID` (GitHub Actions Secrets) |
+| `chat_id` 획득 | 봇을 단톡방에 추가 → `https://api.telegram.org/bot{TOKEN}/getUpdates` 호출 → 응답에서 `chat.id` 추출 (단톡방은 음수 ID) |
 
-**HTML + 텍스트 백업 발송**: `EmailMessage`의 `add_alternative()` 사용. 메일 클라이언트가 HTML 못 읽으면 텍스트로 fallback.
+호출 형태:
 
 ```python
-msg = EmailMessage()
-msg["Subject"] = "[팜보스 트렌드] 5월 19일 (월) AI·농산물 유통 오늘의 뉴스 8건"
-msg["From"] = os.environ["GMAIL_FROM"]
-msg["To"] = ", ".join(recipients)
-msg.set_content(plain_text_digest)             # 텍스트 백업
-msg.add_alternative(html_digest, subtype="html")
-with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-    s.login(os.environ["GMAIL_USER"], os.environ["GMAIL_APP_PASSWORD"])
-    s.send_message(msg)
+import requests
+resp = requests.post(
+    f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN']}/sendMessage",
+    json={
+        "chat_id": os.environ["TELEGRAM_CHAT_ID"],
+        "text": digest.telegram_text,        # 짧은 인덱스 + Pages URL
+        "parse_mode": "HTML",                 # 또는 "MarkdownV2"
+        "disable_web_page_preview": True,    # Pages URL 미리보기 카드 꺼서 메시지 길이 절약
+    },
+    timeout=10,
+)
+resp.raise_for_status()
 ```
 
-**BCC 운영**: 수신자 명단을 To에 노출할지 BCC로 가릴지는 사내 정책. V1은 **BCC 사용**(수신자 명단이 헤더에 노출되지 않게) 권장. 운영자(`Reply-To: 김종만 또는 정은주`)는 헤더에 명시.
+**parse_mode**: HTML 모드가 markdown보다 escape 부담 적음. `<b>`, `<i>`, `<a href="">` 정도만 사용. 텔레그램의 HTML은 메일 HTML보다 제한적(태그 화이트리스트). 단톡방 본문은 굳이 서식 안 줘도 가독성 충분.
+
+**실패 모드**:
+- 토큰 무효(401) → 운영자 alert에서도 발송 못 함 → stderr 로그만 + exit code 비정상
+- `chat_id` 무효(400) → 운영자 alert
+- 네트워크 timeout → retry 1회 (AC-5.4 패턴 동일)
+
+#### 3-3-b. GitHub Pages 호스팅
+
+| 항목 | 값 |
+|---|---|
+| 활성화 | repo Settings → Pages → Source: branch `master` (또는 `main`), folder `/docs` |
+| URL 패턴 | `https://{owner}.github.io/{repo}/digest/YYYY-MM-DD.html` |
+| 배포 지연 | push 후 1~2분 (GitHub Actions Pages workflow 또는 자동 배포) |
+| 인증 | public repo면 누구나 접근. private repo Pages는 GitHub Pro/Team 필요 |
+| 검색엔진 노출 회피 | HTML head `<meta name="robots" content="noindex,nofollow">` + `docs/digest/robots.txt`에 `User-agent: * / Disallow: /` |
+| 권한·인증 (workflow에서 git push) | `GITHUB_TOKEN` 기본 권한으로 같은 repo push 가능. 별도 PAT 불필요 |
+
+게시 흐름 (`dispatchers/pages_publish.py`):
+
+```python
+def publish(digest: Digest, date_kst: date) -> str:
+    """HTML을 docs/digest/YYYY-MM-DD.html로 commit·push. 게시된 URL 반환."""
+    target = Path("docs/digest") / f"{date_kst.isoformat()}.html"
+    target.write_text(digest.html, encoding="utf-8")
+    subprocess.run(["git", "add", str(target)], check=True)
+    subprocess.run(
+        ["git", "commit", "-m", f"digest: {date_kst.isoformat()}"],
+        check=True,
+        env={**os.environ, "GIT_AUTHOR_NAME": "f_trendnewsbot", ...},
+    )
+    subprocess.run(["git", "push", "origin", "HEAD:master"], check=True)
+    return f"https://{owner}.github.io/{repo}/digest/{date_kst.isoformat()}.html"
+```
+
+**race condition**: 같은 repo에 다른 commit이 동시에 들어가면 push 실패 가능. 봇은 단독 운영이라 V1에서 충돌 가능성 낮음. retry 1회 (pull --rebase + push).
+
+**Pages 미배포 윈도우**: push 후 1~2분 Pages가 새 URL을 서빙 안 함. 텔레그램 메시지에 링크가 곧바로 클릭되면 404. **대응**: dispatcher가 push 후 30~60초 대기 + HTTP 200 응답 확인 후 텔레그램 메시지 발송. 또는 텔레그램 메시지에 "(2분 후 활성)" 주석.
+
+#### 3-3-c. 일일 토큰 추정 (텔레그램 + Pages 추가 비용)
+
+| 비용 항목 | 추정 |
+|---|---|
+| 텔레그램 발송 | 무료 (API 호출 비용 0) |
+| Pages 호스팅 | 무료 (public repo) |
+| GitHub Actions 추가 분 | git commit·push 추가 ~10초 → 일 총 실행 3분 → 3.5분으로 증가, 월 한도 2000분 여전히 여유 |
+| Claude API | 동일 (단순 채널 변경, summarize 호출 횟수·토큰 동일) |
+| 월 총 비용 | < $20 hard cap 그대로 |
+
+#### 3-3-d. 운영자 alert (별도 텔레그램 chat)
+
+- 운영자 본인과 봇의 1:1 chat 또는 운영자 전용 단톡방 1개.
+- `OPS_ALERT_CHAT_ID` 환경변수 분리.
+- alert 본문: 제목 `[팜보스 트렌드 알림] {KST} {ERROR_KIND}` + 스택트레이스 + 다음 cron 예정 시각.
+- 운영자 chat 발송 실패 시 무한루프 위험 — alert 안에서 alert 발송 실패 시 stderr만 출력 후 종료(재시도 없음).
 
 ### 3-4. GitHub Actions cron 정시성
 
@@ -209,7 +269,7 @@ requires-python = ">=3.12"
 dependencies = [
     "anthropic>=0.40.0",     # Claude API SDK
     "feedparser>=6.0.11",    # RSS·Atom
-    "requests>=2.32.0",      # HTTP
+    "requests>=2.32.0",      # HTTP (+ 텔레그램 Bot API)
     "beautifulsoup4>=4.12.3",# HTML
     "pyyaml>=6.0.2",         # config/*.yml
     "python-dateutil>=2.9.0",# 시간대·KST 변환
@@ -218,19 +278,20 @@ dependencies = [
 dev = ["pytest>=8.0.0", "pytest-cov", "ruff", "mypy"]
 ```
 
-표준 라이브러리만 사용(`smtplib`·`email`·`zoneinfo`)하는 영역: SMTP 발송, KST 변환.
+표준 라이브러리만 사용(`zoneinfo`·`subprocess`)하는 영역: KST 변환, git commit·push (Pages publish). SMTP·email 의존성은 V1에서 제거 (ADR-003).
 
 ---
 
 ## 4. 결론 — requirements.md 반영 시사점
 
-Stage 4 requirements 작성 시 다음 5개 시사점을 인용한다.
+Stage 4 requirements 작성 시 다음 6개 시사점을 인용한다.
 
 1. **저장 매체는 GitHub Actions artifact로 시작**. 구현 단순성·V1 운영 부담 최소화 측면. requirements §data contract에 `history/sent.jsonl` 스키마 명시, `pyproject.toml` 의존성 외에 `actions/upload-artifact@v4` workflow 사용. 6개월 후 migration 옵션 ADR-002 §결과에 명시. `(tech-research.md §3-5)`
 2. **Claude API 호출은 V1 단일 호출 (점수+요약 동시) 시작**. 일/월 비용이 단일·분리 모두 cap 3% 수준이지만 단일 호출이 코드·로깅·실패 격리에서 단순. V2에서 quality 모니터링 후 분리 검토. `(§3-2)`
 3. **PRD 정시성 기준을 "± 5분 95%"에서 "± 15분 95%"로 완화** 또는 4주 모니터링 후 변경 결정. GitHub Actions cron의 일반적 지연 분포가 ± 5분을 빈번히 초과. cron 시각을 KST 07:20으로 당겨 10분 흡수. `(§3-4)`
 4. **`src/lib/url_helper.py` 와 `src/lib/time_helper.py`가 dedup·render·dispatcher·history의 공유 단일 진실**. 시그니처는 `url_helper.canonicalize(url) -> str` / `time_helper.to_kst_string(dt) -> str` / `time_helper.now_kst() -> datetime`. requirements §의존 시스템·data contract에서 그대로 인용. `(§2-1 anchor + CLAUDE.md anti-pattern A)`
 5. **`config/filters.yml`의 "팜보스 관심 키워드" 카테고리는 시드 12개 키워드로 동결** ([docs/팜보스_회사소개.md](../../팜보스_회사소개.md) 추출). dry-run 1주일 후 보강은 phase 외 운영 작업. `(§2-3 + Discovery 결론 #5)`
+6. **V1 발송 채널은 텔레그램 Bot API + GitHub Pages**, Gmail SMTP는 제거 (ADR-003 accepted, 2026-05-19). dispatcher는 ① Pages publish (`docs/digest/YYYY-MM-DD.html` commit·push, 1~2분 배포 대기) → ② 텔레그램 단톡방에 짧은 인덱스 + Pages URL 발송 순서. 운영자 alert은 별도 텔레그램 chat. 환경변수: `TELEGRAM_BOT_TOKEN`·`TELEGRAM_CHAT_ID`·`OPS_ALERT_CHAT_ID`. `(§3-3)`
 
 ---
 
@@ -245,3 +306,4 @@ Stage 4 requirements 작성 시 다음 5개 시사점을 인용한다.
 ## Changelog
 
 - 2026-05-19: 초안 작성. 외부 URL은 LLM 일반 지식 기반 (사용자 외부 조사 허가 시 retrieved 날짜 보강). 저장 매체 후보 A 권장, Claude API 단일 호출 권장.
+- 2026-05-19: V1 발송 채널 변경 (ADR-003) — §3-3 Gmail SMTP 섹션을 텔레그램 Bot API + GitHub Pages 섹션으로 교체. §3-6 의존성에서 SMTP·email 제거 표기. §4 결론 #6 신규 추가.

@@ -80,3 +80,28 @@ Stage 4 design-review가 도출한 사용자 확인 항목 13개를 AskUserQuest
 13개 항목 모두 해소. 사용자가 권장과 다르게 결정한 것은 **공휴일 발송**(권장: V2 보류 → 결정: 매일 발송) 1건.
 
 ---
+
+## daily_digest_v1 V1 발송 채널 변경 — 2026-05-19 (사후 결정)
+
+requirements `frozen` 직후 사용자가 "직원이 메일을 잘 확인 안할 거 같은데 카톡·텔레그램 알림으로 보내고 HTML 열게 하는 건 어때"를 제기. 4 질문 라운드로 결정.
+
+| # | 질문 | 사용자 결정 | 반영 위치 |
+|---|---|---|---|
+| 1 | 회사 표준 메신저 | **텔레그램 그룹채팅방** | ADR-003 §맥락 |
+| 2 | V1 채널 | **텔레그램 + GitHub Pages만, 이메일 폐기** | ADR-003 §결정, ADR-001 superseded |
+| 3 | 메시지 형식 | **짧은 인덱스 + Pages URL** | requirements AC-2.3-A·2.3-B 분리 |
+| 4 | Pages 공개 정책 | **public + noindex meta + robots.txt** | requirements AC-2.8 신규 |
+
+영향 범위 (광범위):
+- ADR-001 superseded → ADR-003 신규 accepted
+- brief §1·§2 전부 / §3-3·§3-5·§3-6·§3-7 갱신
+- tech-research §3-3 Gmail SMTP 섹션 → 텔레그램 + Pages 섹션 교체, §4 결론 #6 신규
+- requirements 전면 — §1 의존, AC-1.6·AC-2.3·2.6·2.7·2.8·5.3·5.4·5.6·6 전면 갱신, §5 Resource flow, §6-3 폐기, §7 운영자 alert, §8 환경변수 교체
+- PRD §MVP·§제외·§의존·Changelog
+- phase 01 README §목표·§범위·§step 표·§가드레일·§단톡방 일정
+- phase 01 index.json step2·step6·step7 summary
+- step6.md 전면 재작성 (Pages publish + 텔레그램 + 운영자 alert chat)
+- step7.md cron·workflow·Secrets·env.example·verification-record 갱신
+- step8.md dry-run 시나리오·운영자 alert 시뮬레이션·Pages 검색엔진 점검 추가
+
+---

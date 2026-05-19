@@ -32,9 +32,9 @@
       "step": 2,
       "file": "step2.md",
       "status": "pending",
-      "summary": "config 로딩 — sources.yml/filters.yml/recipients.yml 스키마와 로더",
+      "summary": "config 로딩 — sources.yml/filters.yml 스키마와 로더 (recipients.yml은 V1에서 폐기, ADR-003)",
       "qa_blocking": false,
-      "maps_to_ac": ["AC-6.1", "AC-6.3", "§6-1", "§6-2", "§6-3"]
+      "maps_to_ac": ["§6-1", "§6-2"]
     },
     {
       "step": 3,
@@ -64,15 +64,15 @@
       "step": 6,
       "file": "step6.md",
       "status": "pending",
-      "summary": "dispatchers — Gmail SMTP + BCC + 운영자 alert 분리 메일",
+      "summary": "dispatchers — Pages publish (commit·push·게시 확인) + 텔레그램 Bot API sendMessage + 운영자 alert chat (ADR-003)",
       "qa_blocking": false,
-      "maps_to_ac": ["AC-3.3", "AC-5.4", "AC-6.2", "§7"]
+      "maps_to_ac": ["AC-2.3-A", "AC-2.3-B", "AC-2.8", "AC-3.3", "AC-5.3", "AC-5.4", "AC-5.6", "AC-6.1", "AC-6.2", "AC-6.6", "§7"]
     },
     {
       "step": 7,
       "file": "step7.md",
       "status": "pending",
-      "summary": "run_daily.py 통합 + GitHub Actions workflow(daily.yml cron + workflow_dispatch) + Secrets 등록 가이드",
+      "summary": "run_daily.py 통합 + GitHub Actions workflow(cron + Pages 권한 + workflow_dispatch) + Secrets 등록 가이드 + Pages 활성화 가이드",
       "qa_blocking": true,
       "maps_to_ac": ["AC-1.1", "AC-1.4", "AC-1.5", "AC-7.1", "AC-7.2", "AC-7.3"]
     },

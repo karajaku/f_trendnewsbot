@@ -12,7 +12,7 @@
 
 - 언어: Python 3.12
 - 런타임: Python 3.12 + GitHub Actions
-- 타깃: GitHub Actions cron + 이메일 전송 (Gmail SMTP)
+- 타깃: GitHub Actions cron + 텔레그램 Bot API + GitHub Pages (ADR-003, 2026-05-19 — ADR-001의 Gmail SMTP supersede)
 - 시간대: KST (Asia/Seoul). cron 식만 UTC.
 
 ## 폴더 구조 (예정)
@@ -144,3 +144,4 @@ OS와 별개로, 팜보스 회사 자체 문서가 같은 저장소에 공존한
 ## Changelog
 
 - 2026-05-19: 초안 작성. V1 폴더 구조·모듈 ownership·데이터 흐름 정의. 발송 이력 저장 매체는 ADR-002에서 결정 예정.
+- 2026-05-19: V1 발송 채널 변경 (ADR-003 accepted) — §런타임 항목에 텔레그램 Bot API + GitHub Pages 명시. 폴더 구조·모듈 ownership·데이터 흐름의 dispatcher 부분은 phase 01 구현·step8 canonical sync에서 코드 기반으로 일괄 갱신.

@@ -50,7 +50,7 @@
 | `fetchers` | 외부 소스(RSS·HTML·JSON API)에서 raw article 수집. 소스 단위 격리. (V2 분리 시 사용) | `docs/features/fetchers/` |
 | `filters` | 시간 윈도우·키워드·dedup 필터. 발송 이력과 dedup 정확도 책임. | `docs/features/filters/` |
 | `summarizer` | Claude API 호출, 카테고리별 점수·요약, 다이제스트 본문 렌더. | `docs/features/summarizer/` |
-| `dispatchers` | 채널별 발송 (V1 Gmail SMTP, 향후 메신저). 수신자 관리. | `docs/features/dispatchers/` |
+| `dispatchers` | 채널별 발송 (V1 = 텔레그램 Bot API + GitHub Pages, ADR-003). 향후 V2에서 추가 메신저·이메일. | `docs/features/dispatchers/` |
 | `history` | 발송 이력 영속화·조회. dedup의 신뢰원. | `docs/features/history/` |
 | `ops` | GitHub Actions cron·시크릿·운영 비용·관측. | `docs/features/ops/` |
 
