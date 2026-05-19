@@ -37,7 +37,7 @@ f_trendnewsbot/
 │   │   ├── keyword.py                 # config/filters.yml 기반 포함/제외
 │   │   └── timewindow.py              # 최근 24~36시간 기사만
 │   ├── summarizer/
-│   │   ├── client.py                  # Anthropic SDK wrapper, prompt caching
+│   │   ├── client.py                  # google-genai SDK wrapper, JSON mode (ADR-004)
 │   │   ├── scoring.py                 # 중요도 점수 (카테고리별)
 │   │   └── render.py                  # 다이제스트 본문 빌더 (HTML + text)
 │   ├── dispatchers/
@@ -88,7 +88,7 @@ f_trendnewsbot/
 |---|---|---|---|
 | Fetcher | `src/fetchers/` | 소스별 raw article 가져오기. 소스 단위 try/except로 격리. | `lib/url_helper`, `lib/time_helper` |
 | Filter | `src/filters/` | 시간 윈도우·키워드·dedup으로 후보 축소 | `history.store`, `lib/url_helper` |
-| Summarizer | `src/summarizer/` | Claude API 호출, 카테고리별 점수·요약·다이제스트 렌더 | Anthropic SDK, `prompts/` |
+| Summarizer | `src/summarizer/` | Gemini API 호출 (ADR-004), 카테고리별 점수·요약·다이제스트 렌더 | google-genai SDK, `prompts/` |
 | Dispatcher | `src/dispatchers/` | 채널별 발송. V1은 Gmail SMTP만. 인터페이스 `send(digest, recipients)`. | `summarizer.render` 결과 |
 | History | `src/history/` | 발송 이력 영속화·조회 (dedup의 신뢰원) | 저장 매체 (file/artifact/Issue) |
 | Lib | `src/lib/` | URL·시간·로그 helper. 표시·규칙 공유의 single source. | 표준 라이브러리 |
@@ -104,7 +104,7 @@ f_trendnewsbot/
         │ filters: timewindow → keyword → dedup
         ▼
    kept_articles[]
-        │ summarizer (Claude API: 점수 + 한 줄 요약)
+        │ summarizer (Gemini API: 점수 + 한 줄 요약, ADR-004)
         ▼
    digest{ AI: [...], 농산물유통: [...], 팜보스관심: [...], meta: { failures, generated_at_kst } }
         │ dispatcher.send (Gmail SMTP)
@@ -126,10 +126,10 @@ f_trendnewsbot/
 
 ## 성능 기준선 (예상값 — V1 가동 후 갱신)
 
-- 전체 실행 시간: < 3분 (소스 fetch 병렬화 + Claude API 일괄 호출 기준)
-- Claude API 호출: 일 1회 cron당 총 토큰 < 50k (입력) + < 10k (출력)
-- 월 비용: < $20 (Haiku 4.5 기준)
-- GitHub Actions 분: 일 ~3분 × 22 영업일 = 월 ~66분 (무료 한도 2000분 대비 충분)
+- 전체 실행 시간: < 3분 (소스 fetch 병렬화 + Gemini API 일괄 호출 기준)
+- Gemini API 호출: 일 1회 cron당 총 토큰 < 50k (입력) + < 10k (출력)
+- 월 비용: $0 (Gemini 2.0 Flash 무료 tier, ADR-004) — 무료 한도 15 RPM / 1500 RPD 의 1% 미만 사용
+- GitHub Actions 분: 일 ~3분 × 30일 = 월 ~90분 (무료 한도 2000분 대비 충분)
 
 ## 회사 도메인 문서
 

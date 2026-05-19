@@ -1,6 +1,8 @@
 {
   "phase": "01-mvp-daily-digest",
-  "status": "pending",
+  "status": "paused",
+  "paused_at": "2026-05-19",
+  "paused_reason": "step7 dry-run에서 Anthropic 크레딧 부족 발견 → phase 02-gemini-swap 의존. phase 02 종료 후 step7 dry-run 재개 → completed → step8 진입.",
   "feature_group": "daily_digest",
   "description": "V1 매일 다이제스트 봇 — 그린필드에서 GitHub Actions cron 발송 가능 상태까지",
   "related_docs": [

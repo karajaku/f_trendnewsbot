@@ -25,13 +25,14 @@ jobs:
     timeout-minutes: 10
     env:
       # Secrets (암호화 저장).
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # ADR-004 (2026-05-19): ANTHROPIC_API_KEY → GEMINI_API_KEY swap (Anthropic → Gemini provider).
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       # Variables (평문, 값 노출 OK — chat_id 음수 정수 + URL 등).
       TELEGRAM_CHAT_ID: ${{ vars.TELEGRAM_CHAT_ID }}
       OPS_ALERT_CHAT_ID: ${{ vars.OPS_ALERT_CHAT_ID }}
       PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
-      CLAUDE_MODEL_ID: ${{ vars.CLAUDE_MODEL_ID }}
+      GEMINI_MODEL_ID: ${{ vars.GEMINI_MODEL_ID }}
       PYTHONIOENCODING: utf-8
 
     steps:

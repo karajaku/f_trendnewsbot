@@ -32,12 +32,12 @@
   1. **AI 트렌드**: Anthropic/OpenAI/Google DeepMind 공식 블로그, TLDR AI, Hacker News(주요), 한국 IT 매체 AI 섹션.
   2. **농산물 유통·산지**: 농민신문, 한국농어민신문, 식품음료신문, aT 유통정보, GS리테일/이마트/쿠팡 보도자료.
   3. **팜보스 관심 키워드**: 복숭아·감·딸기 시세, 청도·경산·밀양 산지 동향, 닥터상달/과일 프랜차이즈 동향.
-- **카테고리당 5~10건 큐레이션**: Claude API로 중요도 점수화 + 한 줄 요약(2~3 문장).
+- **카테고리당 5~10건 큐레이션**: Gemini API (2.0 Flash, ADR-004) 로 중요도 점수화 + 한 줄 요약(2~3 문장).
 - **원문 링크 필수 동봉**: 각 항목마다 원문 URL·출처·발행 시각(KST) 표기.
 - **메신저 + 정적 사이트 발송 (ADR-003)**: 텔레그램 단톡방에 짧은 인덱스 알림 + GitHub Pages에 매일 1페이지씩 HTML 본문 게시. 직원이 단톡방 push 알림 → Pages URL 클릭 → 브라우저 본문 흐름. (V1에서 이메일 발송은 제외)
 - **dedup**: 최근 7일 발송 이력 저장, URL 정규화 + 제목 fuzzy match로 재발송 차단.
 - **실패 격리**: 한 소스 장애 시 해당 카테고리에 "수집 실패 N개" 메타만 표시, 나머지 정상 발송.
-- **시크릿 관리**: GitHub Actions Secrets (`ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `OPS_ALERT_CHAT_ID` 등).
+- **시크릿 관리**: GitHub Actions Secrets (`GEMINI_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `OPS_ALERT_CHAT_ID` 등).
 
 ### 제외 (의도적 — V2 이후)
 
@@ -56,7 +56,7 @@
 - **dedup 정확도**: 직원이 같은 기사를 2회 받는 사례가 월 0회. 발송 후 자가 점검 로그에서 dedup miss 0건.
 - **실패 격리**: 한 소스가 장애여도 다른 소스 발송은 정상. 다이제스트 본문에 실패 소스 노출.
 - **요약 신뢰도**: hallucination(원문에 없는 사실)이 직원 보고로 월 1건 이하. 모든 항목이 원문 링크 보유.
-- **운영 비용**: 월 Claude API 사용량 $20 이하(Haiku 기준 충분). 초과 시 즉시 사용 모델·요약 길이 조정.
+- **운영 비용**: 월 LLM API 비용 $0 (ADR-004 — Gemini 2.0 Flash 무료 tier 영구). Gemini 무료 한도 (15 RPM / 1500 RPD) 의 1% 미만 사용 예상. 무료 정책 변경 시 ADR-005 재검토.
 
 ## 비-목표
 
@@ -67,14 +67,14 @@
 
 ## 의존·제약
 
-- **외부 API**: Anthropic Claude API (요약·중요도 점수). 일일 호출·토큰 hard cap 필수.
+- **외부 API**: Google Gemini API (요약·중요도 점수, ADR-004). 일일 호출·토큰 hard cap 필수 (Gemini 무료 tier 보호선).
 - **메신저 API**: 텔레그램 Bot API (`api.telegram.org`). BotFather에서 토큰 발급. 단톡방 멤버십으로 수신자 관리.
 - **정적 호스팅**: GitHub Pages (public repo, noindex meta + robots.txt로 검색엔진 차단).
 - **외부 소스**: RSS·공개 보도자료 페이지. 사이트 구조 변경에 의해 fetcher가 깨질 수 있음 — 소스별 격리 + 실패 메트릭으로 조기 감지.
 - **인프라**: GitHub Actions cron. 무료 한도 내 운영(월 2000분 충분). 장애 시 fallback은 V2에서 검토.
 - **법·윤리**: 원문 저작권 — 다이제스트는 "제목 + 한 줄 요약 + 원문 링크" 형식 유지. 본문 전체 복사 금지.
 - **시간대**: KST 고정. cron 식은 UTC라 매번 환산 주석 필수.
-- **언어**: 다이제스트 본문은 한국어. 영어 소스는 Claude가 한국어 요약.
+- **언어**: 다이제스트 본문은 한국어. 영어 소스는 Gemini가 한국어 요약.
 - **공개 노출**: Pages가 public이라 URL 알면 누구나 접근. 사내 정보(시세·매출·인사) 본문 게시 금지. 본문은 외부 뉴스 큐레이션만.
 
 ---

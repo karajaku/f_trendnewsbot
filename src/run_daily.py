@@ -44,9 +44,10 @@ from src.summarizer.render import build_digest
 
 logger = logging.getLogger(__name__)
 
-# requirements §8 — Secrets 2 + Variables 4. CLAUDE_MODEL_ID 는 default 있어 optional.
+# requirements §8 — Secrets 2 + Variables 4. GEMINI_MODEL_ID 는 default 있어 optional.
+# ADR-004 (2026-05-19): ANTHROPIC_API_KEY → GEMINI_API_KEY swap (Anthropic → Gemini provider).
 REQUIRED_ENV_VARS: tuple[str, ...] = (
-    "ANTHROPIC_API_KEY",
+    "GEMINI_API_KEY",
     "TELEGRAM_BOT_TOKEN",
     "TELEGRAM_CHAT_ID",
     "OPS_ALERT_CHAT_ID",
@@ -65,7 +66,7 @@ class ConfigError(RuntimeError):
 def secrets_check() -> dict[str, str]:
     """필수 환경변수 5개를 검증 후 dict 반환. 누락 시 ConfigError.
 
-    `CLAUDE_MODEL_ID` 는 optional — `DEFAULT_MODEL` fallback 이 summarizer 측에 있다.
+    `GEMINI_MODEL_ID` 는 optional — `DEFAULT_MODEL` fallback 이 summarizer 측에 있다.
     """
     missing = [k for k in REQUIRED_ENV_VARS if not os.environ.get(k)]
     if missing:
@@ -133,7 +134,7 @@ def main(argv: list[str] | None = None) -> int:
         env = secrets_check()
         logger.info(
             "cron 시작 KST=%s dry_run=%s api_key=%s",
-            sent_at.isoformat(), args.dry_run, mask_key(env["ANTHROPIC_API_KEY"]),
+            sent_at.isoformat(), args.dry_run, mask_key(env["GEMINI_API_KEY"]),
         )
 
         articles, fetch_failures = fetchers_run_all(config.sources)
@@ -148,8 +149,8 @@ def main(argv: list[str] | None = None) -> int:
         )
 
         client = SummarizerClient(
-            api_key=env["ANTHROPIC_API_KEY"],
-            model=os.environ.get("CLAUDE_MODEL_ID", DEFAULT_MODEL),
+            api_key=env["GEMINI_API_KEY"],
+            model=os.environ.get("GEMINI_MODEL_ID", DEFAULT_MODEL),
         )
         system_prompt = (repo_root / "prompts" / "summarize.md").read_text(encoding="utf-8")
         summarize_result = client.summarize(by_category, system_prompt)

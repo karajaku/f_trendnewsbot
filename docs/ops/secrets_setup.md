@@ -3,7 +3,7 @@
 > 역할: f_trendnewsbot V1 첫 가동·신규 운영자 인계 시 따라가는 단계별 가이드.
 > 대상: 운영자(BotFather 토큰 발급 권한 + GitHub repo Settings 권한 보유자).
 
-`docs/canonical/ADR.md` ADR-003 (Pages + 텔레그램 발송) 의 실행 단계를 1회 셋업 기준으로 풀어 쓴 문서다. 이 가이드만 따라가면 처음 가동까지 진행할 수 있도록 단계마다 확인 체크리스트를 두었다.
+`docs/canonical/ADR.md` ADR-003 (Pages + 텔레그램 발송) + ADR-004 (Gemini 2.0 Flash LLM provider) 의 실행 단계를 1회 셋업 기준으로 풀어 쓴 문서다. 이 가이드만 따라가면 처음 가동까지 진행할 수 있도록 단계마다 확인 체크리스트를 두었다.
 
 ---
 
@@ -91,11 +91,22 @@ git checkout master
 
 `Settings` → 좌측 `Secrets and variables` → **Actions** 탭. Secrets 와 Variables 가 별도 탭이다.
 
+### Gemini API key 발급 (Secrets 등록 전 사전 작업)
+
+ADR-004 (2026-05-19) 에 따라 LLM provider 가 Anthropic Claude 에서 **Google Gemini 2.0 Flash** 로 변경됐다. 무료 tier 영구 운영.
+
+1. https://aistudio.google.com/app/apikey 접속
+2. Google 계정 로그인 (운영자 본인 계정)
+3. `Create API key` 클릭 → 신규 키 발급 (즉시, 무료)
+4. 발급된 키 (`AIzaSy...` 형태) 를 복사 — 이 값이 `GEMINI_API_KEY` 다.
+
+> ⚠ **기존 운영자 마이그레이션**: 이전에 `ANTHROPIC_API_KEY` 를 등록했다면 GitHub Secrets 에서 **삭제 후** 아래 표의 `GEMINI_API_KEY` 를 새로 추가한다. `CLAUDE_MODEL_ID` Variable 도 삭제 후 `GEMINI_MODEL_ID` 로 대체.
+
 ### Secrets (암호화 — 한 번 입력 후 다시 못 봄)
 
 | Name | Value 출처 |
 | --- | --- |
-| `ANTHROPIC_API_KEY` | Anthropic 콘솔에서 발급한 API 키 (`sk-ant-...`) |
+| `GEMINI_API_KEY` | 위 단계에서 발급한 Gemini API 키 (`AIzaSy...`) |
 | `TELEGRAM_BOT_TOKEN` | ① BotFather 에서 받은 토큰 (`123456:ABC-DEF...`) |
 
 ### Variables (평문 — 운영자가 언제든 확인 가능)
@@ -105,7 +116,7 @@ git checkout master
 | `TELEGRAM_CHAT_ID` | ② 에서 추출한 음수 정수 (예: `-1001234567890`) |
 | `OPS_ALERT_CHAT_ID` | ③ 에서 추출한 chat ID |
 | `PAGES_BASE_URL` | `https://karajaku.github.io/f_trendnewsbot` (trailing slash 없음) |
-| `CLAUDE_MODEL_ID` | `claude-haiku-4-5-20251001` |
+| `GEMINI_MODEL_ID` | `gemini-2.0-flash` |
 
 > ⚠ `TELEGRAM_CHAT_ID` 와 `OPS_ALERT_CHAT_ID` 는 **반드시 Variables 에 등록**. Secrets 에 넣으면 workflow 가 `int` 변환 단계에서 마스킹된 `***` 을 받아 실패한다.
 
@@ -145,7 +156,8 @@ dry-run 후 다음 항목이 모두 ✅ 면 step7 검증 통과:
 | `PagesPublishError(stage="verify")` | Pages 활성화 안 됨 / 1~2분 전파 지연 | ⑤ 활성화 확인. 60초 timeout 후 재시도 |
 | `TelegramSendError("auth")` | `TELEGRAM_BOT_TOKEN` 잘못 또는 봇이 revoke 됨 | ① 재발급 후 Secrets 갱신 |
 | `TelegramSendError("bad_request")` | `TELEGRAM_CHAT_ID` 잘못 (또는 봇이 단톡방에 안 초대됨) | ② 음수 정수인지 + 봇 초대 여부 확인 |
-| `QuotaExceededError` | 일일 토큰·호출 cap 초과 (`src/summarizer/quota.py`) | 정상 동작이지만 운영 검토 — 토큰 사용량 분석 후 cap 조정 |
+| `QuotaExceededError` | 일일 토큰·호출 cap 초과 (`src/summarizer/quota.py`) OR Gemini API rate limit (15 RPM / 1500 RPD) | 정상 동작이지만 운영 검토 — 토큰 사용량 또는 RPM 분석 후 cap 조정 |
+| `Gemini ... 400 invalid_request` | `GEMINI_API_KEY` 잘못 또는 만료 | https://aistudio.google.com/app/apikey 에서 재발급 후 GitHub Secrets 갱신 |
 
 cron 자동 실행에서 위 에러가 발생하면 운영자 chat 으로 자동 alert 가 도착한다 (`src/dispatchers/ops_alert.py`, retry 0회 — 무한루프 방지).
 

@@ -1,6 +1,7 @@
 """`src.summarizer` 단위 테스트 — step5.md AC 매핑.
 
-전부 mock 기반. 실제 Anthropic API 호출은 금지 (step5 수동 테스트 절차 §1~5 + step8 dry-run).
+전부 mock 기반. 실제 Gemini API 호출은 금지 (step5 수동 테스트 절차 §1~5 + step8 dry-run).
+ADR-004 (2026-05-19): Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash swap. mock 구조도 동기.
 
 매핑:
     AC-5.5 input cap → test_quota_raises_on_input_tokens_cap
@@ -9,6 +10,7 @@
     AC-2.10·2.12 mock 응답 JSON 파싱 → test_client_summarize_parses_mock_response
     AC-2.10 markdown fence 처리 → test_client_summarize_parses_markdown_fence
     AC-2.10·2.12 schema 위반 폐기 → test_client_summarize_drops_schema_violations
+    AC-5.3 rate limit → QuotaExceededError → test_client_summarize_maps_rate_limit_to_quota_exceeded
     AC-2.10 score→priority 매핑 → test_render_priority_mapping
     AC-2.11 TL;DR 1건 → test_render_tldr_with_priority_3
     AC-2.11 TL;DR 0건 fallback → test_render_tldr_fallback_when_no_priority_3
@@ -23,12 +25,11 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
-from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-from src.fetchers.base import Article, Failure
+from src.fetchers.base import Article
 from src.lib.time_helper import KST
 from src.lib.url_helper import canonicalize
 from src.summarizer.client import (
@@ -38,8 +39,6 @@ from src.summarizer.client import (
 )
 from src.summarizer.quota import (
     HARD_CAP_CALLS,
-    HARD_CAP_INPUT_TOKENS,
-    HARD_CAP_OUTPUT_TOKENS,
     QuotaExceededError,
     QuotaTracker,
 )
@@ -76,17 +75,19 @@ def _make_article(
     )
 
 
-def _make_mock_anthropic_response(
+def _make_mock_gemini_response(
     items_payload: list[dict],
     category_headlines: dict[str, str] | None = None,
     *,
-    input_tokens: int = 5000,
+    prompt_tokens: int = 5000,
     output_tokens: int = 1200,
-    cache_read: int = 0,
-    cache_creation: int = 0,
     wrap_fence: bool = False,
 ) -> MagicMock:
-    """Anthropic SDK `messages.create` 응답 객체 mock — usage·content 둘 다 채움."""
+    """google-genai `models.generate_content` 응답 객체 mock.
+
+    `response.text` 와 `response.usage_metadata.prompt_token_count / candidates_token_count`
+    구조를 흉내냄 (google-genai 2.4+ 인터페이스).
+    """
     payload = {
         "items": items_payload,
         "category_headlines": category_headlines
@@ -97,12 +98,10 @@ def _make_mock_anthropic_response(
         text_body = f"```json\n{text_body}\n```"
 
     resp = MagicMock()
-    resp.content = [MagicMock(text=text_body)]
-    resp.usage = MagicMock(
-        input_tokens=input_tokens,
-        output_tokens=output_tokens,
-        cache_creation_input_tokens=cache_creation,
-        cache_read_input_tokens=cache_read,
+    resp.text = text_body
+    resp.usage_metadata = MagicMock(
+        prompt_token_count=prompt_tokens,
+        candidates_token_count=output_tokens,
     )
     return resp
 
@@ -210,13 +209,13 @@ def _make_articles_simple() -> dict[str, list[Article]]:
 
 
 def test_client_summarize_parses_mock_response() -> None:
-    """Anthropic 응답을 JSON 으로 파싱해 `SummarizeResult` 반환."""
+    """Gemini 응답을 JSON 으로 파싱해 `SummarizeResult` 반환."""
     arts = _make_articles_simple()
     items_payload = [
         {
             "id": arts["ai_trend"][0].canonical_url,
             "score": 9,
-            "summary": "Anthropic 신모델 출시.",
+            "summary": "Google Gemini 신모델 출시.",
             "company_impact": "본 봇 운영 비용 영향 가능성.",
         },
         {
@@ -237,11 +236,11 @@ def test_client_summarize_parses_mock_response() -> None:
         "agri_distribution": "GS·쿠팡 산지·콜드체인 확장.",
         "farmboss_keyword": "",
     }
-    mock_resp = _make_mock_anthropic_response(items_payload, headlines)
+    mock_resp = _make_mock_gemini_response(items_payload, headlines)
 
-    with patch("src.summarizer.client.Anthropic") as MockAnthropic:
-        MockAnthropic.return_value.messages.create.return_value = mock_resp
-        client = SummarizerClient(api_key="sk-ant-test-key-1234")
+    with patch("src.summarizer.client.genai.Client") as MockClient:
+        MockClient.return_value.models.generate_content.return_value = mock_resp
+        client = SummarizerClient(api_key="test-gemini-key-1234")
         result = client.summarize(arts, system_prompt="(system prompt body)")
 
     assert len(result.items) == 3
@@ -253,7 +252,7 @@ def test_client_summarize_parses_mock_response() -> None:
 
 
 def test_client_summarize_parses_markdown_fence() -> None:
-    """응답이 ```json ... ``` 로 감싸져도 fence 제거 후 파싱."""
+    """응답이 ```json ... ``` 로 감싸져도 fence 제거 후 파싱 (방어선)."""
     arts = _make_articles_simple()
     items_payload = [
         {
@@ -263,12 +262,12 @@ def test_client_summarize_parses_markdown_fence() -> None:
             "company_impact": "",
         },
     ]
-    mock_resp = _make_mock_anthropic_response(
+    mock_resp = _make_mock_gemini_response(
         items_payload, wrap_fence=True,
     )
-    with patch("src.summarizer.client.Anthropic") as MockAnthropic:
-        MockAnthropic.return_value.messages.create.return_value = mock_resp
-        client = SummarizerClient(api_key="sk-ant-test-key-1234")
+    with patch("src.summarizer.client.genai.Client") as MockClient:
+        MockClient.return_value.models.generate_content.return_value = mock_resp
+        client = SummarizerClient(api_key="test-gemini-key-1234")
         result = client.summarize(arts, system_prompt="(prompt)")
 
     assert len(result.items) == 1
@@ -314,14 +313,37 @@ def test_client_summarize_drops_schema_violations() -> None:
             "company_impact": 42,
         },
     ]
-    mock_resp = _make_mock_anthropic_response(items_payload)
-    with patch("src.summarizer.client.Anthropic") as MockAnthropic:
-        MockAnthropic.return_value.messages.create.return_value = mock_resp
-        client = SummarizerClient(api_key="sk-ant-test-key-1234")
+    mock_resp = _make_mock_gemini_response(items_payload)
+    with patch("src.summarizer.client.genai.Client") as MockClient:
+        MockClient.return_value.models.generate_content.return_value = mock_resp
+        client = SummarizerClient(api_key="test-gemini-key-1234")
         result = client.summarize(arts, system_prompt="(prompt)")
 
     assert len(result.items) == 1
     assert result.dropped_items == 4
+
+
+def test_client_summarize_maps_rate_limit_to_quota_exceeded() -> None:
+    """Gemini API rate limit (429 / RESOURCE_EXHAUSTED) → `QuotaExceededError` 매핑 (AC-5.3).
+
+    `run_daily.py` 의 `except QuotaExceededError` 분기가 받아 exit 2 + ops_alert.
+    """
+    from google.genai import errors as genai_errors
+
+    arts = _make_articles_simple()
+    err = genai_errors.ClientError(
+        429,
+        {"error": {"message": "Quota exceeded for model gemini-2.0-flash",
+                   "status": "RESOURCE_EXHAUSTED"}},
+    )
+
+    with patch("src.summarizer.client.genai.Client") as MockClient:
+        MockClient.return_value.models.generate_content.side_effect = err
+        client = SummarizerClient(api_key="test-gemini-key-1234")
+        with pytest.raises(QuotaExceededError) as exc_info:
+            client.summarize(arts, system_prompt="(prompt)")
+
+    assert "quota" in str(exc_info.value).lower() or "rate limit" in str(exc_info.value).lower()
 
 
 # ---------- render tests ----------

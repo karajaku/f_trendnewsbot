@@ -1,15 +1,19 @@
-"""Anthropic Claude SDK wrapper — Prompt caching + 단일 호출(점수+요약+회사 영향+카테고리 핵심).
+"""Google Gemini 2.0 Flash SDK wrapper — 단일 호출(점수+요약+회사 영향+카테고리 핵심).
 
 CRITICAL #4 (시크릿 평문 노출 금지) · CRITICAL #9 (quota hard cap) 의 코드 측 방어선.
 
-설계:
-    - `prompts/summarize.md` 본문을 system message 로 + `cache_control: ephemeral` 적용
-      (tech-research §3-2). 회사 컨텍스트가 길어 caching 효율이 큼.
-    - user message 는 카테고리별 articles 를 JSON 으로 직렬화. canonical_url 을 `id` 로
+설계 (ADR-004, 2026-05-19 — Anthropic Claude Haiku 4.5 → Gemini 2.0 Flash swap):
+    - `prompts/summarize.md` 본문을 `system_instruction` 으로 전달. 회사 컨텍스트가 길지만
+      Gemini 무료 tier 라 prompt caching 미사용 (V1.1 에서 Context Caching API 검토).
+    - user contents 는 카테고리별 articles 를 JSON 으로 직렬화. canonical_url 을 `id` 로
       전달 — 응답 `items[].id` 와 1:1 매칭.
-    - 응답은 단일 JSON object. markdown fence(```json ... ```) 감싸짐도 처리.
+    - 응답은 단일 JSON object — Gemini JSON mode (`response_mime_type="application/json"`
+      + `response_schema`) 로 schema 강제. markdown fence(```json ... ```) 감싸짐은 거의
+      없지만 방어선으로 헬퍼 유지.
     - schema 위반 항목은 폐기 + `dropped_items` 누적 — 전체 응답 폐기는 금지(부분 성공).
     - 토큰 누적은 `QuotaTracker.check_and_record` 1회 호출 — cap 초과 시 raise.
+    - rate limit / quota 초과 (`google.genai.errors.ClientError` 4xx 중 429) → 우리
+      `QuotaExceededError` 로 매핑 → run_daily.py 의 exit 2 분기에 도달 (AC-5.3).
 
 본 모듈은 dispatcher 로직(Pages publish · 텔레그램 send)을 호출하지 않는다 — step6.
 """
@@ -23,29 +27,61 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from anthropic import Anthropic
+from google import genai
+from google.genai import errors as genai_errors
+from google.genai import types as genai_types
 
 from src.fetchers.base import Article
 from src.lib.logging_setup import mask_key
 
-from .quota import QuotaTracker
+from .quota import QuotaExceededError, QuotaTracker
 
 logger = logging.getLogger(__name__)
 
 # requirements §8 — env var 미지정 시 default.
-DEFAULT_MODEL: str = "claude-haiku-4-5-20251001"
+DEFAULT_MODEL: str = "gemini-2.0-flash"
 
-# Anthropic SDK max_tokens — output cap 20k 이내 (AC-5.5).
-DEFAULT_MAX_TOKENS: int = 4096
+# Gemini max_output_tokens — output cap 20k 이내 (AC-5.5).
+DEFAULT_MAX_OUTPUT_TOKENS: int = 4096
 
 # 카테고리 3종 — filters/pipeline.CATEGORIES 와 같은 단일 진실(렌더와 공유).
 CATEGORIES: tuple[str, ...] = ("ai_trend", "agri_distribution", "farmboss_keyword")
 
-# 응답이 markdown fence 로 감싸질 때 본문 추출.
+# 응답이 markdown fence 로 감싸질 때 본문 추출 (Gemini JSON mode 가 대부분 막지만 방어선).
 _FENCE_PATTERN = re.compile(
     r"```(?:json)?\s*\n?(.*?)\n?```",
     re.DOTALL | re.IGNORECASE,
 )
+
+# Gemini JSON mode response_schema — items[].{id,score,summary,company_impact} +
+# category_headlines.{ai_trend,agri_distribution,farmboss_keyword}.
+_RESPONSE_SCHEMA: dict[str, Any] = {
+    "type": "OBJECT",
+    "properties": {
+        "items": {
+            "type": "ARRAY",
+            "items": {
+                "type": "OBJECT",
+                "properties": {
+                    "id": {"type": "STRING"},
+                    "score": {"type": "INTEGER"},
+                    "summary": {"type": "STRING"},
+                    "company_impact": {"type": "STRING"},
+                },
+                "required": ["id", "score", "summary", "company_impact"],
+            },
+        },
+        "category_headlines": {
+            "type": "OBJECT",
+            "properties": {
+                "ai_trend": {"type": "STRING"},
+                "agri_distribution": {"type": "STRING"},
+                "farmboss_keyword": {"type": "STRING"},
+            },
+        },
+    },
+    "required": ["items", "category_headlines"],
+}
 
 
 @dataclass(frozen=True)
@@ -101,7 +137,7 @@ def load_system_prompt(root: Path | None = None) -> str:
 def _strip_markdown_fence(text: str) -> str:
     """모델 응답이 ```json ... ``` 로 감싸졌으면 안쪽만 추출. 없으면 원문 반환.
 
-    회귀 위험: tech-research §3-2 에 명시된 fence 감싸짐 (Haiku 가 가끔 발생).
+    Gemini JSON mode 가 fence 없는 raw JSON 을 보장하지만, 방어선으로 유지.
     """
     if not isinstance(text, str):
         return text  # type: ignore[return-value]
@@ -141,15 +177,15 @@ def _parse_response_json(raw_text: str) -> dict[str, Any]:
         RuntimeError — 전체 응답 JSON 파싱 실패 (빈 응답 포함).
     """
     if not raw_text or not raw_text.strip():
-        raise RuntimeError("Claude 응답이 비어있습니다.")
+        raise RuntimeError("Gemini 응답이 비어있습니다.")
     cleaned = _strip_markdown_fence(raw_text)
     try:
         parsed = json.loads(cleaned)
     except json.JSONDecodeError as e:
-        raise RuntimeError(f"Claude 응답 JSON 파싱 실패: {e}") from e
+        raise RuntimeError(f"Gemini 응답 JSON 파싱 실패: {e}") from e
     if not isinstance(parsed, dict):
         raise RuntimeError(
-            f"Claude 응답 최상위가 object 가 아닙니다 (got {type(parsed).__name__})."
+            f"Gemini 응답 최상위가 object 가 아닙니다 (got {type(parsed).__name__})."
         )
     return parsed
 
@@ -287,18 +323,38 @@ def _validate_category_headlines(raw_headlines: Any) -> dict[str, str]:
     return out
 
 
+def _is_quota_or_rate_limit_error(exc: Exception) -> bool:
+    """Gemini API 의 quota / rate limit 에러 판별.
+
+    google.genai.errors.ClientError 의 code/status 4xx 중 429 (rate limit)
+    또는 RESOURCE_EXHAUSTED 상태. message 본문에 "quota" / "rate limit" 키워드 fallback.
+    """
+    code = getattr(exc, "code", None) or getattr(exc, "status_code", None)
+    if code == 429:
+        return True
+    status = getattr(exc, "status", None)
+    if isinstance(status, str) and "RESOURCE_EXHAUSTED" in status.upper():
+        return True
+    message = str(exc).lower()
+    if "quota" in message or "rate limit" in message or "resource_exhausted" in message:
+        return True
+    return False
+
+
 class SummarizerClient:
-    """Anthropic Claude wrapper — 단일 호출에 점수·요약·회사 영향·카테고리 핵심 동시 출력.
+    """Google Gemini wrapper — 단일 호출에 점수·요약·회사 영향·카테고리 핵심 동시 출력.
 
     Args:
-        api_key: Anthropic API key. mask_key 통해 prefix 만 로그.
-        model: Claude model ID. 기본 `DEFAULT_MODEL` (env `CLAUDE_MODEL_ID` 로 override 는
+        api_key: Gemini API key. mask_key 통해 prefix 만 로그.
+        model: Gemini model ID. 기본 `DEFAULT_MODEL` (env `GEMINI_MODEL_ID` 로 override 는
             상위 호출자가 처리 — 본 클래스는 받은 값 사용).
         quota: 일일 cap 추적. 미지정 시 새 인스턴스 생성 (테스트·dry-run 용도).
-        max_tokens: 응답 최대 토큰. 기본 4096.
+        max_output_tokens: 응답 최대 토큰. 기본 4096.
 
     Notes:
-        - system prompt 에 `cache_control: ephemeral` 적용 — 두 번째 호출부터 비용 절감.
+        - Gemini JSON mode 로 `response_schema` 강제 — Anthropic 의 prompt caching
+          (`cache_control: ephemeral`) 은 제거 (ADR-004). V1.1 에서 Context Caching API
+          (`client.caches.create`) 검토.
         - 본 클래스는 dispatcher 를 호출하지 않는다 (step6 dispatcher 가 별도 모듈).
     """
 
@@ -307,24 +363,24 @@ class SummarizerClient:
         api_key: str,
         model: str = DEFAULT_MODEL,
         quota: QuotaTracker | None = None,
-        max_tokens: int = DEFAULT_MAX_TOKENS,
+        max_output_tokens: int = DEFAULT_MAX_OUTPUT_TOKENS,
     ) -> None:
         if not isinstance(api_key, str) or not api_key.strip():
             raise ValueError("api_key 는 비어있지 않은 문자열이어야 합니다.")
         if not isinstance(model, str) or not model.strip():
             raise ValueError("model 은 비어있지 않은 문자열이어야 합니다.")
-        if not isinstance(max_tokens, int) or max_tokens <= 0:
-            raise ValueError("max_tokens 는 양의 정수이어야 합니다.")
+        if not isinstance(max_output_tokens, int) or max_output_tokens <= 0:
+            raise ValueError("max_output_tokens 는 양의 정수이어야 합니다.")
 
         # 시크릿 평문 로그 금지 — prefix 만 노출 (AC-7.2).
         logger.info(
             "SummarizerClient init — model=%s key_prefix=%s",
             model, mask_key(api_key),
         )
-        self.client = Anthropic(api_key=api_key)
+        self.client = genai.Client(api_key=api_key)
         self.model = model
         self.quota = quota if quota is not None else QuotaTracker()
-        self.max_tokens = max_tokens
+        self.max_output_tokens = max_output_tokens
 
     def summarize(
         self,
@@ -341,7 +397,7 @@ class SummarizerClient:
             SummarizeResult — items + category_headlines + dropped_items + 토큰 누적.
 
         Raises:
-            QuotaExceededError: quota cap 초과.
+            QuotaExceededError: quota cap 초과 또는 Gemini API rate limit / quota 초과.
             RuntimeError: 응답 JSON 파싱 실패 또는 빈 응답.
         """
         if not isinstance(articles_by_category, dict):
@@ -358,52 +414,52 @@ class SummarizerClient:
         user_text = _serialize_articles_for_user_message(articles_by_category)
 
         logger.info(
-            "Claude API call — model=%s items=%d categories=%d",
+            "Gemini API call — model=%s items=%d categories=%d",
             self.model, len(valid_ids), len(CATEGORIES),
         )
 
-        # Prompt caching: system 영역을 list-of-blocks 형식으로 전달 + cache_control.
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=self.max_tokens,
-            system=[
-                {
-                    "type": "text",
-                    "text": system_prompt,
-                    "cache_control": {"type": "ephemeral"},
-                }
-            ],
-            messages=[
-                {
-                    "role": "user",
-                    "content": user_text,
-                }
-            ],
+        # Gemini JSON mode + system_instruction. ADR-004: prompt caching 없음.
+        config = genai_types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            response_mime_type="application/json",
+            response_schema=_RESPONSE_SCHEMA,
+            max_output_tokens=self.max_output_tokens,
         )
 
-        # 토큰 사용량 추출 — Anthropic SDK 의 usage 객체.
-        usage = getattr(response, "usage", None)
-        tokens_in = int(getattr(usage, "input_tokens", 0) or 0)
-        tokens_out = int(getattr(usage, "output_tokens", 0) or 0)
-        # cache 관련 토큰도 input 누적에 포함 (운영자 가시성용).
-        cache_creation = int(getattr(usage, "cache_creation_input_tokens", 0) or 0)
-        cache_read = int(getattr(usage, "cache_read_input_tokens", 0) or 0)
-        total_input_for_cap = tokens_in + cache_creation + cache_read
+        try:
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=user_text,
+                config=config,
+            )
+        except (genai_errors.ClientError, genai_errors.ServerError) as e:
+            if _is_quota_or_rate_limit_error(e):
+                raise QuotaExceededError(
+                    f"Gemini API quota / rate limit 초과: {e}"
+                ) from e
+            raise
+
+        # 토큰 사용량 추출 — google-genai 의 usage_metadata.
+        usage = getattr(response, "usage_metadata", None)
+        tokens_in = int(getattr(usage, "prompt_token_count", 0) or 0)
+        tokens_out = int(getattr(usage, "candidates_token_count", 0) or 0)
 
         # quota 체크 — cap 초과 시 raise (누적 미반영).
-        self.quota.check_and_record(total_input_for_cap, tokens_out)
+        self.quota.check_and_record(tokens_in, tokens_out)
 
-        # 응답 본문 추출 — content[0].text.
-        content = getattr(response, "content", None) or []
-        if not content:
-            raise RuntimeError("Claude 응답 content 가 비어있습니다.")
-        raw_text = ""
-        for block in content:
-            text = getattr(block, "text", None)
-            if isinstance(text, str):
-                raw_text += text
+        # 응답 본문 추출 — google-genai 의 response.text 우선, 없으면 candidates 순회.
+        raw_text = getattr(response, "text", None) or ""
+        if not raw_text:
+            candidates = getattr(response, "candidates", None) or []
+            for cand in candidates:
+                content = getattr(cand, "content", None)
+                parts = getattr(content, "parts", None) or []
+                for part in parts:
+                    text = getattr(part, "text", None)
+                    if isinstance(text, str):
+                        raw_text += text
         if not raw_text.strip():
-            raise RuntimeError("Claude 응답 content 에 text 가 없습니다.")
+            raise RuntimeError("Gemini 응답 content 에 text 가 없습니다.")
 
         parsed = _parse_response_json(raw_text)
 
@@ -411,14 +467,14 @@ class SummarizerClient:
         category_headlines = _validate_category_headlines(parsed.get("category_headlines"))
 
         logger.info(
-            "summarizer result — valid=%d dropped=%d tokens_in=%d tokens_out=%d cache_read=%d",
-            len(items), dropped, total_input_for_cap, tokens_out, cache_read,
+            "summarizer result — valid=%d dropped=%d tokens_in=%d tokens_out=%d",
+            len(items), dropped, tokens_in, tokens_out,
         )
 
         return SummarizeResult(
             items=items,
             category_headlines=category_headlines,
             dropped_items=dropped,
-            tokens_in=total_input_for_cap,
+            tokens_in=tokens_in,
             tokens_out=tokens_out,
         )
