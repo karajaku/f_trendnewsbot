@@ -29,6 +29,7 @@
 | `docs/AGENT_READ_ORDER.md` | 작업 유형별 최소 읽기 순서 | Claude prompt 구성 |
 | `phases/index.json` | phase 라우팅 source of truth | 이어받기/다음 단계 판단 |
 | `docs/PHASE_MAP.md` | 사람용 phase 라이프사이클 요약 | 진행 상황 점검·onboarding |
+| `docs/implementation_status.md` | 시스템 단위 운영 현황 인벤토리 (V1/V2 상태·마지막 phase·verification record 링크) | "지금 무엇이 운영 중인가" 30초 파악 |
 | `docs/design_review_questions.md` | Stage 2 Concept 검토 결과 누적 | Stage 4 requirements 진입 직전 충돌 확인 |
 
 ## Canonical Contracts

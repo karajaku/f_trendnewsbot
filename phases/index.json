@@ -2,7 +2,7 @@
   "phases": [
     {
       "dir": "01-mvp-daily-digest",
-      "status": "in_progress",
+      "status": "completed",
       "feature_group": "daily_digest",
       "description": "V1 매일 다이제스트 봇 — 그린필드에서 GitHub Actions cron 발송 가능 상태까지",
       "related_docs": [
@@ -19,8 +19,9 @@
       "archive_target": true,
       "created_at": "2026-05-19",
       "resumed_at": "2026-05-19",
-      "resume_note": "phase 02-gemini-swap 종료 후 재개. step7 (workflow + secrets) 은 phase 02 step4 dry-run 6회차로 동일 검증 → completed. active_step 7 → 8.",
+      "completed_at": "2026-05-19",
       "active_step": 8,
+      "verification_record": "docs/history/daily_digest/daily_digest_v1-manual-verification-record.md",
       "pending_manual_qa_scenarios": []
     },
     {
