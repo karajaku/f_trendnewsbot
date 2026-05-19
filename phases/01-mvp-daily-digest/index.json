@@ -83,10 +83,12 @@
     {
       "step": 7,
       "file": "step7.md",
-      "status": "pending",
+      "status": "implemented_pending_manual_qa",
       "summary": "run_daily.py 통합 + GitHub Actions workflow(cron + Pages 권한 + workflow_dispatch) + Secrets 등록 가이드 + Pages 활성화 가이드",
       "qa_blocking": true,
-      "maps_to_ac": ["AC-1.1", "AC-1.4", "AC-1.5", "AC-7.1", "AC-7.2", "AC-7.3"]
+      "maps_to_ac": ["AC-1.1", "AC-1.4", "AC-1.5", "AC-7.1", "AC-7.2", "AC-7.3"],
+      "implemented_at": "2026-05-19",
+      "manual_qa_pending": "운영자 액션 필요 — ① BotFather 토큰 발급 ② 단톡방 chat_id 2개 추출 ③ GitHub Secrets/Variables 6개 등록 ④ Actions tab Run workflow dry_run=true → 운영자 단톡방·Pages URL 도착 확인 (secrets_setup.md §확인 체크리스트 6항목)"
     },
     {
       "step": 8,
