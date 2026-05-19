@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "f-trendnewsbot"
+version = "0.1.0"
+description = "팜보스 매일 아침 AI·농산물 유통 트렌드 뉴스 자동 큐레이션 봇"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Proprietary" }
+authors = [{ name = "Farmboss Operations" }]
+
+# requirements.md §3-6 (의존 시스템 내부 의존 6종) 동결 — Python ≥ 3.12 + 외부 패키지 6개
+dependencies = [
+    "anthropic>=0.40.0",
+    "feedparser>=6.0.11",
+    "requests>=2.32.0",
+    "beautifulsoup4>=4.12.3",
+    "pyyaml>=6.0.2",
+    "python-dateutil>=2.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+strict = false
+ignore_missing_imports = true
