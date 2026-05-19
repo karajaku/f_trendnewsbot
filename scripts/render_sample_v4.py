@@ -269,7 +269,6 @@ def main() -> None:
         fetch_failures=failures,
         sent_at_kst=sent_at,
         sources_total=12,
-        pages_url_template="https://farmboss-trend.github.io/digest/2026-05-19/",
     )
 
     out_path = Path(__file__).resolve().parent.parent / "samples" / "2026-05-19-digest-preview-v4-from-render.html"

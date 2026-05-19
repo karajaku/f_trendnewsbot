@@ -167,7 +167,6 @@ def main(argv: list[str] | None = None) -> int:
             fetch_failures=fetch_failures,
             sent_at_kst=sent_at,
             sources_total=len(config.sources),
-            pages_url_template=env["PAGES_BASE_URL"].rstrip("/"),
         )
 
         # AC-5.6: Pages publish 성공 후에만 텔레그램 발송.

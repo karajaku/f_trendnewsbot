@@ -563,11 +563,14 @@ def _render_telegram_text(
     tldr_items: list[RenderedItem],
     by_category: dict[str, list[RenderedItem]],
     total_count: int,
-    pages_url: str,
 ) -> str:
     """텔레그램 인덱스 메시지 — AC-2.3-A form.
 
     `disable_web_page_preview=true` 는 dispatcher 측에서 설정.
+    `전체 본문: {pages_url}` 풋터 라인은 dispatcher (telegram_send._build_text) 가
+    final pages_url 로 단일 책임 추가한다 — render 시점에는 final URL 미확정
+    (Pages publish 가 그 뒤에 실행됨, AC-5.6 순서). 2026-05-19 핫픽스: render
+    가 base_url 을 박아넣어 final URL 과 중복 라인이 발송되던 회귀 해소.
     """
     lines: list[str] = [subject, failure_line, ""]
 
@@ -600,8 +603,7 @@ def _render_telegram_text(
             lines.append(f"  • {stars} {first.article.title}")
     lines.append("")
 
-    if pages_url:
-        lines.append(f"전체 본문: {pages_url}")
+    # 풋터의 `전체 본문: {pages_url}` 라인은 dispatcher 가 단일 책임 추가.
     lines.append("의견·소스 제안은 단톡방 답글로.")
 
     text = "\n".join(lines)
@@ -629,7 +631,6 @@ def build_digest(
     fetch_failures: list[Failure],
     sent_at_kst: datetime,
     sources_total: int,
-    pages_url_template: str = "",
 ) -> RenderedDigest:
     """애플 감성 v3 HTML + 텔레그램 인덱스 동시 생성.
 
@@ -639,11 +640,15 @@ def build_digest(
         fetch_failures: fetchers.runner.run_all 결과 failures.
         sent_at_kst: 발송 시각 (KST tz-aware).
         sources_total: 전체 소스 수 (성공+실패 합).
-        pages_url_template: step6 dispatcher 가 채우는 Pages URL. render 시점에는
-            placeholder 가능. 빈 문자열이면 텔레그램 본문에 URL 라인 생략.
 
     Returns:
         RenderedDigest — html / telegram_text / subject / by_category 등.
+
+    Note:
+        `전체 본문: {pages_url}` 풋터 라인은 본 함수가 생성하지 않는다 — Pages
+        publish 가 build_digest 뒤에 실행되어 final URL 이 render 시점에 미확정
+        (AC-5.6 순서). dispatcher (`telegram_send._build_text`) 가 final
+        pages_url 로 단일 책임 추가한다.
     """
     if sent_at_kst.tzinfo is None:
         raise ValueError("sent_at_kst 는 tz-aware 이어야 합니다.")
@@ -677,7 +682,6 @@ def build_digest(
         tldr_items,
         rendered,
         item_count,
-        pages_url_template,
     )
 
     meta: dict[str, Any] = {

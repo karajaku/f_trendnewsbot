@@ -475,6 +475,9 @@ class TestTelegramSend:
         assert "text" in payload
         # text 안에 pages_url 풋터가 부착됐는지 — render 와 dispatcher 가 같은 helper(_build_text) 공유.
         assert "https://example.com/d.html" in payload["text"]
+        # 2026-05-19 회귀 방지: render 가 base_url 라인을 박지 않으므로 `전체 본문` 풋터는
+        # dispatcher 한 곳에서만 단일 책임 추가 → 본문 전체에 정확히 1번만 등장.
+        assert payload["text"].count("전체 본문:") == 1
 
 
 # ===========================================================================
