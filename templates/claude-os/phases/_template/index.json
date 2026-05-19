@@ -1,0 +1,26 @@
+{
+  "phase": "{phase-name}",
+  "status": "pending",
+  "feature_group": "{group}",
+  "description": "{이 phase가 달성하려는 것 — 한 줄}",
+  "related_docs": [
+    "docs/features/{group}/{feature}-brief.md",
+    "docs/features/{group}/{feature}-requirements.md"
+  ],
+  "depends_on": [],
+  "blocks": [],
+  "manual_qa_required": true,
+  "archive_target": false,
+  "created_at": "{ISO-8601}",
+  "active_step": 0,
+  "pending_manual_qa_scenarios": [],
+  "steps": [
+    {
+      "step": 0,
+      "file": "step0.md",
+      "status": "pending",
+      "summary": "{step 목표 한 줄}",
+      "qa_blocking": false
+    }
+  ]
+}

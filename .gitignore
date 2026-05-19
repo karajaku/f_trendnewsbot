@@ -1,0 +1,57 @@
+# ====== 시크릿 (CRITICAL — 절대 커밋 금지) ======
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+credentials.yml
+secrets.yml
+secrets.json
+config/recipients.yml
+!config/recipients.example.yml
+
+# ====== Python ======
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+downloads/
+*.egg-info/
+*.egg
+.eggs/
+.installed.cfg
+
+# 가상환경
+.venv/
+venv/
+env/
+.python-version
+
+# 테스트·타입체크 캐시
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# ====== 운영 산출물 (개발 중 생성) ======
+logs/
+*.log
+history/sent.jsonl
+history/*.jsonl
+.cache/
+
+# ====== IDE / OS ======
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
