@@ -50,10 +50,19 @@
     {
       "step": 4,
       "file": "step4.md",
-      "status": "pending",
+      "status": "implemented_pending_manual_qa",
       "summary": "tests/summarizer 회귀 + dry-run 검증 (qa_blocking: 사용자가 Gemini API key 발급 후 Actions 실행)",
       "qa_blocking": true,
-      "maps_to_ac": ["AC-1.3", "Phase DoD 전체"]
+      "maps_to_ac": ["AC-1.3", "Phase DoD 전체"],
+      "auto_validation": {
+        "pytest": "100 passed (2026-05-19)",
+        "ruff": "All checks passed (2026-05-19)",
+        "mypy": "Success: no issues found in 34 source files (2026-05-19, dispatcher 3건 회귀 핫픽스 후)",
+        "workflow_yml": "yaml.safe_load OK, GEMINI_API_KEY/GEMINI_MODEL_ID 등장 확인 (2026-05-19)"
+      },
+      "hotfixes_during_step": [
+        "phases/_hotfix-log/2026-05-19-dispatcher-mypy-typing.md — dispatcher 3건 mypy 회귀 (base.py type-only import + payload dict[str, Any] 명시). phase 02 swap 무관, phase 01 step6 잔여 회귀."
+      ]
     }
   ]
 }
