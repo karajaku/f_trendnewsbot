@@ -57,6 +57,7 @@ _VALID_FILTERS_YML = dedent(
       time_window_hours: 36
       fuzzy_title_threshold: 0.85
       dedup_days: 7
+      max_items: 10
     """
 )
 
@@ -334,3 +335,32 @@ def test_load_sources_missing_required_field(tmp_path: Path) -> None:
     with pytest.raises(ConfigError) as exc:
         load_sources(fp)
     assert "url" in str(exc.value)
+
+
+# ---------- 10. global.max_items 검증 (phase 03) ----------
+
+
+@pytest.mark.parametrize("bad_value", ["0", "-1", "1.5", '"열"'])
+def test_load_filters_max_items_invalid(tmp_path: Path, bad_value: str) -> None:
+    """global.max_items 가 1 미만·비정수면 ConfigError (phase 03)."""
+    body = _VALID_FILTERS_YML.replace("max_items: 10", f"max_items: {bad_value}")
+    fp = _write_filters(tmp_path / "filters.yml", body)
+    with pytest.raises(ConfigError) as exc:
+        load_filters(fp)
+    assert "max_items" in str(exc.value)
+
+
+def test_load_filters_max_items_missing(tmp_path: Path) -> None:
+    """global.max_items 누락 시 ConfigError (phase 03)."""
+    body = _VALID_FILTERS_YML.replace("  max_items: 10\n", "")
+    fp = _write_filters(tmp_path / "filters.yml", body)
+    with pytest.raises(ConfigError) as exc:
+        load_filters(fp)
+    assert "max_items" in str(exc.value)
+
+
+def test_load_filters_max_items_valid(tmp_path: Path) -> None:
+    """정상 max_items 는 GlobalFilters 에 그대로 실린다 (phase 03)."""
+    fp = _write_filters(tmp_path / "filters.yml")
+    filters = load_filters(fp)
+    assert filters.global_filters.max_items == 10

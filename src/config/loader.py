@@ -90,6 +90,7 @@ class GlobalFilters:
     time_window_hours: int
     fuzzy_title_threshold: float
     dedup_days: int
+    max_items: int  # 일일 발송 글로벌 상한 (score 상위 N건) — phase 03.
 
 
 @dataclass(frozen=True)
@@ -288,6 +289,7 @@ def load_filters(path: Path) -> Filters:
         - `global.time_window_hours` 양의 정수.
         - `global.fuzzy_title_threshold` ∈ [0.0, 1.0].
         - `global.dedup_days` 양의 정수.
+        - `global.max_items` 양의 정수 (`>= 1`).
     """
     data = _read_yaml(path)
     root = _require_mapping(data, path, "filters.yml 최상위")
@@ -355,7 +357,9 @@ def load_filters(path: Path) -> Filters:
     if not isinstance(raw_global, dict):
         raise ConfigError(str(path), None, "`global` 키는 mapping 이어야 합니다.")
 
-    for required_field in ("time_window_hours", "fuzzy_title_threshold", "dedup_days"):
+    for required_field in (
+        "time_window_hours", "fuzzy_title_threshold", "dedup_days", "max_items",
+    ):
         if required_field not in raw_global:
             raise ConfigError(
                 str(path), None, f"global.{required_field} 필수 필드 누락"
@@ -364,6 +368,7 @@ def load_filters(path: Path) -> Filters:
     twh = raw_global["time_window_hours"]
     ftt = raw_global["fuzzy_title_threshold"]
     dd = raw_global["dedup_days"]
+    mi = raw_global["max_items"]
 
     if not isinstance(twh, int) or isinstance(twh, bool) or twh <= 0:
         raise ConfigError(
@@ -383,6 +388,10 @@ def load_filters(path: Path) -> Filters:
         raise ConfigError(
             str(path), None, f"global.dedup_days 는 양의 정수이어야 합니다 (got {dd!r})."
         )
+    if not isinstance(mi, int) or isinstance(mi, bool) or mi < 1:
+        raise ConfigError(
+            str(path), None, f"global.max_items 는 1 이상의 정수이어야 합니다 (got {mi!r})."
+        )
 
     return Filters(
         categories=categories,
@@ -390,6 +399,7 @@ def load_filters(path: Path) -> Filters:
             time_window_hours=twh,
             fuzzy_title_threshold=float(ftt),
             dedup_days=dd,
+            max_items=mi,
         ),
     )
 
