@@ -19,6 +19,8 @@ ADR-004 (2026-05-19): Anthropic Claude Haiku 4.5 → Google Gemini 2.0 Flash swa
     AC-2.3-A 텔레그램 한도 → test_render_telegram_text_within_limit
     §6-5 광고 문구 차단 → test_render_no_advertorial_lines
     AC-2.3-B canonical_url 노출 → test_render_includes_all_canonical_urls
+    AC-2.1 글로벌 상한 컷 → test_render_caps_to_max_items_by_score
+    AC-2.1 후보 ≤ 상한 무동작 → test_render_no_cap_when_candidates_within_max
 """
 
 from __future__ import annotations
@@ -386,6 +388,7 @@ def test_render_tldr_with_priority_3() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=1,
+        max_items=10,
     )
     assert len(digest.tldr_items) == 1
     assert "오늘 꼭 챙길 1건" in digest.html
@@ -416,6 +419,7 @@ def test_render_tldr_fallback_when_no_priority_3() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=1,
+        max_items=10,
     )
     assert digest.tldr_items == []
     # HTML / telegram 모두 fallback 문구 ("산업 동향") 포함.
@@ -437,6 +441,7 @@ def test_render_empty_category_keeps_header() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=3,
+        max_items=10,
     )
     assert "오늘 새 뉴스 없음" in digest.html
     # 카테고리 헤더 3개 모두 살아있어야 함.
@@ -455,6 +460,7 @@ def test_render_html_contains_robots_meta() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=0,
+        max_items=10,
     )
     assert '<meta name="robots" content="noindex,nofollow">' in digest.html
 
@@ -487,6 +493,7 @@ def test_render_telegram_text_within_limit() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=8,
+        max_items=10,
     )
     assert len(digest.telegram_text.encode("utf-8")) <= 4096
 
@@ -514,6 +521,7 @@ def test_render_no_advertorial_lines() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=1,
+        max_items=10,
     )
     banned = ("why it matters", "당신에게 의미", "왜 중요")
     for phrase in banned:
@@ -548,8 +556,98 @@ def test_render_includes_all_canonical_urls() -> None:
         fetch_failures=[],
         sent_at_kst=_kst(2026, 5, 19, 7, 30),
         sources_total=1,
+        max_items=10,
     )
     for url in urls_expected:
         # utm 제거된 canonical 형태가 본문에 노출되어야 함.
         assert "utm_source" not in url
         assert url in digest.html
+
+
+def test_render_caps_to_max_items_by_score() -> None:
+    """후보 > max_items 이면 score 글로벌 상위 N건만 발송 (phase 03, AC-2.1).
+
+    카테고리 경계를 넘어 글로벌 컷 — 고득점 카테고리 전량 + 저득점 카테고리 일부.
+    """
+    ai = [
+        _make_article(f"https://example.com/ai{i}", f"AI 기사 {i}", f"ai{i}", f"AI {i}", "ai_trend")
+        for i in range(6)
+    ]
+    agri = [
+        _make_article(
+            f"https://example.com/ag{i}", f"농산물 기사 {i}", f"ag{i}", f"Agri {i}", "agri_distribution"
+        )
+        for i in range(4)
+    ]
+    farm = [
+        _make_article(
+            f"https://example.com/fb{i}", f"팜보스 기사 {i}", f"fb{i}", f"Farm {i}", "farmboss_keyword"
+        )
+        for i in range(4)
+    ]
+    by_cat: dict[str, list[Article]] = {
+        "ai_trend": ai,
+        "agri_distribution": agri,
+        "farmboss_keyword": farm,
+    }
+    overrides: dict[str, int] = {}
+    for a in ai:
+        overrides[a.canonical_url] = 4  # 저득점
+    for a in agri:
+        overrides[a.canonical_url] = 8  # 고득점
+    for a in farm:
+        overrides[a.canonical_url] = 9  # 최고득점
+    sr = _make_summarize_result_for_articles(by_cat, score_overrides=overrides)
+
+    digest = build_digest(
+        by_category=by_cat,
+        summarize_result=sr,
+        fetch_failures=[],
+        sent_at_kst=_kst(2026, 5, 19, 7, 30),
+        sources_total=3,
+        max_items=10,
+    )
+
+    # 후보 14건 → 상한 10건.
+    assert digest.item_count == 10
+    # 글로벌 컷 — farmboss(9)·agri(8) 전량 + ai_trend(4) 상위 2건만.
+    assert len(digest.by_category["farmboss_keyword"]) == 4
+    assert len(digest.by_category["agri_distribution"]) == 4
+    assert len(digest.by_category["ai_trend"]) == 2
+    # 카테고리 내 상대 순서 보존 — 살아남은 ai_trend 2건은 입력 앞 2건.
+    kept_ai = digest.by_category["ai_trend"]
+    assert kept_ai[0].article.canonical_url == ai[0].canonical_url
+    assert kept_ai[1].article.canonical_url == ai[1].canonical_url
+    # 컷된 저득점 ai_trend 기사는 본문에서 빠짐.
+    for dropped in ai[2:]:
+        assert dropped.canonical_url not in digest.html
+    # 운영 가시성 메타.
+    assert digest.meta["candidate_count"] == 14
+    assert digest.meta["max_items"] == 10
+
+
+def test_render_no_cap_when_candidates_within_max() -> None:
+    """후보 ≤ max_items 이면 컷 무동작 — 전량 발송 (phase 03)."""
+    arts = [
+        _make_article(f"https://example.com/n{i}", f"기사 {i}", f"s{i}", f"S {i}", "ai_trend")
+        for i in range(5)
+    ]
+    by_cat: dict[str, list[Article]] = {
+        "ai_trend": arts,
+        "agri_distribution": [],
+        "farmboss_keyword": [],
+    }
+    sr = _make_summarize_result_for_articles(by_cat)
+
+    digest = build_digest(
+        by_category=by_cat,
+        summarize_result=sr,
+        fetch_failures=[],
+        sent_at_kst=_kst(2026, 5, 19, 7, 30),
+        sources_total=1,
+        max_items=10,
+    )
+
+    assert digest.item_count == 5
+    assert len(digest.by_category["ai_trend"]) == 5
+    assert digest.meta["candidate_count"] == 5

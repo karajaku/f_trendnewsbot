@@ -109,3 +109,5 @@ global:
   time_window_hours: 36
   fuzzy_title_threshold: 0.85
   dedup_days: 7
+  # 일일 발송 글로벌 상한 (score 상위 N건) — 요약 후 score 내림차순 top-N 컷.
+  max_items: 10

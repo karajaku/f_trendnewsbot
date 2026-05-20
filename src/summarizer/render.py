@@ -241,6 +241,45 @@ def _build_rendered_items(
     return out
 
 
+def _select_top_items(
+    rendered: dict[str, list[RenderedItem]],
+    max_items: int,
+) -> dict[str, list[RenderedItem]]:
+    """전 카테고리 RenderedItem 을 score 내림차순으로 글로벌 정렬해 상위 N건만 남긴다.
+
+    phase 03 — 일일 발송 글로벌 상한. `_build_rendered_items` 직후 1회 적용하면
+    item_count·TL;DR·HTML·텔레그램 텍스트가 모두 같은 컷 결과를 읽어 전 표면 일관
+    (CLAUDE.md CRITICAL #2 / anti-pattern A).
+
+    - 정렬은 score 내림차순, 동점은 입력 순서 유지(stable) — `sorted` 의 stable 보장 활용.
+    - 채택된 항목은 카테고리별 리스트에 다시 분배하며, 각 카테고리 내 원래 상대 순서를 보존.
+    - `total <= max_items` 또는 `max_items <= 0` 이면 입력을 그대로 반환 (컷 무동작).
+    """
+    total = sum(len(v) for v in rendered.values())
+    if max_items <= 0 or total <= max_items:
+        return rendered
+
+    # (카테고리, 카테고리 내 인덱스) 를 보존해 컷 후 원래 상대 순서로 재분배.
+    indexed: list[tuple[str, int, RenderedItem]] = [
+        (cat, idx, item)
+        for cat in CATEGORIES
+        for idx, item in enumerate(rendered.get(cat, []))
+    ]
+    # score 내림차순 — stable sort 이므로 동점은 입력(카테고리·인덱스) 순서 유지.
+    indexed.sort(key=lambda t: t[2].score, reverse=True)
+    kept = indexed[:max_items]
+
+    out: dict[str, list[RenderedItem]] = {c: [] for c in CATEGORIES}
+    for cat, idx, item in sorted(kept, key=lambda t: (CATEGORIES.index(t[0]), t[1])):
+        out[cat].append(item)
+
+    logger.info(
+        "render — 글로벌 top-N 컷: 후보 %d건 → 발송 %d건 (max_items=%d).",
+        total, max_items, max_items,
+    )
+    return out
+
+
 def _select_tldr_items(rendered: dict[str, list[RenderedItem]]) -> list[RenderedItem]:
     """priority=3 항목을 score 내림차순으로 최대 3건 추출 (AC-2.11)."""
     all_priority_3 = [it for items in rendered.values() for it in items if it.priority == 3]
@@ -631,6 +670,7 @@ def build_digest(
     fetch_failures: list[Failure],
     sent_at_kst: datetime,
     sources_total: int,
+    max_items: int,
 ) -> RenderedDigest:
     """애플 감성 v3 HTML + 텔레그램 인덱스 동시 생성.
 
@@ -640,6 +680,8 @@ def build_digest(
         fetch_failures: fetchers.runner.run_all 결과 failures.
         sent_at_kst: 발송 시각 (KST tz-aware).
         sources_total: 전체 소스 수 (성공+실패 합).
+        max_items: 일일 발송 글로벌 상한 (filters.yml `global.max_items`, phase 03).
+            요약 후 score 내림차순 상위 N건만 발송. 후보 ≤ N 이면 컷 무동작.
 
     Returns:
         RenderedDigest — html / telegram_text / subject / by_category 등.
@@ -656,6 +698,10 @@ def build_digest(
         raise ValueError("sources_total 은 0 이상이어야 합니다.")
 
     rendered = _build_rendered_items(by_category, summarize_result)
+    candidate_count = sum(len(v) for v in rendered.values())
+    # phase 03 — score 상위 N건 글로벌 컷. 이후 item_count·TL;DR·HTML·텔레그램이
+    # 모두 컷된 `rendered` 를 읽어 전 표면 일관 (CLAUDE.md CRITICAL #2).
+    rendered = _select_top_items(rendered, max_items)
     item_count = sum(len(v) for v in rendered.values())
     tldr_items = _select_tldr_items(rendered)
 
@@ -695,6 +741,9 @@ def build_digest(
         "tokens_in": summarize_result.tokens_in,
         "tokens_out": summarize_result.tokens_out,
         "tldr_count": len(tldr_items),
+        # phase 03 — 글로벌 top-N 컷 운영 가시성: 컷 전 후보 수 / 적용 상한.
+        "candidate_count": candidate_count,
+        "max_items": max_items,
     }
 
     return RenderedDigest(

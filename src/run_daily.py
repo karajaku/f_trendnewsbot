@@ -167,6 +167,7 @@ def main(argv: list[str] | None = None) -> int:
             fetch_failures=fetch_failures,
             sent_at_kst=sent_at,
             sources_total=len(config.sources),
+            max_items=config.filters.global_filters.max_items,
         )
 
         # AC-5.6: Pages publish 성공 후에만 텔레그램 발송.

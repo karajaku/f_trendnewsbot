@@ -96,6 +96,7 @@ def _make_filters(
             time_window_hours=36,
             fuzzy_title_threshold=0.85,
             dedup_days=7,
+            max_items=10,
         ),
     )
 
