@@ -89,9 +89,14 @@ jobs:
         continue-on-error: true
 
       - name: Run daily digest
-        # --dry-run 은 workflow_dispatch 입력이 true 일 때만 부착.
+        # 2026-05-20 운영 조치: cron schedule 타이밍 안정화 전까지 schedule 실행도 dry-run
+        # 고정 — 운영자 채널(OPS_ALERT_CHAT_ID)로만 발송, 직원 단톡방 차단. 첫 schedule
+        # run 이 KST 19:30(저녁)에 발동해 잘못된 시각의 다이제스트가 직원에게 가는 것을 방지.
+        # workflow_dispatch 는 기존대로 dry_run 입력을 따른다.
+        # 되돌림: cron 발동 시각이 KST 07:20±15 로 안정 확인되면 schedule 분기 제거 →
+        # 직원 발송 복귀 (phases/_hotfix-log/2026-05-20-schedule-dry-run-interim.md).
         run: |
-          python -m src.run_daily ${{ inputs.dry_run && '--dry-run' || '' }}
+          python -m src.run_daily ${{ (github.event_name == 'schedule' || inputs.dry_run) && '--dry-run' || '' }}
 
       - name: Upload history artifact
         # if: always() — 실패 시에도 다음 실행이 fresh-start 회피하도록 history 보존.
