@@ -7,15 +7,26 @@
 #
 # URL 검증 상태: 본 시드는 공식 RSS 가 알려진 곳 위주. 실제 운영 응답 확인은 step3 fetchers dry-run 에서 진행.
 # fetcher 가 소스 단위 실패 격리(AC-5.1)를 적용하므로 일부 URL 이 잘못돼도 phase 가 멈추지 않는다.
+#
+# 2026-05-20 운영 현황 (18개 중 11개 enabled, 7개 disabled):
+#   enabled (11): openai_blog, google_deepmind_blog, huggingface_blog, tldr_ai,
+#                 google_blog_ai, google_cloud_ai, google_research, the_verge_ai,  # 2026-05-20 보강
+#                 agrinet_news, thinkfood, thinkfood_farmboss
+#   disabled (7): anthropic_blog (RSS 404), nongmin_news / nongmin_rural_economy (RSS body 1바이트),
+#                 at_kamis (timeout), gs_retail_ir / cheongdo_gov / andong_nh_market (HtmlFetcher V1 stub)
+#   상세 사유: 각 항목 위 코멘트 + phases/_hotfix-log/2026-05-20-dead-sources-disable.md
+#   보강 사유: phases/_hotfix-log/2026-05-20-sources-keywords-expansion.md (ai_trend 빅테크 누락 보완)
 
 sources:
-  # ===== ai_trend (5개) =====
+  # ===== ai_trend (9개) =====
   - id: anthropic_blog
     name: "Anthropic Blog"
     url: "https://www.anthropic.com/news/rss.xml"
     type: rss
     category: ai_trend
-    enabled: true
+    # 2026-05-20 disable — Anthropic 공식 RSS 미제공 확인 (HTTP 404, /rss.xml·/feed.xml·/news/rss 모두 404).
+    # 외부 미러(RSSHub 등)는 신뢰도·안정성 의문이라 V1 범위 외. V2 에서 공식 RSS 부활 시 다시 true.
+    enabled: false
     tags: ["ai", "model_release", "anthropic"]
     time_window_hours: 36
   - id: openai_blog
@@ -49,15 +60,56 @@ sources:
     category: ai_trend
     enabled: true
     tags: ["ai", "newsletter", "digest"]
+  - id: google_blog_ai
+    name: "Google AI Blog (The Keyword)"
+    # 2026-05-20 추가 — Gemini 등 Google 공식 제품 발표 1차 진원지 (The Keyword AI 섹션).
+    # google_deepmind_blog 가 연구 톤이라 제품 출시는 늦거나 누락되는 빈틈을 메움.
+    # URL 응답·RSS XML 검증 완료 (2026-05-20).
+    url: "https://blog.google/technology/ai/rss/"
+    type: rss
+    category: ai_trend
+    enabled: true
+    tags: ["ai", "model_release", "google"]
+  - id: google_cloud_ai
+    name: "Google Cloud AI Blog"
+    # 2026-05-20 추가 — Vertex AI 등 엔터프라이즈 AI 발표.
+    # 정식 path (cloud.google.com) 는 SPA 라 RSS 미제공 — cloudblog.withgoogle.com 미러 endpoint 가 RSS 제공.
+    # URL 응답·RSS XML 검증 완료 (2026-05-20).
+    url: "https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"
+    type: rss
+    category: ai_trend
+    enabled: true
+    tags: ["ai", "cloud", "google"]
+  - id: google_research
+    name: "Google Research Blog"
+    # 2026-05-20 추가 — Google Research 연구 발표 (DeepMind 보완 채널).
+    # URL 응답·RSS XML 검증 완료 (2026-05-20).
+    url: "https://research.google/blog/rss/"
+    type: rss
+    category: ai_trend
+    enabled: true
+    tags: ["ai", "research", "google"]
+  - id: the_verge_ai
+    name: "The Verge AI"
+    # 2026-05-20 추가 — 빅테크 출시 24h 내 보도 안전망. Atom feed (feedparser 호환).
+    # 빅테크 1차 채널이 RSS 갱신 지연되거나 죽었을 때 백업 역할.
+    # URL 응답·Atom XML 검증 완료 (2026-05-20).
+    url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    type: rss
+    category: ai_trend
+    enabled: true
+    tags: ["ai", "media", "english"]
 
   # ===== agri_distribution (5개) =====
   - id: nongmin_news
     name: "농민신문"
-    # TODO: RSS 경로 운영 확인 필요 — 농민신문 전체 RSS. 섹션별 RSS 가 분리되면 농업·유통 섹션으로 좁힐 것.
+    # 2026-05-20 disable — RSS 사실상 종료. HTTP 200 응답하지만 body 1바이트만 반환 (browser UA 동일).
+    # 같은 카테고리는 한국농어민신문(`agrinet_news`)·식품음료신문(`thinkfood`)으로 흡수 가능.
+    # V2 에서 농민신문이 RSS 재개하거나 HTML 어댑터 구현 시 다시 true.
     url: "https://www.nongmin.com/rss/all.xml"
     type: rss
     category: agri_distribution
-    enabled: true
+    enabled: false
     tags: ["agri", "korea"]
   - id: agrinet_news
     name: "한국농어민신문"
@@ -77,29 +129,33 @@ sources:
     tags: ["food", "distribution"]
   - id: at_kamis
     name: "aT KAMIS 보도"
-    # TODO: RSS 경로 운영 확인 필요 — aT/KAMIS 공식 보도자료 페이지. RSS 미제공 시 HTML 어댑터로 전환.
+    # 2026-05-20 disable — TCP 응답 없음 (20초+ timeout 재현). 공식 RSS 사실상 미제공.
+    # KAMIS 는 Open-API 만 제공하므로 V2 에서 json_api 어댑터 + 가격·동향 endpoint 로 전환 검토.
     url: "https://www.kamis.or.kr/customer/board/board_feed.do?action=rss&boardId=B01"
     type: rss
     category: agri_distribution
-    enabled: true
+    enabled: false
     tags: ["agri", "price", "official"]
   - id: gs_retail_ir
     name: "GS리테일 IR"
-    # TODO: RSS 경로 운영 확인 필요 — GS리테일 IR 공시 페이지. RSS 미제공 시 HTML 어댑터로 전환 (step3).
+    # 2026-05-20 disable — type: html 이지만 HtmlFetcher 가 V1 stub (NotImplementedError raise).
+    # 매일 parse_error Failure 1건이 노이즈가 되므로 V2 의 HtmlFetcher (per-source selector) 구현까지 끔.
+    # farmboss_keyword 필터에 "GS리테일" 키워드가 있어 다른 매체 기사에서 자동 재배정으로 일부 흡수.
     url: "https://www.gsretail.com/gscvs/ko/ir/news-list"
     type: html
     category: agri_distribution
-    enabled: true
+    enabled: false
     tags: ["retail", "ir", "gs"]
 
   # ===== farmboss_keyword (4개) =====
   - id: nongmin_rural_economy
     name: "농민신문 농촌경제"
-    # TODO: RSS 경로 운영 확인 필요 — 농민신문 농촌경제 섹션 RSS. 미제공 시 전체 RSS + 키워드 필터(filters.yml farmboss_keyword)로 흡수.
+    # 2026-05-20 disable — nongmin_news 와 동일 원인 (RSS 사실상 종료, body 1바이트 응답).
+    # farmboss_keyword 키워드는 thinkfood_farmboss·agrinet_news 본문에서 category.py 가 자동 재배정으로 흡수.
     url: "https://www.nongmin.com/rss/section/economy.xml"
     type: rss
     category: farmboss_keyword
-    enabled: true
+    enabled: false
     tags: ["agri", "economy", "korea"]
   - id: thinkfood_farmboss
     name: "식품음료신문 (팜보스 키워드)"
@@ -111,17 +167,19 @@ sources:
     tags: ["food", "farmboss"]
   - id: cheongdo_gov
     name: "청도군 보도"
-    # TODO: RSS 경로 운영 확인 필요 — 청도군 공식 보도자료. RSS 미제공 시 HTML 어댑터로 전환.
+    # 2026-05-20 disable — type: html, HtmlFetcher V1 stub. V2 어댑터 구현 시 다시 true.
+    # "청도" 키워드는 다른 매체 기사에서 category.py 가 자동 재배정으로 흡수.
     url: "https://www.cheongdo.go.kr/rss/news.do"
     type: html
     category: farmboss_keyword
-    enabled: true
+    enabled: false
     tags: ["regional", "cheongdo"]
   - id: andong_nh_market
     name: "안동농협공판장"
-    # TODO: RSS 경로 운영 확인 필요 — 안동농협공판장 자체 사이트 RSS 가 없을 가능성 큼. 안동농협 일반 공지 페이지 HTML 어댑터로 대체 검토.
+    # 2026-05-20 disable — type: html, HtmlFetcher V1 stub. V2 어댑터 구현 시 다시 true.
+    # "안동농협공판장" 키워드는 농어민/식품매체 기사에서 category.py 가 자동 재배정으로 흡수 가능.
     url: "https://andongnh.nonghyup.com/rss/notice.do"
     type: html
     category: farmboss_keyword
-    enabled: true
+    enabled: false
     tags: ["regional", "andong", "market"]

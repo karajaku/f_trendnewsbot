@@ -4,6 +4,15 @@
 # 영어 키워드는 한국어 본문에도 매칭 ("AI" 가 한국어 기사 본문에 포함될 때).
 # farmboss_keyword.must_match_any 12개 시드는 Stage 3 tech-research 결론 #5 로 동결.
 # dry-run 후 보강은 phase 외 운영.
+#
+# 2026-05-20 운영 보강 (phase 외, dry-run 후 보강 정책):
+#   - ai_trend: +13 (Llama / DeepSeek / Grok / Sora / Veo / Copilot / Perplexity / NVIDIA /
+#                    인공지능 / 생성형 AI / Codex / Midjourney / DALL-E)
+#   - agri_distribution: +10 (도매시장 / 콜드체인 / 물류 / 신선식품 / 농협 / 컬리 /
+#                              홈플러스 / 롯데마트 / 농림축산식품부 / 작황)
+#   - farmboss_keyword: "감" → "단감"·"홍시"·"곶감"·"청도반시" 로 교체 (substring noise 제거),
+#                       +산지(안동/영천/상주) +작물(사과/자두/포도/양파/마늘) +매장(GS25/GS THE FRESH)
+#   상세: phases/_hotfix-log/2026-05-20-sources-keywords-expansion.md
 
 categories:
   ai_trend:
@@ -17,6 +26,20 @@ categories:
       - "Anthropic"
       - "OpenAI"
       - "Mistral"
+      # 2026-05-20 운영 보강 — 빅테크 모델·제품 누락 보완 (substring noise 적은 단어만 채택)
+      - "Llama"
+      - "DeepSeek"
+      - "Grok"
+      - "Sora"
+      - "Veo"
+      - "Copilot"
+      - "Perplexity"
+      - "NVIDIA"
+      - "Codex"
+      - "Midjourney"
+      - "DALL-E"
+      - "인공지능"
+      - "생성형 AI"
     exclude_any:
       - "부동산"
       - "암호화폐 가격"
@@ -33,6 +56,17 @@ categories:
       - "산지"
       - "출하"
       - "공급망"
+      # 2026-05-20 운영 보강 — 유통 인프라·매장·정책 키워드 추가
+      - "도매시장"
+      - "콜드체인"
+      - "물류"
+      - "신선식품"
+      - "농협"
+      - "컬리"
+      - "홈플러스"
+      - "롯데마트"
+      - "농림축산식품부"
+      - "작황"
     exclude_any: []
     order: 2
   farmboss_keyword:
@@ -47,9 +81,27 @@ categories:
       - "경산"
       - "밀양"
       - "복숭아"
-      - "감"
+      # "감" 제거 (2026-05-20) — substring noise 매우 큼 (감동·감기·민감·예감 등 무관 단어 매칭).
+      # 대신 노이즈 없는 구체 작물명 4개로 분해:
+      - "단감"
+      - "홍시"
+      - "곶감"
+      - "청도반시"
       - "딸기"
       - "안동농협공판장"
+      # 2026-05-20 운영 보강 — 추가 산지 (경북 과실 산지 보강)
+      - "안동"
+      - "영천"
+      - "상주"
+      # 2026-05-20 운영 보강 — 추가 작물
+      - "사과"
+      - "자두"
+      - "포도"
+      - "양파"
+      - "마늘"
+      # 2026-05-20 운영 보강 — GS 매장 라인 (납품·진열 관련 보도 보강)
+      - "GS25"
+      - "GS THE FRESH"
     exclude_any: []
     order: 3
 

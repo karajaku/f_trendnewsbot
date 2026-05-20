@@ -266,31 +266,41 @@ def test_load_filters_missing_file(tmp_path: Path) -> None:
 
 
 def test_farmboss_keyword_seed_frozen_in_repo_config() -> None:
-    """requirements §6-2 / tech-research 결론 #5 — 12개 시드 동결.
+    """requirements §6-2 / tech-research 결론 #5 — 시드 회귀 방지.
 
-    실제 리포 `config/filters.yml` 의 farmboss_keyword 시드가 12개이며 핵심 표본
-    키워드를 모두 포함하는지 회귀 방지.
+    2026-05-20 운영 보강 후 25개 (시드 12개 중 "감" 제거 → "단감/홍시/곶감/청도반시"
+    4개로 분해 + 산지·작물·매장 보강 10개).
+    상세: phases/_hotfix-log/2026-05-20-sources-keywords-expansion.md
+
+    검증 목적은 (1) count 의 의도된 변경만 통과 (임의 변경 차단) + (2) 회사·산지·
+    작물 핵심 시드가 임의로 사라지지 않는지 회귀 방지. 보강 시 본 테스트도 같이 갱신.
     """
     cfg = load_all()
     farmboss = cfg.filters.categories["farmboss_keyword"]
     assert farmboss.label == "팜보스 관심 키워드"
     assert farmboss.order == 3
-    assert len(farmboss.must_match_any) == 12
+    assert len(farmboss.must_match_any) == 25
+    # 회사명·협력·거점 — 사라지면 안 되는 동결 시드
     for required in (
         "정다운",
         "팜보스",
         "시경",
         "닥터상달",
         "GS리테일",
-        "청도",
-        "경산",
-        "밀양",
-        "복숭아",
-        "감",
-        "딸기",
         "안동농협공판장",
     ):
         assert required in farmboss.must_match_any, f"동결 시드 누락: {required}"
+    # 산지·작물 시드 — 초기 동결 시드 중 유지되는 항목
+    for required in ("청도", "경산", "밀양", "복숭아", "딸기"):
+        assert required in farmboss.must_match_any, f"동결 시드 누락: {required}"
+    # 2026-05-20 보강 — "감" 분해 결과 + 산지/작물/매장 표본 (보강 의도 명시 안전망)
+    for required in ("단감", "안동", "사과", "GS25"):
+        assert required in farmboss.must_match_any, f"보강 시드 누락: {required}"
+    # 2026-05-20 — substring noise 가 큰 "감" 단독 키워드는 제거되어 있어야 함
+    assert "감" not in farmboss.must_match_any, (
+        "'감' 은 substring noise (감동·감기·민감 등) 때문에 제거되었습니다. "
+        "구체 작물명 (단감/홍시/곶감/청도반시) 으로 대체되어야 합니다."
+    )
 
 
 # ---------- 보너스: yml 문법 오류 ----------

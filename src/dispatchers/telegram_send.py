@@ -20,6 +20,7 @@ ADR-003 의 코드 측 구현. AC-2.3-A · 5.4 · 6.1 매핑.
 
 from __future__ import annotations
 
+import html as _html
 import logging
 from typing import Any, Callable
 
@@ -80,13 +81,19 @@ def _build_text(telegram_text: str, pages_url: str) -> str:
     `digest.telegram_text` 자체에 ``전체 본문:`` 라인이 placeholder 로 들어 있을 수도 있으나,
     render 가 빈 pages_url 인 경우에만 해당 라인을 생략하므로(step5) dispatcher 는 단순히 append.
     중복 부착을 피하기 위해 telegram_text 가 이미 final pages_url 을 포함하면 그대로 사용.
+
+    URL 은 명시적 ``<a href="...">URL</a>`` 앵커로 감싼다. plain URL 만 보낼 경우
+    Telegram Desktop (Windows) 클라이언트에서 본문에 다수의 특수문자(``①②③ · ⭐ ⚡``)가
+    섞여 있을 때 auto-linkify 인식이 누락되는 케이스가 있어, parse_mode="HTML" 환경에서
+    명시 앵커로 모든 클라이언트의 클릭 가능성을 보장한다.
     """
     if pages_url and pages_url in telegram_text:
         return telegram_text
     if not pages_url:
         return telegram_text
     sep = "\n\n" if not telegram_text.endswith("\n") else "\n"
-    return f"{telegram_text}{sep}전체 본문: {pages_url}"
+    pages_url_safe = _html.escape(pages_url, quote=True)
+    return f'{telegram_text}{sep}전체 본문: <a href="{pages_url_safe}">{pages_url_safe}</a>'
 
 
 def send(
