@@ -18,6 +18,8 @@ on:
 permissions:
   # Pages publish 가 dispatchers/pages_publish.py 에서 `git push origin gh-pages` 호출 (ADR-003).
   contents: write
+  # 직전 성공 run 의 digest-history 아티팩트 조회·cross-run 다운로드 (CRITICAL #8 dedup).
+  actions: read
 
 jobs:
   run:
@@ -60,12 +62,30 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
+      - name: Find last successful run id
+        # download-artifact@v4 는 run-id 미지정 시 "현재 run" 의 아티팩트만 본다 (v3→v4 변경점).
+        # cross-day dedup 을 위해 직전 성공 run 의 id 를 먼저 찾아 다음 스텝에 넘긴다 (CRITICAL #8).
+        id: lastrun
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          last=$(gh run list --workflow daily.yml --status success --limit 1 \
+                   --json databaseId --jq '.[0].databaseId // ""' 2>/dev/null || echo "")
+          echo "id=$last" >> "$GITHUB_OUTPUT"
+          echo "last successful run id: ${last:-<none>}"
+
       - name: Download previous history artifact (best-effort)
-        # 첫 실행 시 artifact 없음 — fresh-start 허용 (history/store.py 가 WARNING 후 빈 History).
+        # 직전 성공 run 의 digest-history 를 history/ 로 받아 cross-day dedup 유지.
+        # run-id + github-token 은 v4 의 cross-run 다운로드 필수 입력 (미지정 시 현재 run 만 조회).
+        # 직전 성공 run 이 없으면(첫 실행) 스텝을 건너뛰어 fresh-start 허용
+        # (history/store.py 가 WARNING 후 빈 History).
+        if: steps.lastrun.outputs.id != ''
         uses: actions/download-artifact@v4
         with:
           name: digest-history
           path: history/
+          run-id: ${{ steps.lastrun.outputs.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
       - name: Run daily digest
