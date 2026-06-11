@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 6월 12일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 6 · 12 금요일 · KST 08:55</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">안동시, 노지 스마트농업 ‘AI 예측 영농’으로 대전환</div>
+      <div class="reason">정다운 영농조합법인은 안동시의 AI 예측 영농 사례를 참고하여 주요 작목인 복숭아, 감, 딸기의 병해충 예방 및 수확량 예측에 AI 기술 도입을 검토해야 합니다. 데이터 기반 영농 의사결정 시스템 구축에 대한 내부 회의가 필요합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">오늘은 LLM 3사 업데이트가 동시에 — Anthropic·OpenAI·Google. OpenAI는 Ona 인수 및 Oracle 클라우드 제휴, Anthropic은 Claude Fable 가드레일 논란, Google은 Apple과 협력 및 AI 학습을 위한 개인 데이터 저장 강화 소식입니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 6/11 09:00 KST</span>
+      </div>
+      <h3>OpenAI to acquire Ona</h3>
+      <div class="body">OpenAI가 Ona를 인수하여 안전하고 영구적인 클라우드 환경을 갖춘 Codex를 확장하고, 기업 워크플로우 전반에 걸쳐 장기 실행 AI 에이전트를 가능하게 할 계획입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/openai-to-acquire-ona">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 6/11 09:00 KST</span>
+      </div>
+      <h3>Supporting Europe’s work in ensuring a trustworthy AI ecosystem</h3>
+      <div class="body">OpenAI는 EU AI 콘텐츠 투명성 규범을 지지하며, AI 생성 콘텐츠 이해를 돕기 위한 출처 표준 및 도구 발전을 지원합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 6/11 09:00 KST</span>
+      </div>
+      <h3>BBVA puts AI at the core of banking with OpenAI</h3>
+      <div class="body">BBVA는 ChatGPT Enterprise를 100,000명의 직원으로 확장하고 OpenAI와 협력하여 전 세계적으로 AI 기반 뱅킹 혁신을 가속화했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/bbva">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 6/11 05:00 KST</span>
+      </div>
+      <h3>Access OpenAI models and Codex through your Oracle cloud commitment</h3>
+      <div class="body">Oracle Cloud를 통해 OpenAI 모델 및 Codex에 접근하여 기존 약정을 활용하여 엔터프라이즈 보안 및 거버넌스를 통해 AI를 구축하고 배포할 수 있습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/openai-on-oracle-cloud">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">예천군 농식품 기업 &#x27;서울푸드 2026&#x27; 참가, 제주 스마트팜 테마파크 조성 추진, 식량안보법 제정 논의 확산, 팜스코 프리미엄 돈육 쿠팡 로켓프레시 진출, K-푸드 스마트제조 얼라이언스 출범 소식입니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:56 KST</span>
+      </div>
+      <h3>예천 농식품 기업 4개사, ‘서울푸드 2026’ 출격</h3>
+      <div class="body">예천군 대표 농식품 기업 4개사(시골이야기푸드, 농부창고, 꿀마실, 소오름)가 킨텍스에서 열린 ‘서울푸드 2026’에 참가해 예천의 청정 농산물 가공식품을 국내외 바이어들에게 선보였습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 시경은 향후 식품 박람회 참여 시 타 지자체 출품 경향과 바이어 반응을 참고하여 출품 전략을 재검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=404870">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:28 KST</span>
+      </div>
+      <h3>농업이 관광이 된다···제주, 스마트팜 테마파크 조성 추진</h3>
+      <div class="body">제주특별자치도는 친환경 에너지 플랫폼 기업 셀에너지(주)와 투자협약을 체결하여 제주시 한림읍 일대에 스마트농업과 관광, 교육을 연계한 ‘스마트팜 테마파크’ 조성을 추진합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=404914">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/11 19:29 KST</span>
+      </div>
+      <h3>한국 식량안보지수 39위···‘식량안보법 제정’ 공감대 확산</h3>
+      <div class="body">한국의 식량안보지수가 39위로 OECD 국가 중 하위권에 머물면서, 일본과 중국처럼 식량안보 관련 법률 제정·시행이 하반기 국회에서 본격 논의될 예정입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=404878">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/11 18:41 KST</span>
+      </div>
+      <h3>팜스코 ‘하이포크 블랙’, 쿠팡 로켓프레시로 만난다</h3>
+      <div class="body">팜스코가 프리미엄 돈육 ‘하이포크 블랙’을 쿠팡 로켓프레시에 최초 런칭하여 B2C 시장에 진출했으며, 이는 대한민국 전통 유전인자를 계승한 신품종 ‘WYLD’를 기반으로 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 법인은 온라인 B2C 시장에서 고품질 축산물 브랜드의 쿠팡 로켓프레시 진출 사례를 참고하여 자사 과일의 온라인 유통 전략을 고도화할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=404873">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 6/11 18:00 KST</span>
+      </div>
+      <h3>‘K-푸드 스마트제조 얼라이언스 출범식’ 식품 산업 AI 전환·글로벌 경쟁력 강화</h3>
+      <div class="body">농림축산식품부, 중소벤처기업부, 식품의약품안전처가 ‘K-푸드 스마트제조 얼라이언스 출범식’을 개최하여 K-푸드 산업의 제조 혁신과 글로벌 진출을 위한 민관 협력 플랫폼을 구축했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 그룹은 미래 식품 가공 사업 확장 시 &#x27;K-푸드 스마트제조 얼라이언스&#x27;의 지원 사업을 검토하고 협력 기회를 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200538">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">안동시, 7,500만 건 영농 데이터 기반 노지 스마트농업 ‘AI 예측 영농’으로 대전환</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 02:03 KST</span>
+      </div>
+      <h3>안동시, 노지 스마트농업 ‘AI 예측 영농’으로 대전환</h3>
+      <div class="body">안동시가 7,500만 건 이상의 영농 데이터를 활용하여 해충 카드뉴스와 영농 분석 보고서를 농가에 제공하며 노지 스마트농업을 AI 예측 영농 체계로 전환하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 안동시의 AI 예측 영농 사례를 참고하여 주요 작목인 복숭아, 감, 딸기의 병해충 예방 및 수확량 예측에 AI 기술 도입을 검토해야 합니다. 데이터 기반 영농 의사결정 시스템 구축에 대한 내부 회의가 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=404872">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
