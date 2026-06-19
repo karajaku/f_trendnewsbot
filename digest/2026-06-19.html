@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 6월 19일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 6 · 19 금요일 · KST 09:00</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI가 기업용 기능 업데이트 및 건강 분야 AI 개선 소식을 전하고, Adobe는 Creative Cloud에 AI 어시스턴트를 도입합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 02:00 KST</span>
+      </div>
+      <h3>New usage analytics and updated spend controls for enterprises</h3>
+      <div class="body">OpenAI가 ChatGPT Enterprise 사용자를 위해 새로운 비용 관리 기능과 사용량 분석 도구를 출시하여, 기업들이 AI 비용을 효과적으로 관리하고 확장할 수 있도록 돕습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/chatgpt-enterprise-spend-controls">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 6/18 20:00 KST</span>
+      </div>
+      <h3>Improving health intelligence in ChatGPT</h3>
+      <div class="body">GPT-5.5 Instant가 ChatGPT의 건강 및 웰니스 관련 답변을 개선하여, 더 강력한 추론, 나은 맥락 이해, 명확한 의사소통 및 의사 평가 기반의 정보를 제공합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/improving-health-intelligence-in-chatgpt">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 6/18 17:00 KST</span>
+      </div>
+      <h3>Using AI to help physicians diagnose rare genetic diseases affecting children</h3>
+      <div class="body">연구원들이 OpenAI의 추론 모델을 사용하여 희귀 유전 질환 진단을 돕고, 이전에 해결되지 않았던 18건의 새로운 진단을 확인했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/diagnose-rare-childhood-diseases">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google AI Blog (The Keyword) · 6/18 00:00 KST</span>
+      </div>
+      <h3>New research shows how AMIE, our medical AI, could help manage health conditions.</h3>
+      <div class="body">Nature 지에 게재된 새로운 연구에 따르면 Google의 의료 AI 시스템 AMIE가 복잡한 질병 관리에서 1차 진료 의사와 유사한 수준의 성능을 보입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature">원문 읽기 →</a><span class="sep">·</span><span class="src">blog.google</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 6/18 22:00 KST</span>
+      </div>
+      <h3>Photoshop and Premiere now have AI assistants</h3>
+      <div class="body">Adobe는 Photoshop, Premiere, Illustrator를 포함한 Creative Cloud 제품군에 AI 어시스턴트를 베타로 출시하여 편집 및 디자인 앱에 새로운 챗봇 기능을 제공합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/952099/adobe-ai-assistants-photoshop-premiere-illustrator-beta-launch">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">영주시가 마을 MD를 통해 고령·소농 온라인 판매를 돕고, K-푸드 수출 목표 160억 달러 달성을 위해 정부와 업계가 협력합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:57 KST</span>
+      </div>
+      <h3>영주시, ‘마을 MD’가 고령·소농 온라인 판매 돕는다</h3>
+      <div class="body">영주시가 온라인 유통에 어려움을 겪는 고령농·소농을 위해 &#x27;마을 MD&#x27;를 통한 온라인 판매 지원 사업을 추진하며, &#x27;영주 마을 MD 기획관&#x27;을 개설하여 지역 농특산물 판매 활성화를 돕습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 커머스 B2C 사업팀은 유사 정부 지원 사업 모델 도입 여부를 검토하여, 소규모 생산자 발굴 및 판로 확대 방안을 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405088">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:44 KST</span>
+      </div>
+      <h3>‘제4회 경기도 푸드테크 아이디어 공모전’ 참가자 모집</h3>
+      <div class="body">경기도농수산진흥원이 농식품 미래 먹거리 발굴을 위해 &#x27;제4회 경기도 푸드테크 아이디어 공모전&#x27; 참가자를 6월 29일까지 모집합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 푸드테크 분야의 새로운 트렌드를 파악하고, 장기적인 관점에서 사업 연계를 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405054">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 00:55 KST</span>
+      </div>
+      <h3>축산물 공공조달 확대하려면···&quot;MAS 제도 개선 필요&quot;</h3>
+      <div class="body">축산물 공공조달 확대를 위해 다수공급자계약(MAS) 제도의 개선 필요성이 제기되었으며, MAS를 통한 공급금액은 2025년 18조 6375억원에 달할 정도로 급성장했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 향후 공공조달 시장 진입 가능성을 타진하기 위해 MAS 제도 개선 동향을 지속적으로 모니터링할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405069">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 6/18 18:32 KST</span>
+      </div>
+      <h3>‘K-푸드’ 올해 수출 160억불 정조준…정부-업계 발벗고 나선다</h3>
+      <div class="body">정부와 업계가 올해 K-푸드 수출 목표 160억 달러 달성을 위해 대중문화와 연계한 문화융합 마케팅을 전개하고 홍보대사를 위촉하는 등 적극적으로 나섭니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 K-푸드 수출 정책 및 홍보 트렌드를 참고하여, 해외 시장 진출 전략 수립 시 콘텐츠 마케팅 연계 방안을 고려할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200581">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">오리온이 한국 전통 부침개 맛을 담은 스낵 &#x27;지지미&#x27;를 출시하며 K-푸드 트렌드를 반영합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 6/18 19:06 KST</span>
+      </div>
+      <h3>[06/18 오늘의 새상품] 오리온 ‘지지미’ 2종, 롯데웰푸드 ‘문학콜라보 캔디’ 2종, 서울우유협동조합 ‘요구르트 오리지널 파우치’, 대상다이브스 ‘식물성 딸기 크림치즈’ 등 2종, 연세생활건강 ‘알파CD 레몬워터’ 등 3종, 컴포즈커피 ‘꿀 토마토 주스’ 등 7종, 롯데칠성음료 ‘해피즈 파자마 패키지’</h3>
+      <div class="body">오리온이 한국 전통 부침개의 맛을 담은 스낵 &#x27;지지미&#x27; 2종(부추전맛, 김치전맛)을 출시하며, K-푸드 트렌드를 반영하여 부침개 본연의 풍미와 식감을 구현했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 온라인 커머스 B2C 콘텐츠 마케팅 시 K-푸드 트렌드 및 전통 간식의 현대적 재해석 사례를 참고하여 신규 상품 기획 또는 기존 상품 홍보에 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200583">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
