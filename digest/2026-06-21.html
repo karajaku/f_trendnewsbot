@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 6월 21일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 6 · 21 일요일 · KST 08:37</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">배달음식 원산지 표시 생략 추진…축산업계 “철회하라”</div>
+      <div class="reason">팜보스의 B2C 온라인 판매 및 시경의 닥터상달 프랜차이즈 운영에 있어 원산지 표시 의무가 변경될 수 있으므로, 관련 규제 완화 여부를 주시하고 필요시 판매 전략을 재검토해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">배달음식 원산지 표시 생략 추진에 축산업계 반발, 농산자조금법 제정안 국회 제출, 그리고 지자체 필수농자재 지원 및 보리 가격 하락 대책 논의.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>낙농육우협 “유업계 언론플레이 과도…가격 상승 원인은 유통 구조”</h3>
+      <div class="body">낙농육우협회는 유업계가 원유 구매량 협상을 앞두고 &#x27;밀크플레이션&#x27;을 언급하며 언론플레이를 통해 소비자 가격 상승의 원인을 낙농가에 돌리고 있다고 비판했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405137">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>[농협 개혁] 감사 독립·직선제 비용 논란 속…‘2차 개혁안’도 진통 예고</h3>
+      <div class="body">농협 감사 독립 및 중앙회장 직선제 등 1차 개혁안이 국회 문턱을 넘지 못한 가운데, 정부는 경제사업 구조 개편과 경제지주 인적분할 검토를 포함한 2차 개혁안 마련에 착수할 예정입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405133">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>농촌쓰레기, 환경 아닌 농촌복지의 문제다</h3>
+      <div class="body">농림축산식품부가 올해 처음 68억원의 예산을 편성해 &#x27;농어촌 쓰레기 수거지원 사업&#x27;을 추진하며, 농촌쓰레기 문제가 주민 의식 부족이 아닌 영농폐비닐 처리 비용 및 수거 체계 미비, 고령화 등 복합적 요인에서 비롯된다는 인식이 확산되고 있습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405131">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>[박진희의 먹거리정의 이야기] 지역먹거리 활성화, 중간지원조직·사회적경제로 풀자</h3>
+      <div class="body">지역먹거리 활성화를 위해 지역먹거리계획을 수행하고 네트워크를 촉진할 중간지원조직이 필요하며, 생산-유통-소비-복지-재활용 단계별 실행 주체로 사회적경제 조직을 육성해야 한다고 제언되었습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405130">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>경북쌀전업농-케이바이오차 상생협약</h3>
+      <div class="body">한국쌀전업농경북도연합회와 케이바이오차는 지난 6월 18일 탄소중립 및 온실가스 감축사업 관련 바이오차 보급 향상을 위한 상생협약(MOU)을 체결했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405122">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>농산자조금법 정부안 ‘국회로’...지역·임의자조금 시각차 여전</h3>
+      <div class="body">농림축산식품부는 농산자조금단체와 논의를 거쳐 농산자조금법 제정안 정부안을 확정해 국회에 제출했으나, 지역자조금 조성 및 임의자조금 설치 등에서는 여전히 견해차가 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 작목별 자조금 운영에 직접적인 영향을 미칠 수 있으므로 법안의 국회 통과 여부 및 내용에 대한 모니터링이 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405119">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>배달음식 원산지 표시 생략 추진…축산업계 “철회하라”</h3>
+      <div class="body">농림축산식품부가 배달앱 등 통신판매 원산지 표시 생략 방안을 추진함에 따라 축산업계는 규제완화에 앞서 원산지 표시 이행점검과 의견 수렴을 요구하며 철회를 주장하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스의 B2C 온라인 판매 및 시경의 닥터상달 프랜차이즈 운영에 있어 원산지 표시 의무가 변경될 수 있으므로, 관련 규제 완화 여부를 주시하고 필요시 판매 전략을 재검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405114">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>경남도 ‘필수농자재 지원 조례’ 본회의 통과</h3>
+      <div class="body">경상남도의회는 장진영 의원이 대표 발의한 &#x27;경상남도 필수농자재 지원 조례안&#x27;을 통과시켜, 필수농자재 가격 상승으로 인한 농업인 경영 부담 완화를 위한 다양한 지원을 촉진할 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운이 주요 작목 생산을 위해 사용하는 비료·농약·유류 등의 필수농자재 비용 상승에 대한 지원 정책의 확대를 모니터링하여 경상남도 내 산지에서 생산 단가 안정화에 기여할 수 있는지 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405085">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 6/20 04:21 KST</span>
+      </div>
+      <h3>장세일 영광군수, 보리가격 하락 대책 논의</h3>
+      <div class="body">장세일 영광군수는 보리 가격 하락으로 농가들의 경영 부담이 커지는 상황에서 보리 산물수매 현장을 방문하여 수매 추진 상황을 점검하고 대응 방안을 논의했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 복숭아, 감, 딸기 등 주력 작목에 대한 수급 불안정 및 가격 하락 발생 시, 산지 수매 대책 마련을 위한 지자체 협력 방안을 미리 검토할 필요가 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405079">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 6/19 22:52 KST</span>
+      </div>
+      <h3>‘K-스낵’, 간식 넘어 문화 콘텐츠로 자리 잡다</h3>
+      <div class="body">농림축산식품부와 한국농수산식품유통공사가 미국 시애틀 스페이스니들 야외광장에서 &#x27;K-스낵 카니발&#x27;을 운영하여 한국산 과자류를 홍보했으며, 이는 북중미 월드컵 경기 응원전과 연계한 한국문화축제의 일환으로 진행되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스의 B2C 온라인 커머스에서 해외 시장 진출 전략 수립 시, K-푸드에 대한 글로벌 관심 증가를 활용한 과일 가공품 또는 건과일 스낵류 개발 및 홍보를 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200604">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
