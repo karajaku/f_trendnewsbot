@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 2일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 2 목요일 · KST 08:46</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 중 17개 정상 수집</span><span class="dot">·</span><span>1개 실패: Google Cloud AI Blog</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">[07/01 오늘의 새상품] 오뚜기 ‘오즈키친 일품 등심탕수육’, 삼양식품 ‘짜르르’, 삼립 ‘포켓몬빵’, 파리바게뜨 ‘초코바게뜨’, 하이트진로 ‘진로 라이트’, 일화 ‘팅글 리얼에이드 신비복숭아’, 투썸플레이스 ‘아이스 말차’ 등 4종</div>
+      <div class="reason">팜보스 농업회사법인은 여름 시즌 복숭아 품종인 &#x27;신비복숭아&#x27;를 활용한 가공식품 출시 사례를 참고하여 제철 과일 마케팅 및 상품 개발 아이디어를 얻을 수 있습니다. 복숭아 관련 콘텐츠 마케팅 시 참조 바랍니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">오늘도 LLM 3사 업데이트가 동시에 — Google의 Nano Banana 2 Lite와 Gemini Omni Flash, Anthropic의 Claude Fable 5, 그리고 허깅페이스와 세레브라스의 Gemma 4 출시 소식입니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google DeepMind Blog · 7/1 01:02 KST</span>
+      </div>
+      <h3>Start building with Nano Banana 2 Lite and Gemini Omni Flash</h3>
+      <div class="body">구글 딥마인드가 나노 바나나 2 라이트와 제미니 옴니 플래시를 활용한 새로운 빌드를 시작한다고 발표했습니다. 이는 구글의 AI 모델 업데이트 소식입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash">원문 읽기 →</a><span class="sep">·</span><span class="src">deepmind.google</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Hugging Face Blog · 7/1 09:00 KST</span>
+      </div>
+      <h3>Hugging Face and Cerebras bring Gemma 4 to real-time voice AI</h3>
+      <div class="body">허깅페이스와 세레브라스가 Gemma 4를 실시간 음성 AI에 도입한다고 밝혔습니다. 이는 음성 AI 기술의 발전에 대한 소식입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://huggingface.co/blog/cerebras-gemma4-voice-ai">원문 읽기 →</a><span class="sep">·</span><span class="src">huggingface.co</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">귀농 인구가 4년 만에 증가했으며, 농어촌기본소득 시범 지역에서 인구 유입 효과가 나타났습니다. 로컬푸드 직매장의 상품 구색 한계 및 할랄 시장 재조명 소식도 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/1 03:48 KST</span>
+      </div>
+      <h3>귀촌 줄었지만 귀농 증가···기본소득 지역 인구 37.8% ‘쑥’</h3>
+      <div class="body">2025년 귀촌 인구는 41만3464명으로 전년 대비 2.2% 감소했으나, 귀농 인구는 1만1617명으로 4년 만에 8.5% 증가했습니다. 특히 농어촌기본소득 시범 지역 7곳의 귀촌 인구는 평균 37.8% 증가하여 인구 유입 효과가 나타났습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 인력 수급 계획 및 귀농인 대상 마케팅 전략에 귀농 인구 증가 추세와 농어촌기본소득 효과를 반영할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405338">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/1 03:48 KST</span>
+      </div>
+      <h3>FTA 피해보전직불금 지원 품목 ‘염소고기’  확정</h3>
+      <div class="body">2026년 자유무역협정(FTA) 피해보전직불금 지원 품목으로 염소고기가 확정되었으며, 7월 2일부터 8월 3일까지 염소고기 생산지 관할 시군구 또는 읍면동 사무소에 직불금 지급 신청을 받습니다. 지급 대상은 한·호주 FTA 발효일 이전부터 염소고기를 생산한 농업인 등입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405336">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/1 03:48 KST</span>
+      </div>
+      <h3>축사 증·개축 규제 완화, 환경부하 감축 입증이 관건</h3>
+      <div class="body">농림축산식품부는 축사 증·개축 규제 완화를 위해 기후에너지환경부와 논의 중이며, 축산업 스스로 환경부하 문제를 해결하는 모습을 보여줘야 한다고 밝혔습니다. 고병원성 조류인플루엔자 발생 지역 문제도 언급되었습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405314">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/1 03:48 KST</span>
+      </div>
+      <h3>로컬푸드 직매장 ‘상품 구색’ 한계…“중소농 신규 작목 재배 지원해야”</h3>
+      <div class="body">로컬푸드 직매장들이 비수기에 상품 구색을 맞추는 데 어려움을 겪고 있으며, 중소농의 신규 작목 재배 지원이 필요하다는 목소리가 나왔습니다. 농림축산식품부와 한국농수산식품유통공사(aT)는 6월 23일 ‘2026 로컬푸드 직매장 운영 내실화 전략 워크숍’을 개최했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 로컬푸드 직매장 납품 시 상품 구색 다양화를 위한 작목반 신규 작목 재배를 독려하거나 지원할 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405289">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/1 03:48 KST</span>
+      </div>
+      <h3>풍기인삼농협, 중국·홍콩 딛고 14개국 진출···‘풍기인삼’ 시장 다변화 속도</h3>
+      <div class="body">풍기인삼농협은 제품 혁신과 수출시장 확대를 통해 풍기인삼의 우수성을 홍보하고 있으며, 중국·홍콩 외 14개국으로 시장을 다변화하고 있습니다. 권헌준 조합장은 풍기인삼의 118년 역사와 인삼 생육 적지로서의 강점을 강조했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405284">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/1 03:48 KST</span>
+      </div>
+      <h3>송미령 농림축산식품부 장관, 곡성 농어촌 기본소득 현장 점검</h3>
+      <div class="body">송미령 농림축산식품부 장관이 6월 25일 곡성군을 찾아 농어촌 기본소득 시범사업 추진 성과를 점검하고 제도 개선 방안을 논의했습니다. 전남도는 2028년 본사업 전환을 목표로 기본소득의 안정적 정착을 위해 노력 중입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 주요 산지인 청도, 경산, 밀양 지역 농가 소득 안정화에 기여할 수 있는 농어촌 기본소득 본사업 전환 시 효과 분석 및 활용을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405267">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 16:53 KST</span>
+      </div>
+      <h3>글로벌 숨은 거대시장 ‘할랄’ 재조명…식품업계 3조 달러 시장을 잡아라</h3>
+      <div class="body">오는 10월 인도네시아의 할랄인증 의무화로 3조 달러 규모의 할랄 시장이 재조명되고 있으며, 이는 한국 식품업계에 기회가 될 수 있습니다. 인도네시아는 모든 식품에 할랄·비할랄 표기를 의무화하며, 비할랄 제품도 별도 구분 진열해야 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 할랄 시장 진출을 위해 과일 제품의 할랄 인증 획득 가능성을 검토하고, 인도네시아 시장의 변화에 대응하는 온라인 커머스 전략을 수립해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200605">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">경남 농어촌 쓰레기 수거 활동이 확산되고 있으며, 일화에서 제철 &#x27;신비복숭아&#x27;를 활용한 신제품이 출시되었습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 7/1 18:44 KST</span>
+      </div>
+      <h3>[07/01 오늘의 새상품] 오뚜기 ‘오즈키친 일품 등심탕수육’, 삼양식품 ‘짜르르’, 삼립 ‘포켓몬빵’, 파리바게뜨 ‘초코바게뜨’, 하이트진로 ‘진로 라이트’, 일화 ‘팅글 리얼에이드 신비복숭아’, 투썸플레이스 ‘아이스 말차’ 등 4종</h3>
+      <div class="body">오뚜기가 국산 돼지 등심과 생강·흑후추를 더한 ‘오즈키친 일품 등심탕수육’을 출시했습니다. 일화는 제철 신비복숭아를 활용한 ‘팅글 리얼에이드 신비복숭아’를 선보였습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 여름 시즌 복숭아 품종인 &#x27;신비복숭아&#x27;를 활용한 가공식품 출시 사례를 참고하여 제철 과일 마케팅 및 상품 개발 아이디어를 얻을 수 있습니다. 복숭아 관련 콘텐츠 마케팅 시 참조 바랍니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200682">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
