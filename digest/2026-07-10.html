@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 10일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 10 금요일 · KST 08:39</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI GPT-5.6 정식 출시, ChatGPT Work 및 GPT-Live 업데이트. Google AlphaEvolve 공개.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 7/9 22:00 KST</span>
+      </div>
+      <h3>GPT-5.6 is now the preferred model in Microsoft 365 Copilot</h3>
+      <div class="body">GPT-5.6 (GPT-5.6)이 Microsoft 365 Copilot의 기본 모델이 되어 Word, Excel, PowerPoint 등에서 더욱 강력한 AI 기능을 제공합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 7/9 19:00 KST</span>
+      </div>
+      <h3>ChatGPT is now a partner for your most ambitious work</h3>
+      <div class="body">ChatGPT Work는 앱과 파일에서 작업을 수행하고, 필요에 따라 프로젝트를 수 시간 동안 진행하며, 목표를 완료된 작업으로 전환할 수 있는 에이전트입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 7/9 19:00 KST</span>
+      </div>
+      <h3>GPT-5.6: Frontier intelligence that scales with your ambition</h3>
+      <div class="body">GPT-5.6은 모든 토큰에서 더 많은 지능과 더 나은 비용 대비 성능을 제공하며, 가장 어려운 작업에 필요한 더 많은 기능을 제공합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/gpt-5-6">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">TLDR AI · 7/9 09:00 KST</span>
+      </div>
+      <h3>Grok 4.5 🤖, GPT-Live 🎙️, SWE-1.7 👨‍💻</h3>
+      <div class="body">Grok 4.5, GPT-Live, SWE-1.7에 대한 소식이 전해졌습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://tldr.tech/ai/2026-07-09">원문 읽기 →</a><span class="sep">·</span><span class="src">tldr.tech</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 01:00 KST</span>
+      </div>
+      <h3>Solve harder problems with AlphaEvolve, now available to everyone on Google Cloud</h3>
+      <div class="body">최적화와 관련된 어려운 문제 해결을 돕는 AlphaEvolve가 이제 Google Cloud에서 모든 사용자에게 제공됩니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/products/ai-machine-learning/alphaevolve-is-available-for-everyone">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 02:00 KST</span>
+      </div>
+      <h3>OpenAI rolls out GPT-5.6 after government greenlight — and announces ‘ChatGPT Work’</h3>
+      <div class="body">OpenAI는 정부 승인을 받은 후 GPT-5.6을 출시하고 &#x27;ChatGPT Work&#x27;를 발표했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/963464/openai-gpt-5-6-codex-chatgpt-work">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 7/9 02:00 KST</span>
+      </div>
+      <h3>ChatGPT’s upgraded voice mode is better at shutting up</h3>
+      <div class="body">OpenAI는 ChatGPT의 음성 모드를 개선하여 사용자의 말을 덜 끊고, 대화 중 잠시 멈출 경우 기다려주는 새로운 GPT-Live-1 모델을 적용했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/962856/chatgpt-upgraded-voice-mode-gpt-live">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">예천 &#x27;미소진품&#x27; 쌀 오뚜기 즉석밥으로, 경기 농산물 외식업체 판로 확대 모색, 농촌인력중개센터 협력 강화.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:24 KST</span>
+      </div>
+      <h3>예천 &#x27;미소진품&#x27; 쌀, 오뚜기 즉석밥으로 전국 밥상 오른다</h3>
+      <div class="body">경북 예천군의 공공비축미 품종 &#x27;미소진품&#x27; 쌀이 ㈜오뚜기의 프리미엄 즉석밥 &#x27;오뚜기밥 미소진품&#x27;의 원료로 공급되어 전국 유통채널을 통해 판매됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 커머스 B2C 품목 확대 검토. B2B 오뚜기 등 가공식품 기업 납품 가능성 타진.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405542">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:21 KST</span>
+      </div>
+      <h3>경기 농산물로 외식 메뉴 만든다</h3>
+      <div class="body">경기도농업기술원은 ㈜우아한형제들과 함께 배민 아카데미 경기센터에서 지역 농산물을 활용한 외식 메뉴 개발 교육을 7월 16일, 23일, 27일 총 3회에 걸쳐 운영합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인, 팜보스 농업회사법인은 우아한형제들과 협력하여 특정 농산물의 외식업 판로 확대 방안을 검토해야 합니다. 주식회사 시경의 닥터상달 프랜차이즈 메뉴 개발에도 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405561">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/9 23:58 KST</span>
+      </div>
+      <h3>한농연충남도연합회, 농촌인력중개센터 협력 강화</h3>
+      <div class="body">한국후계농업경영인충청남도연합회가 2026년 시도형·시군형 농촌인력중개센터 간담회를 통해 협력 강화 및 운영 개선 방안을 논의했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 농촌 인력 수급 개선을 위해 충청남도 농촌인력중개센터와 협력 방안을 모색하여 안정적인 인력 확보를 추진할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405566">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
