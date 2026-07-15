@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 16일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 16 목요일 · KST 08:14</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농업수입안정보험의 예산 전용 문제와 한우 가격 상승세, 감귤 신품종 &#x27;맛나봉&#x27;의 시장 확대 시도 등 국내 농산물 유통 및 정책 현안이 조명되고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>예고된 농업수입안정보험의 시행착오</h3>
+      <div class="body">농업수입안정보험이 시행 첫해부터 전체 예산 2078억원 중 절반이 넘는 1223억원이 쓰이지 못하고 다른 사업으로 전용되었으며, 이는 본사업 전환 당시 제기됐던 &#x27;졸속 추진&#x27; 우려가 현실로 드러난 것입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 법인의 복숭아, 감, 딸기 품목에 대한 농업수입안정보험 적용 가능성을 장기적으로 검토하고, 유사 사업의 정책 방향성을 모니터링하여 수매 계획에 반영해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405701">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>사육마릿수 감소 효과···한우 가격 상승세</h3>
+      <div class="body">한우 거세우 경락가격이 kg당 평균 2만3000원대를 넘어서고, 6~7개월령 수송아지 가격이 마리당 500만원대를 넘어섰습니다. 이는 한우사육마릿수 감소 정책 효과가 본격화되고 출하 마릿수 감소가 가격 상승세의 주요 원인으로 분석됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경의 안동농협공판장 중도매 사업에서 한우 관련 물량 확보 및 가격 변동에 대비한 전략 수립이 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405696">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>서울청과, 감귤농가 ‘농업인 인식전환 교육’</h3>
+      <div class="body">서울청과는 제주농산물수급관리센터에서 감귤농가 400여명을 대상으로 &#x27;2026년 품목별 농업인 인식전환 교육&#x27;을 진행하며 농가의 유통 역량 강화에 기여했습니다. 특히 온라인 유통 확대 등 급변하는 시장 환경에 대한 이해도를 높이고 시장 중심의 생산·출하 전략을 공유했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 법인의 온라인 커머스 B2C 사업과 연계하여 산지 교육 프로그램을 기획하거나, 콘텐츠 마케팅에 &#x27;시장 중심 유통&#x27; 트렌드를 반영하는 방안을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405693">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>“진한 향, 달콤함 가득” 주황 멜론이 뜬다</h3>
+      <div class="body">주황색 과육 멜론인 칸탈로프 계열 멜론이 온라인 유통시장에서 프리미엄 멜론으로 인기를 얻고 있으며, 아시아종묘는 &#x27;칸타타살몬&#x27;, &#x27;칸타타봄&#x27;, &#x27;칸타타여름&#x27; 등 칸타타 시리즈를 통해 시장 확대를 추진하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 법인의 온라인 커머스 B2C 사업에서 프리미엄 멜론 시장 트렌드를 주시하고, 신품종 멜론의 소싱 또는 콘텐츠 마케팅 전략 수립에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405675">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>“식품제조 인력 이탈 방지위해 임금·근로환경 개선해야”</h3>
+      <div class="body">식품제조업 분야 인력 이탈 방지를 위해 장기적으로 실질임금 제고와 단기적으로 근로환경 개선을 통해 근로 효율을 높여야 한다는 한국농촌경제연구원의 분석이 나왔습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405671">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>“지역특화작목, 농가소득 증대 효자···중장기 예산지원 이뤄져야”</h3>
+      <div class="body">제2차 지역특화작목 연구개발 및 육성 종합계획의 성공을 위해 중장기적 예산 지원 체계 마련과 지역을 대표하는 문화 및 브랜드 구축을 위한 산학연 협조 체계 구축이 제안되었습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405669">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>가루쌀·발효 검은콩·특허 죽염 ‘라이스 피자’ 호평</h3>
+      <div class="body">산청군의 모운(주)농업회사법인이 가루쌀, 발효 검은콩, 특허 죽염을 활용한 &#x27;라이스 피자&#x27;를 개발해 상품화하며 경남도 농촌융복합산업화 최우수 사례로 호평받았습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405664">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>‘맛나봉’으로 노지감귤 다양화·편중 완화 시도</h3>
+      <div class="body">제주특별자치도농업기술원은 온주감귤 편중 완화와 노지감귤 품종 다양화를 위해 신품종 만감류 &#x27;맛나봉&#x27; 노지재배 실증 시범사업을 추진합니다. &#x27;맛나봉&#x27;은 12월 중순부터 수확 가능하며 평균 당도 13브릭스 이상으로 기대되고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 법인의 감귤 작목 생산 및 유통에 대한 품종 다양화 전략 수립에 참고할 수 있습니다. 특히 12월 출하 가능성을 고려하여 추후 수매 및 납품 품목으로 검토가 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405655">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>화성시-완주군, 로컬푸드 활성화 협력</h3>
+      <div class="body">경기 화성시와 전북 완주군이 로컬푸드 직매장 활성화 및 판로 확대, 우수 농특산물 안정적인 공급체계 구축 등 로컬푸드 활성화 및 도농 상생 협력 강화를 위한 업무협약을 체결했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405651">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 7/15 03:24 KST</span>
+      </div>
+      <h3>임금님표 이천쌀, 미국·호주 시장 공략 ‘잰걸음’</h3>
+      <div class="body">경기 이천시의 &#x27;임금님표 이천쌀&#x27;이 미국과 호주 시장에서 꾸준한 수출 성과를 이어가며 국제 시장 경쟁력을 입증하고 있습니다. 이번 미국 수출 물량은 총 19.76톤으로 캘리포니아를 중심으로 유통될 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 법인의 GS리테일 1차 밴드 납품 품목 외에 고품질 쌀 품목의 해외 수출 가능성을 간접적으로 보여주며, 향후 작목 다양화 및 판로 확대를 위한 장기적인 관점에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405649">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
