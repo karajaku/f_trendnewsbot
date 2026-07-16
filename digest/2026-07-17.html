@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 17일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 17 금요일 · KST 08:12</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 3건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">“홈플러스 파산으로 농업 공급망 연쇄 피해···정부 긴급지원 나서야”</div>
+      <div class="reason">정다운의 GS리테일 1차 밴드 납품 채널 다변화와 리스크 관리를 최우선으로 검토해야 합니다. 대형 유통 채널의 파산 위험이 상시 존재함을 인지하고, 안정적인 판매처를 확보하기 위한 전략을 즉시 수립해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">“농산물 유통 이익 부풀려져···정부 실태조사 개선 시급”</div>
+      <div class="reason">정다운의 GS리테일 1차 밴드 납품 단가 협상 시, 농산물 유통 마진에 대한 정부의 조사 방식 개선 요구를 협상 카드로 활용하여 정당한 유통 비용 반영을 주장해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">03</div>
+      <div class="title">“도매법인 제3자 판매, 중도매인 직접 수집 금지 규제 풀어야”</div>
+      <div class="reason">시경의 안동농협공판장 중도매 사업에 직접적인 영향을 미칠 수 있는 규제 완화 논의이므로, 중도매인의 직접 수집 허용 시 사업 확장 기회를 모색하고, 박원식 대표가 관련 정책 세미나에 참여하여 의견을 개진하는 방안을 고려해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 7건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농협중앙회 지방 이전 논의가 확산되고 있으며, 농산물 유통비용 조사 방식 개선과 도매시장 규제 완화 주장이 제기되는 등 유통 구조 개혁 움직임이 활발합니다. 농식품부는 하반기 수급 안정과 농협개혁을 추진할 계획이며, AI 기반 무인 방제기와 같은 애그테크 기술 발전도 주목됩니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>한농연 &quot;농협중앙회 지방 이전 논의 즉각 철회해야“</h3>
+      <div class="body">한국후계농업경영인중앙연합회(한농연)는 농협중앙회의 공공기관 2차 지방 이전 논의를 즉각 철회하고 농업인 의견 수렴과 영향 분석을 선행해야 한다고 촉구했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 주요 유통 및 금융 파트너인 농협중앙회 이전 시 거래 조건 및 지원 정책 변동 가능성이 있으므로 동향을 지속적으로 파악해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405801">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>[기자수첩] 밥상물가 상승의 진짜 원인은</h3>
+      <div class="body">국회에서 농산물 유통 개혁 논의가 예정되어 있으나, 특정 인사들로 구성된 패널들이 도매시장 문제에 대해 비슷한 시각을 공유하고 있어 논의의 객관성에 대한 우려가 제기됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경의 안동농협공판장 중도매 사업에 영향을 미칠 수 있는 도매시장 유통 정책 변화 가능성을 주시하고, 관련 토론회 및 의견 수렴 과정에 참여 방안을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405792">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>농협 지방 이전설에 술렁···“공공기관식 접근 안된다” 신중론 확산</h3>
+      <div class="body">농협중앙회와 농협경제·금융지주의 지방 이전론이 제기되면서, 농협이 공공기관이 아닌 협동조합이라는 점을 들어 공공기관 이전 방식으로 접근해서는 안 된다는 신중론이 확산되고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 주요 유통 및 금융 파트너인 농협중앙회 이전 시 거래 조건 및 지원 정책 변동 가능성이 있으므로 동향을 지속적으로 파악해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405787">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>“농산물 유통 이익 부풀려져···정부 실태조사 개선 시급”</h3>
+      <div class="body">정부가 활용하는 농산물 유통비용 조사에 농가 생산비에 해당하는 수확비용까지 포함되어 실제보다 부풀려진 유통비용으로 인식될 수 있어 개선이 시급하다는 지적이 나왔습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 1차 밴드 납품 단가 협상 시, 농산물 유통 마진에 대한 정부의 조사 방식 개선 요구를 협상 카드로 활용하여 정당한 유통 비용 반영을 주장해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405785">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>가락상생기금 활용 ‘농업인 현장컨설팅’ 마무리</h3>
+      <div class="body">한국농어촌희망재단이 가락상생기금을 활용하여 ‘2026년 농업인 현장 컨설팅 지원사업’을 성공적으로 마무리했으며, 충북·충남 지역 농가에 품목별 맞춤형 출하전략을 제공했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 산지 유통 및 수매 농가, 시경의 중도매 출하 농가들을 대상으로 유사한 현장 컨설팅 또는 출하 교육 프로그램 도입을 검토하여 농가 경쟁력 강화 및 관계 증진에 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405782">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>“도매법인 제3자 판매, 중도매인 직접 수집 금지 규제 풀어야”</h3>
+      <div class="body">도매시장법인의 제3자 판매와 중도매인의 직접 수집 금지 규제 완화를 통해 경쟁을 촉진해야 한다는 주장이 제기되었으며, 현행 제도가 불필요한 중간 비용을 상승시킨다는 지적이 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경의 안동농협공판장 중도매 사업에 직접적인 영향을 미칠 수 있는 규제 완화 논의이므로, 중도매인의 직접 수집 허용 시 사업 확장 기회를 모색하고, 박원식 대표가 관련 정책 세미나에 참여하여 의견을 개진하는 방안을 고려해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405772">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>[농식품부 주요 업무계획] 농축산물 수급 안정 최우선…농협개혁·농지 전수조사 ‘속도’</h3>
+      <div class="body">농림축산식품부는 7월 16일 대통령 업무보고에서 하반기 농축산물 수급 안정과 농업 경영안전망 강화, 신속한 농협개혁 등을 통해 &#x27;농정 대전환&#x27;을 실현하겠다고 밝혔습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 수매 작목인 복숭아, 감, 딸기를 포함한 농축산물 수급 안정 정책 변화를 주시하여 생산 계획 및 재고 관리에 반영하고, 농협 개혁 동향에 따라 거래 관계 변화 가능성을 대비해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405766">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>전북농단연 “농협중앙회 본사, 전북으로 와야”</h3>
+      <div class="body">전북 농업계가 제2차 공공기관 지방 이전 논의에 맞춰 농협중앙회 본사의 전북 이전을 촉구하며, 전북이 농생명 산업 기반과 금융 인프라가 집적된 최적의 입지임을 내세웠습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 주요 유통 및 금융 파트너인 농협중앙회 이전 시 거래 조건 및 지원 정책 변동 가능성이 있으므로 동향을 지속적으로 파악해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405733">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 00:05 KST</span>
+      </div>
+      <h3>CJ제일제당, 햇반 등 가격 올린다… 27개 품목 평균 8% 인상</h3>
+      <div class="body">CJ제일제당은 햇반, 만두, 생선구이 등 8개 카테고리, 27개 품목의 가격을 평균 8% 인상하며, 이는 주요 원·부재료 및 포장재 비용 상승에 따른 결정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 B2C 제품 가격 경쟁력에 영향을 미칠 수 있으므로, 경쟁사 제품 가격 인상 추이를 면밀히 모니터링하여 자사 제품 가격 전략 및 마케팅 방안을 재검토해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200812">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">홈플러스 파산 우려로 농축수산물 공급망 전체의 연쇄 피해가 예상되어 정부의 긴급 지원이 촉구되고 있습니다. CJ제일제당은 원부자재 비용 상승으로 &#x27;햇반&#x27; 등 주요 품목 가격을 평균 8% 인상했습니다. 농촌진흥청의 인사 변동 소식도 있었습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 04:29 KST</span>
+      </div>
+      <h3>“홈플러스 파산으로 농업 공급망 연쇄 피해···정부 긴급지원 나서야”</h3>
+      <div class="body">홈플러스 협력업체들은 홈플러스 파산으로 인한 농축수산물 생산자 및 식품 제조업체 등 공급망 전체의 연쇄 피해를 우려하며, 정부와 국회에 긴급 유동성 지원을 촉구했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 1차 밴드 납품 채널 다변화와 리스크 관리를 최우선으로 검토해야 합니다. 대형 유통 채널의 파산 위험이 상시 존재함을 인지하고, 안정적인 판매처를 확보하기 위한 전략을 즉시 수립해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405797">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
