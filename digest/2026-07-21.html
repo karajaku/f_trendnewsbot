@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 21일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 21 화요일 · KST 08:16</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">법원 파산 수순 밟던 홈플러스, 2000억 원 극적 확보…즉시항고 제출</div>
+      <div class="reason">정다운의 GS리테일 1차 밴드 납품 조건에 홈플러스의 유통 경쟁 심화 가능성을 반영해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">중국 AI 기업들, 저비용 고성능 모델로 미국 AI 우위에 도전</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 7/20 19:00 KST</span>
+      </div>
+      <h3>Safety and alignment in an era of long-horizon models</h3>
+      <div class="body">OpenAI는 장기 실행 AI 모델 배포 경험을 공유하며 새로운 안전 위험, 관찰된 실패, 그리고 반복적인 배포를 통한 개선된 안전 장치를 강조했습니다. 이는 장기간 작동하는 AI 모델의 안전 및 정렬(Safety and alignment in an era of long-horizon models)에 대한 교훈을 제시합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/safety-alignment-long-horizon-models">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 7/20 19:16 KST</span>
+      </div>
+      <h3>China delivers a one-two punch to America’s AI dominance</h3>
+      <div class="body">중국의 주요 AI 기업들이 OpenAI 및 Anthropic의 최고 모델과 경쟁할 수 있는 모델을 출시하며 미국의 AI 우위에 도전하고 있습니다 (China delivers a one-two punch to America’s AI dominance). 문샷(Moonshot)과 알리바바(Alibaba)는 낮은 비용으로 강력한 모델을 선보였습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/967781/chinese-ai-models-open-source-moonshot-kimi-k3-alibaba-qwen">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">제주 감귤 가격안정제 시행, 홈플러스 파산 위기 극복으로 유통 경쟁 심화 우려</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:01 KST</span>
+      </div>
+      <h3>전북 한농연·한여농 농협중앙회 본사 이전 공동성명 발표</h3>
+      <div class="body">전북 한농연·한여농이 농협중앙회 본사를 농생명산업 중심지인 전북으로 이전할 것을 요구하는 공동성명을 발표했습니다. 이는 농업 연구, 생산, 유통, 금융을 현장 중심으로 재편하여 국가 농업 경쟁력을 높이려는 목적입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405810">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:58 KST</span>
+      </div>
+      <h3>제주도, 노지온주감귤 가격안정관리제 신청·접수</h3>
+      <div class="body">제주특별자치도는 2026년산 노지온주감귤 가격안정관리제 추진계획을 확정하고, 8월 28일까지 지역 농·감협을 통해 사업 신청을 받습니다. 참여 대상은 제주에 주소를 두고 감귤 의무자조금을 납부한 농업인과 농업법인으로, 계통출하하는 2026년산 노지온주감귤에 해당합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 2026년 제주 노지온주감귤 가격 안정화 정책을 주시하고, 추후 산지 수매 및 유통 전략 수립에 참고해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405808">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">식품음료신문 · 01:31 KST</span>
+      </div>
+      <h3>법원 파산 수순 밟던 홈플러스, 2000억 원 극적 확보…즉시항고 제출</h3>
+      <div class="body">법원 파산 수순을 밟던 홈플러스가 2000억 원의 운영자금을 극적으로 확보하며 서울회생법원에 즉시항고를 제출하여 회생 기생의 불씨를 살렸습니다. 서울회생법원은 14일 이내 2000억 원 확보 시 폐지 결정 재고 여지를 남겼었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 1차 밴드 납품 조건에 홈플러스의 유통 경쟁 심화 가능성을 반영해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200829">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 01:07 KST</span>
+      </div>
+      <h3>‘K-김’ 글로벌 경쟁력 관건은 ‘안전·지속가능성’</h3>
+      <div class="body">K-김의 글로벌 경쟁력 강화를 위해 식품안전 확보를 위한 친환경 관리체계 구축과 연구 개발을 지속하기 위한 국가 차원의 전담기관이 필요하다는 주장이 제기되었습니다. 대통령직속 농어업·농어촌특별위원회는 제1차 김산업 발전 TF 회의를 개최하여 지속가능한 발전과 경쟁력 강화를 위한 정책 과제를 논의했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200824">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 7/20 16:56 KST</span>
+      </div>
+      <h3>‘온실가스 배출권거래제’ 식품 업계 경영 압박</h3>
+      <div class="body">한국 온실가스 배출권거래제(K-ETS)가 2026~2030년 제4차 계획기간에 돌입하며 공급 총량을 대폭 줄여 탄소에 높은 가격을 매기는 구조적 대전환을 시작했습니다. 이는 국내외 공급망이 얽혀 있는 식품업계에 직접적인 비용 상승과 경영 구조 변화를 강제할 것입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스는 배출권거래제 도입에 따른 물류, 포장재 비용 상승 가능성을 고려하여 사업 운영 비용을 재검토해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200802">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 7/20 16:50 KST</span>
+      </div>
+      <h3>[제4회 식품안전과학 심포지엄] 지정학적 위기 속 K-푸드 생존 전략, ‘스마트 기술’과 ‘규제 조화’로 뚫는다</h3>
+      <div class="body">기후변화, 글로벌 공급망 재편, 신기술 확산 등 식품산업의 변화 속에서 식품안전이 핵심 경쟁력으로 부상하고 있습니다. 한국식품위생안전성학회가 주최한 심포지엄에서는 &#x27;글로벌 식품안전 패러다임 변화와 선제적 대응전략&#x27;을 논의했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200789">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 7/20 16:46 KST</span>
+      </div>
+      <h3>K-푸드 글로벌 허브 시스템, 식재 공급망과 센트럴 키친에서 시작된다-함선옥 교수의 급식·외식 인사이트(18)</h3>
+      <div class="body">K-푸드의 지속 가능한 성장을 위해서는 메뉴와 레시피 확산뿐만 아니라 식재 공급망과 센트럴 키친(중앙 집중식 조리시설) 같은 하드웨어 인프라 구축이 필수적입니다. 맛의 일관성과 운영 효율성을 현지에서 완벽하게 뒷받침할 수 있어야 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 닥터상달 프랜차이즈의 전국 확장을 위해 식재 공급망 및 중앙 집중식 조리시설(센트럴 키친) 도입을 중장기적으로 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200811">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">경남농협, 양파 소비 캠페인 전개하며 산지 농가 지원</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:54 KST</span>
+      </div>
+      <h3>경남농협, ‘경남양파 착한 소비 캠페인’ 전개</h3>
+      <div class="body">경남농협이 양파 가격 하락과 소비 둔화로 어려움을 겪는 농가를 지원하기 위해 &#x27;경남양파 착한 소비 캠페인&#x27;을 전개했습니다. 농협하나로유통 김해유통센터에서 1.5kg 양파 800망을 사은품으로 증정하고, 합천 양파라면, 창녕 양파국수 등 다양한 양파 가공식품을 소개했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 농협의 &#x27;착한 소비 캠페인&#x27; 사례를 참고하여 복숭아, 감 등 주요 작목의 가격 하락 시 소비 진작을 위한 프로모션 전략을 수립해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405840">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
