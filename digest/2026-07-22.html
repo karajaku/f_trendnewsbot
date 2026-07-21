@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 22일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 22 수요일 · KST 08:13</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 3건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">제2, 제3의 홈플러스 사태 막으려면</div>
+      <div class="reason">정다운 영농조합법인은 GS리테일 1차 밴드 납품 계약 조건을 재검토하고, 납품처 다변화 및 안정적인 대금 수취 방안을 모색해야 합니다. 금송농업회사법인과의 협력 관계도 점검이 필요합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">&quot;신선 농축수산물 납품 대금, 10일 이내 지급해야&quot;</div>
+      <div class="reason">정다운 영농조합법인은 GS리테일 1차 밴드 납품 조건 변경 가능성을 대비하여 영업 미팅에서 이 이슈를 점검하고 새로운 결제 시스템 도입에 대한 대응 방안을 강구해야 합니다. 장석중 이사 관련 동향을 주시해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">03</div>
+      <div class="title">&quot;제2 홈플러스 사태 막으려면...농식품 납품업체 안전망 구축해야&quot;</div>
+      <div class="reason">정다운 영농조합법인은 GS리테일 1차 밴드 납품 계약 시 발생할 수 있는 위험을 최소화하기 위해 계약 조건을 면밀히 검토하고, 유사 사태 발생 시 피해를 줄일 수 있는 제도적 안전장치 마련에 대한 논의를 주시해야 합니다. 장석중 이사 관련 동향을 주시해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 7건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI, Hugging Face 보안 사고 및 이사회 인원 보강 소식. Google은 새로운 Gemini 모델을 공개하고, Anthropic은 저작권 합의금을 지급합니다. Substack은 AI 탐지 도구를 추가하는 등, AI 기술의 발전과 함께 그에 따른 법적, 윤리적 문제 또한 함께 대두되고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 02:00 KST</span>
+      </div>
+      <h3>Introducing the ChatGPT for small business program</h3>
+      <div class="body">OpenAI가 중소기업을 위한 ChatGPT 프로그램을 출시하며, 기업가들이 AI 기술을 습득하고 업무를 자동화하며 ChatGPT Work를 통해 성장하도록 돕습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/introducing-chatgpt-small-business-program">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">정부 APC 유통 비중 정체 및 홈플러스 사태로 인한 납품업체 피해가 이슈화되며 농산물 유통 구조 개선 및 농업 보조금 확대 논의가 활발합니다. 여름철 채소 가격은 상승하나 평년 회복은 불투명한 상황입니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:40 KST</span>
+      </div>
+      <h3>“정부 APC 키웠지만···유통 비중은 수년째 제자리”</h3>
+      <div class="body">정부가 육성하는 농산물산지유통센터(APC)의 농산물 유통 비중이 수년간 정체되어 있으며, 유통 개선 효과를 높이기 위해 APC 출하 물량 확대와 생산자 조직화 등 체계적인 운영 성과 관리가 필요하다는 국회예산정책처의 분석이 나왔습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 산지 유통 과정에서 APC와의 협력 관계를 점검하고 출하 물량 확대 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405877">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>FTA 농업피해 보전 제도화해야</h3>
+      <div class="body">이재명 대통령은 농림축산식품부 등 농업기관 업무보고에서 FTA로 인한 농업 피해를 정부가 책임지고, FTA 수혜기업의 피해보전 의무 분담 등을 지적하며 농어촌상생협력기금 재원 마련 방안을 지시했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405890">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>우리나라 농업보조금, 일본의 절반</h3>
+      <div class="body">국내 농가당 농업보조금이 유럽연합(EU)의 5분의 1, 일본의 절반 수준에 그치면서 농업 지원 확대론에 힘이 실리고 있으며, 정부와 여당에서 관련 논의가 활발합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405864">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>생산량 급감에 채소가격 올랐지만···평년 시세 회복은 ‘불투명’</h3>
+      <div class="body">여름철 생산량 감소로 채소 가격이 상승세를 보이지만, 여전히 평년 시세에는 미치지 못하며 외식업계 구매력 부진 등으로 평년 수준 회복은 불확실할 전망입니다. 7월 1~20일 가락동 농수산물도매시장에서 시금치 평균 도매가격(상품, 4kg)은 6월의 2배에 가까운 2만8650원을 기록했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경은 닥터상달 과일 프랜차이즈의 메뉴 구성 및 가격 전략에 채소류 시장 상황을 반영해야 합니다. 중도매인으로서 채소류 수매 및 유통 전략을 점검해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405860">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>“시장도매인-중도매인 농산물 거래 처벌 완화 추진”</h3>
+      <div class="body">진성준 더불어민주당 의원이 시장도매인-중도매인 농산물 거래 시 처벌 규정을 완화하는 &#x27;농수산물 유통 및 가격안정에 관한 법률 일부개정법률안&#x27;을 대표 발의했으며, 이에 대해 시장에선 엇갈린 평가가 나오고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경은 안동농협공판장 중도매업자로서 해당 법안 개정 추진 상황을 주시하고, 거래 질서 변화에 대비하여 운영 전략을 검토해야 합니다. 장석중 이사 관련 동향을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405859">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>제2, 제3의 홈플러스 사태 막으려면</h3>
+      <div class="body">서울회생법원의 홈플러스 기업회생절차 폐지 결정으로 농산물 납품업체와 생산농가의 피해가 현실화하고 있으며, 정부의 긴급 금융지원에도 현장의 반응은 냉담합니다. 연간 1조원이 넘는 농산물 주요 판매처가 사실상 사라져 산지와 납품업체, 생산농가의 불안이 커지고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 GS리테일 1차 밴드 납품 계약 조건을 재검토하고, 납품처 다변화 및 안정적인 대금 수취 방안을 모색해야 합니다. 금송농업회사법인과의 협력 관계도 점검이 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405846">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">대형유통업체 신선 농축수산물 납품 대금 10일 이내 지급 및 에스크로 제도 도입 추진, 그리고 홈플러스 사태로 인한 납품업체 보호 제도가 핵심 화두로 떠올랐습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>&quot;신선 농축수산물 납품 대금, 10일 이내 지급해야&quot;</h3>
+      <div class="body">대형유통업체에 신선 농축수산물 납품 시 10일 이내 대금 지급 및 에스크로(결제대금 예치 제도) 도입을 골자로 한 &#x27;대규모유통업법&#x27; 개정이 추진되고 있습니다. 임이자 국민의힘 의원이 홈플러스 사태로 인한 농축수산물 납품업체 보호를 위해 해당 법안을 발의했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 GS리테일 1차 밴드 납품 조건 변경 가능성을 대비하여 영업 미팅에서 이 이슈를 점검하고 새로운 결제 시스템 도입에 대한 대응 방안을 강구해야 합니다. 장석중 이사 관련 동향을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405889">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>대표과일 선발대회, 7월 27일부터 참가자 접수</h3>
+      <div class="body">국산 과일 품질 경쟁력 향상 및 소비 촉진을 위한 &#x27;2026 대한민국 대표과일 선발대회&#x27; 참가자 접수가 7월 27일부터 시작되며, 일반과수 7종과 산림과수를 대상으로 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 주요 작목인 복숭아, 감, 딸기를 대표과일 선발대회에 출품하여 브랜드 인지도를 높이고 품질 경쟁력을 홍보할 기회로 활용할 수 있습니다. 팜보스 농업회사법인은 수상 이력을 온라인 커머스 B2C 마케팅에 적극 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405872">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:35 KST</span>
+      </div>
+      <h3>&quot;제2 홈플러스 사태 막으려면...농식품 납품업체 안전망 구축해야&quot;</h3>
+      <div class="body">(사)한국농식품법인연합회와 임이자 국민의힘 의원이 개최한 토론회에서 홈플러스 사태 재발 방지를 위한 농식품 납품업체 안전망 구축 필요성이 제기되었습니다. 대금지급기한 단축 및 대금정산 안전장치 마련 등 제도 개선 방안이 논의되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 GS리테일 1차 밴드 납품 계약 시 발생할 수 있는 위험을 최소화하기 위해 계약 조건을 면밀히 검토하고, 유사 사태 발생 시 피해를 줄일 수 있는 제도적 안전장치 마련에 대한 논의를 주시해야 합니다. 장석중 이사 관련 동향을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405856">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
