@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 25일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 25 토요일 · KST 08:17</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 3건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">제철 여름 과일 엇갈린 시세···자두 강하고, 거봉 약세</div>
+      <div class="reason">정다운은 주력 작목인 복숭아, 감, 딸기의 시세 동향을 면밀히 분석하고, 특히 자두 시세 강세의 원인을 파악하여 향후 작목 선택 및 물량 조절에 반영해야 합니다. GS리테일 1차 밴드 납품 시 협상 전략에 활용하고, 팜보스 온라인 B2C와 닥터상달 과일 프랜차이즈의 판매 가격 및 프로모션 계획을 수립하는 데 참고해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">농민은 유통기업의 무이자 은행도 무료 보험사도 아니다</div>
+      <div class="reason">정다운의 GS리테일 1차 밴드 납품 계약 조건 및 대금 회수 시스템을 재점검해야 합니다. 특히, 매출채권 관리 및 계약서 상의 대금 지급 조항을 강화하는 방향으로 법무팀 검토를 진행해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">03</div>
+      <div class="title">농협유통, ‘라이브커머스’ 온라인 판매 강화</div>
+      <div class="reason">팜보스 농업회사법인의 온라인 커머스 B2C 사업과 시경의 닥터상달 과일 프랜차이즈 판매 채널 확대를 위해 라이브커머스 전략을 고도화해야 합니다. 특히 농협유통의 사례를 참고하여 산지 소식과 연계한 콘텐츠형 라이브커머스를 기획하여 사방넷 기반의 판매 채널을 강화할 수 있습니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 7건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">유통업체 대금 미지급 사태 반복, 농협유통 라이브커머스 강화 등 농산물 유통 시장에 큰 변화가 감지됩니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>중앙청과, 운송기사들과 수박 나눔···희망나눔마켓 통해 200통 전달</h3>
+      <div class="body">중앙청과가 여름철 무더위 속에서 가락동 농수산물도매시장으로 채소류를 운송하는 운송기사들에게 감사의 마음을 담아 수박 200통을 전달했습니다. 채소 출하 운송기사들은 전국 산지와 가락시장을 연결하며 농산물의 신선도 유지와 원활한 공급을 책임지는 중요한 역할을 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경의 안동농협공판장 중도매 사업과 연관된 운송기사 처우 개선 및 상생 방안을 고민할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406002">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>대한민국 과일산업대전···9월까지 참가업체 모집</h3>
+      <div class="body">농림축산식품부와 한국과수농협연합회가 11월 대전에서 개최될 ‘2026 대한민국 과일산업대전’ 참가업체를 9월까지 모집합니다. 이 행사는 2011년부터 이어온 국내 최대 규모 과수 전문 박람회로, 생산·유통·소비를 아우르는 과일산업의 핵심 플랫폼입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 주요 작목(복숭아, 감, 딸기) 홍보 및 판로 확대를 위해 참가 검토가 필요합니다. 특히 정다운은 청도·경산·밀양 산지 작목을, 팜보스는 온라인 B2C, 시경은 닥터상달 과일 프랜차이즈와 연결하여 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406001">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>콩나물콩 TRQ 1만톤 증량···최대 산지 제주 “즉각 철회”</h3>
+      <div class="body">정부가 국내 콩나물콩 공급 부족을 이유로 TRQ 물량을 1만톤 추가 증량하는 방침을 밝히자, 최대 산지인 제주에서는 즉각 철회를 촉구하고 나섰습니다. 이번 증량 물량은 국내 생산량인 4000~5000톤을 크게 웃도는 규모입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> TRQ 물량 증량으로 인한 다른 작목의 수입 정책 변화 가능성을 주시해야 합니다. 특히 복숭아, 감, 딸기 등 주력 작목에 대한 정부 수급 조절 정책 변화에 대비해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405993">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>농민은 유통기업의 무이자 은행도 무료 보험사도 아니다</h3>
+      <div class="body">최근 홈플러스 사태로 수많은 농수축산물 납품업체들과 농가들이 약 2천억 원 규모의 대금 미회수로 어려움을 겪고 있습니다. 이는 티메프(티몬·위메프) 사태와 대형 유기농 전문 유통업체 부도 등 유통기업의 납품 대금 문제 발생 사례가 반복되고 있음을 보여줍니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 1차 밴드 납품 계약 조건 및 대금 회수 시스템을 재점검해야 합니다. 특히, 매출채권 관리 및 계약서 상의 대금 지급 조항을 강화하는 방향으로 법무팀 검토를 진행해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405992">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>다름달음,  식품 변형 없이 비타민·칼슘 주입···맛도 높여</h3>
+      <div class="body">다름달음은 식품 변형 없이 원재료에 비타민, 칼슘 등 새로운 기능을 주입하는 식품 전처리 푸드테크 기업입니다. ‘저압+파동 기반 공정’을 통해 과일류, 잡곡류, 채소류 등 다양한 농산물에 적용 가능하며, 이를 활용한 첫 번째 과일 제품도 개발했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 산지 유통 및 상품 기획 단계에서 다름달음의 기능성 주입 기술 도입을 검토하여 고부가가치 과일 제품 개발 가능성을 타진할 수 있습니다. 특히 닥터상달 과일 프랜차이즈의 신제품 개발에 활용될 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405980">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>주미당, 원하는 향미 입력하면 최적 조합 설계·추출</h3>
+      <div class="body">주미당은 AI를 활용해 새로운 맛과 향을 설계하는 스타트업으로, AI 향미 디스펜서 ‘SENLYT(센릿)’을 선보였습니다. 사용자가 자연어로 원하는 향미를 입력하면 AI가 최적의 향미 조합을 설계하고 즉석에서 원액을 추출합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 닥터상달 과일 프랜차이즈 매장에서 신선 과일 외 음료 및 가공품 개발 시 주미당의 AI 향미 디스펜서 도입을 검토하여 고객 맞춤형 제품을 제공하고 차별화된 경험을 제공할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405979">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>농협유통, ‘라이브커머스’ 온라인 판매 강화</h3>
+      <div class="body">농협유통이 온라인 유통시장 성장에 발맞춰 네이버 쇼핑라이브 플랫폼을 활용한 실시간 방송 판매 시스템을 공식 가동하며 온라인 판매 역량 강화에 박차를 가합니다. 농협유통은 매주 1회 정기 방송을 편성하여 산지의 현장감 있는 소식과 우리 농축산물의 가치를 전하는 ‘콘텐츠형 라이브커머스’로 차별화를 도모할 방침입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 B2C 사업과 시경의 닥터상달 과일 프랜차이즈 판매 채널 확대를 위해 라이브커머스 전략을 고도화해야 합니다. 특히 농협유통의 사례를 참고하여 산지 소식과 연계한 콘텐츠형 라이브커머스를 기획하여 사방넷 기반의 판매 채널을 강화할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405968">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>서울청과, 산지 수요 반영 ‘농기자재 지원’</h3>
+      <div class="body">서울청과가 주요 품목 출하자들의 농산물 품질 경쟁력 강화를 위해 산지별 맞춤형 농기자재 지원을 실시했습니다. 농산물 유통 과정에서 발생할 수 있는 상품성 저하 예방과 출하단계 품질 관리 강화, 작업 효율성 향상, 안정적인 출하 환경 조성을 목표로 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 산지 유통 및 GS리테일 1차 밴드 납품 시 품질 경쟁력을 높이기 위해 산지 출하자들에 대한 농기자재 지원 방안을 검토할 수 있습니다. 특히 청도·경산·밀양 산지 작목의 품질 관리 및 작업 효율성 향상에 기여할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405966">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">복숭아데이 행사 개최, 자두 시세 강세 등 주요 작목 시세 및 홍보 활동에 주목해야 합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>“올 여름, 복숭아 먹으면서 무더위 이겨내세요”···서울 영등포서 ‘복숭아데이’</h3>
+      <div class="body">(사)한국복숭아생산자협의회와 복숭아자조금관리위원회는 중복을 하루 앞둔 7월 24일 서울 영등포 타임스퀘어에서 ‘2026년 복숭아데이’ 행사를 개최했습니다. 어느덧 24회를 맞이한 복숭아데이는 7월 복숭아 성출하기를 맞아 국산 복숭아의 우수한 맛과 품질을 알리고 소비를 촉진하는 행사입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 주력 작목인 복숭아의 성수기 마케팅 전략을 강화해야 합니다. 팜보스의 온라인 커머스 B2C 채널과 연계하여 복숭아데이 행사와 같은 대규모 프로모션 기획 및 참여를 검토하고, 닥터상달 과일 프랜차이즈에서도 복숭아 활용 메뉴를 개발하여 홍보를 강화할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405997">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:27 KST</span>
+      </div>
+      <h3>제철 여름 과일 엇갈린 시세···자두 강하고, 거봉 약세</h3>
+      <div class="body">여름철 주요 과일 시세가 수급 상황과 품질에 따라 엇갈리고 있습니다. 자두는 평년 대비 출하량이 줄어 시세가 높게 형성되었고, 햇사과와 복숭아는 대체로 평년 수준을 유지하는 반면 포도류 중 캠벨얼리와 거봉은 품질에 따라 시세가 다르게 나타났습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 주력 작목인 복숭아, 감, 딸기의 시세 동향을 면밀히 분석하고, 특히 자두 시세 강세의 원인을 파악하여 향후 작목 선택 및 물량 조절에 반영해야 합니다. GS리테일 1차 밴드 납품 시 협상 전략에 활용하고, 팜보스 온라인 B2C와 닥터상달 과일 프랜차이즈의 판매 가격 및 프로모션 계획을 수립하는 데 참고해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=405970">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
