@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 7월 30일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 7 · 30 목요일 · KST 08:16</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI, Google, Microsoft 등 주요 AI 기업들이 GPT-5.6 성능 개선, 에이전트 플랫폼 업데이트, AI 슈퍼 앱 출시 등 다양한 AI 신기술 및 서비스 동향을 발표했습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 00:00 KST</span>
+      </div>
+      <h3>How enabling two settings tripled our scores on the ARC-AGI-3 benchmark</h3>
+      <div class="body">OpenAI는 두 가지 API 설정을 통해 GPT-5.6의 ARC-AGI-3 벤치마크 성능을 개선하여 추론 유지 및 압축 활성화를 통해 점수와 효율성을 높였습니다. 이는 GPT-5.6이 ARC-AGI-3 테스트에서 더 높은 점수를 기록하고 효율성을 향상시키는 데 기여했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 7/29 19:00 KST</span>
+      </div>
+      <h3>Accelerating scientific discovery with ChatGPT for Academic Researchers</h3>
+      <div class="body">OpenAI는 과학 연구 가속화를 위해 10만 명의 학술 연구자에게 ChatGPT의 최첨단 AI 모델에 대한 무료 접근을 제공하고 있습니다. 이로써 연구자들은 과학 연구, 협업 및 발견을 가속화할 수 있게 됩니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/chatgpt-for-academic-researchers">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 7/29 09:00 KST</span>
+      </div>
+      <h3>How GPT-5.6 fuses frontier intelligence with frontier efficiency</h3>
+      <div class="body">GPT-5.6은 모델, 추론, 에이전트 워크플로우 전반에 걸쳐 AI 효율성을 향상시켜, 달러당 더 유용한 인텔리전스를 제공하는 데 기여합니다. 이는 AI의 효율성을 높여 비용 대비 더 많은 가치를 창출합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 01:00 KST</span>
+      </div>
+      <h3>What’s new in Gemini Enterprise Agent Platform</h3>
+      <div class="body">Gemini Enterprise Agent Platform 출시 이후 기업과 개발자들의 진전이 있었으며, Google Cloud는 더 많은 기능 제공을 위해 노력하고 있습니다. 이 플랫폼은 비즈니스와 빌더들에게 다재다능함과 강력함을 제공합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise-agent-platform">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 01:00 KST</span>
+      </div>
+      <h3>Automate your agent development lifecycle using any coding agent</h3>
+      <div class="body">이 기사는 Gemini Enterprise Agent Platform을 사용하여 실제 프로덕션용 에이전트를 구축하는 방법을 설명하며, 에이전트 개발 라이프사이클 자동화를 목표로 합니다. 많은 AI 프로젝트가 프로토타입 단계에서 멈추는 문제를 해결하고 안전한 프로덕션 에이전트로 전환하는 방법을 제시합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/developers-practitioners/automate-agent-development-lifecycles-with-gemini-enterprise">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 07:17 KST</span>
+      </div>
+      <h3>Microsoft confirms Copilot ‘super app’ coming this year</h3>
+      <div class="body">마이크로소프트는 Copilot의 채팅, 코딩, 에이전트 기능을 결합한 AI &#x27;슈퍼 앱&#x27;을 올해 출시할 예정임을 확인했습니다. 사티아 나델라 CEO는 이 앱이 소비자 및 상업적 경험을 아우를 것이라고 밝혔습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/972927/microsoft-copilot-super-app-confirmed">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 06:48 KST</span>
+      </div>
+      <h3>Mark Zuckerberg is planning a big push into personal AI agents</h3>
+      <div class="body">마크 저커버그 메타 CEO는 개인 AI 에이전트 분야에 대한 대대적인 투자를 계획하고 있다고 밝혔습니다. 이는 사용자를 대신하여 다양한 작업을 수행할 수 있는 개인 에이전트 개발에 중점을 둡니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/972294/meta-q2-2026-earnings-mark-zuckerberg-personal-ai-agents">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농심 라면이 서울 전 지역에서 판매 1위를 기록하며 지역별 소비 트렌드 분석의 중요성을 보여주었습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 7/29 23:28 KST</span>
+      </div>
+      <h3>‘농심 라면’ 서울 전 지역 싹쓸이…‘신라면’ 압도적 1위</h3>
+      <div class="body">농심 라면이 올 상반기 서울시 25개 자치구의 대형마트와 SSM 판매 데이터 분석 결과 전 지역 라면 판매 1위를 차지했습니다. 신라면, 짜파게티, 신라면골드 등이 주요 인기 품목으로 나타났으며, 자치구별로 선호하는 라면 종류가 달랐습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 GS리테일 등 대형 유통 채널 납품 시 품목별 지역 선호도 데이터 분석을 참고하여 판매 전략을 수립할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200905">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">롯데웰푸드가 의성군과 농특산물 판로 확대를 위한 장기 파트너십을 강화하며, 샘표는 가정간편식 시장을 겨냥한 신제품을 출시했습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 7/29 19:18 KST</span>
+      </div>
+      <h3>롯데웰푸드, 20년 지기 의성군과 파트너십 강화 나서</h3>
+      <div class="body">롯데웰푸드가 지난 20년간 협력해 온 의성군과 농특산물 판로 확대 및 지역 경제 활성화를 위한 상생협력 업무협약을 체결했습니다. 롯데웰푸드는 의성마늘을 비롯한 의성 지역 농특산물 구매를 확대하고 제품 개발 및 판매를 강화할 계획이며, 의성군은 의성마늘 브랜드 가치 향상에 협력할 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도, 경산, 밀양 산지의 복숭아, 감, 딸기 등 주력 작목에 대해 롯데웰푸드와 같은 대기업과의 장기적인 협력 방안을 모색하여 안정적인 판로를 확보하고 신제품 개발 기회를 발굴할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200900">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 7/29 18:45 KST</span>
+      </div>
+      <h3>[07/29 오늘의 새상품] 샘표 ‘새미네부엌 숯불치밥소스’, 대상웰라이프 ‘뉴케어 당플랜 노스파이크’, 파리바게뜨 ‘고추장 불고기 샌드위치’, 하이트진로 ‘진로 아이스백팩’, 동서식품 ‘포스트 그래놀라 제로슈거 파로 통보리’, LF푸드 ‘한반12 살얼음동동 깨폭탄 냉면’, 더본코리아 빽다방 ‘자두·애플스무디’ 2종, 세븐일레븐 ‘델리황 황태칩’ 2종</h3>
+      <div class="body">샘표가 고기에 붓고 볶기만 하면 숯불향 가득한 치밥을 완성할 수 있는 &#x27;새미네부엌 숯불치밥소스&#x27;를 출시했습니다. 이 소스는 매콤한 특제 양념에 직화 바비큐 풍미를 더해 집에서도 전문점 숯불 치밥을 손쉽게 만들 수 있도록 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 온라인 커머스 B2C 사업에서 과일 이외에 과일을 활용한 간편 소스 등 가공품 협업을 고려하여 소비자 편의성을 높일 수 있는 상품 기획을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200899">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
