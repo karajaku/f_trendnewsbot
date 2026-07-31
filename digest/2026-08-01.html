@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 1일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 1 토요일 · KST 08:16</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">밀양 얼음골 사과, 스마트과수원 특화단지 조성 추진</div>
+      <div class="reason">정다운은 밀양 산지에서 딸기를 수매하므로, 밀양 얼음골 사과 스마트과수원 특화단지 조성 사례를 참고하여 향후 밀양 딸기 등 다른 작목의 스마트팜 전환 및 생산 효율 증대 방안을 모색할 수 있습니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농업 부문에서는 폭염 피해 예방 활동 강화, 농지법 위반 의심 농지 심층조사, 중국산 양상추 수입 증가로 인한 국내 시장 불안정성 심화 등 다양한 현안들이 보고되었습니다. 특히 도매시장 환경 개선 및 식자재 온라인몰 오픈 등 유통 효율성 증대를 위한 노력이 이어지고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>드론·차량 활용 폭염 피해 예방 활동 ‘온힘’</h3>
+      <div class="body">정부가 드론과 차량을 활용해 농업인 온열질환 예방 활동을 강화하고 있으며, 농림축산식품부 장관이 전남광주통합특별시 함평군을 방문해 폭염 대응 상황을 점검했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 밀양, 청도, 경산 산지 농가와 협력하므로 폭염으로 인한 농업인 건강 및 작물 피해 예방에 대한 정보와 지원책을 농가에 안내할 필요가 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406096">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>농지 27% 농지법 위반 의심···이달부터 심층조사</h3>
+      <div class="body">농림축산식품부의 농지 기본조사 결과, 전국 농지의 27%가 농지법 위반 의심 농지로 분류되었고, 8월부터 이들 농지에 대한 현장 심층조사가 시작됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 산지 농가와 수매 계약을 맺고 있으므로, 농지법 위반으로 인한 농지 면적 감소나 생산량 변동 가능성을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406094">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>‘중국산 양상추’ 파상공세···여름철 국산 수급 공백 틈 노린다</h3>
+      <div class="body">중국산 양상추의 국내 시장 진입이 증가하며 여름철 도매시세가 국산을 앞지르는 현상이 확인되었고, 2021년 1만2602톤이던 수입량은 2025년 2만1880톤으로 늘었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매법인을 운영하므로, 수입산 작물의 도매시장 가격 영향에 대한 모니터링을 강화하고 국산 농산물 경쟁력 확보 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406072">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>서울시농수산식품공사, 시설 개선과 실무 역량 강화 교육 등 현장 밀착형 지원 나서</h3>
+      <div class="body">서울시농수산식품공사가 가락동 농수산물도매시장의 현장 종사자들을 위해 &#x27;현장 환경 개선&#x27;과 &#x27;실무 역량 강화 교육&#x27;을 동시에 추진했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매법인으로, 공판장 환경 개선 및 종사자 지원 프로그램에 대한 정보 파악 및 적극적인 참여를 통해 운영 효율성을 높일 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406069">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>동화청과 ‘양평부추 경쟁력 향상 지원’ 약속</h3>
+      <div class="body">동화청과가 양평부추의 도매시장 경쟁력 향상을 위해 지원을 강화하겠다고 밝히며, 양평군, 양평부추영농조합법인, 양평 양동농협 관계자 등 90여명과 현장 간담회를 진행했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매법인으로서 도매시장 활성화와 특정 작목의 경쟁력 향상 지원 동향을 참고하여, 다른 산지 생산자 단체와의 협력 방안을 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406068">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>가락시장 관리·청소 인력에 수박 60통 전달</h3>
+      <div class="body">한국농수산물도매시장법인협회 가락시장지회(동화·서울·중앙·대아청과)가 무더위 속에서 일하는 가락시장 관리·청소 인력들에게 수박 60통을 전달하며 감사의 마음을 표했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매법인으로서 공판장 내 환경 미화 및 관리 인력에 대한 상생 및 지원 활동을 검토하여 긍정적인 관계를 구축할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406059">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>농협목우촌, 식자재 전문 온라인 몰 오픈</h3>
+      <div class="body">농협목우촌이 육가공품과 신선·가공식품 등 약 2000여 종의 식자재를 한 곳에서 구매할 수 있는 식자재 전문 온라인몰 ‘목우촌 식자재몰’을 오픈하고, 익일 직배송 서비스를 제공합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스는 B2C 온라인 커머스를 운영하므로, 다른 농산물 유통 기업의 온라인 채널 및 배송 서비스 확장 동향을 참고하여 자사 서비스 고도화를 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406040">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>농업AX플랫폼 사업 ‘전남광주 컨소시엄’ 선정</h3>
+      <div class="body">대동을 대표 기업으로 하는 ‘전남광주통합특별시 컨소시엄’이 농림축산식품부의 국가 농업AX플랫폼 민간참여자 공모에서 최종 선정되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스는 사방넷 기반의 온라인 커머스를 운영하므로, 대동 등 주요 농기계/IT 기업의 스마트팜 및 AX 플랫폼 사업 진출이 장기적으로 농산물 생산 및 유통 방식 변화에 미칠 영향을 모니터링해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406037">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">밀양 얼음골 사과가 스마트과수원 특화단지로 조성될 예정이며, 마늘 신품종 &#x27;백산&#x27;은 시장성을 인정받았으나 저장성 검증이 필요합니다. 과수 농업인 역량 강화를 위한 교육 지원도 지속되고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>마늘 신품종 ‘백산’ 합격점···저장성 검증은 과제</h3>
+      <div class="body">가락동 농수산물도매시장 유통인들이 국내 마늘 신품종 ‘백산’의 시장성에 합격점을 주었으나, 저장성 검증은 아직 과제로 남아 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매법인으로, 마늘 신품종 &#x27;백산&#x27;의 저장성 검증 결과에 따라 향후 중도매 전략 및 품목 구성에 영향을 받을 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406061">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 04:09 KST</span>
+      </div>
+      <h3>밀양 얼음골 사과, 스마트과수원 특화단지 조성 추진</h3>
+      <div class="body">경상남도는 농림축산식품부 주관 ‘2027년 스마트과수원 특화단지 조성 사업’ 공모에 밀양시가 최종 선정되어 밀양 얼음골 사과 생산단지에 37억8000만원을 투입하여 스마트 재배 기반을 구축합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 밀양 산지에서 딸기를 수매하므로, 밀양 얼음골 사과 스마트과수원 특화단지 조성 사례를 참고하여 향후 밀양 딸기 등 다른 작목의 스마트팜 전환 및 생산 효율 증대 방안을 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406046">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
