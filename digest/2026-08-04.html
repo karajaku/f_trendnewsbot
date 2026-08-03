@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 4일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 4 화요일 · KST 08:27</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">춘천 복숭아 페스티벌 5000박스 완판···대표 여름축제로 ‘우뚝’</div>
+      <div class="reason">정다운 영농조합법인(j)의 청도·경산 복숭아는 GS리테일 1차 밴드 납품 시, 타지역 복숭아 축제 성공 사례를 벤치마킹하여 판촉 및 마케팅 전략 강화가 필요합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">주요 AI 기업들의 신규 모델 및 서비스 업데이트 소식과 AI 규제 관련 유럽연합의 새로운 규칙 발효.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 8/3 16:00 KST</span>
+      </div>
+      <h3>How we built a realtime system for responsive voice AI in six months</h3>
+      <div class="body">OpenAI는 GPT-Live를 통해 AI와 연속적인 음성 상호작용이 가능한 실시간 시스템을 구축했으며, 턴(turn)을 주고받는 방식이 아닌 저지연 아키텍처를 사용하여 더 빠르고 자연스러운 대화를 가능하게 합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/continuous-voice-interaction-with-gpt-live">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">TLDR AI · 8/3 09:00 KST</span>
+      </div>
+      <h3>DeepSeek V4 Flash ⚡, OpenAI’s math breakthrough 🔢, Qwen 3.8-Max 🤖</h3>
+      <div class="body">DeepSeek V4 Flash, OpenAI의 수학 관련 발전, Qwen 3.8-Max 등 주요 AI 모델들의 업데이트 소식이 전해졌습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://tldr.tech/ai/2026-08-03">원문 읽기 →</a><span class="sep">·</span><span class="src">tldr.tech</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 8/3 20:01 KST</span>
+      </div>
+      <h3>China&amp;#8217;s Alibaba takes another swipe at America’s AI supremacy</h3>
+      <div class="body">중국 알리바바는 Anthropic 및 OpenAI의 최고 시스템과 경쟁할 만한 성능을 가진 자사의 가장 크고 유능한 AI 모델인 Qwen3.8-Max를 공개했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/974342/alibaba-qwen-max-open-weight-ai">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">기후 위기 속 친환경 농업의 중요성과 유통 혁신을 위한 데이터 기술, 그리고 지역 농산물 판로 확대 노력이 이어집니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:58 KST</span>
+      </div>
+      <h3>[기고] 기후 위기 시대, 친환경 농업과 가치 소비</h3>
+      <div class="body">기후 위기 시대에 농산물 가격과 품질 변동이 심화됨에 따라, 식탁의 안정성을 지키기 위한 해결책 중 하나로 친환경 농업과 가치 소비의 중요성이 부각되고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인(f)은 온라인 커머스 B2C에서 친환경 농산물 콘텐츠 마케팅 강화 및 상품 소싱 전략에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406123">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:38 KST</span>
+      </div>
+      <h3>고흥쌀, 제주 고정 수요처 확보 나선다</h3>
+      <div class="body">고흥군이 제주시농협과 서귀포농협 등 제주 지역 농협과 연계하여 쌀 판촉 행사를 진행하며 고흥쌀의 제주 고정 수요처 확보에 나섰습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 GS리테일 등 대형 유통 채널과의 납품 협상 시, 지역 농협 연계 판촉 사례를 참고하여 새로운 판로 개척 및 협력 가능성을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406138">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:37 KST</span>
+      </div>
+      <h3>한살림, 8월 한달간 ‘청년농 응원 캠페인’···친환경 농산물 꾸러미 증정</h3>
+      <div class="body">한살림이 8월 한달간 &#x27;청년농 응원 캠페인&#x27;을 진행하며 청년 농부가 직접 매장을 찾아 농산물과 농사 이야기를 소개하고 친환경 농산물 꾸러미 증정 행사도 갖습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인(f)은 청년농과의 협력을 통해 온라인 커머스 B2C 상품 소싱 및 &#x27;생산자 스토리&#x27; 기반의 콘텐츠 마케팅 전략을 강화할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406147">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:36 KST</span>
+      </div>
+      <h3>멜론 수확 적기, 데이터로 찾는다</h3>
+      <div class="body">경기 용인시가 서울대학교와 협력하여 스마트팜 다부처패키지 혁신기술개발사업의 일환으로 멜론 등 박과류의 적절한 수확 시기를 데이터로 판단하는 &#x27;숙기 판정 기술&#x27; 개발 현장 실증을 추진합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)과 주식회사 시경(s)은 복숭아, 감, 딸기 등 주요 작목의 수매 및 출하 시 품질 균일화를 위해 스마트팜 데이터 기반 숙기 판정 기술 도입 가능성을 장기적으로 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406143">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:33 KST</span>
+      </div>
+      <h3>단양군 어상천 수박, 부산 도매시장 첫 출하</h3>
+      <div class="body">단양군 어상천 수박이 부산 농수산물도매시장 동부청과㈜에 첫 출하되었으며, 이는 단양군과 동부청과㈜의 농산물 유통 활성화 업무협약에 따른 것입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경(s)은 안동농협공판장 중도매 운영 시, 산지 지자체와 도매시장 법인의 MOU를 통해 안정적인 품목 공급 및 판로 확대를 모색할 수 있는지 검토가 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406115">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 8/3 18:05 KST</span>
+      </div>
+      <h3>폭염 장기화…식품기업, &#x27;폭염 특수&#x27;보다 &#x27;기후 적응력&#x27;이 경쟁력</h3>
+      <div class="body">장기화되는 폭염으로 인해 식품기업들은 단순한 &#x27;폭염 특수&#x27;를 넘어 원료 생산 감소, 공급망 불안, 에너지 비용 증가 등 구조적 리스크에 직면하며 기후 적응력을 핵심 경쟁력으로 인식하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 그룹 전체는 기후 변화에 따른 주요 작목(복숭아, 감, 딸기)의 생산량 및 품질 변동 가능성에 대비하여 수매 계획, 재배 방식, 유통 전략 등 전반적인 공급망 적응력 강화 방안을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200888">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">춘천 복숭아 페스티벌 성황리에 종료, 5000박스 완판 기록.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 01:53 KST</span>
+      </div>
+      <h3>춘천 복숭아 페스티벌 5000박스 완판···대표 여름축제로 ‘우뚝’</h3>
+      <div class="body">2026년 제3회 춘천 복숭아 페스티벌에서 복숭아 5000박스가 완판되었으며, 1회 대비 방문객 2.4배, 판매량 2.5배 증가를 기록하며 춘천의 대표 여름 축제로 자리매김했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)의 청도·경산 복숭아는 GS리테일 1차 밴드 납품 시, 타지역 복숭아 축제 성공 사례를 벤치마킹하여 판촉 및 마케팅 전략 강화가 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406125">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
