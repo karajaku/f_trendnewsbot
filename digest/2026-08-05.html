@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 5일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 5 수요일 · KST 08:19</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 3건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">폭염·가뭄 속 농산물값 하락···농촌 덮친 &#x27;복합위기&#x27;</div>
+      <div class="reason">정다운 영농조합법인(j)은 복숭아, 감, 딸기 등 주요 작목의 생산량 감소와 품질 저하에 대비하여 수매 계획을 조정하고, 시경(s)은 닥터상달 과일 프랜차이즈의 상품 수급에 차질이 없도록 대체 공급처를 물색해야 합니다. 팜보스 농업회사법인(f)은 온라인 커머스 B2C 판매 시 기상악화로 인한 품절 및 가격 변동에 대한 공지를 준비해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">영천 복숭아, 성심당과 손잡고 전국 시장 공략</div>
+      <div class="reason">정다운 영농조합법인(j)은 주요 작목인 복숭아의 GS리테일 납품 시 성심당과의 협력 사례를 벤치마킹하여 신규 유통 채널 및 협력 모델을 모색할 수 있습니다. 팜보스 농업회사법인(f)은 온라인 커머스 B2C에서 타 식품 브랜드와의 협업을 통해 복숭아 소비를 확대하는 방안을 검토해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">03</div>
+      <div class="title">“도매시장 출하 농산물 표준규격품 표시 의무화”</div>
+      <div class="reason">정다운 영농조합법인(j)은 GS리테일 1차 밴드 납품 시 표준규격품 표시 의무화에 대비하여 출하 농산물의 품질 관리 및 표시 기준을 재점검하고, 관련 법규 개정에 따른 대응 방안을 마련해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 7건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI는 사이버 보안 및 교육 관련 업데이트를, 구글은 AI 개발자 도구 및 리테일 분야 활용 소식을 전했습니다. 한편, 애플과의 법적 공방과 AI 인플루언서 마케팅 논란도 이어졌습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 01:00 KST</span>
+      </div>
+      <h3>How Target is enhancing retail discovery and cutting database maintenance by 50% with Spanner Graph</h3>
+      <div class="body">타겟(Target)은 Spanner Graph를 활용하여 리테일 검색 기능을 강화하고 데이터베이스 유지보수 비용을 50% 절감했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인(f)은 온라인 커머스 B2C 운영 시 AI 기반 개인화 추천 시스템 도입을 고려하여 경쟁력 확보 방안을 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/retail/how-target-rebuilt-retail-discovery-with-spanner-graph">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">기록적 폭염·가뭄으로 농촌 복합위기 현실화, 미국 농업 정책 변화 주목. 도매시장 농산물 표준규격품 표시 의무화와 폭염 대비 상품성 관리 강화 필요성이 대두되었습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:12 KST</span>
+      </div>
+      <h3>미국의 선택과 농업 복합위기 대응</h3>
+      <div class="body">미국은 예산조정법을 통해 농업 예산을 확대하고 기준 가격 인상 및 PLC를 통해 농업 복합위기에 대응하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 주요 작물 수매 시 미국 농산물 가격 정책 변화를 장기적인 시장 가격 변동 요인으로 참고하여 수매 전략에 반영할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406192">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>폭염·가뭄 속 농산물값 하락···농촌 덮친 &#x27;복합위기&#x27;</h3>
+      <div class="body">기록적인 폭염과 가뭄이 지속되는 가운데 농산물 가격 하락과 농자재값 상승이 겹쳐 농촌에 복합위기가 닥쳤습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 복숭아, 감, 딸기 등 주요 작목의 생산량 감소와 품질 저하에 대비하여 수매 계획을 조정하고, 시경(s)은 닥터상달 과일 프랜차이즈의 상품 수급에 차질이 없도록 대체 공급처를 물색해야 합니다. 팜보스 농업회사법인(f)은 온라인 커머스 B2C 판매 시 기상악화로 인한 품절 및 가격 변동에 대한 공지를 준비해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406187">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>미국, 농업인 ‘경영안전망’ 강화···농산물 기준가격·융자단가 대폭 인상</h3>
+      <div class="body">미국은 농산물 기준가격과 정부 융자단가를 대폭 인상하며 농가 경영안전망을 강화하는 정책 변화를 보였습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 미국 농업 정책 변화가 국내 농산물 수급 및 가격에 미칠 장기적 영향을 분석하여 주요 작목의 수매 및 납품 전략 수립에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406185">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>구리농수산물공사, 구리농수산물도매시장 중도매인 신규 모집</h3>
+      <div class="body">구리농수산물공사가 구리농수산물도매시장의 중도매인을 신규 모집하며 30명(과일 3명, 채소 6명, 수산 21명)을 허가 기간 7년으로 모집합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경(s)은 안동농협공판장 중도매 운영 시 타 도매시장의 중도매인 모집 현황을 파악하여 경쟁 환경 변화에 대응하고, 필요시 구리시장 진출을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406179">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>“도매시장 출하 농산물 표준규격품 표시 의무화”</h3>
+      <div class="body">농산물 품질관리를 강화하기 위해 도매시장 출하 농산물에 대한 표준규격품 표시를 의무화하고, 등급 표준화 검사를 법제화하는 내용의 농안법 개정안이 발의되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 GS리테일 1차 밴드 납품 시 표준규격품 표시 의무화에 대비하여 출하 농산물의 품질 관리 및 표시 기준을 재점검하고, 관련 법규 개정에 따른 대응 방안을 마련해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406173">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>‘불가마’ 대한민국···가락시장 농산물 관리도 비상</h3>
+      <div class="body">40℃를 넘나드는 무더위로 인해 도매시장에서 고온에 취약한 농산물의 상품성 관리에 비상이 걸렸으며, 특히 가락동 농수산물도매시장은 정온·저온 시설 미흡으로 어려움을 겪고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 폭염에 대비하여 주요 작목의 수확 후 관리 및 운송 단계에서 선도 유지 방안을 강화하고, GS리테일 1차 밴드 납품 시 온도 관리에 더욱 주의를 기울여야 합니다. 시경(s)은 안동농협공판장 중도매 운영 시 고온에 취약한 품목의 매입 및 보관 전략을 재검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406172">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">영천 복숭아, 성심당과 협력하여 전국 시장 공략. 청도 &#x27;본가 총각김치&#x27;가 김치품평회 대상 수상. 포도 자조금은 포도데이 기념 소비 촉진 행사를 개최합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>“우리 포도와 함께 건강한 여름나요”</h3>
+      <div class="body">한국포도협회는 &#x27;포도데이&#x27;를 기념하여 8월 7일 기념식을 진행하고 8월 13일부터 19일까지 하나로마트 양재점에서 국산 포도 할인 행사를 개최하여 소비를 촉진합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경(s)은 닥터상달 과일 프랜차이즈에서 포도 판매 시 해당 행사 기간을 활용하여 프로모션을 기획하거나, 자조금 행사 참여를 통해 브랜드 인지도를 높일 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406180">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>영천 복숭아, 성심당과 손잡고 전국 시장 공략</h3>
+      <div class="body">영천시가 지역 대표 여름 과일인 영천 복숭아 판로 확대를 위해 금호농협과 성심당이 협력 계약을 체결했으며, 성심당은 여름 한정 제품 주원료로 영천 복숭아를 사용할 계획입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 주요 작목인 복숭아의 GS리테일 납품 시 성심당과의 협력 사례를 벤치마킹하여 신규 유통 채널 및 협력 모델을 모색할 수 있습니다. 팜보스 농업회사법인(f)은 온라인 커머스 B2C에서 타 식품 브랜드와의 협업을 통해 복숭아 소비를 확대하는 방안을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406156">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:08 KST</span>
+      </div>
+      <h3>김치품평회 대상에 청도 ‘본가 총각김치’</h3>
+      <div class="body">제15회 대한민국 김치품평회에서 경북 청도에 위치한 농업회사법인 본가(주)의 &#x27;본가 총각김치&#x27;가 대상을 차지했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 청도 지역 기반 기업으로서, 지역 특산물을 활용한 가공식품의 성공 사례를 참고하여 복숭아, 감, 딸기 등 주요 작목의 2차 가공 상품 개발 및 브랜딩 전략에 대한 아이디어를 얻을 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406149">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
