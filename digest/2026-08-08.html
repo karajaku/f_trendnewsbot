@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 8일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 8 토요일 · KST 07:56</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 3건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">스테비아 토마토 부당광고·위생관리 위반 적발</div>
+      <div class="reason">팜보스 농업회사법인 및 시경은 온라인 커머스 B2C 운영 및 닥터상달 과일 프랜차이즈 운영 시, 가공 과일에 대한 광고 문구와 위생 관리 기준을 철저히 준수해야 합니다. 유사 사례 발생 시 즉시 조치해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">중앙청과, 가락시장 순회 ‘화재 예방 캠페인’</div>
+      <div class="reason">시경은 안동농협공판장 중도매 운영 시, 물류센터 및 사무실의 화재 예방 수칙을 강화하고 전기 시설 점검을 정기적으로 실시해야 합니다. 현장 직원 안전 교육을 진행해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">03</div>
+      <div class="title">서울청과 ‘출하기반 최소비용 보전제’ 눈길</div>
+      <div class="reason">정다운은 GS리테일 1차 밴드 납품 시 출하 비용 보전 제도를 활용할 수 있는지 검토하여 농가와 상생 방안을 모색해야 합니다. 출하 농가의 부담 완화는 안정적인 물량 확보에 도움이 됩니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 7건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">여름배추 농가 고충 가중, 가락시장 중도매법인의 농가 출하 비용 지원 사례, 스테비아 토마토 부당광고 적발 소식이 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:49 KST</span>
+      </div>
+      <h3>재배면적 줄었는데 가격도 약세…여름배추 농가 “더는 못짓겠다”</h3>
+      <div class="body">연작, 병해충, 바이러스 피해와 고온으로 여름배추 작황이 부진하며 농사를 포기하는 농가가 늘고 있지만, 재배면적 감소에도 불구하고 출하 초기 시세가 회복되지 않아 농가들이 어려움을 겪고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운에서 납품하는 품목은 아니지만, 산지 작황과 시세 불안정 추이는 다른 작물에도 영향을 줄 수 있으므로 GS리테일과의 협상 시 참고할 만합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406268">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>사양벌꿀→설탕꿀로 명칭 변경 제동</h3>
+      <div class="body">식품의약품안전처 식품위생심의위원회에서 ‘사양벌꿀’ 명칭의 ‘설탕꿀’ 변경이 사회적 합의 미흡을 이유로 부결되었습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406273">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>“축산지구 내 스마트축사 건축 제한 완화해야”</h3>
+      <div class="body">강승규 국민의힘 의원이 축산지구 내 스마트축사 집적화를 촉진하기 위해 ‘농촌공간 재구조화 및 재생지원에 관한 법률’과 ‘가축분뇨의 관리 및 이용에 관한 법률’ 개정안을 대표발의했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406271">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>“‘돈 되는 경남농업, 잘 사는 경남농촌’ 실현”</h3>
+      <div class="body">경남도는 ‘돈 되는 경남농업, 잘 사는 경남농촌’을 민선 9기 농정 비전으로 삼아 2030년까지 총 5869억원을 투입하여 5대 중점추진과제를 발표했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406261">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>스테비아 토마토 부당광고·위생관리 위반 적발</h3>
+      <div class="body">식약처가 가공식품인 스테비아 토마토를 일반 농산물처럼 부당 광고한 15개 판매업체와 위생 관리 위반 3개 업체를 적발했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 및 시경은 온라인 커머스 B2C 운영 및 닥터상달 과일 프랜차이즈 운영 시, 가공 과일에 대한 광고 문구와 위생 관리 기준을 철저히 준수해야 합니다. 유사 사례 발생 시 즉시 조치해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406229">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>중앙청과, 가락시장 순회 ‘화재 예방 캠페인’</h3>
+      <div class="body">중앙청과가 가락동 농수산물도매시장에서 유통인들의 안전의식 제고를 위한 ‘화재 예방 캠페인’을 실시했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매 운영 시, 물류센터 및 사무실의 화재 예방 수칙을 강화하고 전기 시설 점검을 정기적으로 실시해야 합니다. 현장 직원 안전 교육을 진행해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406228">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>서울청과 ‘출하기반 최소비용 보전제’ 눈길</h3>
+      <div class="body">서울청과는 올해 농산물 가격 약세 속에서 ‘출하기반 최소비용 보전제’를 통해 378개 출하처에 약 2억4272만원의 보전금을 지원하여 농가의 출하비용 부담 완화에 기여했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 GS리테일 1차 밴드 납품 시 출하 비용 보전 제도를 활용할 수 있는지 검토하여 농가와 상생 방안을 모색해야 합니다. 출하 농가의 부담 완화는 안정적인 물량 확보에 도움이 됩니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406227">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>“농자재값 폭등, 농산물값 폭락 대책 세우라”</h3>
+      <div class="body">전국농민회총연맹 강원도연맹이 농자재값 폭등과 농산물 가격 폭락에 대한 정부와 지자체의 실질적인 대책 마련을 촉구하며 기자회견을 열었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 농자재값 상승으로 인한 농가 생산비 증가와 농산물 가격 하락이 산지 수매 및 납품 가격 협상에 미칠 영향을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406213">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">딸기 재배 관련 AI 경진대회 본선 진출팀 발표와 여름철 딸기 탄저병 예방을 위한 점적테이프 기술이 주목받고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>경농, 점적테이프 ‘스트림라인X’·IR점적테이프’ 주목</h3>
+      <div class="body">동오그룹 스마트팜 전문 브랜드 경농 ‘시그닛’이 여름철 탄저병과 곰팡이병 예방에 효과적인 점적테이프 ‘스트림라인X’와 ‘IR점적테이프’를 선보였습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 밀양·청도 딸기 농가의 탄저병 및 곰팡이병 피해 예방을 위해 해당 점적테이프의 도입을 검토하고 농가에 제안하여 작물 품질 및 수확량을 개선할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406259">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:46 KST</span>
+      </div>
+      <h3>스마트농업 AI 대회, 본선 진출 4팀 선발</h3>
+      <div class="body">농림축산식품부와 한국농업기술진흥원이 진행하는 ‘2026 스마트농업 인공지능(AI) 경진대회’에서 ‘농작업 의사결정형 딸기 AI 재배모델 개발’을 주제로 4개 팀이 본선에 진출했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운과 팜보스는 딸기 재배 모델 개발에 AI 기술이 적용되는 동향을 주목하고, 스마트팜 기술 도입을 통해 밀양·청도 딸기 생산 효율성을 높이고 품질을 균일하게 관리할 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406245">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
