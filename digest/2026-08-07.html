@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 7일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 7 금요일 · KST 10:33</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">국립종자원 충남지원, 김장용 채소 불법유통 단속</div>
+      <div class="reason">정다운 영농조합법인은 청도·경산·밀양 산지에서 주요 작물을 취급하며, 주식회사 시경은 안동농협공판장에서 중도매를 하므로, 비록 작목은 다르지만 불법 유통 단속 강화 기조를 파악하여 종자 및 묘의 합법적인 유통 경로와 품질 관리 규정을 재확인하고 관련 규정 준수에 더욱 주의를 기울여야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI, ChatGPT 모델 업데이트 및 무료 사용자 접근성 확대. 구글 딥마인드, AI 기반 기상 예측과 조직 개편 소식. AI 산업 전반의 기술 발전과 시장 경쟁이 심화되고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 8/6 19:00 KST</span>
+      </div>
+      <h3>Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users</h3>
+      <div class="body">ChatGPT는 정확도와 일관성이 개선된 GPT-5.6 Sol을 선보이며, 무료 사용자에게 GPT-5.6 Luna에 대한 접근을 확대하고 무제한 일상 채팅을 제공합니다. 이는 OpenAI가 챗봇 사용을 장려하고 사용자 기반을 넓히기 위한 전략의 일환입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google DeepMind Blog · 00:06 KST</span>
+      </div>
+      <h3>WeatherNext: AI model achieves breakthrough in forecasting cyclones</h3>
+      <div class="body">구글 딥마인드의 AI 모델 WeatherNext가 사이클론 예측 분야에서 돌파구를 마련했습니다. 이는 기상 예측 정확도를 높이는 데 기여할 것으로 기대됩니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones">원문 읽기 →</a><span class="sep">·</span><span class="src">deepmind.google</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">TLDR AI · 8/6 09:00 KST</span>
+      </div>
+      <h3>Google DeepMind reshuffle 🧠, Meta Muse Code 💻, Anthropic chip team 🧩</h3>
+      <div class="body">Google DeepMind의 조직 개편, Meta의 Muse Code, Anthropic의 칩 팀 소식 등 주요 AI 기업들의 동향이 보고되었습니다. 이는 AI 산업 전반의 변화와 주요 기업들의 전략적 움직임을 나타냅니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://tldr.tech/ai/2026-08-06">원문 읽기 →</a><span class="sep">·</span><span class="src">tldr.tech</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 01:00 KST</span>
+      </div>
+      <h3>Your agentic summer: No-cost lessons from Google experts to build and scale agents</h3>
+      <div class="body">구글 전문가들이 에이전트를 구축하고 확장하는 방법에 대한 무료 교육을 제공하여 개발자들이 AI 아이디어를 실제 프로덕션 환경에 적용하도록 돕습니다. 이는 AI 기술의 실질적인 적용을 촉진하는 데 목적이 있습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/training-certifications/free-gemini-enterrprise-training">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 8/6 22:00 KST</span>
+      </div>
+      <h3>Mirendil taps AI Hypercomputer TPUs and GPUs for pre- and post-training applications</h3>
+      <div class="body">프론티어 AI 연구소 Mirendil이 AI 개발 가속화를 위해 Google Cloud의 AI Hypercomputer를 활용합니다. 이는 Google의 TPU AI와 GPU를 혼합하여 모델 사전 학습 및 사후 학습 애플리케이션에 사용될 것입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/startups/mirendil-selects-ai-hypercomputer">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 02:00 KST</span>
+      </div>
+      <h3>OpenAI is giving ChatGPT free users unlimited text chats</h3>
+      <div class="body">OpenAI는 다음 주부터 ChatGPT 무료 및 Go 티어 사용자에게 무제한 텍스트 채팅을 제공할 예정입니다. 이는 기존의 텍스트 채팅 제한을 없애는 중요한 변화입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/976239/openai-chatgpt-free-go-text-chats">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">팜스코 &#x27;하루신선&#x27; 양념육 온·오프라인 유통망 확대. 고추 품종평가회 개최와 CPTPP 재추진에 따른 농업계 반발이 거셉니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:36 KST</span>
+      </div>
+      <h3>고추 110여 품종 한자리에···농가가 직접 비교·선택</h3>
+      <div class="body">경북도농업기술원이 8월 6일 영양고추연구소에서 350여 명이 참석한 가운데 &#x27;2026 고추 품종평가회&#x27;를 개최했습니다. 이 평가회는 농업인들이 110여 품종의 고추 생육과 특성을 직접 비교하고 선택할 수 있는 기회를 제공합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 주요 작목이 아니지만, 향후 작목 다변화를 고려할 때 다양한 품종의 특성을 파악하여 수매 및 유통 전략 수립에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406205">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 00:15 KST</span>
+      </div>
+      <h3>하이포크 ‘하루신선’ 양념육, 온·오프라인 유통망 확대</h3>
+      <div class="body">팜스코의 하이포크 브랜드 &#x27;하루신선&#x27; 양념육이 쿠팡, 홈플러스 익스프레스 등 온·오프라인 유통망을 확대하며 판매 채널을 강화합니다. 8월 5일부터 쿠팡, 하이포크몰, 네이버 스마트 스토어에서도 판매됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 (f)은 온라인 커머스 B2C를 운영하므로, 유사한 프리미엄 신선식품 브랜드의 온오프라인 유통 전략 확장 사례를 벤치마킹하여 자사 온라인 마케팅 및 채널 확대를 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406196">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/6 23:43 KST</span>
+      </div>
+      <h3>최악의 농업 여건 속 CPTPP 재추진···농어업계 강력 반발</h3>
+      <div class="body">정부가 4년 만에 포괄적·점진적 환태평양경제동반자협정(CPTPP) 가입 추진을 공식화하자 농어업계가 강력하게 반발하고 나섰습니다. 농어민단체들은 치솟는 경영비, 폭염·가뭄, 농산물 가격 하락 등 삼중고 속에서 최고 수준의 시장 개방 요구는 &#x27;농어업 말살&#x27;이라며 가입 철회를 촉구했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인 (j)의 농산물 수매가 및 팜보스 농업회사법인 (f)의 판매 가격에 간접적으로 영향을 미칠 수 있으므로, CPTPP 재추진 동향을 지속적으로 모니터링해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406231">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">국립종자원, 김장용 채소 불법유통 단속 강화.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 01:38 KST</span>
+      </div>
+      <h3>국립종자원 충남지원, 김장용 채소 불법유통 단속</h3>
+      <div class="body">국립종자원 충남지원이 10월까지 대전·세종·충남 지역에서 김장용 채소(종자, 묘, 마늘, 생강 등)의 불법 유통을 단속합니다. 주요 점검 사항은 종자업·육묘업 등록 여부, 품종 생산·수입 판매 신고 여부, 종자·묘 품질표시 및 미보증 종자 판매 여부 등입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도·경산·밀양 산지에서 주요 작물을 취급하며, 주식회사 시경은 안동농협공판장에서 중도매를 하므로, 비록 작목은 다르지만 불법 유통 단속 강화 기조를 파악하여 종자 및 묘의 합법적인 유통 경로와 품질 관리 규정을 재확인하고 관련 규정 준수에 더욱 주의를 기울여야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406220">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
