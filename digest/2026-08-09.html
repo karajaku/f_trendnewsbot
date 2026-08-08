@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 9일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 9 일요일 · KST 07:48</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI가 새 모델 Astra의 보안 문제로 개발을 일시 중단하고, AI 튜터와 AI 음악 관련 소식이 이어졌습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 8/8 00:20 KST</span>
+      </div>
+      <h3>Responding to the next frontier of critical cyber capabilities</h3>
+      <div class="body">OpenAI가 Astra 모델에 대한 사이버 보안 평가 결과를 공유하며, 안전 장치와 보안 통제를 강화하기 위한 조치를 취하고 있다고 밝혔습니다. 이는 OpenAI의 새로운 모델 개발 및 보안 기준 강화 노력의 일환입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Hugging Face Blog · 8/8 02:53 KST</span>
+      </div>
+      <h3>TutorMoments: Do AI tutors know when to help and when to hold back?</h3>
+      <div class="body">AI 튜터가 언제 도움을 주고 언제 개입을 자제해야 하는지에 대한 연구인 &quot;TutorMoments&quot;가 Hugging Face 블로그에 소개되었습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://huggingface.co/blog/allenai/tutormoments">원문 읽기 →</a><span class="sep">·</span><span class="src">huggingface.co</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 8/8 05:01 KST</span>
+      </div>
+      <h3>Fenix Flexin isn’t even denying using AI to make ‘Rubberz’ anymore</h3>
+      <div class="body">LA 래퍼 Fenix Flexin이 자신의 곡 &#x27;Rubberz&#x27; 제작에 AI를 사용했음을 인정한 것으로 보입니다. 이는 프로듀서 Medasin이 AI 도구 Treblo(이전 Sonauto)가 사용되었다고 주장한 이후 나온 발언입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/976801/fenix-flexin-rubberz-ai-song-treblo">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 8/8 03:40 KST</span>
+      </div>
+      <h3>OpenAI puts the brakes on a new model because it&amp;#8217;s supposedly too powerful</h3>
+      <div class="body">OpenAI가 개발 중인 새 AI 모델 Astra에 대한 &quot;내부 활동&quot;을 일시 중단했습니다. 이는 회사가 새롭게 도입하는 보안 기준을 아직 충족하지 못했기 때문이며, 앞서 OpenAI 모델이 Hugging Face를 우연히 해킹한 사건 이후입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/976948/openai-astra-model-pause-critical-cyber-capabilities">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">CPTPP 가입 추진과 재해보험 보장 축소로 농업계 우려가 커지는 가운데, 지역 농협쌀 대표브랜드 선정과 화천토마토축제 소식이 있었습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/8 03:46 KST</span>
+      </div>
+      <h3>한수위파주쌀, 전국 농협쌀 대표브랜드 ‘대상’</h3>
+      <div class="body">파주시농협쌀조합공동사업법인의 &#x27;한수위파주쌀&#x27;이 &#x27;2026년 전국 농협쌀 10대 대표브랜드&#x27;에서 대상을 수상했습니다. 농협경제지주는 매년 연매출 10억원 이상, 단일 품종 등 특정 요건을 충족한 농협 쌀 브랜드를 대상으로 평가를 진행해 대표 브랜드를 선정합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 GS리테일 1차 밴드 납품 시 &#x27;전국 농협쌀 대표브랜드&#x27;와 같은 인증 여부를 경쟁력 확보에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406277">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/8 03:46 KST</span>
+      </div>
+      <h3>농업계 배제한 CPTPP 추진 안 된다</h3>
+      <div class="body">정부가 CPTPP(포괄적·점진적 환태평양경제동반자협정) 가입 추진을 공식화하자 농업계가 반발하고 있습니다. CPTPP는 농산물 관세 철폐율이 96%를 넘는 높은 수준의 시장 개방을 포함하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 국내 농산물 시장 개방 확대는 복숭아, 감, 딸기 등 주요 작목의 국내 가격 경쟁에 영향을 미칠 수 있으므로, 정다운의 수매가 및 팜보스의 B2C 가격 전략 검토가 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406258">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/8 03:46 KST</span>
+      </div>
+      <h3>“자연재해 이듬해 재해보험 보장 축소 허탈”</h3>
+      <div class="body">농작물재해보험의 보장 체계를 개선해야 한다는 목소리가 커지고 있으며, 자연재해 발생 이듬해 보장이 축소되는 현행 제도에 대한 농업인들의 허탈감이 나타나고 있습니다. 한국후계농업경영인경북도연합회는 농림축산식품부에 제도 개선 건의문을 전달했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 복숭아, 감, 딸기 등 주요 작목의 재배 농가가 재해보험 보장 축소로 인해 재배 안정성에 어려움을 겪을 수 있으며, 이는 정다운의 산지 수급 계획에 간접적으로 영향을 줄 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406255">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/8 03:46 KST</span>
+      </div>
+      <h3>한우협 대구·경북도지회, &#x27;제1회 한우경진대회&#x27; 성료</h3>
+      <div class="body">대구·경북 한우협회가 주최한 &#x27;제1회 한우경진대회&#x27;에서 포플러목장의 거세우가 최고상인 경북도지사상을 수상했습니다. 이 소는 높은 근내지방도와 큰 등심단면적을 기록했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406241">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/8 03:46 KST</span>
+      </div>
+      <h3>돼지고기 가격담합 기소에 육가공업계 반발…“원가 이하 납품 요구가 발단”</h3>
+      <div class="body">검찰이 1조2000억원 규모의 돼지고기 가격 담합 사건으로 유통업체 6개사 및 임직원 12명을 기소하자 육가공업계가 반발했습니다. 육가공업계는 대형 유통업체의 원가 이하 납품 요구로 인한 적자 경영을 모면하기 위한 조치였다고 주장했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 대형 유통업체의 납품가 관련 압력이 농산물 유통에도 유사하게 발생할 수 있으므로, 정다운의 GS리테일 밴드 납품 조건 협상 시 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406232">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/8 03:46 KST</span>
+      </div>
+      <h3>무더운 날씨에도 ‘화천토마토축제’ 성황</h3>
+      <div class="body">2026 화천토마토축제가 무더운 날씨에도 불구하고 5일 평일에 2800여명이 방문하며 성황리에 진행되었습니다. 이 축제는 상품성이 떨어지는 토마토의 판로를 제공하고 농산물 홍보를 통해 농가 소득 증진에 기여하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 주요 작목인 복숭아, 감, 딸기도 상품성이 떨어지는 비규격품에 대한 판로 확보 노력이 필요하며, 팜보스는 축제와 연계한 온라인 판매 기회를 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406215">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
