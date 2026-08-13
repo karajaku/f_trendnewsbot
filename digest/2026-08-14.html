@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 14일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 14 금요일 · KST 08:04</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 2건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">수익성 18% 향상···충남농기원, 딸기 조기 수확 위한 냉방 기술 개발</div>
+      <div class="reason">정다운 영농조합법인과 주식회사 시경은 밀양/청도 산지 딸기 재배 농가에 이 기술 도입을 제안하여 조기 수확 및 수익성 향상 방안을 모색해야 합니다. 특히 주식회사 시경의 닥터상달 과일 프랜차이즈는 딸기 공급 시기 확대 및 가격 경쟁력 확보에 기여할 수 있습니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">경기농관원, 여름 휴가철 축산물 원산지 위반 54곳 적발</div>
+      <div class="reason">팜보스 농업회사법인은 온라인 커머스 B2C 사업을 영위하고 있으므로, 축산물 원산지 표시 규정을 다시 한번 점검하고 판매 중인 농산물 및 가공품에 대한 원산지 표시를 철저히 관리해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 8건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI, Google, Anthropic 등 주요 AI 기업들이 신규 모델, 서비스, 임원 인사 등 다양한 업데이트를 발표하며 AI 기술 발전과 시장 경쟁이 치열해지고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 8/13 20:00 KST</span>
+      </div>
+      <h3>The builder’s guide to GPT‑5.6</h3>
+      <div class="body">OpenAI는 GPT-5.6을 활용하여 스타트업이 더 빠르고 비용 효율적인 AI 에이전트를 구축하는 방법을 소개하는 빌더 가이드를 발표했습니다. 이 가이드는 스마트한 모델 선택과 새로운 응답 API 기능을 통해 개발을 돕습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/builders-guide-to-gpt-5-6">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 8/13 19:00 KST</span>
+      </div>
+      <h3>Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed</h3>
+      <div class="body">OpenAI는 GPT-5.6 Sol을 최대 14배 빠르게 실행하는 새로운 API 서비스 티어인 Ultrafast 모드를 공개했습니다. 이 서비스는 Cerebras 기술 기반으로 초당 최대 750개의 출력 토큰을 제공합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/previewing-ultrafast">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 8/13 18:00 KST</span>
+      </div>
+      <h3>OpenAI appoints Dali Rajic as Chief Revenue Officer</h3>
+      <div class="body">OpenAI는 Wiz의 사장이자 COO였던 달리 라직(Dali Rajic)을 최고수익책임자(CRO)로 임명하여 글로벌 수익 조직을 이끌고 기업이 AI의 가치를 실현하도록 돕습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/dali-rajic-chief-revenue-officer">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google DeepMind Blog · 02:04 KST</span>
+      </div>
+      <h3>Introducing Gemini 3.7 Flash</h3>
+      <div class="body">Google DeepMind는 Gemini 3.7 Flash를 발표했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://deepmind.google/blog/introducing-gemini-3-7-flash">원문 읽기 →</a><span class="sep">·</span><span class="src">deepmind.google</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농업 재해 보험 확대와 물류 지원 강화로 농가 부담 완화를 시도하는 한편, 폭염으로 인한 농업인 온열질환 증가와 축산물 원산지 위반 단속 강화 소식이 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:42 KST</span>
+      </div>
+      <h3>고창 가을배추, 올해부터 농작물재해보험 가입 가능</h3>
+      <div class="body">고창 지역 가을배추가 2026년부터 농작물재해보험 가입 대상에 포함되어 수확기 병해로 인한 농가 경영 불안이 일부 해소될 전망입니다. 가입 기간은 가을배추가 8월 10일부터 9월 11일까지, 가을무는 8월 10일부터 9월 23일까지입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도/경산 산지 복숭아, 감, 밀양/청도 산지 딸기 이외에 고창 지역 배추 작목으로 사업을 확장할 경우, 해당 보험 혜택을 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406378">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:31 KST</span>
+      </div>
+      <h3>강화군, 농산물 수송차량 지원···고령·소규모 농가 물류 부담 완화</h3>
+      <div class="body">인천 강화군이 고령 및 소규모 원예농가의 물류 부담을 덜기 위해 지역 농협과 함께 2억4000만원을 투입하여 농산물 수송차량 지원사업을 추진합니다. 강화농협에 전달된 대형 윙바디 수송 차량은 농가 순회수집 및 도매시장 출하에 즉시 투입될 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인, 팜보스 농업회사법인, 주식회사 시경 등 3법인은 산지 및 도매시장 물류 부담 완화를 위해 각 법인 소재 지역 지자체의 유사 물류 지원 사업을 확인하고 협력 방안을 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406412">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 02:28 KST</span>
+      </div>
+      <h3>경기농관원, 여름 휴가철 축산물 원산지 위반 54곳 적발</h3>
+      <div class="body">국립농산물품질관리원 경기지원(경기농관원)이 7월 15일부터 31일까지 축산물 원산지 표시 집중 단속을 실시하여 54개 업체에서 63건의 위반 행위를 적발했습니다. 품목별로는 돼지고기 49건, 쇠고기 11건, 닭고기 2건, 오리고기 1건이 적발되었으며, 온라인 쇼핑몰 및 배달 앱도 단속 대상에 포함되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 온라인 커머스 B2C 사업을 영위하고 있으므로, 축산물 원산지 표시 규정을 다시 한번 점검하고 판매 중인 농산물 및 가공품에 대한 원산지 표시를 철저히 관리해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406409">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/13 20:22 KST</span>
+      </div>
+      <h3>농업 온열질환자 500명 넘었다···“폭염 대응, 캠페인 넘어 작업환경 개선으로 ”</h3>
+      <div class="body">기록적인 폭염으로 농업 분야 온열질환자가 500명을 넘어선 가운데, 농림축산식품부와 농업인단체는 농작업 안전수칙 준수 캠페인 발대식을 개최했습니다. 농업계에서는 캠페인에 그치지 않고 냉방시설과 쉼터 등 농작업 환경 개선을 위한 예산 지원이 필요하다는 목소리가 나왔습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도/경산/밀양 산지 농업인들의 폭염 피해 예방을 위해 작업 환경 개선 및 안전 수칙 준수 교육을 강화해야 합니다. 주식회사 시경의 중도매인들도 작업 환경에 유의할 필요가 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406383">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 8/13 18:43 KST</span>
+      </div>
+      <h3>오뚜기, 내달 7일부터 컵라면·만두 등 가격 인상</h3>
+      <div class="body">오뚜기가 9월 7일부터 컵라면 11개 브랜드 29개 품목의 출고가를 평균 6.7%, 만두 3개 브랜드 16개 품목의 출고가를 7.7% 인상합니다. 대형마트 판매가격 기준으로 진라면 매운맛 용기는 1200원에서 1300원으로, 참깨라면 용기는 1400원에서 1550원으로 오를 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 B2C 사업은 가공식품 가격 인상으로 인한 소비자 구매력 변화를 주시하고, 신선 농산물 가격 경쟁력 확보를 위한 전략을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200971">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">충남농기원이 딸기 조기 수확 냉방 기술을 개발하여 18% 수익성 향상을 기대하며, 이는 팜보스 그룹의 딸기 사업에 직접적인 영향을 줄 수 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 02:34 KST</span>
+      </div>
+      <h3>수익성 18% 향상···충남농기원, 딸기 조기 수확 위한 냉방 기술 개발</h3>
+      <div class="body">충청남도농업기술원 딸기연구소는 딸기 꽃눈분화를 촉진하여 수확 시기를 앞당기는 ‘딸기 육묘하우스 냉방 기술’ 개발에 성공했습니다. 이 기술은 기존 재배 방식 대비 18%의 수익성 향상을 기대할 수 있으며, 9월 상순부터 시작되던 꽃눈분화를 8월 말까지 앞당길 수 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인과 주식회사 시경은 밀양/청도 산지 딸기 재배 농가에 이 기술 도입을 제안하여 조기 수확 및 수익성 향상 방안을 모색해야 합니다. 특히 주식회사 시경의 닥터상달 과일 프랜차이즈는 딸기 공급 시기 확대 및 가격 경쟁력 확보에 기여할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406401">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
