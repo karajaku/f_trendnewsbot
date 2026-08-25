@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 26일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 26 수요일 · KST 07:47</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 2건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">홈플러스 위기…농수축산물 매출 ‘56.5% 뚝’</div>
+      <div class="reason">정다운 및 시경은 홈플러스의 유통망 위기 상황을 면밀히 주시하고, 향후 납품 계약이나 물량 조절에 대한 위험 요소를 사전에 점검하고 대안을 마련해야 합니다. GS리테일 등 다른 유통 채널과의 관계를 강화할 필요도 있습니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">[08/25 오늘의 새상품] 하림 ‘한입쏙 닭가슴살’ 2종, 남양유업 ‘루카스나인 시그니처 라떼 제로슈거’ 4종, 일화 ‘천연사이다 제로 망고’, 할리스 ‘K-무드 가을 신메뉴’ 5종</div>
+      <div class="reason">정다운은 GS리테일의 &#x27;신선강화점&#x27; 운영 전략을 면밀히 검토하고, 복숭아, 감, 딸기 등 주력 작목에 대한 신선 편의식품 또는 소용량 제품 개발을 통해 GS리테일과의 협력을 강화하고 새로운 납품 기회를 모색해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 8건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">CPTPP 가입, 중국산 배추 안전성 논란, 홈플러스 매출 급감 등 농산물 유통 시장의 주요 이슈가 이어지고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>CPTPP 가입, 식량안보·농어업 대책이 먼저다</h3>
+      <div class="body">정부의 CPTPP 가입 검토에 대해 농어업계가 반발하며 식량안보와 농어업 대책 마련을 우선해야 한다고 주장했습니다. CPTPP는 기존 FTA보다 개방 수준이 높아 회원국의 농산물 평균 관세 철폐율이 96.3%에 달합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스 등 농산물 유통 법인은 CPTPP 가입이 국내 농산물 시장에 미칠 영향을 분석하여 수매 및 판매 전략을 수립할 필요가 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406699">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>또 중국, ‘발암물질 배추’ 논란···한농연 “철저히 검사·공개해야”</h3>
+      <div class="body">중국에서 발암물질인 포름알데히드 용액을 사용한 배추가 유통된 정황이 확인되어 한국후계농업경영인중앙연합회가 국내 반입 여부의 철저한 조사 및 공개를 정부에 촉구했습니다. 중국 정부도 유통경로 추적에 나섰으며, 국내에서는 수입 농산물 안전성 검사 강화 목소리가 높습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 수입 농산물(특히 배추) 관련 안전성 논란에 대비하여 원산지 관리 및 검사 절차를 강화하고, 국내산 배추의 장점을 홍보하는 마케팅 전략을 고려해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406698">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>홈플러스 위기…농수축산물 매출 ‘56.5% 뚝’</h3>
+      <div class="body">홈플러스의 올해 1~5월 국산 농수축산물 매출이 전년 동기 대비 56.5% 감소했으며, 이는 경영위기에 따른 상품 공급과 영업 차질이 장기화된 결과입니다. 다음 달 4일로 다가온 홈플러스 회생계획안 가결 기한을 앞두고 농어업인 피해를 줄이고 판로를 복원할 대책이 시급합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 및 시경은 홈플러스의 유통망 위기 상황을 면밀히 주시하고, 향후 납품 계약이나 물량 조절에 대한 위험 요소를 사전에 점검하고 대안을 마련해야 합니다. GS리테일 등 다른 유통 채널과의 관계를 강화할 필요도 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406686">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>기후변화로 줄어든 배 수출…‘데이터 농사’로 돌파</h3>
+      <div class="body">기후변화로 배 수출이 줄어들자 한국배영농조합법인은 경험에 의존하던 방식에서 벗어나 데이터 기반의 &#x27;데이터 농사&#x27;로 위기를 돌파하고 있습니다. 이 조합은 GAP, ISO22000, 할랄 인증을 획득하여 품질을 입증하고 오세아니아와 북미 시장에 배와 음료를 수출하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아, 감, 딸기 등 주요 작목의 기후변화 대응을 위해 데이터 기반 영농 도입을 검토하여 생산 안정성을 확보하고, 품질 인증을 통한 수출 시장 다변화를 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406677">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>농산물가격안정제 시행됐지만···가격 보전까지 ‘산 넘어 산’</h3>
+      <div class="body">정부가 농산물 가격이 일정 수준 이하로 하락할 경우 농가에 가격 하락분을 보전하는 &#x27;농산물가격안정제&#x27;가 8월 27일부터 시행되지만, 대상 품목과 기준 가격 설정 방식은 9월 4일부터 가동할 &#x27;가격안정심의위원회&#x27;를 거쳐 확정될 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 주요 작목(복숭아, 감, 딸기)이 농산물가격안정제 대상 품목으로 지정될 가능성을 주시하고, 추후 심의위원회 결과를 바탕으로 수매 및 산지 운영 계획에 반영해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406668">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>동화청과 ‘청년농 도매유통&#x27; 현장교육</h3>
+      <div class="body">동화청과가 충남 지역 청년농업인들을 대상으로 가락동 농수산물도매시장에서 &#x27;청년농업인 도매유통 역량강화 현장교육&#x27;을 실시하여 도매유통 구조 이해와 실전 출하 역량을 강화하는 프로그램을 제공했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 중도매 법인으로서 청년농업인 대상 도매유통 교육 프로그램을 주시하고, 청년농과의 협력 강화를 통해 안정적인 작목 수급을 확보하는 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406666">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>농관원 강원지원 추석 맞이 농산물 안전성 기획조사 추진</h3>
+      <div class="body">국립농산물품질관리원 강원지원은 추석 명절을 앞두고 8월 24일부터 9월 23일까지 제수·선물용 농산물을 대상으로 안전성 기획조사를 실시하며, 산지에서 잔류농약 463종 이상을 조사하고 농약 안전사용기준 지도·홍보를 강화합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 추석 성수기를 앞두고 주요 작목의 납품에 대비하여 잔류농약 검사를 강화하고 농산물 안전성 관리에 만전을 기해야 합니다. GS리테일 납품 기준 준수 여부를 재확인해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406658">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:57 KST</span>
+      </div>
+      <h3>임실 청양고추, 일본 수출길 열었다</h3>
+      <div class="body">임실 청양고추가 일본 시장에 진출하여 매주 1.5~2톤의 물량을 8월부터 9월 말까지 꾸준히 공급할 예정이며, 이는 임실 풋고추의 국내 시장 경쟁력이 해외 판로 확보로 이어진 사례입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 주력 작목 외 다른 품목의 성공적인 해외 판로 개척 사례를 참고하여 복숭아, 감, 딸기 등의 수출 가능성을 재검토하고, 수출 전략을 구체화할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406632">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 8/25 16:55 KST</span>
+      </div>
+      <h3>마트는 ‘반값 전쟁’ 식품업계는 ‘원가 압박’…홈플러스발(發) 초저가 경쟁의 명암</h3>
+      <div class="body">홈플러스가 영업 재개 후 파격적인 할인 행사를 앞세워 고객을 다시 모으고 있으며, 이에 이마트, 롯데마트 등 경쟁사들도 대규모 할인전에 뛰어들며 대형마트 업계에 활기가 돌고 있습니다. 대형마트의 출혈 경쟁은 식품 기업들에게 단기적 매출 증대 효과를 주지만, 수익성 악화라는 복잡한 속내를 안겨줍니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 GS리테일 1차 밴드 납품 시 대형마트 전반의 초저가 경쟁 동향을 파악하여 납품 가격 협상에 활용할 수 있으며, 팜보스는 온라인 B2C 판매 시 경쟁사 할인 전략을 분석하여 가격 정책에 반영해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=200996">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">하림, GS25 신선강화점 전용 닭가슴살 출시로 1~2인 가구 및 편의점 시장 공략 가속화.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">식품음료신문 · 8/25 19:53 KST</span>
+      </div>
+      <h3>[08/25 오늘의 새상품] 하림 ‘한입쏙 닭가슴살’ 2종, 남양유업 ‘루카스나인 시그니처 라떼 제로슈거’ 4종, 일화 ‘천연사이다 제로 망고’, 할리스 ‘K-무드 가을 신메뉴’ 5종</h3>
+      <div class="body">하림이 1~2인 가구를 겨냥하여 GS25 신선강화점 전용 &#x27;한입쏙 닭가슴살&#x27; 2종(청양고추·허브갈릭)을 선보였으며, 개별급속냉동(IQF) 공법을 적용해 촉촉한 육즙을 구현했습니다. 이 제품은 신선식품 특화 매장을 통해 소비자 접근성을 높였습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 GS리테일의 &#x27;신선강화점&#x27; 운영 전략을 면밀히 검토하고, 복숭아, 감, 딸기 등 주력 작목에 대한 신선 편의식품 또는 소용량 제품 개발을 통해 GS리테일과의 협력을 강화하고 새로운 납품 기회를 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201039">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
