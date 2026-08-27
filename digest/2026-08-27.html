@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 8월 27일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 8 · 27 목요일 · KST 12:21</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">CPTPP 가입 검토, 농어촌특별세 우려, 농어촌기본소득 지급 개시 등 농업 관련 정책과 공공비축미 매입 규모 확정이 논의되었습니다. 또한 병해충 예방 강화 및 농협상호금융 추정손실액 증가 소식도 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 20:25 KST</span>
+      </div>
+      <h3>CPTPP 가입 검토에 여야 “농업 피해부터 면밀히 따져야”</h3>
+      <div class="body">정부가 CPTPP(포괄적·점진적 환태평양경제동반자협정) 가입을 검토하는 가운데, 여야 의원들은 농업 분야 피해를 면밀히 분석하고 농업계 의견을 충분히 반영해야 한다고 주장했습니다. 가뭄 대비 농업용수 확충, 농지 전수조사 현장 혼란 해소, 정부양곡관리비 현실화, 추경예산 집행 개선 요구도 이어졌습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인 수매 가격 및 수출 전략 수립 시 농산물 수입 개방 확대 가능성을 고려해야 합니다. 대외 협상 동향을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406713">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 20:09 KST</span>
+      </div>
+      <h3>“농특세 지켜야”…세수 증가분 미래대응기금 활용 우려</h3>
+      <div class="body">농어촌특별세 세수 증가분이 정부가 추진하는 미래대응기금으로 흘러가 농업·농촌과 무관한 사업에 사용될 수 있다는 우려가 국회에서 제기되었습니다. 농협중앙회장 직선제를 놓고는 법적 정합성과 대표성 문제에 대한 여야의 시각차가 뚜렷했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 농업 관련 재원 배분에 대한 정책 변화 가능성이 있으므로 농림축산식품부의 예산 배정 동향을 모니터링해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406712">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>농어촌기본소득 추가 7개 군, 28일부터 지급 개시</h3>
+      <div class="body">농어촌기본소득 시범 지역으로 추가 선정된 7개 군(전남 구례·보성, 강원 화천, 충북 보은, 전북 진안·무주, 경북 청송)에서 28일부터 월 15만원의 지역사랑상품권 지급이 개시됩니다. 8월 말에는 7월분 소급분을 포함해 1인당 30만원이 총 567억원 규모로 지급될 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 지역사랑상품권 지급은 팜보스 농업회사법인의 온라인 커머스 B2C 매출 증대 기회가 될 수 있습니다. 지역화폐 연동 마케팅 방안을 검토해볼 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406692">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>올해 공공비축미 40만톤 매입한다</h3>
+      <div class="body">정부가 2026년산 공공비축미 매입 규모를 40만톤으로 확정했으며, 이는 지난해보다 3만톤 줄어든 규모입니다. 농림축산식품부는 올해 처음 도입한 &#x27;수급조절용 벼&#x27;를 활용한다는 판단에 따라 공공비축 시행계획을 확정했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주요 작목은 아니지만, 정부의 농산물 수급 조절 정책 방향을 파악하는 데 참고하여 정다운 영농조합법인의 작목별 재배 및 출하 계획 수립에 간접적인 영향을 미칠 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406688">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>농협상호금융 추정손실액 1조 넘겼다</h3>
+      <div class="body">농협상호금융에서 원금 회수가 사실상 어려운 대출의 추정손실액이 올해 처음으로 1조원을 넘어섰으며, 비조합원 대출의 추정손실액이 전체의 절반 이상을 차지했습니다. 이에 따라 대출 관리와 자산 건전성 강화를 위한 지적이 나옵니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 농업 분야 대출의 건전성 악화는 추후 농업 투자 및 자금 조달 환경에 간접적인 영향을 미칠 수 있으므로, 재무팀에서 관련 동향을 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406681">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>추석까지 정부 비축 수산물 2만톤 풀린다</h3>
+      <div class="body">추석까지 명태, 고등어, 오징어 등 정부 비축 수산물 2만톤이 시중 가격보다 최대 40% 저렴한 가격에 유통됩니다. 해양수산부는 8월 24일부터 9월 27일까지 역대 최대 규모로 방출하여 추석 물가 안정에 총력을 기울일 계획입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 추석 시즌 농산물 가격에도 영향을 미칠 수 있는 전반적인 정부의 물가 안정 정책 기조로 볼 수 있습니다. 시경의 닥터상달 과일 프랜차이즈 및 정다운 영농조합법인의 추석 성수기 가격 정책 수립에 간접적으로 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406672">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>하반기 ‘K-푸드 아카데미’ 입학식</h3>
+      <div class="body">농림축산식품부와 한국농수산식품유통공사(aT)가 농식품 유통·수출 분야 인력 양성을 위해 &#x27;K-FOOD 아카데미&#x27;를 개강했으며, 하반기에는 농식품 유통 전문가와 농식품 글로벌 마케팅 전문가 2개 과정이 운영됩니다. 이 과정은 총 50여명 규모의 수강 인원으로 구성됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 B2C 및 정다운 영농조합법인의 산지 유통 분야 담당자들이 교육 기회를 모색할 수 있습니다. 특히 &#x27;농식품 AI 전문가&#x27; 과정은 팜보스 온라인 마케팅 역량 강화에 도움이 될 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406667">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>벼멸구·깨씨무늬병···돌발병해충 &quot;꼼짝마&quot;</h3>
+      <div class="body">2024년과 2025년 벼멸구와 깨씨무늬병 발생으로 인한 피해 경험을 토대로 올해 돌발병해충 예방과 예찰이 강화되고 있습니다. 농촌진흥청은 2년 동안의 발생 양상을 분석하여 모니터링과 적기 방제에 나서고 있으며, 특히 2024년에는 벼멸구 피해가 2만2831ha에 달했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 복숭아, 감, 딸기 등 주요 작목에 대해서도 병해충 예방 및 예찰 강화의 중요성을 인식하고 농장 운영 및 산지 유통 시 발생 가능성을 점검해야 합니다. 정다운 영농조합법인의 산지 관리팀에 공유하여 예방책을 강구해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406654">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>국산 파프리카 필리핀 공략···신시장 개척 속도낸다</h3>
+      <div class="body">통합조직 농업회사법인 ㈜코파가 필리핀 마닐라에서 열린 &#x27;2026 필리핀 국제식품박람회(WOFEX 2026)&#x27;에 참가해 국산 파프리카 판촉 행사를 전방위적으로 추진했습니다. 이를 통해 신시장으로 분류되는 필리핀 프리미엄 시장 진출을 위한 마케팅 활동을 펼쳤습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인의 주요 작목인 복숭아, 감, 딸기의 해외 시장 개척 및 수출 판로 다각화에 대한 벤치마킹 사례로 참고할 수 있습니다. 팜보스 농업회사법인의 온라인 커머스 품목 확대 시에도 고려할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406653">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 8/26 03:57 KST</span>
+      </div>
+      <h3>강원농협 공공형 계절근로자 온열질환 예방 총력</h3>
+      <div class="body">농협중앙회 강원본부가 폭염 속 공공형 계절근로자의 온열질환 예방을 위한 현수막을 제작하여 도내 24개 공공형 계절 근로 사업 운영농협에 공급했습니다. 이는 고령화로 인한 농촌 일손 부족 문제와도 연관되어 있어 안전한 농작업 환경 조성이 중요합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 복숭아, 감, 딸기 등 주요 작목 수확기에 계절 근로자 고용 시 정다운 영농조합법인은 온열질환 예방 등 근로자 안전 관리에 더욱 신경 써야 합니다. 현장 관리 지침을 강화해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=406638">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
