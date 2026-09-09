@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 9월 9일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 9 · 9 수요일 · KST 09:17</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 3건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">불만 고객을 평생 고객으로 만드는 농가의 지혜</div>
+      <div class="reason">팜보스 농업회사법인은 온라인 커머스 B2C 운영에서 고객 불만 응대 노하우를 적극적으로 학습하여, 고객 만족도를 높이고 재구매율을 향상시킬 수 있는 전략을 수립해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">경북도, 안동·예천 우박피해 사과 긴급 수매</div>
+      <div class="reason">정다운 영농조합법인은 청도·경산 지역의 우박 피해 발생 시 지자체와 협력하여 피해 농가의 낙과를 긴급 수매하는 방안을 모색하고, 농가 손실 최소화를 위한 지원 대책을 마련해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">03</div>
+      <div class="title">[추석대목장 점검ㅣ과일] 사과 물량 충분하지만 대과 부족···배는 특품 줄어 가격차 확대</div>
+      <div class="reason">주식회사 시경은 닥터상달 과일 프랜차이즈 운영을 위해 안동농협공판장 중도매 시 추석 대목 과일 수급 상황과 가격 동향을 면밀히 파악하고, 대과 부족 및 가격 양극화에 대비하여 전략적인 물량 확보 및 가격 책정 방안을 수립해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 7건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">정부, K-푸드 수출 총력전 돌입 및 CPTPP 가입 논의 본격화. 한편, 제주 극조생감귤 품질 검사 시행 및 충남 전기 농기계 특구 지정 등 다양한 농업 현안이 부상하다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:50 KST</span>
+      </div>
+      <h3>신선농산물 수출 ‘골든타임’···하반기 총력전 돌입</h3>
+      <div class="body">정부가 올해 K-푸드+(플러스) 수출 목표 160억 달러 달성을 위해 &#x27;하반기 K-푸드+ 수출 총력 대응 전략&#x27;을 발표했으며, 7월 말 기준 전년 동기 대비 5.3% 증가한 83억2000만 달러로 역대 최고 실적을 기록했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인과 팜보스 농업회사법인은 정부의 수출 총력전과 연계하여 주요 작목의 해외 판로 개척 및 수출 물량 확대를 위한 전략을 수립해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407065">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:50 KST</span>
+      </div>
+      <h3>정부, CPTPP 의견 수렴 속도···농업계도 대응 수위 높인다</h3>
+      <div class="body">정부가 CPTPP(포괄적·점진적 환태평양경제동반자협정) 가입 검토를 위한 의견 수렴에 착수했으며, 농업계는 추가 시장 개방에 따른 피해를 우려하며 강력 대응에 나서고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 CPTPP 가입 시 예상되는 수입 농산물 시장 개방 확대에 대비하여, 주요 작목의 경쟁력 강화 방안과 새로운 유통 전략을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407060">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 00:20 KST</span>
+      </div>
+      <h3>제주도,‘2026년산 극조생감귤 출하 전 품질검사’ 시행</h3>
+      <div class="body">제주도가 2026년산 고품질 감귤 시장 유통과 소비자 신뢰도 확보를 위해 10월 1일 이전에 수확·출하하는 극조생감귤을 대상으로 &#x27;2026년산 극조생감귤 출하 전 품질검사&#x27;를 9월 23일까지 신청받아 시행합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 극조생감귤 품질 검사 시행과 같은 산지 출하 규제 동향을 파악하고, 청도·경산·밀양 산지의 주요 작목 출하 전 품질 관리 시스템을 강화해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407002">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 00:15 KST</span>
+      </div>
+      <h3>“가뭄 대응체계 구축···수확기까지 피해 조사해야”</h3>
+      <div class="body">경남도의회는 ‘경남 가뭄·폭염 피해 농어업인 지원 촉구 대정부 건의안’을 통해 정부에 농업용수 공급망 확충과 수원 다변화로 구조적 가뭄 대응체계를 구축하고, 수확기까지 가뭄 피해 조사를 확대하여 후속 피해를 재해로 인정해 지원할 것을 촉구했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도·경산·밀양 지역의 기후 변화에 따른 가뭄, 폭염 등의 농업 재해 발생 가능성을 염두에 두고, 작황 변동에 대한 선제적인 대응 방안을 마련해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407041">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 16:52 KST</span>
+      </div>
+      <h3>[EU PPWR 운송포장 부자재 대응] ‘물류 소모품&#x27;이 PPWR 문서의 빈칸이다</h3>
+      <div class="body">EU PPWR(포장 및 포장 폐기물 규제)에 따라 한국의 소스 제조사가 EU에 고추장 6000병을 수출할 때 페트병, 캡, 라벨은 승인된 포장 사양으로 관리하지만, OPP 테이프, PP 스트랩, 스트레치랩과 같은 물류 소모품의 제조사나 생산 배치가 없는 경우 문제가 발생할 수 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 EU 수출 계획 시 PPWR 규제에 맞춰 판매 포장뿐만 아니라 물류 소모품에 대한 상세한 기록 및 규제 준수 여부를 확인해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201086">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">우박 피해 안동 사과 긴급 수매, 추석 과일 수급 불안정 속 온라인 농산물 고객 불만 대응 지혜 주목.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:32 KST</span>
+      </div>
+      <h3>경북농협, 우박 피해 안동 과수 농가 일손돕기</h3>
+      <div class="body">경북농협은 지난달 31일 우박을 동반한 강풍과 집중호우 피해를 입은 안동시 풍산읍 일원의 과수 농가를 찾아 피해 복구를 위한 긴급 일손 돕기를 실시했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도·경산·밀양 등 주요 산지에서 우박, 강풍 등 자연재해 발생 시 신속한 피해 복구 지원 및 보험 가입 등 농가 보호 방안을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407006">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 04:27 KST</span>
+      </div>
+      <h3>불만 고객을 평생 고객으로 만드는 농가의 지혜</h3>
+      <div class="body">온라인으로 농산물을 판매하는 농가들은 고객 불평과 불만이 가장 힘들다고 꼽으며, 환불 요구 신속 해결, 크기 불만 시 큰 규격 제공 등 지혜로운 응대로 재주문을 유도하고 더 큰 기회로 만들고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 온라인 커머스 B2C 운영에서 고객 불만 응대 노하우를 적극적으로 학습하여, 고객 만족도를 높이고 재구매율을 향상시킬 수 있는 전략을 수립해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407081">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 00:18 KST</span>
+      </div>
+      <h3>경북도, 안동·예천 우박피해 사과 긴급 수매</h3>
+      <div class="body">경북도가 지난달 31일 우박 피해를 입은 안동·예천 지역 사과 낙과를 9월 3일부터 7일까지 긴급 수매하며, 300톤 내외 물량에 대해 20kg 상자 당 1만2000원의 단가로 총 1억8000만 원 규모의 예산을 투입합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 청도·경산 지역의 우박 피해 발생 시 지자체와 협력하여 피해 농가의 낙과를 긴급 수매하는 방안을 모색하고, 농가 손실 최소화를 위한 지원 대책을 마련해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407017">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 9/8 23:58 KST</span>
+      </div>
+      <h3>[추석대목장 점검ㅣ과일] 사과 물량 충분하지만 대과 부족···배는 특품 줄어 가격차 확대</h3>
+      <div class="body">추석을 앞두고 사과 물량은 충분하지만 대과가 부족하고 배는 특품이 줄어 가격차가 확대되는 등 과일 생산 및 공급에 어려움이 있으며, 8월 중순 이후 잦은 비로 과일 비대에 좋지 않은 영향을 미쳐 대과 비중이 낮아졌습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경은 닥터상달 과일 프랜차이즈 운영을 위해 안동농협공판장 중도매 시 추석 대목 과일 수급 상황과 가격 동향을 면밀히 파악하고, 대과 부족 및 가격 양극화에 대비하여 전략적인 물량 확보 및 가격 책정 방안을 수립해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407062">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 9/8 19:33 KST</span>
+      </div>
+      <h3>충남도, 홍콩서 신선농산물 수출 활로 모색</h3>
+      <div class="body">충남도가 9월 2일부터 4일까지 홍콩에서 열린 ‘2026 홍콩 신선농산물 박람회’에 참가하여 딸기·배 등 신선농산물의 수출 활로를 모색했으며, 홍성군 홍주아리향영농조합법인은 홍콩의 비에스(BS)사와 아리향·핑크캔디 등 50만 달러 규모의 딸기 수출 계약을 체결했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인과 팜보스 농업회사법인은 국내외 신선농산물 박람회 참여를 통해 주요 작목의 해외 수출 판로를 개척하고, 수출 계약 성공 사례를 분석하여 전략적인 해외 마케팅을 추진해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407038">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
