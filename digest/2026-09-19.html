@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 9월 19일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 9 · 19 토요일 · KST 09:23</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 2건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">과일 중도매인, 도매법인 구매 대금 ‘카드 결제’ 도입</div>
+      <div class="reason">시경의 안동농협공판장 중도매 자금 운용에 직접적 영향. 카드 결제 시스템 도입에 따른 재무 및 운영 변화 가능성 점검 필요.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">단양 ‘어상천 수박’ 공동출하 실적 급증</div>
+      <div class="reason">정다운의 복숭아, 감 등 주요 작목의 영남권 신규 도매시장 판로 개척에 대한 벤치마킹 필요. 김원태 이사 도매시장 영업 전략 수립 시 참고.</div>
+    </div>
+    <div class="tldr-rest">그 외 8건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">주요 LLM 기업 업데이트와 AI 규제 논의, 그리고 AI 기술의 사회적 영향에 대한 다양한 시각이 제시되었다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">TLDR AI · 9/18 09:00 KST</span>
+      </div>
+      <h3>Claude Projects v2 💼, Google family agent 👨‍👩‍👧‍👦,</h3>
+      <div class="body">Claude Projects v2 💼, Google family agent 👨‍👩‍👧‍👦 (클로드 프로젝트 v2, 구글 가족 에이전트), 등 주요 AI 기업들의 업데이트 소식이 전해졌다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://tldr.tech/ai/2026-09-18">원문 읽기 →</a><span class="sep">·</span><span class="src">tldr.tech</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google AI Blog (The Keyword) · 9/18 23:00 KST</span>
+      </div>
+      <h3>New experts join Google’s AI &amp; Economy team</h3>
+      <div class="body">New experts join Google’s AI &amp; Economy team (구글 AI 및 경제 팀에 새로운 전문가 합류) 기사는 AI 경제 연구 프로그램 강화를 위한 구글의 움직임을 다룬다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench">원문 읽기 →</a><span class="sep">·</span><span class="src">blog.google</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농산물 유통 물류 비용 절감과 투명성 확보가 화두로 떠오르고, 과일 중도매인 카드 결제 도입이 주목된다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:14 KST</span>
+      </div>
+      <h3>농산물 유통비 줄이려면…“운송비 투명화부터”</h3>
+      <div class="body">농산물 유통비용 절감을 위해 물류 운송 투명성 확보가 필요하며, 운송 과세 회피 관행으로 정상 물류기업 진입이 어렵다고 지적됐다. 정상 물류기업의 시장 진입과 경쟁을 통해 농산물 물류체계를 효율화하면 운송비 30% 절감이 가능하다고 주장되었다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운, 팜보스, 시경의 물류 운송 계약 및 조건 재검토 시 참고 가능. 물류비 절감 가능성에 대한 내부 논의 필요.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407375">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:04 KST</span>
+      </div>
+      <h3>파렛트 의무화 품목 늘어나는데···내년 지원 예산 23% 삭감 위기</h3>
+      <div class="body">농산물 유통 효율성 향상에 기여하는 &#x27;물류기기 공동이용지원사업&#x27;이 내년도 예산에서 20% 이상 삭감될 위기에 처했다. 현장에서는 사업구조 개편에 따른 일시적 현상이며 농가 출하비용 부담 완화를 위해 예산 복구가 필요하다는 목소리가 나온다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 파렛트, 플라스틱 상자 등 물류기기 공동이용 지원 감소 시 출하 비용 증가 가능. 물류 담당자 사업 예산 추이 모니터링 필요.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407338">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:31 KST</span>
+      </div>
+      <h3>농식품부-aT, 추석 장바구니 부담 낮추고 농가 판로 넓힌다</h3>
+      <div class="body">농림축산식품부와 aT는 추석을 맞아 10월 5일까지 &#x27;추석맞이 직거래장터 특별행사&#x27;를 진행하며, 소비자는 시중보다 저렴하게 농축수산물을 구매하고 농가는 판로를 확보할 수 있다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 B2C 온라인 커머스 팀은 오프라인 직거래장터 할인율 및 프로모션 참고하여 온라인 마케팅 전략 수립에 활용 가능.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407339">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 00:56 KST</span>
+      </div>
+      <h3>과일 중도매인, 도매법인 구매 대금 ‘카드 결제’ 도입</h3>
+      <div class="body">전국과실중도매인조합연합회(전과련) 주도로 엔디페이(NDPAY) 앱을 통해 신한카드 중도매인 전용 카드로 도매법인 상품 대금 일부를 결제하는 방식이 도입됐다. 이는 과일류 중도매인의 자금 운용에 여유를 가져다줄 것으로 기대된다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경의 안동농협공판장 중도매 자금 운용에 직접적 영향. 카드 결제 시스템 도입에 따른 재무 및 운영 변화 가능성 점검 필요.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407355">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 00:55 KST</span>
+      </div>
+      <h3>대구도매시장, 추석 성수기 앞두고 화재·안전사고 예방 합동점검</h3>
+      <div class="body">대구농수산물유통관리공사가 추석 명절을 앞두고 대구소방안전본부, 대구강북소방서와 함께 대구농수산물도매시장 내 화재 예방 및 안전 관리 합동 점검을 실시했다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경의 안동농협공판장 중도매 사업장 안전 관리 점검 및 화재 예방 노력 강화에 대한 경각심 고취.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407356">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 9/18 23:29 KST</span>
+      </div>
+      <h3>단양 ‘어상천 수박’ 공동출하 실적 급증</h3>
+      <div class="body">단양군 어상천 수박의 올해 공동출하 실적이 작년 대비 크게 상승했으며, 특히 수도권뿐만 아니라 대구와 부산 등 영남권으로 판로를 확대했다. 6월 22일부터 8월 5일까지 공동출하된 물량은 5만2562통으로 전년 대비 68% 증가했다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 복숭아, 감 등 주요 작목의 영남권 신규 도매시장 판로 개척에 대한 벤치마킹 필요. 김원태 이사 도매시장 영업 전략 수립 시 참고.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407281">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 9/18 18:40 KST</span>
+      </div>
+      <h3>파스쿠찌, 여주시 대표 특산물 쌀·고구마 활용 신메뉴 개발 나서</h3>
+      <div class="body">파스쿠찌가 여주시와 업무협약(MOU)을 체결하고 여주시 대표 특산물인 쌀과 고구마를 활용한 신메뉴 개발 및 상생 홍보 협력에 나선다. 이번 협약은 여주 특산물의 소비·판로 확대 및 브랜드 가치 제고를 목적으로 한다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 콘텐츠 마케팅 팀은 지역 특산물 활용 메뉴 개발 및 홍보 사례를 벤치마킹하여 신규 작목 발굴 및 마케팅 전략 수립에 참고 가능.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201236">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">대구지역 베이커리와 식품 기업의 협업 신메뉴 출시 소식이 있었다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 9/18 18:33 KST</span>
+      </div>
+      <h3>[09/18 오늘의 새상품] 오뚜기 ‘삼송빵집 ‘숙성크림 카레고로케’</h3>
+      <div class="body">오뚜기가 대구 대표 베이커리 &#x27;삼송빵집&#x27;과 협업하여 카레, 케챂, 마요네스를 활용한 5종의 신메뉴를 출시했다. 이번 협업 메뉴는 10월 1일부터 연말까지 전국 직영 16개 매장에서 판매될 예정이다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 등 1차 밴드 납품 품목 다각화 및 가공식품 협업 모델 기획 시 대구지역 베이커리와의 성공적인 협업 사례 참고 가능.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201235">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
