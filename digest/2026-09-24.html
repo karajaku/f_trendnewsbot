@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 9월 24일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 9 · 24 목요일 · KST 09:32</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 2건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">한농연춘천시, 원산지 위반 근절 캠페인</div>
+      <div class="reason">정다운 영농조합법인, 팜보스 농업회사법인, 주식회사 시경은 원산지 표시 관리를 철저히 하고, 소비자 신뢰 확보를 위한 자정 노력에 동참하여 그룹 이미지 제고에 기여해야 합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">군산시, 추석 앞두고 전통시장 농산물 원산지 점검</div>
+      <div class="reason">정다운 영농조합법인, 팜보스 농업회사법인, 주식회사 시경은 추석 등 명절 성수기 전 원산지 표시 및 품질 관리를 재점검하고, 소비자 신뢰 유지를 위한 사전 조치를 강화해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 8건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI가 GPT-6 Sol 및 Luna 모델을 포함한 다양한 AI 기술 업데이트를 발표했으며, 동시에 여러 기업들이 AI를 활용한 서비스 개선 사례를 공개했습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 9/23 21:00 KST</span>
+      </div>
+      <h3>Harvey turns legal context into stronger drafts with GPT-6 Astra</h3>
+      <div class="body">Harvey는 GPT-6 Astra를 사용하여 법률 문맥을 더 강력한 초안으로 변환하여 변호사들이 전략에 집중할 수 있도록 돕습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 콘텐츠 마케팅 팀에서 법률 문서 작성 자동화 가능성을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/harvey-from-context-to-confidence-with-astra">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 9/23 21:00 KST</span>
+      </div>
+      <h3>How invideo improves color grading 3x with GPT‑6 Astra</h3>
+      <div class="body">invideo는 GPT-6 Astra로 색상 보정 및 등급을 3배 향상시키고, 하루에 50개의 맞춤형 효과를 제작할 수 있게 되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 콘텐츠 마케팅 팀에서 영상 제작 효율성 향상 방안을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/invideo-builds-with-gpt-6-astra">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 9/23 21:00 KST</span>
+      </div>
+      <h3>Ringg’s AI agents resolve up to 65% of customer calls with OpenAI</h3>
+      <div class="body">Ringg의 AI 에이전트는 GPT-5.6을 사용하여 고객 문의의 최대 65%를 해결하며, GPT-4.1 대비 90% 적은 비용이 듭니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 고객 서비스 부서에서 AI 챗봇 도입을 통해 고객 문의 응대 효율성을 높이고 비용 절감을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/ringg">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 9/23 10:00 KST</span>
+      </div>
+      <h3>Airbnb widens access to GPT-6 Astra and OpenAI frontier models</h3>
+      <div class="body">Airbnb는 GPT-6 Astra와 OpenAI 프론티어 모델에 대한 접근을 확대하여 엔지니어링 팀이 버그 해결, 시스템 설계 및 빠른 출시에 도움을 주고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 커머스 시스템 개발 팀에서 GPT-6 Astra를 활용하여 개발 효율성을 높이는 방안을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/airbnb-gpt-6-astra">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 9/23 06:00 KST</span>
+      </div>
+      <h3>Better prompt caching for GPT-6</h3>
+      <div class="body">GPT-6는 더 높은 캐시 적중률, 새로운 진단 기능, 명시적 중단점 및 제어를 통해 프롬프트 캐싱을 개선하여 지연 시간과 비용을 줄입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 커머스 시스템 개발 팀에서 GPT-6 활용 시 API 호출 비용 및 속도 개선 방안을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/better-prompt-caching-for-gpt-6">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 9/23 03:00 KST</span>
+      </div>
+      <h3>Introducing GPT-6 Sol and Luna</h3>
+      <div class="body">GPT-6 Sol과 Luna는 능력과 비용의 균형을 달리하여 일상 업무에 첨단 인텔리전스를 제공하는 두 가지 모델입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 커머스 시스템 개발 팀에서 비용 효율적인 AI 모델 도입을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농업정책자금 부정대출 문제와 경관보전직불 예산 삭감 우려 속에서도, 정부와 농협중앙회가 농협법 개정안에 합의하고 전통시장 농산물 원산지 점검이 강화되는 등 농업 유통 및 정책 분야의 주요 변화가 이어지고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 9/23 01:05 KST</span>
+      </div>
+      <h3>한농연춘천시, 원산지 위반 근절 캠페인</h3>
+      <div class="body">한농연춘천시연합회가 농축산물 원산지 표시 위반 근절 캠페인을 통해 전통시장 활성화와 국내산 농식품 사용 확대를 추진했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인, 팜보스 농업회사법인, 주식회사 시경은 원산지 표시 관리를 철저히 하고, 소비자 신뢰 확보를 위한 자정 노력에 동참하여 그룹 이미지 제고에 기여해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407411">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 9/22 23:42 KST</span>
+      </div>
+      <h3>군산시, 추석 앞두고 전통시장 농산물 원산지 점검</h3>
+      <div class="body">군산시가 추석을 앞두고 전통시장 6곳을 대상으로 농산물 원산지 표시 실태를 점검하여 명절 성수품의 부정 유통 방지 및 소비자 안심 구매 환경 조성을 강화했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인, 팜보스 농업회사법인, 주식회사 시경은 추석 등 명절 성수기 전 원산지 표시 및 품질 관리를 재점검하고, 소비자 신뢰 유지를 위한 사전 조치를 강화해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407459">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">지역 특산물을 활용한 가공식품 개발 사례와 성공적인 농산물 축제를 통해 판로 확대 및 홍보 전략의 중요성이 부각되고 있으며, 과일 위생 관리에 대한 관심도 높아지고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 9/23 22:47 KST</span>
+      </div>
+      <h3>식중독균 99.9% 이상 제거 ‘과일 안심하고 드세요’</h3>
+      <div class="body">여름철 식중독 위험 요소에 대응하기 위해 사과, 토마토 등 신선 과일 표면의 살모넬라균을 99.999% 이상 제거하는 천연 유래 살균·세정제가 개발되어 주목받고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인 및 팜보스 농업회사법인은 과일 위생 및 안전 관리를 강화하기 위해 신규 살균·세정제 도입을 검토하여 소비자 신뢰를 높일 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201263">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 9/23 20:51 KST</span>
+      </div>
+      <h3>롯데웰푸드, 팔공산 품은 ‘군위 사과’ 과자로 재탄생…상생로드 3탄 15종 출격</h3>
+      <div class="body">롯데웰푸드가 행정안전부, 대구광역시 군위군과 협력하여 지역 특산물인 ‘군위 사과’를 활용한 과자 시리즈 15종을 출시하며 농가 경제 활성화에 기여하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 그룹은 대기업과의 협업을 통해 복숭아, 감, 딸기 등 주요 작목의 가공식품 개발 및 판로 확대를 모색할 수 있습니다. 팜보스 농업회사법인 온라인 커머스 팀은 이를 통해 그룹 매출 증대 전략을 구상할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201262">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
