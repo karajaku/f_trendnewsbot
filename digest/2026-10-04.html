@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 10월 4일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 10 · 4 일요일 · KST 09:41</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">16명 농가 뭉친 ‘불정야뜨네’…복숭아로 올매출 35억 기록</div>
+      <div class="reason">정다운은 복숭아 산지 유통 전문으로서 &#x27;불정야뜨네영농법인&#x27;의 성공 사례를 벤치마킹해야 합니다. 특히 공동선별 및 공동계산 시스템을 통한 고품질 복숭아 생산 및 유통 노하우를 분석하여 정다운의 산지 운영 및 GS리테일 납품 전략에 적용할 방안을 모색해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농산물 수급 정책이 사후 대응에서 선제적 관리로 전환되고, 온라인 도매시장 운영 실태에 대한 국감 지적이 이어지는 가운데, 강서시장 상품화시설 준공 계획 및 지역 농협 벼 수매가 인상 소식도 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>&quot;심고 난 뒤엔 늦다&quot;...농산물 수급 &#x27;사후 대응→선제 관리&#x27;로 전환</h3>
+      <div class="body">정부는 농산물 수급 정책을 기존의 사후 대응 방식인 &#x27;채소가격안정제&#x27;를 종료하고, 생산 이전부터 적정 재배면적을 정하고 생육·출하까지 관리하는 선제적 수급관리 체계인 &#x27;농산물 안정생산·공급지원사업&#x27;으로 전면 개편했습니다. 또한 선제적 수급관리에도 가격 급락 시 손실을 보전하는 &#x27;농산물가격안정제&#x27;도 시행됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아, 감, 딸기 등 주요 작목의 수매 및 출하 계획 수립 시 개편된 정부 수급 관리 정책을 참고해야 합니다. 재배면적 관리 및 생육 정보 공유를 통해 안정적인 공급망을 유지하고, 가격 변동에 따른 손실 보전 가능성을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407682">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>[기자수첩] ‘알뜰하게 장볼지도’ 말고 ‘제값에 팔지도’</h3>
+      <div class="body">산지 농업인들 사이에서는 농림축산식품부가 생산자보다 소비자를 위한 부처라는 불만이 나오고 있으며, 생산 기반 안정보다 물가 안정에 중점을 두는 정책에 대한 비판이 제기됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 생산자로서 정부 정책 방향이 소비자 물가 안정에 초점을 맞추는 것에 대한 잠재적 영향을 주시해야 합니다. 수매가 및 납품가 협상 시 이러한 정책 기조가 반영될 수 있으므로, 대응 전략 마련이 필요합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407674">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>‘농산자조금법’ 제정 탄력…추진 3년 만에 법안소위 통과</h3>
+      <div class="body">정부와 여야 국회의원들이 함께 추진한 &#x27;농산자조금의 조성·운용 및 자조금단체 육성에 관한 법률안(농산자조금법)&#x27;이 9월 29일 국회 농림축산식품해양수산위원회 법안심사소위원회를 통과했습니다. 이 법안은 자조금단체의 법적 지위를 &#x27;민법&#x27;에 의한 &#x27;비영리법인&#x27;에서 &#x27;자조금법&#x27;에 근거한 &#x27;특수목적법인&#x27;으로 전환하고 품목 대표조직으로서의 역할을 강화하는 내용을 담고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아, 감, 딸기 등 주요 작목의 자조금 단체 동향을 주시하고, &#x27;농산자조금법&#x27; 제정으로 인한 품목별 자조금 단체의 법적 지위 및 역할 변화가 수매 및 출하에 미칠 영향을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407665">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>[2026 국감] 농지조사·농협개혁 ‘격돌’…CPTPP·농업예산은 한목소리</h3>
+      <div class="body">국회 농림축산식품해양수산위원회가 10월 7일부터 23일까지 2026년도 국정감사에 돌입하며, 농지 전수조사, 농협 개혁, 농어촌기본소득, CPTPP 등 주요 현안들이 다뤄질 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 안동농협공판장 중도매인으로서 농협 개혁 논의가 중도매 시스템이나 거래 관행에 미칠 잠재적 영향에 대해 예의주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407658">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>국감 앞두고 온라인도매시장 운영실태 다시 ‘도마’</h3>
+      <div class="body">국정감사를 앞두고 농수산물 온라인도매시장의 거래액이 빠르게 늘었지만, 전체 거래 4건 중 1건이 &#x27;이상·특이거래&#x27;로 분류되고, 거래액이 일부 상위업체에 편중되며 축산물에서는 모회사와 자회사 간 거래 비중이 높은 것으로 나타나 실질적인 유통구조 개선과 농어업인 판로 확대에 대한 점검이 필요하다는 지적이 제기되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스는 사방넷 기반 B2C 온라인 커머스를 운영하고 있으므로 온라인 도매시장의 이상·특이거래 및 상위업체 편중 현상이 향후 온라인 유통 환경에 미칠 영향에 대해 면밀히 분석해야 합니다. 건전한 온라인 유통 환경 조성을 위한 관련 규제 변화를 주시하고 전략을 조정해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407655">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>[배 수출 현장 점검] 관세 부담•해상운송비 상승...수출 악재 겹치며 농가 ‘긴장’</h3>
+      <div class="body">신선농산물 주요 수출 품목인 배의 수출이 8월부터 본격화되었으나, 한국산 배의 최대 수출 시장인 미국의 해상운송비 급등과 경기 둔화, 그리고 2위 시장인 대만의 자국 내 배 생산량 증가로 인해 수출에 악재가 겹치며 농가에 긴장이 커지고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아, 감, 딸기 등 주력 작목의 수출 다변화 전략을 검토해야 합니다. 주요 수출 시장의 경제 상황 및 경쟁국 작황 변화를 면밀히 모니터링하여 수출 리스크를 관리하고, 내수 시장 판매 전략을 강화하는 방안을 고려해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407646">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>강서시장 2028년 &#x27;상품화시설&#x27; 준공 계획···&quot;농산물 보관부터 재포장까지&quot;</h3>
+      <div class="body">서울시가 강서농산물도매시장에 농산물 보관부터 소분·포장까지 한 곳에서 처리할 수 있는 상품화시설을 2028년 7월까지 준공할 계획이며, 국비 21억원 등 총 70억원이 투입될 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경은 강서농산물도매시장 중도매인으로서 2028년 완공될 상품화시설이 물류 효율성 및 유통 구조에 미칠 변화를 주시하고, 중장기적인 사업 전략에 반영해야 합니다. 특히 저온창고, 소분 및 재포장 공간 활용 방안을 선제적으로 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407645">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>“농축산물 할인 지원, 유통기업 독과점 심화 우려”</h3>
+      <div class="body">소매 유통업체에 농축산물 할인판매를 지원하는 정책 예산이 특정 유통사에 편중되며 유통업계의 독과점을 유발할 수 있다는 지적이 나왔으며, 소비자 물가 부담 완화를 위해 할인 지원보다 생산 지원 강화로 제도를 개편해야 한다는 의견도 제시되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 GS리테일 1차 밴드 납품 시 농축산물 할인 지원 정책이 대형마트에 편중되는 현상이 납품 조건이나 시장 가격에 미칠 영향을 검토해야 합니다. 팜보스는 B2C 온라인 커머스 운영 시 할인 지원 정책의 공정성 문제 및 소비자 인식 변화에 대한 마케팅 전략을 고려해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407642">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 01:03 KST</span>
+      </div>
+      <h3>경기지역 농협 벼 수매가 인상 잇따라···여주통합RPC 포대당 3000원</h3>
+      <div class="body">올해 벼 수확이 한창인 가운데 경기지역 농협의 벼 수매가가 지난해 대비 포대당(40kg 조곡) 3000원가량 인상되고 있는 분위기이며, 여주통합RPC는 9만1000원으로 결정했지만 지역 농민들은 9만5000원을 요구하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아, 감, 딸기 등 주요 작목의 수매가 결정 시 농협 등 유통 주체의 가격 인상 움직임과 농민들의 요구 사항을 면밀히 분석하여 수매 전략에 반영해야 합니다. GS리테일 1차 밴드 납품 단가 협상 시에도 참고 자료로 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407596">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">정부의 CPTPP 가입 검토에 대한 농업계 우려가 커지고 있으며, 대구농수산물유통관리공사의 제철 과일 나눔과 괴산 복숭아 영농법인의 성공 사례가 주목받고 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 10/3 04:52 KST</span>
+      </div>
+      <h3>16명 농가 뭉친 ‘불정야뜨네’…복숭아로 올매출 35억 기록</h3>
+      <div class="body">충북 괴산군 불정면 복숭아 농가들이 조직한 &#x27;불정야뜨네영농법인&#x27;이 공동선별, 공동계산을 통해 출범 15년 만에 복숭아로 연매출 35억원을 기록했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아 산지 유통 전문으로서 &#x27;불정야뜨네영농법인&#x27;의 성공 사례를 벤치마킹해야 합니다. 특히 공동선별 및 공동계산 시스템을 통한 고품질 복숭아 생산 및 유통 노하우를 분석하여 정다운의 산지 운영 및 GS리테일 납품 전략에 적용할 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407585">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
