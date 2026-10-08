@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 10월 8일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 10 · 8 목요일 · KST 10:59</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">경북농관원, 원산지 표시 위반 30곳 적발</div>
+      <div class="reason">정다운 영농조합법인(j)은 GS리테일 1차 밴드 납품 시 원산지 표시 관리를 더욱 철저히 해야 하며, 주식회사 시경(s)은 안동농협공판장 중도매 및 닥터상달 프랜차이즈 운영에서 원산지 표시 위반 사례가 발생하지 않도록 전반적인 점검과 교육을 강화해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">OpenAI의 GPT-6는 Intelligent UI와 함께 출시되어 시각적 상호작용 기능을 강화했으며, ChatGPT for Teens에 대학 진학 도구가 추가됩니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 10/7 16:00 KST</span>
+      </div>
+      <h3>Radisson Hotel Group brings hotel discovery into ChatGPT</h3>
+      <div class="body">라디슨 호텔 그룹이 액센츄어와 협력하여 OpenAI 기술을 활용한 ChatGPT 플러그인을 개발하여 여행객들이 호텔을 찾고 예약하는 과정을 돕습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인(f)의 온라인 커머스 B2C 마케팅 부서에서 ChatGPT 플러그인을 활용한 상품 추천 및 구매 경험 개선 가능성을 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/radisson">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 10/7 09:00 KST</span>
+      </div>
+      <h3>GPT-6 and Intelligent UI for everyone</h3>
+      <div class="body">GPT-6가 Intelligent UI와 함께 전 세계 ChatGPT에 출시되어 시각 자료와 상호작용 경험을 통해 더 빠른 응답을 제공합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인(f)의 온라인 커머스 B2C 채널에서 고객 상담 및 상품 정보 제공 시 시각적, 인터랙티브 AI 기능을 도입하여 고객 경험을 개선하는 방안을 고려할 수 있습니다.</div>
+      <div class="link"><a href="https://openai.com/index/gpt-6-for-everyone">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 04:10 KST</span>
+      </div>
+      <h3>ChatGPT&amp;#8217;s &amp;#8216;Intelligent UI&amp;#8217; update fills its responses with pictures, charts, and buttons</h3>
+      <div class="body">ChatGPT의 &#x27;Intelligent UI&#x27; 업데이트는 GPT-6와 함께 챗봇이 그림, 차트, 버튼 등 상호작용 가능한 시각 자료로 질문에 답변할 수 있도록 합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인(f)의 온라인 커머스 B2C 채널에서 고객 문의 응대 및 상품 설명에 시각적, 인터랙티브 AI 기능을 도입하여 정보 전달력을 높일 수 있습니다.</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/7 21:00 KST</span>
+      </div>
+      <h3>AI could upend food delivery</h3>
+      <div class="body">AI가 음식 배달 산업을 변화시킬 수 있으며, DoorDash가 2분기에 9억 7천만 건의 주문과 45억 달러의 매출을 기록한 반면, 신생 스타트업 Bites는 AI 기반 에이전트 기능을 활용해 주문 경험을 개선하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경(s)의 닥터상달 과일 프랜차이즈에서 AI 에이전트 기반 배달 시스템 도입을 통해 주문 및 배달 효율성을 높일 수 있는 가능성을 탐색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/1005726/doordash-ai-agentic-food-delivery-bites">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">경북 농관원, 원산지 표시 위반 30곳 적발; 친환경 농업 지원 확대 요구 및 제주 키위 판로 확대 논의가 활발합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 00:45 KST</span>
+      </div>
+      <h3>스마트팜 배운 청년들, 전북 곳곳에 뿌리내리다</h3>
+      <div class="body">김제 스마트팜 혁신밸리에서 농업을 배운 청년들이 전북 지역에 농장을 설립하며 새로운 영농 기반을 만들어가고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 스마트팜을 도입한 청년 농가와 작목 계약 및 수매 협력을 모색할 수 있으며, 특히 복숭아, 감, 딸기 작목에서 산지 확대 가능성을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407690">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/7 22:08 KST</span>
+      </div>
+      <h3>&quot;친환경농업, 생계 책임질 수 있어야&quot;...김상기 회장, 정책·기술 지원 촉구</h3>
+      <div class="body">김상기 한국친환경농업협회장은 유기농업이 농가의 생계를 책임질 수 있도록 정책 및 기술 지원이 필요하다고 촉구했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 친환경 농산물 수매 및 GS리테일 1차 밴드 납품 시 친환경 인증 농가와의 협력 확대를 검토하고, 친환경 농업 정책 변화에 따른 사업 기회를 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407740">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 10/7 20:51 KST</span>
+      </div>
+      <h3>경북농관원, 원산지 표시 위반 30곳 적발</h3>
+      <div class="body">국립농산물품질관리원 경북지원은 추석을 앞두고 대구·경북 지역 1017곳을 점검해 원산지 거짓표시 9곳, 미표시 21곳 등 총 30곳의 위반업체를 적발했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 GS리테일 1차 밴드 납품 시 원산지 표시 관리를 더욱 철저히 해야 하며, 주식회사 시경(s)은 안동농협공판장 중도매 및 닥터상달 프랜차이즈 운영에서 원산지 표시 위반 사례가 발생하지 않도록 전반적인 점검과 교육을 강화해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407703">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/7 20:25 KST</span>
+      </div>
+      <h3>[속보]농해수위 국감, ‘농지 전수조사·태양광’ 놓고 시작부터 충돌</h3>
+      <div class="body">국회 농림축산식품해양수산위원회의 2026년 국정감사에서 농지 전수조사와 태양광 정책을 둘러싼 여야의 공방으로 파행을 빚었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)의 산지 확보 및 신규 영농 조합원 유치 시 농지 정책 변화 가능성을 주시하고, 관련 법규 변동에 대비해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407741">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/7 20:22 KST</span>
+      </div>
+      <h3>제주농협, ‘탐나도키위’ 판로 확대 시동</h3>
+      <div class="body">제주농협과 농협중앙회 제주본부가 전남 보성·순천 지역 키위 산지와 광주공판장을 방문해 제주농협 키위 통합브랜드 &#x27;탐나도키위&#x27;의 판로 확대 방안을 논의했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 주요 작목인 복숭아, 감, 딸기의 통합 브랜드 구축 및 판로 확대를 위한 타 지역 농협 및 공판장과의 협력 방안을 모색하고, 주식회사 시경(s)은 안동농협공판장 중도매에서 다른 지역 통합 브랜드 농산물과의 경쟁 및 협력 가능성을 고려해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407708">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/7 19:15 KST</span>
+      </div>
+      <h3>논산시, ‘임산부 친환경농산물 지원사업’ 추가접수...10월 30일까지</h3>
+      <div class="body">충남 논산시가 10월 30일까지 &#x27;2026년 임산부 친환경농산물 지원사업&#x27; 추가 신청을 받아 임산부 또는 2025년 1월 1일 이후 출산한 산모에게 연 24만원 상당의 친환경농산물 꾸러미를 지원합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인(j)은 친환경 농산물 생산 및 납품을 확대하여 정부의 친환경 농산물 지원 사업과 연계한 판매 기회를 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407733">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
