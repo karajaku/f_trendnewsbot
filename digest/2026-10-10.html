@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 10월 10일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 10 · 10 토요일 · KST 10:46</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">NH농협은행 경북본부·경상북도개발공사, 수확기  농촌 일손돕기</div>
+      <div class="reason">주식회사 시경의 안동농협공판장 중도매 사업과 연관하여, 안동 지역 농가들의 인력난 해소를 위한 협력 방안을 모색하고 농협과의 관계를 강화할 수 있습니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농지 전수조사가 국감에서 최대 쟁점으로 떠올랐으며, K-푸드 수출 기록 이면의 무역 적자와 짝퉁 문제도 지적되었습니다. 한편, 분질미 활용 K-떡볶이의 할랄 시장 진출 성공 사례도 나왔습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 02:29 KST</span>
+      </div>
+      <h3>농지 전수조사, 정쟁으로 끝나지 않으려면</h3>
+      <div class="body">농림축산식품부 국정감사에서 농지 전수조사가 최대 화두였으며, 야당은 물론 여당에서도 준비 부족과 일방적인 추진을 질타하는 목소리가 이어졌습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인의 산지 매입 및 농지 관리 전략에 영향을 미칠 수 있으므로, 관련 부서에서 농지 정책 변화를 주시해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407791">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 02:29 KST</span>
+      </div>
+      <h3>시장 지향 농정에 대한 올바른 이해</h3>
+      <div class="body">농정에는 농산물 가격 하락 시 정부 개입, 생산 과잉 시 정부 수매, 농가 소득 부족 시 보조금 증대라는 오래된 관성이 있으나, 가격 지지 정책의 근본적인 한계가 지적되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 농산물 가격 지지 정책의 변화는 정다운 법인의 농산물 수매가 및 팜보스 법인의 상품 소싱 전략에 간접적인 영향을 줄 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407786">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 02:29 KST</span>
+      </div>
+      <h3>입안 가득 채우는 신선함~ ‘밀크&amp;치즈페스티벌’ 성료</h3>
+      <div class="body">우유자조금관리위원회는 지난 10월 3~4일 안양 평촌중앙공원에서 &#x27;2026 밀크&amp;치즈페스티벌&#x27;을 성황리에 개최하여 국산 유제품의 신선함과 가치를 알렸습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407782">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 02:29 KST</span>
+      </div>
+      <h3>[국산 한약재 활성화 현장을 가다] “국내 최고 품질 구기자 생산 자신…재배 넘어 가공·유통까지 영역 확장”</h3>
+      <div class="body">충남 청양의 남양구기자맥문동영농조합 임종우 대표는 GAP인증 구기자로 소비자 신뢰를 얻고 있으며, 재배를 넘어 가공·유통까지 영역을 확장하고 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 법인에서 새로운 작목 또는 지역 농산물 소싱 시 벤치마킹할 수 있는 사례입니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407778">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 02:29 KST</span>
+      </div>
+      <h3>‘농지 전수조사’ 최대 쟁점…“농민 납득할 대안 내야”</h3>
+      <div class="body">국회 농림축산식품해양수산위원회의 농림축산식품부 국정감사에서 &#x27;농지 전수조사&#x27;가 최대 쟁점으로 부상했으며, 야당은 조사 중단을, 여당은 농민 불안 해소 대책 마련을 요구했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인의 농지 관련 사업 계획 및 확장 전략에 영향을 미칠 수 있으므로, 정책 변화를 면밀히 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407768">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 02:29 KST</span>
+      </div>
+      <h3>[2026 국감 | 농식품부]  “기본소득 국비 지원 확대…CPTPP 농업 피해 면밀 검토” 주문</h3>
+      <div class="body">농식품부 국정감사에서는 농어촌 기본소득 국비 지원 확대, CPTPP 농업 피해 면밀 검토, 농협 개혁 등 주요 농정 현안이 다뤄졌습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 농협과의 협력 관계 및 농업 정책 변화에 따라 정다운 법인의 사업 운영에 간접적인 영향을 줄 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407767">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 00:09 KST</span>
+      </div>
+      <h3>한돈자조금, 연말까지 ‘한돈으로 더 가까워지는 100일’ 캠페인</h3>
+      <div class="body">한돈자조금관리위원회는 한돈데이(10월 1일)를 기점으로 연말까지 &#x27;한돈으로 더 가까워지는 100일&#x27; 소비촉진 캠페인을 진행하여 전국 각지에서 할인 판매, 지역 축제 연계 행사 등을 펼칩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 마케팅 및 프로모션 기획 시 유사한 계절 캠페인 아이디어를 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407770">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 10/9 03:18 KST</span>
+      </div>
+      <h3>국산 분질미에 무알콜 보존기술 탑재 ‘K-떡볶이’, 할랄시장 점령</h3>
+      <div class="body">농림식품기술기획평원 지원을 통해 국산 분질미를 활용한 무알콜 중동 맞춤형 &#x27;K-떡볶이&#x27;가 개발되어 글로벌 할랄 인증 획득과 함께 연구 기간 동안 누적 수출액 약 40억5000만 원을 달성했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인에서 온라인 커머스 상품 기획 시, 할랄 시장 진출 가능성 및 무알콜 보존 기술을 활용한 가공식품 개발 아이디어를 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201373">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 10/9 02:40 KST</span>
+      </div>
+      <h3>[국감-농해수위] ‘수출 신기록’의 민낯…260조 무역적자·짝퉁 범람 ‘도마 위’</h3>
+      <div class="body">농식품부 국정감사에서는 정부의 &#x27;K-푸드 수출 신기록&#x27; 이면에 가려진 260조 무역적자 구조, 해외 전자상거래 시장의 위조·모방 식품 범람, GMO 검출 및 원산지 둔갑 행태 등이 도마 위에 올랐습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 수출 전략 수립 시, 무역 적자 구조와 위조 상품 문제 등 해외 시장의 위험 요소를 고려해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201360">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">NH농협은행 경북본부와 경상북도개발공사가 안동 사과 농가에 수확기 일손돕기 봉사활동을 펼쳤습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 10/9 00:19 KST</span>
+      </div>
+      <h3>NH농협은행 경북본부·경상북도개발공사, 수확기  농촌 일손돕기</h3>
+      <div class="body">NH농협은행 경북본부와 경상북도개발공사는 수확기 일손 부족 농가를 돕기 위해 10월 1일 경북 안동시 일직면 귀미리 사과 재배 농가를 방문하여 일손돕기 봉사활동을 펼쳤습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 주식회사 시경의 안동농협공판장 중도매 사업과 연관하여, 안동 지역 농가들의 인력난 해소를 위한 협력 방안을 모색하고 농협과의 관계를 강화할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407694">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
