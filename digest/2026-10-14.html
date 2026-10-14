@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 10월 14일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 10 · 14 수요일 · KST 10:15</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">[품목포커스/대추방울토마토] 출하량 증가로 평년 대비 약세</div>
+      <div class="reason">정다운 영농조합법인 및 주식회사 시경은 딸기(밀양·청도) 등 주요 작목 외 토마토류 시세 변동에도 주의해야 합니다. 중도매 시세에 따라 닥터상달 프랜차이즈 식자재 조달 및 가격 전략에 영향을 미칠 수 있습니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">주요 AI 기업 OpenAI와 Google DeepMind가 새로운 모델 &#x27;Gemini 4 Argon&#x27; 및 비디오 생성 기술 업데이트를 발표했습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 04:42 KST</span>
+      </div>
+      <h3>Shopify opens its catalog up to more AI agents</h3>
+      <div class="body">Shopify가 더 많은 AI 에이전트가 Shopify 목록에서 제품을 탐색하고 구매할 수 있도록 카탈로그를 개방하며 에이전트 기반 상거래를 확장하고 있습니다. 이를 통해 10억 개 이상의 Shopify 상품에 AI 에이전트가 접근할 수 있게 됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 온라인 커머스 B2C 사업에 잠재적으로 AI 에이전트를 활용한 판매 전략 도입 가능성을 시사합니다. 사방넷 기반 판매 방식에 접목할 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.theverge.com/news/1010365/shopify-opens-its-catalog-up-to-more-ai-agents">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">쌀 초과 생산 시장 격리, 대추방울토마토 시세 약세 등 주요 농산물 수급 불안정이 지속되며, 농지 전수조사 및 농축산물 할인 지원 관련 현장 갈등이 부각되고 있습니다. K-푸드 수출 및 스마트 농업 지원 소식도 있습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>올해 쌀 생산량 6만6000톤 초과...‘대여곡’ 활용해 시장격리 방침</h3>
+      <div class="body">올해 쌀 생산량이 6만6000톤 초과될 것으로 추정되며, 정부는 약 12만 톤의 대여곡을 활용하여 초과 물량을 시장에서 격리할 방침입니다. 현장에서는 수확기 쌀값 안정을 위해 반납 물량과 시기를 탄력적으로 조절해야 한다는 의견이 나옵니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 주요 작목이 아니지만, 전반적인 농산물 시장 수급 및 가격 정책 동향에 대한 이해가 필요합니다. 정부 정책 변화 시 작목 전환 또는 추가 작목 고려 시 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407894">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>[품목포커스/대추방울토마토] 출하량 증가로 평년 대비 약세</h3>
+      <div class="body">추석 이후 대추방울토마토 출하량이 증가하며 평년 대비 도매가격이 약세를 보이고 있습니다. 이달 말부터 충청, 호남 지역으로 출하 산지가 확대되어 공급량이 늘어날 예정이며, 당분간 시세 약세가 지속될 전망입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인 및 주식회사 시경은 딸기(밀양·청도) 등 주요 작목 외 토마토류 시세 변동에도 주의해야 합니다. 중도매 시세에 따라 닥터상달 프랜차이즈 식자재 조달 및 가격 전략에 영향을 미칠 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407887">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>농축산물 할인 지원, 전면 개편해야</h3>
+      <div class="body">정부가 물가 안정을 명분으로 유통업체를 통한 농축산물 할인 행사에 막대한 예산을 집행했으나, 국정감사에서 사업 효과에 대한 의문이 제기되고 있습니다. 2021년 이후 매년 1000억 원 이상, 올해는 9월까지 4267억 원이 투입되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인의 GS리테일 1차 밴드 납품 및 주식회사 시경의 안동농협공판장 중도매 사업에 정부의 농축산물 할인 지원 정책이 유통 시장 가격 형성에 영향을 미칠 수 있습니다. 할인 행사 시기에 맞춰 공급 및 가격 전략을 조정할 필요가 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407885">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>[농산물 ‘선제적 수급관리’ 해법은] 참여농가·법인, 유사시 ‘수급조절 의무 이행’ 관건</h3>
+      <div class="body">정부가 추진하는 농산물 안정생산·공급지원사업과 농산물가격안정제는 &#x27;선제적 수급관리&#x27;를 목표로 하며, 품목별 주산지협의체와 광역수급관리센터를 통해 생산 전주기를 관리합니다. 참여 농가와 법인의 &#x27;수급조절 의무 이행&#x27;이 관건으로 지적됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인의 복숭아, 감, 딸기 등 주요 작목의 산지 유통 및 수매·출하 계획 수립 시 정부의 수급관리 정책 변화를 면밀히 주시하고, 수급조절 의무 이행 가능성을 검토해야 합니다. 협의체 참여 여부도 고려할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407874">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>“지역특산주, 국산 농산물 소비 확대 직결…타지역 원료도 쓸 수 있어야”</h3>
+      <div class="body">한국막걸리협회장은 지역특산주가 국산 농산물 소비 확대에 직결되므로, 주원료 기준을 지역농산물 95% 이상 사용, 나머지는 국산 농산물 사용으로 개선해야 한다고 주장했습니다. 이는 증류주와 혼합주 시장의 세계적 성장 추세에 맞춰 지역특산주의 경쟁력을 높이기 위함입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 주요 작목의 부가가치 제고를 위해 지역 특산주 등 가공식품 원료 공급처로서의 가능성을 탐색할 수 있습니다. 농산물 활용 다각화 측면에서 장기적인 관점으로 검토할 가치가 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407860">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>“무농약 가공식품 원료, 유기농산물로 대체 허용해야”</h3>
+      <div class="body">무농약 가공식품 원료 수급 불안으로 생산을 포기하는 업체가 속출하고 있어, 농식품부에 유기농산물로 대체 허용을 요구하는 목소리가 나옵니다. 무농약 쌀 생산량 감소 및 라벨 교체 부담 등이 문제로 지적됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인의 친환경 농산물 유통 사업 확장을 고려할 경우, 무농약 및 유기농 원료 수급의 불안정성과 관련 제도의 변화를 면밀히 파악해야 합니다. 향후 친환경 시장 진출 시 원료 확보 전략에 영향을 미칠 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407848">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 02:15 KST</span>
+      </div>
+      <h3>농식품부, &#x27;K-푸드+ 수출탑&#x27; 후보 모집...13~30일 접수</h3>
+      <div class="body">농림축산식품부가 K-푸드+ 수출 주역들에게 수여하는 ‘K-푸드+ 수출탑’ 수상 후보를 10월 13~30일까지 모집합니다. 올해는 수출탑 외에 &#x27;신인상&#x27;이 테마탑 부문에 추가되었습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 B2C 온라인 커머스에서 해외 시장 진출을 고려할 경우, &#x27;K-푸드+ 수출탑&#x27;과 같은 정부 지원 및 시상 제도를 활용할 수 있습니다. 장기적인 수출 전략 수립 시 참고할 만합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407884">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 18:56 KST</span>
+      </div>
+      <h3>K-푸드 맛·멋 알리기 위해 전 세계 인플루언서 2500명 한 자리에</h3>
+      <div class="body">농림축산식품부는 10월 9일부터 11일까지 열린 &#x27;2026 글로벌 인플루언서 엑스포(GIE)&#x27;와 연계하여 국내외 인플루언서 2500여 명과 함께 K-푸드의 매력을 알리는 홍보 활동을 펼쳤습니다. 이를 통해 K-푸드 및 전국 주요 식품 행사를 국내외에 알렸습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인은 B2C 온라인 커머스 콘텐츠 마케팅 전략에 글로벌 인플루언서를 활용하는 방안을 적극적으로 검토해야 합니다. 농식품부의 K-푸드 홍보 채널과 연계하여 주요 작목 및 닥터상달 브랜드를 알릴 기회를 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201401">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">상주 샤인머스캣이 미국 코스트코 수출에 성공하며 품질 경쟁력을 입증했고, 동화청과는 청년 농업인을 위한 유통 교육을 진행했습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 04:31 KST</span>
+      </div>
+      <h3>상주 샤인머스캣 11톤, 미국·대만 수출</h3>
+      <div class="body">대경사과원예농협 상주지점이 상주산 샤인머스캣 11톤을 미국 코스트코와 대만 현지 마트로 수출했습니다. 이번 수출은 품질 기준이 까다로운 미국 코스트코 납품으로 상주 샤인머스캣의 품질 경쟁력을 다시 확인한 사례입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 주요 작목(복숭아, 감, 딸기)의 수출 가능성을 탐색할 때, 샤인머스캣의 성공 사례를 참고할 수 있습니다. 특히 까다로운 해외 유통 채널(예: 미국 코스트코) 납품 경험은 팜보스 그룹의 수출 역량 강화에 중요한 벤치마킹 포인트가 됩니다. 장석중 이사가 해외 판로 개척 방안을 검토해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407807">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
