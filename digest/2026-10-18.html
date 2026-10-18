@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 10월 18일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 10 · 18 일요일 · KST 09:04</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 1건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">한농연전남, ’NH농우바이오 양파‘ 내분구 피해 대책 요구</div>
+      <div class="reason">정다운에서 취급하는 복숭아, 감, 딸기 등 주요 작목에 대해서도 유사한 품종 관련 피해 발생 시 즉각적인 실태 조사 및 대책 마련을 요구하는 선례로 참고해야 합니다. 재배 농가와의 협력 체계를 점검하고 문제가 발생할 수 있는 품종에 대한 선제적 관리 방안을 모색해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 9건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">메타, AI 학습을 위한 뉴스 사이트 스크랩 가능성 약관 삭제 등 AI 에이전트의 웹 접근 및 활용에 대한 규제 및 반발 동향 주목</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">OpenAI Blog · 10/17 04:00 KST</span>
+      </div>
+      <h3>How Itaú is building generative AI for its entire customer base</h3>
+      <div class="body">브라질 금융기관 Itaú가 &#x27;ia.i&#x27;라는 대화형 인터페이스와 &#x27;IARA&#x27; 거버넌스 플랫폼을 통해 고객 및 직원에게 생성형 AI를 적용하고 있습니다. 이는 브라질의 엄격한 규제 산업 중 하나에서 AI 우선 전략을 구현하는 사례입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://openai.com/index/itau-generative-ai">원문 읽기 →</a><span class="sep">·</span><span class="src">openai.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 10/17 01:00 KST</span>
+      </div>
+      <h3>Architecting autonomy: A design pattern for high-compute, governed agents in biotech</h3>
+      <div class="body">현재 대부분의 AI 에이전트는 빠르고 상태가 없으며 비용이 적게 드는 경량 디스패처로 작동하지만, 생명공학 분야에서는 단백질 폴딩이나 화합물 라이브러리 스크리닝과 같이 몇 분 또는 몇 시간 동안 실행되는 지속적이고 상태를 가지며 GPU에 의존하는 시뮬레이션이 필요합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/healthcare-life-sciences/architecting-scalable-agentic-biotech-workloads">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 10/17 01:00 KST</span>
+      </div>
+      <h3>Four evaluation engineering lessons learned from building agent plugins</h3>
+      <div class="body">AI 에이전트 시스템 구축의 진정한 과제는 구성이 아니라 측정이며, 안정적인 AI 시스템 구축을 위한 평가 엔지니어링의 중요성이 강조됩니다. 체계적이고 반복 가능한 테스트를 설정하는 것이 신뢰할 수 있는 도구를 출시하는 데 결정적인 역할을 합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Research Blog · 10/17 03:11 KST</span>
+      </div>
+      <h3>Grounding AI agents in biological reality: Building blocks for autonomous wet labs</h3>
+      <div class="body">구글 연구진은 생물학적 현실에 기반한 AI 에이전트, 즉 자율적인 웻랩(Wet Lab)을 위한 빌딩 블록을 구축하는 연구를 진행 중입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs">원문 읽기 →</a><span class="sep">·</span><span class="src">research.google</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 00:04 KST</span>
+      </div>
+      <h3>Meta removes language that may have allowed it to scrape news sites</h3>
+      <div class="body">메타가 AI 학습을 위해 뉴스 사이트를 포함한 웹사이트의 콘텐츠를 스크랩할 수 있다는 내용의 약관 문구를 삭제했습니다. 이는 반발 이후 약관을 업데이트한 조치입니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/17 22:00 KST</span>
+      </div>
+      <h3>Websites are closing their doors to AI agents</h3>
+      <div class="body">자율 AI 에이전트가 인터넷을 검색하여 다양한 작업을 수행할 수 있지만, 최근 많은 웹사이트들이 AI 에이전트의 접근을 차단하기 시작했습니다. 이는 AI 에이전트의 광범위한 활용에 새로운 장애물이 될 수 있습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/16 23:02 KST</span>
+      </div>
+      <h3>Meta’s new terms may allow it to train AI on news sites for free</h3>
+      <div class="body">메타의 새로운 약관은 자사 플랫폼을 사용하는 기업과 관련된 웹사이트(뉴스 매체 포함)의 콘텐츠를 크롤링하고 스크랩하여 AI 학습에 사용할 수 있도록 허용하는 것으로 보입니다. 이 약관은 10월 30일부터 발효됩니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/1012846/meta-business-terms-scrape-news-publishers">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">옥천군 깻잎·애호박 가격안정기금 지원 및 농협-CJ프레시웨이 국내산 축산물 공급 협력 등 유통·가격 안정 및 판로 확대 노력 지속</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/17 02:27 KST</span>
+      </div>
+      <h3>옥천군, 깻잎·애호박 가격안정기금 지원</h3>
+      <div class="body">옥천군이 올해 깻잎과 애호박의 가격 하락에 대응하여 농축산물 가격안정기금 1억8264만원을 107농가에 지원했습니다. 이는 도매시장 평균가격이 기준가격 이하로 떨어질 경우 차액을 지원하는 방식입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 복숭아, 감, 딸기를 주요 작목으로 하므로 유사한 시장 가격 하락 시 지자체 가격안정기금 지원 가능성을 미리 파악하고 활용할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407901">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/17 02:02 KST</span>
+      </div>
+      <h3>농협 축산경제-CJ프레시웨이, 국내산 축산물 공급·판매 상호 협력</h3>
+      <div class="body">농협경제지주(축산경제)와 CJ프레시웨이가 업무협약을 맺고 국내산 축산물 공급 및 판매를 위해 상호 협력하기로 했습니다. 이 협약을 통해 농협은 품질과 안전성이 보장된 축산물을 CJ프레시웨이에 안정적으로 공급할 예정입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 1차 밴드 납품 구조와 유사한 대형 유통사-생산자 단체 간 협력 사례입니다. 시경은 안동농협공판장 중도매 경험을 바탕으로 신규 판매 채널 확보 시 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407962">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">한농연전남, NH농우바이오 양파 내분구 피해 대책 요구 – 작물 품종 문제에 대한 농가단체 대응 사례</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 10/17 00:09 KST</span>
+      </div>
+      <h3>한농연전남, ’NH농우바이오 양파‘ 내분구 피해 대책 요구</h3>
+      <div class="body">한농연전남도연합회가 NH농우바이오 양파 품종의 내분구 피해와 관련해 무안군·함평군 연합회와 함께 피해 실태 조사와 대책 마련을 촉구하기로 했습니다. 피해 농가 및 양파생산자협회 등과 함께 피해 실태를 파악 중입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운에서 취급하는 복숭아, 감, 딸기 등 주요 작목에 대해서도 유사한 품종 관련 피해 발생 시 즉각적인 실태 조사 및 대책 마련을 요구하는 선례로 참고해야 합니다. 재배 농가와의 협력 체계를 점검하고 문제가 발생할 수 있는 품종에 대한 선제적 관리 방안을 모색해야 합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=407936">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
