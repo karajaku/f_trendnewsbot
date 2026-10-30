@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 10월 30일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 10 · 30 금요일 · KST 10:58</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘 꼭 챙길 2건</h2>
+    <div class="tldr-item">
+      <div class="num">01</div>
+      <div class="title">잦은 비·높은 습도 ‘감귤 부패’ 우려...적기 방제 당부</div>
+      <div class="reason">팜보스 및 시경은 과일 상품의 입고 시 품질 검수를 강화하고, 저장 및 유통 과정에서 부패를 최소화하기 위한 신선도 유지 방안을 즉시 검토해야 합니다. 특히 유통 과정에서의 추가 부패에 대한 대책 마련이 시급합니다.</div>
+    </div>
+    <div class="tldr-item">
+      <div class="num">02</div>
+      <div class="title">SNS 인기 ‘과일 찹살떡’ 위생 관리 집중 점검한다</div>
+      <div class="reason">팜보스는 온라인 커머스 B2C 판매 시 취급하는 과일 찹쌀떡, 샌드위치 등 가공식품의 위생 관리에 더욱 만전을 기하고, 관련 규제 준수 여부를 철저히 점검하여 소비자 신뢰를 확보해야 합니다.</div>
+    </div>
+    <div class="tldr-rest">그 외 8건은 산업 동향 — 본문에서 확인.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">전북 농특산물 서울 장터, 전북도 농산물 최저가격 보장 10년, 감귤 부패 우려 등 유통 및 농가 지원 소식이 전해졌습니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 18:01 KST</span>
+      </div>
+      <h3>“전북 우수 농특산물, 서울서 만나요”  4~8일 ‘명품큰장터’</h3>
+      <div class="body">전북 농업인들이 생산한 우수 농특산물이 11월 4일부터 8일까지 5일간 서울서남부농협 농산물백화점 특설매장에서 ‘제23회 전북특별자치도 농특산물 명품큰장터’를 통해 서울 소비자들을 찾아갑니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 GS리테일 1차 밴드 납품에 집중하고 있으나, 서울 지역 직거래 장터의 성공 사례는 B2C 판매 확대를 위한 아이디어를 제공할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408334">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 17:54 KST</span>
+      </div>
+      <h3>전북도, 농산물 최저가격 보장 10년…3100농가에 ‘139억 지원’</h3>
+      <div class="body">전북특별자치도가 도입한 농산물 최저가격 보장제가 시행 10년을 맞아 3100농가에 139억원을 지원하여 가격 하락에 따른 농업인의 부담을 줄였습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 수매 계약 시 농산물 최저가격 보장제와 같은 정부 및 지자체의 지원 제도를 참고하여 농가와의 상생 모델을 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408337">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">한국농어민신문 · 03:28 KST</span>
+      </div>
+      <h3>잦은 비·높은 습도 ‘감귤 부패’ 우려...적기 방제 당부</h3>
+      <div class="body">최근 잦은 비와 높은 습도로 감귤 부패가 우려되어 농가의 적기 방제가 요구되며, 유통센터 입고 감귤의 30% 부패, 선별 후 내륙 유통 과정에서 4~5%의 추가 부패가 발생하는 것으로 나타났습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 및 시경은 과일 상품의 입고 시 품질 검수를 강화하고, 저장 및 유통 과정에서 부패를 최소화하기 위한 신선도 유지 방안을 즉시 검토해야 합니다. 특히 유통 과정에서의 추가 부패에 대한 대책 마련이 시급합니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408380">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:07 KST</span>
+      </div>
+      <h3>경북도, 대만서 샤인머스캣 홍보·판촉 강화</h3>
+      <div class="body">경북도는 10월 27일 대만 타이베이에서 샤인머스캣 홍보행사를 열고 대만 대형 유통기업 풀불룸사와 공동마케팅 업무협약을 체결했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 주력 작목인 복숭아, 감, 딸기의 해외 판로 개척 시 경북도의 샤인머스캣 해외 마케팅 성공 사례를 참고하여 수출 전략을 수립할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408331">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:03 KST</span>
+      </div>
+      <h3>이천 농특산물 판로 넓힌 &#x27;이천팜마켓 상승점&#x27; 개점</h3>
+      <div class="body">경기 이천시와 국군복지단의 상생협력을 통해 조성된 ‘이천팜마켓 상승점’이 10월 28일 개점하여 이천시 농특산물과 가공식품의 안정적인 판로를 확보했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 군부대 영외마트 등 새로운 유통 채널과의 협력을 모색하여 산지 농산물의 판로를 확대할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408355">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 19:41 KST</span>
+      </div>
+      <h3>한식의 진짜 세계화, ‘식문화 생태계’ 구축에 달렸다</h3>
+      <div class="body">K-푸드 열풍이 지속 가능한 글로벌 주류 식문화로 안착하기 위해서는 식품·외식업계 전체가 연대하여 ‘지속 가능한 식문화 생태계’를 구축해야 한다는 제언이 ‘2026 한식 컨퍼런스’에서 나왔습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 시경의 닥터상달 프랜차이즈 사업은 한식의 식문화 생태계 구축 전략을 참고하여 과일 프랜차이즈의 장기적인 성장 전략을 수립할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201479">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 01:25 KST</span>
+      </div>
+      <h3>쌀가공식품協, ‘2027 일본 슈퍼마켓 트레이드쇼’ 한국관 참가기업 모집</h3>
+      <div class="body">한국쌀가공식품협회는 국내 쌀가공식품 기업의 일본 유통시장 진출 및 판로 확대를 위해 ‘2027 일본 동경 슈퍼마켓 트레이드쇼(SMTS)’ 한국관 참가기업 10개사를 모집합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 농산물 수출 판로 개척 시 한국쌀가공식품협회와 같은 단체의 해외 박람회 지원 사업을 참고하여 참여를 검토할 수 있습니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201522">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline">안성시 경로당 포도·배 공급, 경남도 단감 중국 수출 준비, SNS 인기 과일 찹쌀떡 위생 점검 소식입니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 03:06 KST</span>
+      </div>
+      <h3>안성시, 경로당에 포도·배 공급...과수농가 판로 지원</h3>
+      <div class="body">경기 안성시가 가격 하락과 기상 피해로 어려움을 겪는 과수농가를 돕기 위해 경로당에 안성산 포도와 배를 한시적으로 공급하여 판로를 지원합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운은 청도·경산·밀양 산지 농산물 가격 불안정 시 지자체와의 협력을 통해 경로당 등 복지시설 납품 기회를 모색하여 농가 판로를 지원하고 재고 부담을 줄일 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408357">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:59 KST</span>
+      </div>
+      <h3>경남도, 단감 중국 수출 막바지 준비 박차</h3>
+      <div class="body">경남도가 한국 단감의 중국 수출 검역 협상 타결을 계기로 연내 단감 중국 수출을 성사시키기 위한 막바지 준비에 박차를 가하고 있으며, 중국 바이어 및 현지 유통업체 관계자와 간담회를 가졌습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 주요 작목인 감(청도·경산)의 해외 수출 판로 개척 시 경남도의 중국 단감 수출 사례를 면밀히 분석하여 중국 시장 진출 전략 수립에 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408387">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        <span class="source-name">식품음료신문 (팜보스 키워드) · 18:24 KST</span>
+      </div>
+      <h3>SNS 인기 ‘과일 찹살떡’ 위생 관리 집중 점검한다</h3>
+      <div class="body">식품의약품안전처는 SNS 인기 ‘과일 찹쌀떡’ 및 샌드위치 등을 조리·판매하는 배달음식점과 무인카페 4천여 곳을 대상으로 10월 30일부터 11월 13일까지 16개 지방정부와 함께 집중 위생 점검을 실시합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스는 온라인 커머스 B2C 판매 시 취급하는 과일 찹쌀떡, 샌드위치 등 가공식품의 위생 관리에 더욱 만전을 기하고, 관련 규제 준수 여부를 철저히 점검하여 소비자 신뢰를 확보해야 합니다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201527">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
