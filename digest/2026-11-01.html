@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 11월 1일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 11 · 1 일요일 · KST 10:14</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 10건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 10건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">AI 기업들이 스크래핑 거부 표준을 공동 채택하고, 스타벅스는 AI 기반 개인화 메뉴를 도입합니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 10/31 01:00 KST</span>
+      </div>
+      <h3>What’s new in AI infrastructure and orchestration in October</h3>
+      <div class="body">Google Cloud AI 인프라 팀은 10월 한 달 동안 AI 및 에이전트 워크로드 확장을 위한 새로운 제품 출시와 업데이트를 진행했습니다. NVIDIA GTC, PyTorch Conference, AGNTCon + MCPCon 등 주요 산업 행사에서 고객 및 파트너들과 함께 진행 상황을 공유했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">Google Cloud AI Blog · 10/31 01:00 KST</span>
+      </div>
+      <h3>Innovate on your own business terms: Google Cloud spend caps now generally available</h3>
+      <div class="body">Google Cloud Budgets의 지출 한도 기능이 정식 출시되었습니다. 이 기능은 리소스 삭제 위험 없이 비용 초과를 방지하며, 프로그래밍 가능성, 실시간 가시성, 자동화된 보호 장치 등 세 가지 주요 업데이트를 포함합니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available">원문 읽기 →</a><span class="sep">·</span><span class="src">cloud.google.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/31 07:32 KST</span>
+      </div>
+      <h3>Apple Intelligence is finally coming to China with iOS 27.3</h3>
+      <div class="body">애플 인텔리전스(Apple Intelligence)가 iOS 27.3을 통해 마침내 중국에 출시될 예정입니다. iOS 27.3 베타는 11월 4일에 출시되며, 정식 버전은 12월로 예정되어 있습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/31 05:48 KST</span>
+      </div>
+      <h3>Sam Altman says it’s better for RAM to be in a data center than on your desk</h3>
+      <div class="body">OpenAI CEO 샘 알트만은 RAM 부족 현상에 대해 개인용 PC에 RAM이 있는 것보다 데이터센터에 있는 것이 &#x27;더 낫다&#x27;고 언급했습니다. 그는 AI가 수학에 미치는 영향에 대한 언급과 함께 이러한 견해를 밝혔습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/31 05:26 KST</span>
+      </div>
+      <h3>The biggest names in AI are backing a new way to opt out of scraping</h3>
+      <div class="body">OpenAI, Google, Microsoft, Anthropic 등 주요 AI 기업들이 스크래핑 거부(opt out)를 위한 새로운 표준을 채택할 예정입니다. 이 &#x27;정책 토큰&#x27; 신호를 통해 게시자는 여러 AI 기업에 걸쳐 AI 학습 선호도를 설정할 수 있습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인의 콘텐츠 마케팅 자료가 AI 학습에 활용되는 것을 원치 않을 경우, 새로운 표준을 이용한 데이터 보호 전략 수립이 필요합니다.</div>
+      <div class="link"><a href="https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/31 03:21 KST</span>
+      </div>
+      <h3>Google&amp;#8217;s satellite AI server transmits its first response to Earth</h3>
+      <div class="body">구글의 AI 칩이 탑재된 위성이 우주에서 첫 응답을 생성했습니다. 구글은 위성의 Tensor Processing Unit(TPU)을 성공적으로 부팅하여 온보드 Gemma 4 모델이 우주에서의 하이쿠 생성 프롬프트를 따르도록 했습니다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 10/31 02:38 KST</span>
+      </div>
+      <h3>Starbucks wants to use AI to show you a ‘personalized digital menu’ at the drive-thru</h3>
+      <div class="body">스타벅스는 AI를 활용하여 드라이브 스루에서 &#x27;개인 맞춤형 디지털 메뉴&#x27;를 제공할 계획입니다. 고객이 도착하면 인식하여 개인화된 메뉴를 제시하고 결제를 더욱 쉽게 만드는 경험을 모색할 것입니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 농업회사법인 온라인 커머스 및 주식회사 시경 프랜차이즈의 고객 경험 개선 전략 수립 시, AI 기반 개인화 마케팅 및 주문 시스템 도입 가능성을 참고할 수 있습니다.</div>
+      <div class="link"><a href="https://www.theverge.com/ai-artificial-intelligence/1023440/starbucks-ai-personalized-menu-drive-thru">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">전국으뜸농산물한마당이 울산에서 열리고, 진주에서는 국제농식품박람회가 개최됩니다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 01:09 KST</span>
+      </div>
+      <h3>전국으뜸농산물한마당 울산서 개막…400여 개 농산물 한자리에</h3>
+      <div class="body">제35회 &#x27;전국으뜸농산물한마당&#x27;이 10월 31일부터 11월 2일까지 3일간 농협 울산유통센터에서 개최되었습니다. 한국후계농업경영인중앙연합회가 주최·주관하는 이 행사는 농업인들이 생산한 농산물을 출품하고 소비자들이 다양한 우리 농산물을 구매할 수 있는 기회를 제공합니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인 및 팜보스 농업회사법인은 향후 유사한 전국 단위 오프라인 행사 참여를 고려하여 신규 판로 개척 및 브랜드 인지도를 높일 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408442">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/31 03:31 KST</span>
+      </div>
+      <h3>농식품부  ‘2026 국산 밀·콩데이’ 캠페인</h3>
+      <div class="body">농림축산식품부는 10월 29일 세종특별자치시 나성중학교에서 &#x27;2026년 국산 밀·콩 DAY&#x27; 캠페인을 진행했습니다. 이 캠페인은 단체급식 등 대량 수요처 중심으로 소비를 활성화하기 위해 2022년부터 시작되었으며, 올해는 전국 초중고, 노인복지시설, 군부대 등 총 56개소에서 운영됩니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 복숭아, 감, 딸기 외에 국산 밀·콩 등 다른 작물로 사업 확장을 고려할 경우, 정부 주도 소비 활성화 캠페인을 참고하여 신규 작목 및 판로 전략을 세울 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408439">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">한국농어민신문 · 10/31 01:37 KST</span>
+      </div>
+      <h3>[특별대담] 조규일 진주시장 “농업기술부터 수출·체험까지…진주서 농업의 매력 만끽하길”</h3>
+      <div class="body">경남 진주시에서 &#x27;2026 진주국제농식품박람회&#x27;가 4일 개막합니다. 조규일 진주시장은 박람회가 농업인에게 새로운 농업기술과 정보를 제공하고, 농식품의 국내외 판로 확대를 지원하는 장이 될 것이라고 언급했습니다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운 영농조합법인은 지역 농산물 박람회를 통해 잠재적 바이어를 발굴하고, 팜보스 농업회사법인은 지역 특산물 온라인 판매 연계를 모색할 수 있습니다.</div>
+      <div class="link"><a href="https://www.agrinet.co.kr/news/articleView.html?idxno=408433">원문 읽기 →</a><span class="sep">·</span><span class="src">agrinet.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
