@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>팜보스 트렌드 — 11월 2일</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --ink-2: #424245;
+      --mute: #86868b;
+      --line: #d2d2d7;
+      --bg: #ffffff;
+      --tint: #06c;
+      --tint-warm: #b4490e;
+      --accent: #f5f5f7;
+      --pri-3: #1d1d1f;
+      --pri-2: #6e6e73;
+      --pri-1: #aeaeb2;
+    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { background: var(--bg); color: var(--ink);
+                 font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                              "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+                 line-height: 1.47; font-size: 17px; margin: 0; padding: 0; }
+    body { font-weight: 400; letter-spacing: -0.022em; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 64px 22px 96px; }
+
+    /* Hero */
+    .hero { padding: 32px 0 56px; text-align: center; }
+    .hero .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+    .hero h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+               font-weight: 700; margin: 0; color: var(--ink); }
+    .hero h1 .accent { background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+                       -webkit-background-clip: text; background-clip: text;
+                       -webkit-text-fill-color: transparent; }
+    .hero .lede { margin-top: 22px; font-size: 21px; color: var(--ink-2); font-weight: 400;
+                  letter-spacing: -0.018em; line-height: 1.4; }
+    .hero .meta { margin-top: 20px; font-size: 14px; color: var(--mute);
+                  display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .hero .meta .dot { color: var(--line); }
+
+    /* TL;DR */
+    .tldr { margin: 56px 0 80px; padding: 40px 32px; background: var(--accent);
+            border-radius: 18px; }
+    .tldr .label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+                   text-transform: uppercase; color: var(--tint); margin-bottom: 8px; }
+    .tldr h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+               margin: 0 0 22px; color: var(--ink); line-height: 1.15; }
+    .tldr-item { padding: 18px 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    .tldr-item:first-of-type { border-top: none; padding-top: 0; }
+    .tldr-item .num { font-size: 12px; font-weight: 700; color: var(--tint);
+                      letter-spacing: 0.04em; margin-bottom: 4px; }
+    .tldr-item .title { font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+                        line-height: 1.3; color: var(--ink); margin-bottom: 6px; }
+    .tldr-item .reason { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .tldr-rest { margin-top: 18px; padding-top: 18px;
+                 border-top: 1px solid rgba(0,0,0,0.08);
+                 font-size: 14px; color: var(--mute); font-style: italic; }
+
+    /* Category */
+    section.category { margin: 80px 0 0; }
+    .cat-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                   text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+    .cat-ai .cat-eyebrow { color: #0a84ff; }
+    .cat-agri .cat-eyebrow { color: #30a46c; }
+    .cat-farmboss .cat-eyebrow { color: #d04545; }
+    .cat-title { font-size: 36px; font-weight: 700; letter-spacing: -0.022em;
+                 line-height: 1.1; margin: 0 0 12px; color: var(--ink); }
+    .cat-headline { font-size: 18px; color: var(--ink-2); letter-spacing: -0.012em;
+                    margin-bottom: 36px; line-height: 1.45; }
+
+    /* Items */
+    .item { padding: 32px 0; border-top: 1px solid var(--line); }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item .topline { display: flex; align-items: center; gap: 10px;
+                     margin-bottom: 10px; font-size: 12px; letter-spacing: 0.04em;
+                     text-transform: uppercase; color: var(--mute); font-weight: 600; }
+    .priority-dots { display: inline-flex; gap: 3px; }
+    .priority-dots .d { width: 6px; height: 6px; border-radius: 50%;
+                        background: var(--pri-1); display: inline-block; }
+    .priority-dots .d.on { background: var(--ink); }
+    .item .source-name { color: var(--mute); }
+    .item h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em;
+               line-height: 1.22; margin: 0 0 12px; color: var(--ink); }
+    .item h3 .orig { color: var(--mute); font-weight: 400; font-size: 16px;
+                     letter-spacing: -0.012em; margin-left: 4px; }
+    .item .body { font-size: 17px; color: var(--ink-2); line-height: 1.55;
+                  letter-spacing: -0.012em; }
+    .item .impact { margin-top: 18px; padding: 16px 20px; background: var(--accent);
+                    border-radius: 12px; font-size: 15px; color: var(--ink);
+                    line-height: 1.5; letter-spacing: -0.01em; }
+    .item .impact strong { font-weight: 600; }
+    .item .impact-empty { color: var(--mute); background: transparent;
+                          padding: 12px 0 0; font-size: 13px; font-style: italic; }
+    .item .link { margin-top: 16px; font-size: 14px; }
+    .item .link a { color: var(--tint); text-decoration: none; font-weight: 500; }
+    .item .link a:hover { text-decoration: underline; }
+    .item .link .sep { color: var(--line); margin: 0 6px; }
+    .item .link .src { color: var(--mute); }
+
+    /* Footer */
+    footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--line);
+             text-align: center; }
+    footer .signature { font-size: 13px; color: var(--mute); letter-spacing: 0.02em; }
+    footer .signature strong { color: var(--ink-2); font-weight: 600; }
+    footer .disclaimer { margin-top: 20px; font-size: 12px; color: var(--mute);
+                         line-height: 1.5; max-width: 560px; margin-left: auto;
+                         margin-right: auto; }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 18px 64px; }
+      .hero h1 { font-size: 40px; }
+      .hero .lede { font-size: 18px; }
+      .cat-title { font-size: 28px; }
+      .item h3 { font-size: 20px; }
+      .tldr { padding: 28px 22px; }
+      .tldr h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="eyebrow">2026 · 11 · 2 월요일 · KST 10:31</div>
+    <h1>오늘 챙길 <span class="accent">뉴스 6건</span>.</h1>
+    <p class="lede">AI·농산물 유통 동향, 그리고 팜보스 운영에 직결되는 변화.</p>
+    <div class="meta"><span>소스 18개 정상 수집</span></div>
+  </section>
+
+  <section class="tldr">
+    <div class="label">⚡ TL;DR</div>
+    <h2>오늘은 산업 동향 위주</h2>
+    <div class="tldr-rest">오늘은 산업 동향 위주 (회사 직결 뉴스 없음) — 총 6건 정리.</div>
+  </section>
+
+  <section class="category cat-ai">
+    <div class="cat-eyebrow">Category 01</div>
+    <h2 class="cat-title">AI 트렌드</h2>
+    <p class="cat-headline">메타의 AI 타마고치 출시 예정에도 불구하고 개인 제작 시도 기사 보도.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">The Verge AI · 11/1 01:05 KST</span>
+      </div>
+      <h3>I built an AI Tamagotchi before Meta could</h3>
+      <div class="body">마크 저커버그의 메타가 AI 타마고치인 &#x27;뮤즈 참&#x27;을 연말에 출시할 예정이지만, 한 기자는 ESP32와 Claude, Vibe Code를 이용해 직접 AI 타마고치를 만들었다고 밝혔다. 이 기사는 직접 제작한 AI 타마고치가 메타의 제품보다 더 좋다고 평가했다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code">원문 읽기 →</a><span class="sep">·</span><span class="src">theverge.com</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-agri">
+    <div class="cat-eyebrow">Category 02</div>
+    <h2 class="cat-title">농산물 · 유통</h2>
+    <p class="cat-headline">농심의 월마트 푸드트럭 마케팅 사례와 식품표시광고법 위반 사례가 주목된다.</p>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 19:05 KST</span>
+      </div>
+      <h3>농심, 美 월마트서 ‘신라면 푸드트럭’ 씽씽</h3>
+      <div class="body">농심이 미국 월마트 48개 매장에서 푸드트럭을 운영하며 신라면 시식 및 포토존 등 소비자 체험 기회를 제공했다. 이는 미국 최대 유통 채널인 월마트를 통해 신라면의 브랜드 입지를 강화하고 현지 소비자 접점을 확대하기 위함이다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 정다운의 GS리테일 1차 밴드 납품 및 팜보스의 B2C 온라인 커머스에서 대형 유통 채널과의 협력 마케팅 전략을 참고할 수 있다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201535">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 19:00 KST</span>
+      </div>
+      <h3>‘K-생지’ 날개 단 수출 105% 뛸 때…안방선 ‘수입 식빵’의 역습</h3>
+      <div class="body">한국 제빵기업들의 냉동생지 및 프리미엄 케이크 수출은 증가하고 있으나, 국내 양산 식빵 생산 기반이 무너지며 중국과 캐나다 등 수입산 저가 식빵이 국내 시장을 잠식하고 있다. 2025년 양산빵 수출량은 1만2968톤으로 2024년 대비 23.1% 증가했다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201492">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 18:31 KST</span>
+      </div>
+      <h3>‘K-영유아식품’, 우리 농산물로 기능성 갖춰 아시아 신흥국 공략</h3>
+      <div class="body">농림식품기술기획평가원이 농식품부 지원을 통해 아시아 신흥국 맞춤형 영유아식품 26종을 개발·상품화하고, 300만 달러 규모의 수출 MOU를 체결했다. 베트남 등 아시아 신흥국의 경제성장과 K-푸드 확산에 따라 프리미엄 영유아식품에 대한 관심이 높아지고 있다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201534">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 16:46 KST</span>
+      </div>
+      <h3>왜 아기 이유식은 유리병에 담을까?-하상도의 식품 바로보기(452)</h3>
+      <div class="body">마트에서 유리병에 담긴 영유아 이유식이 많은 이유는 단순히 건강에 좋다는 막연한 인식 때문이 아니라, 화학적 안정성, 살균공정 적합성, 품질 보존성 등 과학적 특성이 복합적으로 작용한 결과다. 유리는 식품과의 반응성이 낮고 고온 살균 공정에 적합하며 산소 차단성이 뛰어나다.</div>
+      <div class="impact impact-empty">회사 직접 영향 없음</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201507">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+    <article class="item">
+      <div class="topline">
+        <span class="priority-dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></span>
+        <span class="source-name">식품음료신문 · 16:40 KST</span>
+      </div>
+      <h3>심의받지 않은 광고 문구 ‘법정 사항’이어야 위반-김미연 변호사의 식품 판례 프리즘(9)</h3>
+      <div class="body">건강기능식품 유통전문판매업자가 심의받지 않은 &#x27;실시간 검색어 1위&#x27; 배너 광고를 추가하여 품목제조정지 처분을 받았다. 이는 식품표시광고법 제10조에 따라 심의 내용에 따르지 않은 광고 행위로 간주되어 행정처분을 받게 된 사례이다.</div>
+      <div class="impact"><strong>회사 영향 ·</strong> 팜보스 온라인 커머스 B2C 콘텐츠 마케팅 팀은 건강기능식품 표시광고법 및 유사 법규 준수 여부를 상시 점검해야 한다.</div>
+      <div class="link"><a href="https://www.thinkfood.co.kr/news/articleView.html?idxno=201504">원문 읽기 →</a><span class="sep">·</span><span class="src">thinkfood.co.kr</span></div>
+    </article>
+  </section>
+
+  <section class="category cat-farmboss">
+    <div class="cat-eyebrow">Category 03</div>
+    <h2 class="cat-title">팜보스 관심 키워드</h2>
+    <p class="cat-headline" style="color:#86868b;font-style:italic;">오늘 새 뉴스 없음</p>
+  </section>
+
+  <footer>
+    <p class="signature"><strong>팜보스 트렌드</strong> · 매일 KST 07:30 · 2026 팜보스 그룹</p>
+    <p class="disclaimer">&quot;회사 영향&quot;은 봇이 회사 사업 컨텍스트를 토대로 생성한 분석입니다. 원문에 없는 추론이 포함될 수 있으니, 의사결정 전 반드시 원문 링크를 함께 확인해 주세요.</p>
+    <p class="disclaimer" style="margin-top:14px;">의견·소스 추가 요청은 단톡방에서. 운영: 팜보스 트렌드 봇.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
